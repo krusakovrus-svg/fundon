@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <path d="M16 10h32l6 8v16c0 10-7 16-22 20-15-4-22-10-22-20V18z" fill="#111111" stroke="#7f1838" stroke-width="2"/>
+  <text x="32" y="22" text-anchor="middle" font-size="6" font-family="Arial, sans-serif" font-weight="700" fill="#ffffff">CLEVELAND</text>
+  <text x="32" y="31" text-anchor="middle" font-size="8" font-family="Arial, sans-serif" font-weight="700" fill="#ffffff">CAVALIERS</text>
+  <path d="M27 42c4-6 7-13 9-20l4 2c-1 8-4 14-9 20z" fill="#f3b022" stroke="#7f1838" stroke-width="1"/>
+  <path d="M28 22c2 0 5 1 6 2-3 6-5 12-5 19" fill="none" stroke="#7f1838" stroke-width="2"/>
+</svg>

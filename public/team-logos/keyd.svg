@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <path d="M14 40V24l10-10 10 10v16l-10 10z" fill="#5c2b8f"/>
+  <path d="M19 24l10 5-5 10-10-5z" fill="#ffffff"/>
+  <text x="48" y="28" text-anchor="middle" font-size="8" font-family="Arial, sans-serif" font-weight="700" fill="#5c2b8f">VIVO</text>
+  <text x="48" y="37" text-anchor="middle" font-size="9" font-family="Arial, sans-serif" font-weight="700" fill="#1a1a1a">KEYD</text>
+  <text x="48" y="46" text-anchor="middle" font-size="9" font-family="Arial, sans-serif" font-weight="700" fill="#1a1a1a">STARS</text>
+</svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <path d="M18 10h28v42l-14 6-14-6z" fill="#ffd91f" stroke="#0b4ea2" stroke-width="2"/>
+  <rect x="20" y="14" width="24" height="11" fill="#0b4ea2"/>
+  <text x="32" y="22" text-anchor="middle" font-size="8" font-family="Arial, sans-serif" font-weight="700" fill="#ffd91f">BVSC</text>
+  <text x="32" y="28" text-anchor="middle" font-size="5" font-family="Arial, sans-serif" font-weight="700" fill="#0b4ea2">ZUGLO</text>
+  <path d="M22 30h12v6H22zm0 10h12v6H22z" fill="#0b4ea2"/>
+  <path d="M40 18v24c-2 0-4-2-4-5 0-4 4-6 4-8s-2-3-2-5 1-4 2-6z" fill="#0b4ea2"/>
+</svg>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="28" fill="#0f4ea8" stroke="#f28b1d" stroke-width="3"/>
+  <path d="M16 46c7-1 12-4 17-10l5-5 11 2v8c-7 6-18 9-33 5z" fill="#f28b1d"/>
+  <text x="32" y="27" text-anchor="middle" font-size="20" font-family="Arial, sans-serif" font-weight="700" fill="#ffffff">NY</text>
+  <text x="32" y="47" text-anchor="middle" font-size="10" font-family="Arial, sans-serif" font-weight="700" fill="#ffffff">ISLANDERS</text>
+</svg>

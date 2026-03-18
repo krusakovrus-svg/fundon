@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <text x="32" y="24" text-anchor="middle" font-size="8" font-family="Arial, sans-serif" font-weight="700" fill="#111111">ORLANDO</text>
+  <path d="M14 28c5-7 14-10 26-10 4 0 8 0 12 1-2 8-7 16-16 22H14z" fill="#4ca0e0" stroke="#111111" stroke-width="1.5"/>
+  <text x="32" y="38" text-anchor="middle" font-size="16" font-family="Arial, sans-serif" font-weight="700" fill="#4ca0e0" stroke="#111111" stroke-width=".4">MAGIC</text>
+  <path d="M18 46c10-1 18-4 26-10" stroke="#111111" stroke-width="2" fill="none"/>
+  <circle cx="43" cy="43" r="5" fill="#4ca0e0" stroke="#111111" stroke-width="1.5"/>
+  <path d="M40 43h6M43 40v6M40.8 40.8l4.4 4.4M45.2 40.8l-4.4 4.4" stroke="#111111" stroke-width="1"/>
+</svg>

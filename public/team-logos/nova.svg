@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <path d="M16 10h32l6 8v18c0 9-6 15-22 19-16-4-22-10-22-19V18z" fill="#ffffff" stroke="#2a3c8e" stroke-width="2"/>
+  <path d="M18 18h28v10c0 8-5 12-14 16-9-4-14-8-14-16z" fill="#2a3c8e"/>
+  <text x="32" y="19" text-anchor="middle" font-size="5" font-family="Arial, sans-serif" fill="#2a3c8e">ВОЛЕЙБОЛЬНЫЙ КЛУБ</text>
+  <text x="32" y="28" text-anchor="middle" font-size="14" font-family="Arial, sans-serif" font-weight="700" fill="#d72834">НОВА</text>
+  <path d="M23 42c2-4 6-7 9-7 4 0 8 3 10 7-2 3-6 5-10 5-3 0-7-2-9-5z" fill="#ffffff"/>
+</svg>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <path d="M12 14c0-2.2 1.8-4 4-4h32c2.2 0 4 1.8 4 4v18c0 12.5-8.4 19.8-20 22-11.6-2.2-20-9.5-20-22z" fill="#ffffff"/>
+  <path d="M14 14h18v36c-9.2-2.4-16-9-16-18z" fill="#ef2f31"/>
+  <path d="M32 14h18v18c0 9-6.8 15.6-16 18z" fill="#1a1a1a"/>
+  <path d="M16 14h32v18c0 11.7-7.5 18.3-16 20.3C23.5 50.3 16 43.7 16 32z" fill="none" stroke="#ffffff" stroke-width="2"/>
+  <text x="32" y="34" text-anchor="middle" font-size="15" font-family="Arial, sans-serif" font-weight="700" fill="#ffffff">NOB</text>
+</svg>

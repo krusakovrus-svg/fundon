@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <path d="M10 12h44v10L32 54 10 22z" fill="#ffffff" stroke="#4b3b92" stroke-width="2"/>
+  <rect x="12" y="14" width="40" height="8" fill="#ffffff"/>
+  <text x="32" y="20" text-anchor="middle" font-size="8" font-family="Arial, sans-serif" font-weight="700" fill="#4b3b92">FORTALEZA</text>
+  <polygon points="12,22 32,50 32,22" fill="#4b3b92"/>
+  <polygon points="32,22 32,50 52,22" fill="#ef5a2a"/>
+</svg>

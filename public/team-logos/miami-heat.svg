@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <ellipse cx="32" cy="24" rx="8" ry="12" fill="#a10836" stroke="#111111" stroke-width="1.5"/>
+  <path d="M32 10c3 4 5 7 5 10 0 2-2 4-5 5-3-1-5-3-5-5 0-3 2-6 5-10z" fill="#f39c12"/>
+  <path d="M26 29c4 4 8 8 10 15" stroke="#a10836" stroke-width="5" stroke-linecap="round"/>
+  <ellipse cx="32" cy="18" rx="15" ry="3.6" fill="none" stroke="#111111" stroke-width="1.5"/>
+  <text x="32" y="47" text-anchor="middle" font-size="9" font-family="Arial, sans-serif" font-weight="700" fill="#111111">MIAMI</text>
+  <text x="32" y="56" text-anchor="middle" font-size="9" font-family="Arial, sans-serif" font-weight="700" fill="#111111">HEAT</text>
+</svg>

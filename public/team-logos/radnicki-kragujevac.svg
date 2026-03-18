@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="25" fill="#ffffff" stroke="#111111" stroke-width="1.5"/>
+  <circle cx="32" cy="32" r="19" fill="#cf2f2f"/>
+  <path d="M24 21c4-5 10-7 16-4-4 2-6 4-7 7 4 0 7 2 9 5-3 5-8 8-15 8-4-4-5-10-3-16z" fill="#ffffff" stroke="#111111" stroke-width="1.2"/>
+  <text x="32" y="13" text-anchor="middle" font-size="4.5" font-family="Arial, sans-serif" fill="#cf2f2f">ВАТЕРПОЛО КЛУБ</text>
+  <text x="32" y="48" text-anchor="middle" font-size="7" font-family="Arial, sans-serif" font-weight="700" fill="#cf2f2f">РАДНИЧКИ</text>
+  <text x="32" y="54" text-anchor="middle" font-size="4.5" font-family="Arial, sans-serif" fill="#cf2f2f">KRAGUJEVAC</text>
+</svg>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <path d="M14 12h36v16c0 12.2-8.5 19.6-18 23-9.5-3.4-18-10.8-18-23z" fill="#111111" stroke="#d8b245" stroke-width="2"/>
+  <path d="M16 12h32v4H16zm0 8h32v4H16zm0 8h32v4H16z" fill="#b11e2f"/>
+  <path d="M26 40c4-6 9-8 14-7-1 4-3 8-8 10-3 1-5 0-6-3z" fill="#d9b555"/>
+  <text x="32" y="19" text-anchor="middle" font-size="6" font-family="Arial, sans-serif" font-weight="700" fill="#ffffff">SPORT</text>
+</svg>

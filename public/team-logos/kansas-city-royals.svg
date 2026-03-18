@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <path d="M22 10h20v18l-10 8-10-8z" fill="#0e4f9b"/>
+  <path d="M22 10l3-5h3l4 5 4-5h3l3 5" fill="#d2a84a"/>
+  <text x="32" y="23" text-anchor="middle" font-size="10" font-family="Georgia, serif" fill="#ffffff">KC</text>
+  <text x="32" y="42" text-anchor="middle" font-size="9" font-family="Brush Script MT, cursive" font-weight="700" fill="#0e4f9b">Royals</text>
+</svg>

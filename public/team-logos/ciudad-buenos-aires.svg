@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <path d="M18 10h28v44H18z" fill="#8dd6ff" stroke="#6db6df" stroke-width="2"/>
+  <path d="M22 17c6 4 14 4 20 0" stroke="#e22d2f" stroke-width="2" fill="none"/>
+  <text x="32" y="14" text-anchor="middle" font-size="6" font-family="Arial, sans-serif" fill="#e22d2f">CIUDAD VOLEY</text>
+  <path d="M25 42c2-10 5-16 10-22 6 4 10 10 10 18-4 6-10 10-16 12z" fill="#111111"/>
+  <path d="M27 34c4 1 8 0 11-3" stroke="#111111" stroke-width="2"/>
+  <path d="M24 20l4 4m10-4l-4 4m-10 18l-5 4m20-4l5 4" stroke="#e22d2f" stroke-width="1.5" stroke-linecap="round"/>
+</svg>

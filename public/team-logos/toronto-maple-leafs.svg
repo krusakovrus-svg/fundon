@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <path d="M32 8l8 10 10-3-3 10 9 7-11 3 4 11-10-5-7 13-7-13-10 5 4-11-11-3 9-7-3-10 10 3z" fill="#0f4e97"/>
+  <text x="32" y="29" text-anchor="middle" font-size="8" font-family="Arial, sans-serif" font-weight="700" fill="#ffffff">TORONTO</text>
+  <text x="32" y="38" text-anchor="middle" font-size="9" font-family="Arial, sans-serif" font-weight="700" fill="#ffffff">MAPLE</text>
+  <text x="32" y="47" text-anchor="middle" font-size="9" font-family="Arial, sans-serif" font-weight="700" fill="#ffffff">LEAFS</text>
+</svg>

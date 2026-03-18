@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <path d="M16 10h32l6 8v16c0 11.5-9 17.6-22 20-13-2.4-22-8.5-22-20V18z" fill="#f0c639" stroke="#2f2a1f" stroke-width="2"/>
+  <circle cx="32" cy="28" r="9" fill="#ffffff" stroke="#2f2a1f" stroke-width="2"/>
+  <path d="M27 28h10M32 23v10M28.5 24.5l7 7m0-7l-7 7" stroke="#2f2a1f" stroke-width="1.5"/>
+  <text x="32" y="44" text-anchor="middle" font-size="7" font-family="Arial, sans-serif" font-weight="700" fill="#2f2a1f">SAO BERNARDO</text>
+</svg>

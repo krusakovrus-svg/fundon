@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <polygon points="10,22 46,14 54,18 18,26" fill="#ffd215"/>
+  <polygon points="14,22 26,18 30,21 24,34" fill="#111111"/>
+  <polygon points="26,18 40,15 44,18 34,34" fill="#ffd215"/>
+  <polygon points="40,15 50,17 48,34 34,34" fill="#111111"/>
+  <text x="32" y="44" text-anchor="middle" font-size="8" font-family="Arial, sans-serif" font-weight="700" fill="#ffffff">JUNIOR</text>
+</svg>

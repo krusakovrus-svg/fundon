@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="29" fill="#0f376f" stroke="#c8c8c8" stroke-width="2"/>
+  <circle cx="32" cy="32" r="22" fill="#114d89"/>
+  <path d="M20 46c3-11 9-18 18-22 5 4 8 10 8 16-3 4-7 7-11 9-6-1-10-2-15-3z" fill="#d7e0ea"/>
+  <path d="M30 22l3 4 4-1 1 4 4 2-2 4 2 4-4 1-2 4-4-2-4 2-1-4-4-1 2-4-2-4 4-2 1-4 4 1z" fill="#7cc242"/>
+  <text x="32" y="15" text-anchor="middle" font-size="6" font-family="Arial, sans-serif" font-weight="700" fill="#ffffff">MINNESOTA TIMBERWOLVES</text>
+</svg>

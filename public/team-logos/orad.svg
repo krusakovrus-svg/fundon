@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <path d="M32 10l22 8v28l-22 8-22-8V18z" fill="#1d4f92" stroke="#c9d3e5" stroke-width="2"/>
+  <path d="M20 20h24v24H20z" fill="#e33d3d"/>
+  <path d="M20 30h24M32 20v24" stroke="#c9d3e5" stroke-width="2"/>
+  <path d="M26 26c4-5 8-6 12-4-2 2-3 4-4 6 3 0 5 2 5 5-4 5-9 6-13 5-2-4-2-8 0-12z" fill="#d7dce7" stroke="#92724d" stroke-width="1"/>
+  <text x="32" y="50" text-anchor="middle" font-size="7" font-family="Arial, sans-serif" font-weight="700" fill="#1d4f92">ORADEA</text>
+</svg>

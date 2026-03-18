@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <path d="M20 12h24l8 8v14c0 10-6 17-20 20-14-3-20-10-20-20V20z" fill="#ffffff" stroke="#1d3c77" stroke-width="2"/>
+  <path d="M18 41l10-5m18 4l8-3" stroke="#00a0df" stroke-width="2" stroke-linecap="round"/>
+  <path d="M16 37l10-3m22 0l9 4" stroke="#f05d22" stroke-width="2" stroke-linecap="round"/>
+  <text x="32" y="19" text-anchor="middle" font-size="8" font-family="Arial, sans-serif" font-weight="700" fill="#1d3c77">THUNDER</text>
+  <path d="M24 24h16v14H24z" fill="#1d3c77"/>
+  <text x="32" y="31" text-anchor="middle" font-size="8" font-family="Arial, sans-serif" font-weight="700" fill="#ffffff">OKC</text>
+  <circle cx="32" cy="37" r="4" fill="#f05d22"/>
+</svg>

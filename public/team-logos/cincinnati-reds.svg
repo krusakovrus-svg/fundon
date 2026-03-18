@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <path d="M10 32c8-10 17-16 31-16h7c-8 9-8 23 0 32h-7c-14 0-23-6-31-16z" fill="none" stroke="#c8102e" stroke-width="2.5"/>
+  <ellipse cx="34" cy="32" rx="15" ry="10" fill="#c8102e" stroke="#111111" stroke-width="1.5"/>
+  <text x="34" y="35" text-anchor="middle" font-size="10" font-family="Arial, sans-serif" font-weight="700" fill="#ffffff">REDS</text>
+</svg>

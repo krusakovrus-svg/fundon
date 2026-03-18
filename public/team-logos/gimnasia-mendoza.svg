@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <path d="M14 10h36v17c0 14-9 23-18 27-9-4-18-13-18-27z" fill="#ffffff" stroke="#111111" stroke-width="2"/>
+  <path d="M18 22h6v24h-6zm11 0h6v24h-6zm11 0h6v24h-6z" fill="#111111"/>
+  <rect x="16" y="12" width="32" height="8" rx="2" fill="#ffffff"/>
+  <text x="32" y="18" text-anchor="middle" font-size="8" font-family="Arial, sans-serif" font-weight="700" fill="#111111">GyE 1908</text>
+</svg>

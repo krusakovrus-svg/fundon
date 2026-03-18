@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <path d="M16 12h32l6 8v22c0 6-4 10-10 10H20c-6 0-10-4-10-10V20z" fill="#2fae41" stroke="#1a376f" stroke-width="2"/>
+  <path d="M22 22h20v11H22z" fill="#1a376f"/>
+  <path d="M26 23l6 6 6-6M32 17v12" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+  <rect x="16" y="32" width="32" height="8" fill="#1a376f"/>
+  <text x="32" y="38" text-anchor="middle" font-size="8" font-family="Arial, sans-serif" font-weight="700" fill="#ffffff">JOINVILLE</text>
+  <text x="32" y="46" text-anchor="middle" font-size="9" font-family="Arial, sans-serif" font-weight="700" fill="#ffffff">VÔLEI</text>
+  <path d="M22 52l5-7h10l5 7" fill="#ffffff"/>
+</svg>

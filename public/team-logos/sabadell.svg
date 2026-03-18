@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="25" fill="#1474a9" stroke="#ffffff" stroke-width="2"/>
+  <text x="32" y="18" text-anchor="middle" font-size="6" font-family="Arial, sans-serif" font-weight="700" fill="#ffffff">CLUB NATACIÓ</text>
+  <text x="32" y="47" text-anchor="middle" font-size="7" font-family="Arial, sans-serif" font-weight="700" fill="#ffffff">SABADELL</text>
+  <path d="M20 34c4-8 9-12 12-12 4 0 8 4 12 12-4 6-8 9-12 9-3 0-8-3-12-9z" fill="#ffffff"/>
+  <path d="M23 32c3 3 6 4 9 4s6-1 9-4" stroke="#1474a9" stroke-width="2" fill="none"/>
+</svg>
