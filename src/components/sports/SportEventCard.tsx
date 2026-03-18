@@ -103,10 +103,19 @@ export function SportEventCard({ event }: { event: SportEventRecord }) {
         <div className="space-y-2">
           {event.participants.map((participant) => (
             <div key={participant.id} className="flex items-center gap-2.5">
+              <span className="shrink-0 text-[0.82rem] font-medium leading-none text-text-secondary/85">{eventDateShort}</span>
               <ParticipantBadge participant={participant} />
               <span className="truncate text-[1rem] font-medium leading-none text-slate-900 dark:text-text-primary">
                 {language === 'ru' ? participant.nameRu : participant.name}
               </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </article>
+  );
+}
+ </span>
             </div>
           ))}
         </div>
