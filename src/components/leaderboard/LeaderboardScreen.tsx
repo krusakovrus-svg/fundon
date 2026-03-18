@@ -253,7 +253,7 @@ export function LeaderboardScreen() {
         </div>
       </SectionCard>
 
-      <SectionCard className="px-4 py-4">
+      <SectionCard className="border border-white/35 bg-white/55 px-4 py-4 shadow-[0_18px_42px_rgba(15,23,42,0.10)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
         <div className="flex items-start justify-between gap-3">
           <div>
             <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted">

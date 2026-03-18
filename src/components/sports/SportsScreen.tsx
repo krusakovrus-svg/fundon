@@ -77,7 +77,7 @@ export function SportsScreen() {
               key={sport.id}
               href={href}
               onClick={() => setStoredSportPath(href)}
-              className="app-card flex w-full items-center justify-between gap-3 rounded-[1.35rem] px-4 py-4 text-left transition hover:border-accent-orange/20"
+              className="flex w-full items-center justify-between gap-3 rounded-[1.35rem] border border-white/35 bg-white/55 px-4 py-4 text-left shadow-[0_16px_34px_rgba(15,23,42,0.08)] backdrop-blur-xl transition hover:border-accent-orange/20 hover:bg-white/70 dark:border-white/8 dark:bg-white/6 dark:shadow-none"
             >
               <div className="flex min-w-0 items-center gap-3">
                 <span className="text-text-secondary">

@@ -179,7 +179,7 @@ export function EventsScreen() {
 
       <div className="space-y-4">
         {groups.length === 0 ? (
-          <div className="app-card rounded-[1.35rem] px-4 py-6 text-center">
+          <div className="rounded-[1.35rem] border border-white/35 bg-white/55 px-4 py-6 text-center shadow-[0_16px_34px_rgba(15,23,42,0.08)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
             <p className="text-[1rem] font-semibold text-text-primary">{t('eventsNoResults')}</p>
             <p className="mt-2 text-[0.92rem] leading-relaxed text-text-secondary">{t('eventsNoResultsHint')}</p>
           </div>

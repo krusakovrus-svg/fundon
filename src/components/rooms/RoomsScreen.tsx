@@ -30,7 +30,7 @@ export function RoomsScreen() {
         </div>
         <div className="space-y-3">
           {mockData.rooms.map((room) => (
-            <div key={room.id} className="app-subtle-card">
+            <div key={room.id} className="rounded-[1.1rem] border border-white/45 bg-white/60 px-4 py-3 dark:border-white/8 dark:bg-white/6">
               <div className="flex items-center justify-between gap-3">
                 <p className="text-base font-semibold text-text-primary">{language === 'ru' ? room.nameRu : room.name}</p>
                 <span className="app-pill">
