@@ -1,6 +1,5 @@
 'use client';
 
-import { useLanguage } from '@/components/providers/LanguageProvider';
 import { useTheme } from '@/components/providers/ThemeProvider';
 import { SegmentedControl } from '@/components/ui/SegmentedControl';
 import { cn } from '@/lib/utils';
@@ -11,7 +10,6 @@ interface ThemeSwitcherProps {
 
 export function ThemeSwitcher({ className }: ThemeSwitcherProps) {
   const { theme, resolvedTheme, setTheme } = useTheme();
-  const { t } = useLanguage();
 
   const currentTheme = theme === 'system' ? resolvedTheme : theme;
 
@@ -20,8 +18,8 @@ export function ThemeSwitcher({ className }: ThemeSwitcherProps) {
       value={currentTheme}
       onChange={setTheme}
       options={[
-        { value: 'dark', label: t('dark') },
-        { value: 'light', label: t('light') }
+        { value: 'dark', label: '☾' },
+        { value: 'light', label: '☀' }
       ]}
       className={cn('w-full justify-between', className)}
     />

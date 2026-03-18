@@ -183,7 +183,7 @@ export function SideMenuDrawer({ isOpen, currentPath, onClose }: SideMenuDrawerP
               <div className="min-w-0">
                 <p className="text-[11px] font-medium leading-none text-text-secondary">{t('language')}</p>
               </div>
-              <div className="w-[102px] shrink-0">
+              <div className="w-[86px] shrink-0">
                 <LanguageSwitcher className={compactSwitcherClass} />
               </div>
             </div>
@@ -192,7 +192,7 @@ export function SideMenuDrawer({ isOpen, currentPath, onClose }: SideMenuDrawerP
               <div className="min-w-0">
                 <p className="text-[11px] font-medium leading-none text-text-secondary">{t('theme')}</p>
               </div>
-              <div className="w-[112px] shrink-0">
+              <div className="w-[86px] shrink-0">
                 <ThemeSwitcher className={compactSwitcherClass} />
               </div>
             </div>
