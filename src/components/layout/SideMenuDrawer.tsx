@@ -76,7 +76,7 @@ export function SideMenuDrawer({ isOpen, currentPath, onClose }: SideMenuDrawerP
   const displayName = t('you');
   const avatarLetter = displayName.slice(0, 1).toUpperCase();
   const compactSwitcherClass =
-    'w-full justify-between rounded-[15px] p-[3px] [&_button]:min-h-[32px] [&_button]:rounded-[12px] [&_button]:px-2.5 [&_button]:py-1.5 [&_button]:text-[12px] [&_button]:leading-none';
+    'w-full justify-between rounded-[13px] bg-transparent p-[2px] [&_button]:min-h-[28px] [&_button]:rounded-[10px] [&_button]:px-2 [&_button]:py-1 [&_button]:text-[11px] [&_button]:leading-none';
 
   const primaryItems = useMemo<DrawerItem[]>(
     () => [
@@ -178,19 +178,21 @@ export function SideMenuDrawer({ isOpen, currentPath, onClose }: SideMenuDrawerP
             ))}
           </div>
 
-          <div className="mt-3 rounded-[1.3rem] border border-border/10 bg-surface-muted/80 p-3">
-            <div className="space-y-3">
-              <div>
-                <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-text-muted">{t('settings')}</p>
+          <div className="mt-3 space-y-2 border-t border-border/10 pt-3">
+            <div className="flex items-center justify-between gap-3 rounded-[16px] px-1.5 py-1.5 transition hover:bg-surface-subtle/50">
+              <div className="min-w-0">
+                <p className="text-[11px] font-medium leading-none text-text-secondary">{t('language')}</p>
               </div>
-
-              <div className="space-y-1.5">
-                <p className="text-[13px] font-semibold leading-tight text-text-primary">{t('settingsLanguageLabel')}</p>
+              <div className="w-[102px] shrink-0">
                 <LanguageSwitcher className={compactSwitcherClass} />
               </div>
+            </div>
 
-              <div className="space-y-1.5">
-                <p className="text-[13px] font-semibold leading-tight text-text-primary">{t('settingsThemeLabel')}</p>
+            <div className="flex items-center justify-between gap-3 rounded-[16px] px-1.5 py-1.5 transition hover:bg-surface-subtle/50">
+              <div className="min-w-0">
+                <p className="text-[11px] font-medium leading-none text-text-secondary">{t('theme')}</p>
+              </div>
+              <div className="w-[112px] shrink-0">
                 <ThemeSwitcher className={compactSwitcherClass} />
               </div>
             </div>
