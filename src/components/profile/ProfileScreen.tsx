@@ -48,59 +48,59 @@ export function ProfileScreen() {
     <MainPageLayout className="space-y-4">
       <PageHeader eyebrow={t('appName')} title={t('profileTitle')} description={t('profileHint')} />
 
-      <SectionCard className="overflow-hidden px-4 py-5">
-        <div className="flex items-start gap-4">
-          <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-[22px] bg-accent/16 text-2xl font-semibold text-accent">
+      <SectionCard className="overflow-hidden border border-white/35 bg-white/60 px-4 py-4 shadow-[0_18px_42px_rgba(15,23,42,0.10)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
+        <div className="flex items-center gap-4">
+          <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-[18px] bg-white/75 text-[1.3rem] font-semibold text-text-primary shadow-[0_8px_20px_rgba(15,23,42,0.08)] dark:bg-white/10 dark:text-white dark:shadow-none">
             {avatarLetter}
           </div>
           <div className="min-w-0 flex-1">
             <div className="flex items-start justify-between gap-3">
               <div className="min-w-0">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted">{t('you')}</p>
-                <h2 className="mt-2 truncate text-[1.8rem] font-semibold tracking-tight text-text-primary">
+                <h2 className="mt-1.5 truncate text-[1.7rem] font-semibold tracking-tight text-text-primary">
                   {displayName}
                 </h2>
               </div>
-              <span className="app-pill shrink-0">#{profile.currentRank}</span>
+              <span className="inline-flex shrink-0 items-center rounded-full border border-white/45 bg-white/70 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-text-secondary dark:border-white/8 dark:bg-white/8">#{profile.currentRank}</span>
             </div>
-            <div className="mt-4 flex flex-wrap gap-2 text-xs text-text-secondary">
-              <span className="app-pill">{heroBadgeText}</span>
-              <span className="app-pill">{heroStreakText}</span>
+            <div className="mt-3 flex flex-wrap gap-2 text-xs text-text-secondary">
+              <span className="inline-flex items-center rounded-full bg-white/70 px-2.5 py-1 font-medium dark:bg-white/8">{heroBadgeText}</span>
+              <span className="inline-flex items-center rounded-full bg-white/70 px-2.5 py-1 font-medium dark:bg-white/8">{heroStreakText}</span>
             </div>
           </div>
         </div>
       </SectionCard>
 
       {currentLiveEvent ? (
-        <SectionCard className="px-4 py-4">
+        <SectionCard className="border border-white/35 bg-white/60 px-4 py-4 shadow-[0_18px_42px_rgba(15,23,42,0.10)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0">
               <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted">{t('liveEvent')}</p>
-              <h3 className="mt-2 text-lg font-semibold text-text-primary">
+              <h3 className="mt-2 text-[1.1rem] font-semibold text-text-primary">
                 {language === 'ru' ? currentLiveEvent.headlineRu : currentLiveEvent.headline}
               </h3>
-              <p className="mt-2 text-sm text-text-secondary">
+              <p className="mt-2 text-sm text-text-secondary/90">
                 {language === 'ru' ? currentLiveEvent.categoryLabelRu : currentLiveEvent.categoryLabel}
                 {' · '}
                 {language === 'ru' ? currentLiveEvent.stageLabelRu : currentLiveEvent.stageLabel}
                 {currentLiveEvent.timerLabel ? ` · ${currentLiveEvent.timerLabel}` : ''}
               </p>
             </div>
-            <span className="app-pill shrink-0">{t('liveStatus')}</span>
+            <span className="inline-flex shrink-0 items-center rounded-full border border-accent-orange/20 bg-accent-orange/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-accent-orange">{t('liveStatus')}</span>
           </div>
 
           <div className="mt-4 grid grid-cols-2 gap-3">
-            <div className="rounded-[18px] border border-border-subtle bg-surface-subtle px-3 py-3">
+            <div className="rounded-[1.1rem] border border-white/45 bg-white/60 px-3 py-3 dark:border-white/8 dark:bg-white/6">
               <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted">{t('selectedTeam')}</p>
               <p className="mt-2 text-sm font-medium text-text-primary">{selectedSide}</p>
             </div>
-            <div className="rounded-[18px] border border-border-subtle bg-surface-subtle px-3 py-3">
+            <div className="rounded-[1.1rem] border border-white/45 bg-white/60 px-3 py-3 dark:border-white/8 dark:bg-white/6">
               <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted">{t('supportSummary')}</p>
               <p className="mt-2 text-sm font-medium text-text-primary">${profile.lastSupportAmount}</p>
             </div>
           </div>
 
-          <div className="mt-4 flex items-center justify-between gap-3 text-sm text-text-secondary">
+          <div className="mt-4 flex items-center justify-between gap-3 text-sm text-text-secondary/90">
             <span>{language === 'ru' ? currentLiveEvent.venueRu : currentLiveEvent.venue}</span>
             <Link href="/live" className="app-pill">
               {t('openLiveEvent')}
@@ -110,21 +110,21 @@ export function ProfileScreen() {
       ) : null}
 
       <div className="grid grid-cols-2 gap-3">
-        <SectionCard className="px-4 py-4">
+        <SectionCard className="border border-white/35 bg-white/55 px-4 py-4 shadow-[0_16px_34px_rgba(15,23,42,0.08)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
           <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted">{t('balanceLabel')}</p>
-          <p className="mt-3 text-[1.6rem] font-semibold tracking-tight text-text-primary">${profile.walletBalance}</p>
+          <p className="mt-3 text-[1.5rem] font-semibold tracking-tight text-text-primary">${profile.walletBalance}</p>
         </SectionCard>
-        <SectionCard className="px-4 py-4">
+        <SectionCard className="border border-white/35 bg-white/55 px-4 py-4 shadow-[0_16px_34px_rgba(15,23,42,0.08)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
           <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted">{t('totalSupport')}</p>
-          <p className="mt-3 text-[1.6rem] font-semibold tracking-tight text-text-primary">${profile.totalSupport}</p>
+          <p className="mt-3 text-[1.5rem] font-semibold tracking-tight text-text-primary">${profile.totalSupport}</p>
         </SectionCard>
-        <SectionCard className="px-4 py-4">
+        <SectionCard className="border border-white/35 bg-white/55 px-4 py-4 shadow-[0_16px_34px_rgba(15,23,42,0.08)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
           <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted">{t('xp')}</p>
-          <p className="mt-3 text-[1.6rem] font-semibold tracking-tight text-text-primary">{profile.xp}</p>
+          <p className="mt-3 text-[1.5rem] font-semibold tracking-tight text-text-primary">{profile.xp}</p>
         </SectionCard>
-        <SectionCard className="px-4 py-4">
+        <SectionCard className="border border-white/35 bg-white/55 px-4 py-4 shadow-[0_16px_34px_rgba(15,23,42,0.08)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
           <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted">{t('streak')}</p>
-          <p className="mt-3 text-[1.6rem] font-semibold tracking-tight text-text-primary">{profile.streak}</p>
+          <p className="mt-3 text-[1.5rem] font-semibold tracking-tight text-text-primary">{profile.streak}</p>
         </SectionCard>
       </div>
 
