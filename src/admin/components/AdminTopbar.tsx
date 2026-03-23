@@ -55,7 +55,7 @@ export function AdminTopbar() {
           {meta.description ? <p className="mt-1 text-sm text-slate-500">{meta.description}</p> : null}
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-4">
           <label className="flex min-w-[20rem] items-center gap-3 rounded-[16px] border border-black/[0.05] bg-white/92 px-4 py-3 shadow-[0_10px_24px_rgba(15,23,42,0.05)]">
             <span className="text-slate-400">
               <SearchIcon />
@@ -90,11 +90,13 @@ export function AdminTopbar() {
           {showNotifications ? (
             <button
               type="button"
-              className="relative flex h-12 w-12 items-center justify-center rounded-[16px] border border-black/[0.05] bg-white/92 text-slate-600 shadow-[0_10px_24px_rgba(15,23,42,0.05)]"
+              className="relative flex h-11 w-11 items-center justify-center rounded-[15px] border border-black/[0.05] bg-white/92 text-slate-500 shadow-[0_8px_20px_rgba(15,23,42,0.05)]"
               aria-label="Notifications"
             >
               <BellIcon />
-              <span className="absolute right-2 top-1.5 flex h-5 min-w-[1.25rem] items-center justify-center rounded-full bg-[#ff6c5c] px-1 text-[0.68rem] font-semibold text-white">3</span>
+              <span className="absolute right-1.5 top-1.5 flex h-[1.05rem] min-w-[1.05rem] items-center justify-center rounded-full border border-[#f4d4c1] bg-[#fff6f0] px-1 text-[0.62rem] font-semibold text-[#cd7b47]">
+                3
+              </span>
             </button>
           ) : null}
 
