@@ -8,75 +8,508 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
     {
       id: 'football-argentina-primera-1',
       sportId: 'football',
-      title: 'Football В· Primera Division В· Argentina',
-      titleRu: 'Р¤СѓС‚Р±РѕР» В· РџСЂРёРјРµСЂР° РґРёРІРёР·РёРѕРЅ В· РђСЂРіРµРЅС‚РёРЅР°',
-      startsAt: '2026-03-18T01:00:00+03:00',
-      endsAt: '2026-03-18T03:00:00+03:00',
+      title: 'Football · Primera Division · Argentina',
+      titleRu: 'Футбол · Примера дивизион · Аргентина',
+      startsAt: '2026-03-24T01:00:00+03:00',
+      endsAt: '2026-03-24T03:00:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'lanus', name: 'Lanus', nameRu: 'Р›Р°РЅСѓСЃ' },
-        { id: 'newells-old-boys', name: "Newell's Old Boys", nameRu: 'РќСЊСЋСЌР»Р»СЃ РћР»Рґ Р‘РѕР№Р·' }
+        { id: 'estudiantes-la-plata', name: 'Estudiantes La Plata', nameRu: 'Эстудиантес Ла Плата' },
+        { id: 'central-cordoba-sde', name: 'Central Cordoba SdE', nameRu: 'Сентраль Кордова СдЕ' }
       ]
     },
     {
       id: 'football-argentina-primera-2',
       sportId: 'football',
-      title: 'Football В· Primera Division В· Argentina',
-      titleRu: 'Р¤СѓС‚Р±РѕР» В· РџСЂРёРјРµСЂР° РґРёРІРёР·РёРѕРЅ В· РђСЂРіРµРЅС‚РёРЅР°',
-      startsAt: '2026-03-18T03:15:00+03:00',
-      endsAt: '2026-03-18T05:15:00+03:00',
+      title: 'Football · Primera Division · Argentina',
+      titleRu: 'Футбол · Примера дивизион · Аргентина',
+      startsAt: '2026-03-24T03:15:00+03:00',
+      endsAt: '2026-03-24T05:15:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'gimnasia-mendoza', name: 'Gimnasia y Esgrima Mendoza', nameRu: 'РҐРёРјРЅР°СЃРёСЏ Рё Р­СЃРіСЂРёРјР° РњРµРЅРґРѕСЃР°' },
-        { id: 'estudiantes-la-plata', name: 'Estudiantes La Plata', nameRu: 'Р­СЃС‚СѓРґРёР°РЅС‚РµСЃ Р›Р° РџР»Р°С‚Р°' }
+        { id: 'huracan-ba', name: 'Huracan BA', nameRu: 'Уракан БА' },
+        { id: 'barracas-central', name: 'Barracas Central', nameRu: 'Барракас Сентраль' }
       ]
     },
     {
-      id: 'football-argentina-primera-3',
+      id: 'football-ecuador-serie-a-1',
       sportId: 'football',
-      title: 'Football В· Primera Division В· Argentina',
-      titleRu: 'Р¤СѓС‚Р±РѕР» В· РџСЂРёРјРµСЂР° РґРёРІРёР·РёРѕРЅ В· РђСЂРіРµРЅС‚РёРЅР°',
-      startsAt: '2026-03-18T03:15:00+03:00',
-      endsAt: '2026-03-18T05:15:00+03:00',
+      title: 'Football · Serie A · Ecuador',
+      titleRu: 'Футбол · Серия A · Эквадор',
+      startsAt: '2026-03-24T00:30:00+03:00',
+      endsAt: '2026-03-24T02:30:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'central-cordoba-sde', name: 'Central Cordoba SdE', nameRu: 'РЎРµРЅС‚СЂР°Р»СЊ РљРѕСЂРґРѕРІР° РЎРґР•' },
-        { id: 'deportivo-riesta', name: 'Deportivo Riesta', nameRu: 'Р”РµРїРѕСЂС‚РёРІРѕ Р РёРµСЃС‚СЂР°' }
+        { id: 'guayaquil-city', name: 'Guayaquil City', nameRu: 'Гуаякиль Сити' },
+        { id: 'leones-del-norte', name: 'Leones del Norte', nameRu: 'Леонес дель Норте' }
       ]
     },
     {
-      id: 'football-brazil-cup-1',
+      id: 'football-ecuador-serie-a-2',
       sportId: 'football',
-      title: 'Football В· Brazil. Cup В· Brazil',
-      titleRu: 'Р¤СѓС‚Р±РѕР» В· Р‘СЂР°Р·РёР»РёСЏ. РљСѓР±РѕРє В· Р‘СЂР°Р·РёР»РёСЏ',
-      startsAt: '2026-03-18T01:00:00+03:00',
-      endsAt: '2026-03-18T03:00:00+03:00',
+      title: 'Football · Serie A · Ecuador',
+      titleRu: 'Футбол · Серия A · Эквадор',
+      startsAt: '2026-03-24T03:00:00+03:00',
+      endsAt: '2026-03-24T05:00:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'nova-iguacu', name: 'Nova Iguacu', nameRu: 'РќРѕРІР° РРіСѓР°СЃСѓ' },
-        { id: 'fortaleza', name: 'Fortaleza', nameRu: 'Р¤РѕСЂС‚Р°Р»РµР·Р°' }
+        { id: 'aucas', name: 'Aucas', nameRu: 'Аукас' },
+        { id: 'orense', name: 'Orense', nameRu: 'Оренсе' }
       ]
     },
     {
-      id: 'football-brazil-cup-2',
+      id: 'football-colombia-primera-a-1',
       sportId: 'football',
-      title: 'Football В· Brazil. Cup В· Brazil',
-      titleRu: 'Р¤СѓС‚Р±РѕР» В· Р‘СЂР°Р·РёР»РёСЏ. РљСѓР±РѕРє В· Р‘СЂР°Р·РёР»РёСЏ',
-      startsAt: '2026-03-18T01:30:00+03:00',
-      endsAt: '2026-03-18T03:30:00+03:00',
+      title: 'Football · Primera A · Colombia',
+      titleRu: 'Футбол · Примера A · Колумбия',
+      startsAt: '2026-03-24T00:10:00+03:00',
+      endsAt: '2026-03-24T02:10:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'sao-bernardo', name: 'Sao Bernardo', nameRu: 'РЎР°РЅ Р‘РµСЂРЅР°СЂРґСѓ' },
-        { id: 'ceara', name: 'Ceara', nameRu: 'РЎРµР°СЂР°' }
+        { id: 'santa-fe', name: 'Santa Fe', nameRu: 'Санта Фе' },
+        { id: 'independiente-medellin', name: 'Independiente Medellin', nameRu: 'Индепендьенте Медельин' }
+      ]
+    },
+    {
+      id: 'football-colombia-primera-a-2',
+      sportId: 'football',
+      title: 'Football · Primera A · Colombia',
+      titleRu: 'Футбол · Примера A · Колумбия',
+      startsAt: '2026-03-24T02:20:00+03:00',
+      endsAt: '2026-03-24T04:20:00+03:00',
+      displayDateEn: 'Tomorrow at',
+      displayDateRu: 'Завтра в',
+      participants: [
+        { id: 'jaguares-de-cordoba', name: 'Jaguares de Cordoba', nameRu: 'Хагуарес де Кордова' },
+        { id: 'rionegro-aguilas', name: 'Rionegro Aguilas', nameRu: 'Рионегро Агилас' }
+      ]
+    },
+    {
+      id: 'football-guatemala-national-league-1',
+      sportId: 'football',
+      title: 'Football · National League · Guatemala',
+      titleRu: 'Футбол · Национальная лига · Гватемала',
+      startsAt: '2026-03-24T04:00:00+03:00',
+      endsAt: '2026-03-24T06:00:00+03:00',
+      displayDateEn: 'Tomorrow at',
+      displayDateRu: 'Завтра в',
+      participants: [
+        { id: 'antigua-gfc', name: 'Antigua GFC', nameRu: 'Антигуа ГФК' },
+        { id: 'deportivo-marquense', name: 'Deportivo Marquense', nameRu: 'Депортиво Маркенсе' }
+      ]
+    },
+    {
+      id: 'football-paraguay-primera-1',
+      sportId: 'football',
+      title: 'Football · Primera Division · Paraguay',
+      titleRu: 'Футбол · Примера дивизион · Парагвай',
+      startsAt: '2026-03-24T00:30:00+03:00',
+      endsAt: '2026-03-24T02:30:00+03:00',
+      displayDateEn: 'Tomorrow at',
+      displayDateRu: 'Завтра в',
+      participants: [
+        { id: 'sportivo-trinidense', name: 'Sportivo Trinidense', nameRu: 'Спортиво Триниденсе' },
+        { id: 'recoleta', name: 'Recoleta', nameRu: 'Реколета' }
+      ]
+    },
+    {
+      id: 'football-paraguay-primera-2',
+      sportId: 'football',
+      title: 'Football · Primera Division · Paraguay',
+      titleRu: 'Футбол · Примера дивизион · Парагвай',
+      startsAt: '2026-03-24T02:30:00+03:00',
+      endsAt: '2026-03-24T04:30:00+03:00',
+      displayDateEn: 'Tomorrow at',
+      displayDateRu: 'Завтра в',
+      participants: [
+        { id: 'rubio-nu', name: 'Rubio Nu', nameRu: 'Рубио Нью' },
+        { id: 'ameliano', name: 'Ameliano', nameRu: 'Амелиано' }
+      ]
+    },
+    {
+      id: 'football-chile-primera-b-1',
+      sportId: 'football',
+      title: 'Football · Primera B · Chile',
+      titleRu: 'Футбол · Примера B · Чили',
+      startsAt: '2026-03-24T00:00:00+03:00',
+      endsAt: '2026-03-24T02:00:00+03:00',
+      displayDateEn: 'Tomorrow at',
+      displayDateRu: 'Завтра в',
+      participants: [
+        { id: 'union-san-felipe', name: 'Union San Felipe', nameRu: 'Унион Сан Фелипе' },
+        { id: 'san-marcos-de-arica', name: 'San Marcos de Arica', nameRu: 'Сан Маркос Де Арика' }
+      ]
+    },
+    {
+      id: 'football-chile-primera-b-2',
+      sportId: 'football',
+      title: 'Football · Primera B · Chile',
+      titleRu: 'Футбол · Примера B · Чили',
+      startsAt: '2026-03-24T02:30:00+03:00',
+      endsAt: '2026-03-24T04:30:00+03:00',
+      displayDateEn: 'Tomorrow at',
+      displayDateRu: 'Завтра в',
+      participants: [
+        { id: 'cobreloa', name: 'Cobreloa', nameRu: 'Кобрелоа' },
+        { id: 'magallanes', name: 'Magallanes', nameRu: 'Магальянес' }
+      ]
+    },
+    {
+      id: 'football-venezuela-primera-1',
+      sportId: 'football',
+      title: 'Football · Primera · Venezuela',
+      titleRu: 'Футбол · Примера · Венесуэла',
+      startsAt: '2026-03-24T01:00:00+03:00',
+      endsAt: '2026-03-24T03:00:00+03:00',
+      displayDateEn: 'Tomorrow at',
+      displayDateRu: 'Завтра в',
+      participants: [
+        { id: 'carabobo', name: 'Carabobo', nameRu: 'Карабобо' },
+        { id: 'academia-puerto-cabello', name: 'Academia Puerto Cabello', nameRu: 'Академия Пуэрто Кабельо' }
+      ]
+    },
+    {
+      id: 'football-venezuela-primera-2',
+      sportId: 'football',
+      title: 'Football · Primera · Venezuela',
+      titleRu: 'Футбол · Примера · Венесуэла',
+      startsAt: '2026-03-24T02:00:00+03:00',
+      endsAt: '2026-03-24T04:00:00+03:00',
+      displayDateEn: 'Tomorrow at',
+      displayDateRu: 'Завтра в',
+      participants: [
+        { id: 'metropolitanos', name: 'Metropolitanos', nameRu: 'Метрополитанос' },
+        { id: 'academia-anzoategui', name: 'Academia Anzoategui', nameRu: 'Академия Ансоатеги' }
+      ]
+    },
+    {
+      id: 'football-mexico-liga-mx-women-1',
+      sportId: 'football',
+      title: 'Football · Liga MX. Women · Mexico',
+      titleRu: 'Футбол · Лига MX. Женщины · Мексика',
+      startsAt: '2026-03-24T04:00:00+03:00',
+      endsAt: '2026-03-24T06:00:00+03:00',
+      displayDateEn: 'Tomorrow at',
+      displayDateRu: 'Завтра в',
+      participants: [
+        { id: 'leon-w', name: 'Leon (w)', nameRu: 'Леон (ж)' },
+        { id: 'atlas-w', name: 'Atlas (w)', nameRu: 'Атлас (ж)' }
+      ]
+    },
+    {
+      id: 'football-brazil-serie-a-women-1',
+      sportId: 'football',
+      title: 'Football · Serie A. Women · Brazil',
+      titleRu: 'Футбол · Серия A. Женщины · Бразилия',
+      startsAt: '2026-03-24T02:00:00+03:00',
+      endsAt: '2026-03-24T04:00:00+03:00',
+      displayDateEn: 'Tomorrow at',
+      displayDateRu: 'Завтра в',
+      participants: [
+        { id: 'fluminense-rj-w', name: 'Fluminense RJ (w)', nameRu: 'Флуминенсе РЖ (ж)' },
+        { id: 'sao-paulo-sp-w', name: 'Sao Paulo SP (w)', nameRu: 'Сан Пауло СП (ж)' }
+      ]
+    },
+    {
+      id: 'football-brazil-serie-a-women-2',
+      sportId: 'football',
+      title: 'Football · Serie A. Women · Brazil',
+      titleRu: 'Футбол · Серия A. Женщины · Бразилия',
+      startsAt: '2026-03-24T03:00:00+03:00',
+      endsAt: '2026-03-24T05:00:00+03:00',
+      displayDateEn: 'Tomorrow at',
+      displayDateRu: 'Завтра в',
+      participants: [
+        { id: 'corinthians-w', name: 'Corinthians (w)', nameRu: 'Коринтианс (ж)' },
+        { id: 'america-mineiro-w', name: 'America Mineiro (w)', nameRu: 'Америка Минейро (ж)' }
+      ]
+    },
+    {
+      id: 'football-panama-liga-panamena-1',
+      sportId: 'football',
+      title: 'Football · Liga Panamena · Panama',
+      titleRu: 'Футбол · Лига Панаменья · Панама',
+      startsAt: '2026-03-24T04:30:00+03:00',
+      endsAt: '2026-03-24T06:30:00+03:00',
+      displayDateEn: 'Tomorrow at',
+      displayDateRu: 'Завтра в',
+      participants: [
+        { id: 'umesit', name: 'Umesit', nameRu: 'Умесит' },
+        { id: 'herrera', name: 'Herrera', nameRu: 'Эррера' }
+      ]
+    },
+    {
+      id: 'football-queensland-npl-u23-1',
+      sportId: 'football',
+      title: 'Football · National Premier League Queensland. Under 23 · Australia',
+      titleRu: 'Футбол · Национальная Премьер-Лига Квинсленда. До 23 лет · Австралия',
+      startsAt: '2026-03-24T12:30:00+03:00',
+      endsAt: '2026-03-24T14:30:00+03:00',
+      displayDateEn: 'Tomorrow at',
+      displayDateRu: 'Завтра в',
+      participants: [
+        { id: 'eastern-suburbs-u23', name: 'Eastern Suburbs (youth)', nameRu: 'Истерн Сабербс (мол)' },
+        { id: 'gold-coast-knights-u23', name: 'Gold Coast Knights (youth)', nameRu: 'Голд Кост Найтс (мол)' }
+      ]
+    },
+    {
+      id: 'football-mls-next-pro-1',
+      sportId: 'football',
+      title: 'Football · MLS Next Pro · USA',
+      titleRu: 'Футбол · MLS Next Pro · США',
+      startsAt: '2026-03-24T05:00:00+03:00',
+      endsAt: '2026-03-24T07:00:00+03:00',
+      displayDateEn: 'Tomorrow at',
+      displayDateRu: 'Завтра в',
+      participants: [
+        { id: 'portland-timbers-ii', name: 'Portland Timbers II', nameRu: 'Портленд Тимберс II' },
+        { id: 'ventura-county', name: 'Ventura County', nameRu: 'Вентура Каунти' }
+      ]
+    },
+    {
+      id: 'football-brazil-mineiro-u20-1',
+      sportId: 'football',
+      title: 'Football · Mineiro. 1st Division. Under 20 · Brazil',
+      titleRu: 'Футбол · Минейро. 1-й дивизион. До 20 лет · Бразилия',
+      startsAt: '2026-03-24T01:30:00+03:00',
+      endsAt: '2026-03-24T03:30:00+03:00',
+      displayDateEn: 'Tomorrow at',
+      displayDateRu: 'Завтра в',
+      participants: [
+        { id: 'athletic-mg-u20', name: 'Athletic MG (youth)', nameRu: 'Атлетик МЖ (мол)' },
+        { id: 'sao-joao-del-rei-mg-u20', name: 'Sao Joao del Rei MG (youth)', nameRu: 'Сан Хуан дел Рей МЖ (мол)' }
+      ]
+    },
+    {
+      id: 'football-honduras-national-league-1',
+      sportId: 'football',
+      title: 'Football · National League · Honduras',
+      titleRu: 'Футбол · Национальная лига · Гондурас',
+      startsAt: '2026-03-24T04:00:00+03:00',
+      endsAt: '2026-03-24T06:00:00+03:00',
+      displayDateEn: 'Tomorrow at',
+      displayDateRu: 'Завтра в',
+      participants: [
+        { id: 'lobos-upnfm', name: 'Lobos UPNFM', nameRu: 'Лобос УПНФМ' },
+        { id: 'olancho', name: 'Olancho', nameRu: 'Оланчо' }
+      ]
+    },
+    {
+      id: 'football-argentina-primera-b-1',
+      sportId: 'football',
+      title: 'Football · Primera B · Argentina',
+      titleRu: 'Футбол · Примера B · Аргентина',
+      startsAt: '2026-03-24T02:00:00+03:00',
+      endsAt: '2026-03-24T04:00:00+03:00',
+      displayDateEn: 'Tomorrow at',
+      displayDateRu: 'Завтра в',
+      participants: [
+        { id: 'comunicaciones-ba', name: 'Comunicaciones BA', nameRu: 'Комуникасьонес БА' },
+        { id: 'deportivo-liniers', name: 'Deportivo Liniers', nameRu: 'Депортиво Линьерс' }
+      ]
+    },
+    {
+      id: 'football-jamaica-premier-league-1',
+      sportId: 'football',
+      title: 'Football · Premier League · Jamaica',
+      titleRu: 'Футбол · Премьер-Лига · Ямайка',
+      startsAt: '2026-03-24T03:30:00+03:00',
+      endsAt: '2026-03-24T05:30:00+03:00',
+      displayDateEn: 'Tomorrow at',
+      displayDateRu: 'Завтра в',
+      participants: [
+        { id: 'mount-pleasant', name: 'Mount Pleasant', nameRu: 'Маунт Плезант' },
+        { id: 'portmore-united', name: 'Portmore United', nameRu: 'Портмор Юнайтед' }
+      ]
+    },
+    {
+      id: 'football-jamaica-premier-league-2',
+      sportId: 'football',
+      title: 'Football · Premier League · Jamaica',
+      titleRu: 'Футбол · Премьер-Лига · Ямайка',
+      startsAt: '2026-03-24T01:00:00+03:00',
+      endsAt: '2026-03-24T03:00:00+03:00',
+      displayDateEn: 'Tomorrow at',
+      displayDateRu: 'Завтра в',
+      participants: [
+        { id: 'spanish-town-police', name: 'Spanish Town Police', nameRu: 'Спэниш Таун Полис' },
+        { id: 'treasure-beach', name: 'Treasure Beach', nameRu: 'Треже Бич' }
+      ]
+    },
+    {
+      id: 'football-australia-queensland-premier-league-1',
+      sportId: 'football',
+      title: 'Football · Queensland Premier League · Australia',
+      titleRu: 'Футбол · Премьер-Лига Квинсленда · Австралия',
+      startsAt: '2026-03-24T12:30:00+03:00',
+      endsAt: '2026-03-24T14:30:00+03:00',
+      displayDateEn: 'Tomorrow at',
+      displayDateRu: 'Завтра в',
+      participants: [
+        { id: 'brisbane-strikers', name: 'Brisbane Strikers', nameRu: 'Брисбен Страйкерс' },
+        { id: 'caboolture', name: 'Caboolture', nameRu: 'Кабултур' }
+      ]
+    },
+    {
+      id: 'football-turkey-amateur-2-lig-1',
+      sportId: 'football',
+      title: 'Football · Amateur. 2nd League · Turkey',
+      titleRu: 'Футбол · Любители. 2-я Лига · Турция',
+      startsAt: '2026-03-24T13:30:00+03:00',
+      endsAt: '2026-03-24T15:30:00+03:00',
+      displayDateEn: 'Tomorrow at',
+      displayDateRu: 'Завтра в',
+      participants: [
+        { id: 'erzincanspor', name: 'Erzincanspor', nameRu: 'Эрзинджанспор' },
+        { id: 'kepez-belediyespor', name: 'Kepez Belediyespor', nameRu: 'Кепез Беледьеспор' }
+      ]
+    },
+    {
+      id: 'football-turkey-amateur-2-lig-2',
+      sportId: 'football',
+      title: 'Football · Amateur. 2nd League · Turkey',
+      titleRu: 'Футбол · Любители. 2-я Лига · Турция',
+      startsAt: '2026-03-24T14:00:00+03:00',
+      endsAt: '2026-03-24T16:00:00+03:00',
+      displayDateEn: 'Tomorrow at',
+      displayDateRu: 'Завтра в',
+      participants: [
+        { id: 'iskenderun', name: 'Iskenderun', nameRu: 'Искендерун' },
+        { id: 'inegolspor', name: 'Inegolspor', nameRu: 'Ингёльспор' }
+      ]
+    },
+    {
+      id: 'football-turkey-amateur-2-lig-3',
+      sportId: 'football',
+      title: 'Football · Amateur. 2nd League · Turkey',
+      titleRu: 'Футбол · Любители. 2-я Лига · Турция',
+      startsAt: '2026-03-24T16:00:00+03:00',
+      endsAt: '2026-03-24T18:00:00+03:00',
+      displayDateEn: 'Tomorrow at',
+      displayDateRu: 'Завтра в',
+      participants: [
+        { id: 'isparta-32-spor', name: 'Isparta 32 Spor', nameRu: 'Испарта 32 Спор' },
+        { id: 'somaspor', name: 'Somaspor', nameRu: 'Сомаспор' }
+      ]
+    },
+    {
+      id: 'football-turkey-amateur-2-lig-4',
+      sportId: 'football',
+      title: 'Football · Amateur. 2nd League · Turkey',
+      titleRu: 'Футбол · Любители. 2-я Лига · Турция',
+      startsAt: '2026-03-24T16:00:00+03:00',
+      endsAt: '2026-03-24T18:00:00+03:00',
+      displayDateEn: 'Tomorrow at',
+      displayDateRu: 'Завтра в',
+      participants: [
+        { id: 'kirklarelispor', name: 'Kirklarelispor', nameRu: 'Кыркларелиспор' },
+        { id: 'ankara-demirspor', name: 'Ankara Demirspor', nameRu: 'Анкара Демирспор' }
+      ]
+    },
+    {
+      id: 'football-england-pdl-u21-1',
+      sportId: 'football',
+      title: 'Football · Amateur. PDL. Under 21 · England',
+      titleRu: 'Футбол · Любители. PDL. До 21 года · Англия',
+      startsAt: '2026-03-24T16:00:00+03:00',
+      endsAt: '2026-03-24T18:00:00+03:00',
+      displayDateEn: 'Tomorrow at',
+      displayDateRu: 'Завтра в',
+      participants: [
+        { id: 'peterborough-united-u21', name: 'Peterborough United (youth)', nameRu: 'Питерборо Юнайтед (мол)' },
+        { id: 'watford-u21', name: 'Watford (youth)', nameRu: 'Уотфорд (мол)' }
+      ]
+    },
+    {
+      id: 'football-england-pdl-u21-2',
+      sportId: 'football',
+      title: 'Football · Amateur. PDL. Under 21 · England',
+      titleRu: 'Футбол · Любители. PDL. До 21 года · Англия',
+      startsAt: '2026-03-24T16:00:00+03:00',
+      endsAt: '2026-03-24T18:00:00+03:00',
+      displayDateEn: 'Tomorrow at',
+      displayDateRu: 'Завтра в',
+      participants: [
+        { id: 'wigan-athletic-u21', name: 'Wigan Athletic (youth)', nameRu: 'Уиган Атлетик (мол)' },
+        { id: 'bristol-city-u21', name: 'Bristol City (youth)', nameRu: 'Бристоль Сити (мол)' }
+      ]
+    },
+    {
+      id: 'football-england-pdl-u21-3',
+      sportId: 'football',
+      title: 'Football · Amateur. PDL. Under 21 · England',
+      titleRu: 'Футбол · Любители. PDL. До 21 года · Англия',
+      startsAt: '2026-03-24T16:00:00+03:00',
+      endsAt: '2026-03-24T18:00:00+03:00',
+      displayDateEn: 'Tomorrow at',
+      displayDateRu: 'Завтра в',
+      participants: [
+        { id: 'huddersfield-town-u21', name: 'Huddersfield Town (youth)', nameRu: 'Хаддерсфилд Таун (мол)' },
+        { id: 'queens-park-rangers-u21', name: 'Queens Park Rangers (youth)', nameRu: 'Куинз Парк Рейнджерс (мол)' }
+      ]
+    },
+    {
+      id: 'football-england-pdl-u21-4',
+      sportId: 'football',
+      title: 'Football · Amateur. PDL. Under 21 · England',
+      titleRu: 'Футбол · Любители. PDL. До 21 года · Англия',
+      startsAt: '2026-03-24T16:00:00+03:00',
+      endsAt: '2026-03-24T18:00:00+03:00',
+      displayDateEn: 'Tomorrow at',
+      displayDateRu: 'Завтра в',
+      participants: [
+        { id: 'hull-city-u21', name: 'Hull City (youth)', nameRu: 'Халл Сити (мол)' },
+        { id: 'swansea-city-u21', name: 'Swansea City (youth)', nameRu: 'Суонси Сити (мол)' }
+      ]
+    },
+    {
+      id: 'football-portugal-youth-u23-1',
+      sportId: 'football',
+      title: 'Football · Youth League. Under 23 · Portugal',
+      titleRu: 'Футбол · Молодежная лига. До 23 лет · Португалия',
+      startsAt: '2026-03-24T18:00:00+03:00',
+      endsAt: '2026-03-24T20:00:00+03:00',
+      displayDateEn: 'Tomorrow at',
+      displayDateRu: 'Завтра в',
+      participants: [
+        { id: 'ud-leiria-u23', name: 'UD Leiria (youth)', nameRu: 'УД Лейрия (мол)' },
+        { id: 'farense-u23', name: 'Farense (youth)', nameRu: 'Фаренсе (мол)' }
+      ]
+    },
+    {
+      id: 'football-turkey-amateur-2-lig-5',
+      sportId: 'football',
+      title: 'Football · Amateur. 2nd League · Turkey',
+      titleRu: 'Футбол · Любители. 2-я Лига · Турция',
+      startsAt: '2026-03-24T19:00:00+03:00',
+      endsAt: '2026-03-24T21:00:00+03:00',
+      displayDateEn: 'Tomorrow at',
+      displayDateRu: 'Завтра в',
+      participants: [
+        { id: 'bursaspor', name: 'Bursaspor', nameRu: 'Бурсаспор' },
+        { id: 'gozide-gebzespor', name: 'Gozide Gebzespor', nameRu: 'Гёзиде Гебзеспор' }
+      ]
+    },
+    {
+      id: 'football-uruguay-primera-1',
+      sportId: 'football',
+      title: 'Football · Primera Division · Uruguay',
+      titleRu: 'Футбол · Примера дивизион · Уругвай',
+      startsAt: '2026-03-24T20:00:00+03:00',
+      endsAt: '2026-03-24T22:00:00+03:00',
+      displayDateEn: 'Tomorrow at',
+      displayDateRu: 'Завтра в',
+      participants: [
+        { id: 'deportivo-maldonado', name: 'Deportivo Maldonado', nameRu: 'Депортиво Мальдонадо' },
+        { id: 'montevideo-city-torque', name: 'Montevideo City Torque', nameRu: 'Монтевидео Сити Торке' }
       ]
     }
-  ],
-  hockey: [
+  ],  hockey: [
     {
       id: 'hockey-nhl-1',
       sportId: 'hockey',
@@ -3180,5 +3613,6 @@ export function formatSportEventTime(startsAt: string, language: Language) {
     hourCycle: 'h23'
   }).format(new Date(startsAt));
 }
+
 
 
