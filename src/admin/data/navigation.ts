@@ -24,7 +24,7 @@ export const adminNavItems: AdminNavItem[] = [
   { id: 'ratings', label: 'Рейтинги', section: 'community', href: '/admin/ratings' },
   { id: 'notifications', label: 'Уведомления', section: 'community', href: '/admin/notifications' },
   { id: 'analytics', label: 'Аналитика', section: 'system' },
-  { id: 'moderation', label: 'Модерация', section: 'system' },
+  { id: 'moderation', label: 'Модерация', section: 'system', href: '/admin/moderation' },
   { id: 'settings', label: 'Настройки', section: 'system' }
 ];
 
@@ -104,6 +104,16 @@ export function getAdminPageMeta(pathname: string): AdminPageMeta {
       periodLabel: 'Текущий период',
       primaryActionLabel: 'Пересчитать рейтинг',
       secondaryActionLabel: 'Создать правило'
+    };
+  }
+
+  if (pathname.startsWith('/admin/moderation')) {
+    return {
+      title: 'Модерация',
+      description: 'Операционный контроль жалоб, рисков, подозрительных транзакций и кейсов FUNDON',
+      searchPlaceholder: 'Поиск по кейсу, пользователю, событию и объекту',
+      periodLabel: 'Последние 7 дней',
+      primaryActionLabel: 'Открыть инцидент'
     };
   }
 
