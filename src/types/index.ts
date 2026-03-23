@@ -124,6 +124,7 @@ export interface SportEventRecord {
   sportId: string;
   title: string;
   titleRu: string;
+  detailPath?: string;
   startsAt: string;
   endsAt: string;
   displayDateEn?: string;

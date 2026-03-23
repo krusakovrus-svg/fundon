@@ -75,7 +75,7 @@ export function SportEventCard({ event }: { event: SportEventRecord }) {
       ? event.displayTimeRu ?? formatSportEventTime(event.startsAt, language)
       : event.displayTimeEn ?? formatSportEventTime(event.startsAt, language);
   const isLiveState = dateLabel.trim().toLowerCase() === 'live';
-  const href = isLiveState ? '/live' : `/sports/${event.sportId}`;
+  const href = isLiveState ? '/live' : event.detailPath ?? `/sports/${event.sportId}`;
 
   return (
     <article className="group relative overflow-hidden rounded-[1.35rem] border border-black/[0.045] bg-white/95 shadow-[0_12px_30px_rgba(15,23,42,0.06)] transition dark:border-white/10 dark:bg-[rgba(var(--surface),0.92)] dark:shadow-[0_14px_32px_rgba(2,6,23,0.3)]">

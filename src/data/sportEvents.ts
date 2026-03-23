@@ -2214,6 +2214,7 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
       sportId: 'formula1',
       title: 'Formula 1 · Grand Prix · Japan. Race',
       titleRu: 'Формула 1 · Гран-при · Япония. Гонка',
+      detailPath: '/sports/formula1/japan-gp-race',
       startsAt: '2026-03-29T08:00:00+03:00',
       endsAt: '2026-03-29T10:00:00+03:00',
       participants: [
