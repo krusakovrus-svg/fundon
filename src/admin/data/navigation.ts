@@ -19,7 +19,7 @@ export const adminNavItems: AdminNavItem[] = [
   { id: 'users', label: 'Пользователи', section: 'main', href: '/admin/users' },
   { id: 'athletes', label: 'Спортсмены', section: 'main' },
   { id: 'events', label: 'События', section: 'main', href: '/admin/events' },
-  { id: 'donations', label: 'Донаты', section: 'main' },
+  { id: 'donations', label: 'Донаты', section: 'main', href: '/admin/donations' },
   { id: 'rooms', label: 'Комнаты', section: 'community' },
   { id: 'ratings', label: 'Рейтинги', section: 'community', href: '/admin/ratings' },
   { id: 'notifications', label: 'Уведомления', section: 'community' },
@@ -36,6 +36,16 @@ const defaultMeta: AdminPageMeta = {
 };
 
 export function getAdminPageMeta(pathname: string): AdminPageMeta {
+  if (pathname.startsWith('/admin/donations')) {
+    return {
+      title: 'Донаты и транзакции',
+      description: 'Управление платежами, возвратами, спорами и внутренними комментариями',
+      searchPlaceholder: 'Поиск по ID, пользователю, событию и транзакции',
+      periodLabel: 'Последние 30 дней',
+      secondaryActionLabel: 'Экспорт CSV'
+    };
+  }
+
   if (pathname.startsWith('/admin/users')) {
     return {
       title: 'Пользователи',
