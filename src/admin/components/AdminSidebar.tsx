@@ -1,6 +1,9 @@
 'use client';
 
-import { adminNavItems } from '@/admin/data/dashboard';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+
+import { adminNavItems } from '@/admin/data/navigation';
 import { cn } from '@/lib/utils';
 
 function DashboardIcon() {
@@ -65,6 +68,19 @@ function RoomsIcon() {
   );
 }
 
+function TrophyIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-[1.1rem] w-[1.1rem]" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+      <path d="M8 4h8v3a4 4 0 0 1-8 0z" />
+      <path d="M8 5H5a2 2 0 0 0 2 2h1" strokeLinecap="round" />
+      <path d="M16 5h3a2 2 0 0 1-2 2h-1" strokeLinecap="round" />
+      <path d="M12 11v4" strokeLinecap="round" />
+      <path d="M9 20h6" strokeLinecap="round" />
+      <path d="M10 15h4" strokeLinecap="round" />
+    </svg>
+  );
+}
+
 function BellIcon() {
   return (
     <svg viewBox="0 0 24 24" className="h-[1.1rem] w-[1.1rem]" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
@@ -108,6 +124,7 @@ const iconById = {
   events: EventIcon,
   donations: DonationIcon,
   rooms: RoomsIcon,
+  ratings: TrophyIcon,
   notifications: BellIcon,
   analytics: AnalyticsIcon,
   moderation: ShieldIcon,
@@ -120,7 +137,21 @@ const sections = [
   { id: 'system', label: 'Система' }
 ] as const;
 
+function isActivePath(pathname: string, href?: string) {
+  if (!href) {
+    return false;
+  }
+
+  if (href === '/admin') {
+    return pathname === '/admin';
+  }
+
+  return pathname.startsWith(href);
+}
+
 export function AdminSidebar() {
+  const pathname = usePathname();
+
   return (
     <aside className="sticky top-0 flex h-dvh w-[17rem] shrink-0 flex-col border-r border-black/[0.05] bg-[linear-gradient(180deg,#fbfcfe_0%,#f6f7fb_100%)] px-5 py-6">
       <div className="mb-8 flex items-center gap-3">
@@ -146,28 +177,38 @@ export function AdminSidebar() {
                 .filter((item) => item.section === section.id)
                 .map((item) => {
                   const Icon = iconById[item.id as keyof typeof iconById];
+                  const active = isActivePath(pathname, item.href);
+                  const rowClass = cn(
+                    'flex w-full items-center gap-3 rounded-[16px] px-3.5 py-3 text-left text-[0.95rem] font-medium transition',
+                    active
+                      ? 'bg-[linear-gradient(180deg,#eef5ff_0%,#e8f1fe_100%)] text-slate-900 shadow-[inset_0_1px_0_rgba(255,255,255,0.95),0_10px_24px_rgba(79,143,246,0.12)] ring-1 ring-[#dbe7fb]'
+                      : item.href
+                        ? 'text-slate-600 hover:bg-white hover:text-slate-900 hover:shadow-[0_10px_22px_rgba(15,23,42,0.05)]'
+                        : 'cursor-default text-slate-400'
+                  );
+                  const iconClass = cn(
+                    'flex h-9 w-9 items-center justify-center rounded-[12px]',
+                    active ? 'bg-white text-[#4f8ff6] shadow-[0_6px_14px_rgba(79,143,246,0.15)]' : 'bg-white/75 text-slate-400'
+                  );
+
+                  if (item.href) {
+                    return (
+                      <Link key={item.id} href={item.href} className={rowClass}>
+                        <span className={iconClass}>
+                          <Icon />
+                        </span>
+                        <span>{item.label}</span>
+                      </Link>
+                    );
+                  }
 
                   return (
-                    <button
-                      key={item.id}
-                      type="button"
-                      className={cn(
-                        'flex w-full items-center gap-3 rounded-[16px] px-3.5 py-3 text-left text-[0.95rem] font-medium transition',
-                        item.active
-                          ? 'bg-[linear-gradient(180deg,#eef5ff_0%,#e8f1fe_100%)] text-slate-900 shadow-[inset_0_1px_0_rgba(255,255,255,0.95),0_10px_24px_rgba(79,143,246,0.12)] ring-1 ring-[#dbe7fb]'
-                          : 'text-slate-600 hover:bg-white hover:text-slate-900 hover:shadow-[0_10px_22px_rgba(15,23,42,0.05)]'
-                      )}
-                    >
-                      <span
-                        className={cn(
-                          'flex h-9 w-9 items-center justify-center rounded-[12px]',
-                          item.active ? 'bg-white text-[#4f8ff6] shadow-[0_6px_14px_rgba(79,143,246,0.15)]' : 'bg-white/75 text-slate-400'
-                        )}
-                      >
+                    <div key={item.id} className={rowClass} aria-disabled="true">
+                      <span className={iconClass}>
                         <Icon />
                       </span>
                       <span>{item.label}</span>
-                    </button>
+                    </div>
                   );
                 })}
             </div>

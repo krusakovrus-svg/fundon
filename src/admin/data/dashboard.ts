@@ -1,10 +1,3 @@
-export interface AdminNavItem {
-  id: string;
-  label: string;
-  section: 'main' | 'community' | 'system';
-  active?: boolean;
-}
-
 export interface AdminKpi {
   id: string;
   label: string;
@@ -45,19 +38,6 @@ export interface AdminQuickAction {
   label: string;
   priority: 'primary' | 'secondary';
 }
-
-export const adminNavItems: AdminNavItem[] = [
-  { id: 'dashboard', label: 'Дашборд', section: 'main', active: true },
-  { id: 'users', label: 'Пользователи', section: 'main' },
-  { id: 'athletes', label: 'Спортсмены', section: 'main' },
-  { id: 'events', label: 'События', section: 'main' },
-  { id: 'donations', label: 'Донаты', section: 'community' },
-  { id: 'rooms', label: 'Комнаты', section: 'community' },
-  { id: 'notifications', label: 'Уведомления', section: 'community' },
-  { id: 'analytics', label: 'Аналитика', section: 'system' },
-  { id: 'moderation', label: 'Модерация', section: 'system' },
-  { id: 'settings', label: 'Настройки', section: 'system' }
-];
 
 export const adminKpis: AdminKpi[] = [
   {
@@ -173,19 +153,19 @@ export const adminAlerts: AdminAlert[] = [
     id: 'alert-1',
     kind: 'warning',
     title: 'Подозрительный донат от user123',
-    description: 'Платёж выше обычного лимита и требует проверки.'
+    description: 'Платёж выше обычного лимита и требует быстрой ручной проверки.'
   },
   {
     id: 'alert-2',
     kind: 'critical',
-    title: 'Жалоба: оскорбления в комнате #7',
-    description: 'Нужна ручная модерация и решение по бану.'
+    title: 'Жалоба на комнату #7',
+    description: 'Нужно проверить оскорбления в чате и решить вопрос по бану.'
   },
   {
     id: 'alert-3',
     kind: 'info',
     title: 'Система: ошибка API сервера',
-    description: 'Потеряно 3 webhook-события, повторная отправка запущена.'
+    description: 'Потеряно 3 webhook-события, повторная отправка уже запущена.'
   }
 ];
 

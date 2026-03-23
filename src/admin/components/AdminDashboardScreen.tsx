@@ -60,11 +60,7 @@ function Sparkline({ points, accent }: { points: number[]; accent: string }) {
         </linearGradient>
       </defs>
       <polyline fill="none" stroke={accent} strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round" points={coordinates} />
-      <polyline
-        fill={`url(#spark-fill-${accent})`}
-        stroke="none"
-        points={`0,${height} ${coordinates} ${width},${height}`}
-      />
+      <polyline fill={`url(#spark-fill-${accent})`} stroke="none" points={`0,${height} ${coordinates} ${width},${height}`} />
     </svg>
   );
 }
@@ -221,7 +217,9 @@ export function AdminDashboardScreen() {
             <div className="grid grid-cols-[1fr_15rem] gap-5">
               <div className="rounded-[20px] border border-black/[0.045] bg-[linear-gradient(180deg,#fbfcfe_0%,#f7f9fc_100%)] px-4 py-5">
                 <p className="text-sm font-medium text-slate-500">Новые пользователи</p>
-                <p className="mt-2 text-[2rem] font-semibold tracking-tight text-slate-900">1,250 <span className="text-[1rem] text-emerald-500">+18%</span></p>
+                <p className="mt-2 text-[2rem] font-semibold tracking-tight text-slate-900">
+                  1,250 <span className="text-[1rem] text-emerald-500">+18%</span>
+                </p>
 
                 <div className="mt-5 flex items-end gap-3">
                   {adminAnalyticsBars.map((value, index) => (
@@ -236,7 +234,19 @@ export function AdminDashboardScreen() {
               </div>
 
               <div className="rounded-[20px] border border-black/[0.045] bg-[linear-gradient(180deg,#fbfcfe_0%,#f7f9fc_100%)] px-4 py-5">
-                <div className="mx-auto flex h-40 w-40 items-center justify-center rounded-full" style={{ background: `conic-gradient(${adminAnalyticsSegments.map((segment, index) => `${segment.color} 0 ${adminAnalyticsSegments.slice(0, index + 1).reduce((sum, current) => sum + current.value, 0)}%`).join(', ')})` }}>
+                <div
+                  className="mx-auto flex h-40 w-40 items-center justify-center rounded-full"
+                  style={{
+                    background: `conic-gradient(${adminAnalyticsSegments
+                      .map(
+                        (segment, index) =>
+                          `${segment.color} 0 ${adminAnalyticsSegments
+                            .slice(0, index + 1)
+                            .reduce((sum, current) => sum + current.value, 0)}%`
+                      )
+                      .join(', ')})`
+                  }}
+                >
                   <div className="h-20 w-20 rounded-full bg-white" />
                 </div>
 
