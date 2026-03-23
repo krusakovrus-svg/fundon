@@ -123,6 +123,7 @@ export function ProfileScreen() {
   const thirdPlacePoints = mockData.leaderboard[mockData.leaderboard.length - 1]?.points ?? profile.points;
   const pointsToTopThree = Math.max(thirdPlacePoints - profile.points, 0);
   const avatarLetter = displayName.slice(0, 1).toUpperCase();
+  const favoriteCount = favorites.length;
 
   const labels = {
     activeSupporter: isRussian ? 'Активный фанат' : 'Active fan',
@@ -147,6 +148,12 @@ export function ProfileScreen() {
   const namePlaceholder = isRussian ? 'Введите имя пользователя' : 'Enter your display name';
   const saveNameLabel = isRussian ? 'Сохранить' : 'Save';
   const cancelNameLabel = isRussian ? 'Отмена' : 'Cancel';
+
+  const leaderboardCtaLabel = isRussian ? 'Р РµР№С‚РёРЅРі' : 'Leaderboard';
+  const favoritesSubtitle =
+    favoriteCount > 0 ? labels.savedEvents : isRussian ? 'РџРѕРєР° РЅРµС‚ СЃРѕС…СЂР°РЅС‘РЅРЅС‹С… СЃРѕР±С‹С‚РёР№' : 'No saved events yet';
+  const notificationsSubtitle =
+    liveFavoriteCount > 0 ? labels.liveNow : isRussian ? 'РџРѕРєР° РЅРµС‚ live-СѓРІРµРґРѕРјР»РµРЅРёР№' : 'No live alerts yet';
 
   useEffect(() => {
     const storedAvatar = getStoredProfileAvatar();
@@ -221,19 +228,19 @@ export function ProfileScreen() {
           <Link
             href="/notifications"
             aria-label={labels.goToNotifications}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-[1.05rem] border border-border-subtle bg-white/70 text-text-primary transition hover:bg-white/90 dark:bg-white/8 dark:text-white dark:hover:bg-white/12"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-[1.05rem] border border-black/[0.045] bg-white/78 text-text-primary shadow-[0_10px_24px_rgba(15,23,42,0.05)] transition hover:bg-white dark:bg-white/8 dark:text-white dark:hover:bg-white/12 dark:shadow-none"
           >
             <BellIcon />
           </Link>
         }
       />
 
-      <SectionCard className="border border-white/35 bg-white/65 px-4 py-4 shadow-[0_18px_42px_rgba(15,23,42,0.09)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
+      <SectionCard className="border border-black/[0.045] bg-white/[0.84] px-4 py-4 shadow-[0_16px_34px_rgba(15,23,42,0.06)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
         <input ref={avatarInputRef} type="file" accept="image/*" className="sr-only" onChange={handleAvatarChange} />
 
         <div className="flex items-start gap-4">
           <div className="relative shrink-0">
-            <div className="flex h-[5.5rem] w-[5.5rem] items-center justify-center overflow-hidden rounded-[1.65rem] border border-white/75 bg-white text-[1.95rem] font-semibold text-text-primary shadow-[0_14px_34px_rgba(15,23,42,0.10)] dark:border-white/10 dark:bg-white/8 dark:text-white dark:shadow-none">
+            <div className="flex h-[5.5rem] w-[5.5rem] items-center justify-center overflow-hidden rounded-[1.55rem] border border-black/[0.05] bg-white text-[1.95rem] font-semibold text-text-primary shadow-[0_12px_28px_rgba(15,23,42,0.08)] dark:border-white/10 dark:bg-white/8 dark:text-white dark:shadow-none">
               {avatarImage ? (
                 <img src={avatarImage} alt={displayName} className="h-full w-full object-cover" />
               ) : (
@@ -245,7 +252,7 @@ export function ProfileScreen() {
               onClick={handleAvatarButtonClick}
               aria-label={labels.avatarPicker}
               title={labels.avatarPicker}
-              className="absolute -bottom-1 -right-1 inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/90 bg-[rgb(var(--accent-orange))] text-white shadow-[0_12px_24px_rgba(255,116,55,0.24)] transition hover:brightness-105"
+              className="absolute -bottom-1 -right-1 inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/90 bg-[linear-gradient(180deg,rgba(255,136,83,1),rgba(255,108,54,1))] text-white shadow-[0_12px_24px_rgba(255,116,55,0.18)] transition hover:brightness-105"
             >
               <CameraIcon />
             </button>
@@ -259,20 +266,20 @@ export function ProfileScreen() {
                 <button
                   type="button"
                   onClick={handleStartNameEdit}
-                  className="mt-2 inline-flex items-center gap-1.5 rounded-full border border-border-subtle bg-white/72 px-3 py-1.5 text-[12px] font-medium text-text-secondary transition hover:bg-white/92 hover:text-text-primary dark:bg-white/8 dark:text-text-secondary dark:hover:bg-white/12 dark:hover:text-white"
+                  className="mt-2 inline-flex items-center gap-1.5 rounded-full border border-black/[0.045] bg-[rgba(247,249,252,0.82)] px-3 py-1.5 text-[12px] font-medium text-text-secondary transition hover:bg-white hover:text-text-primary dark:bg-white/8 dark:text-text-secondary dark:hover:bg-white/12 dark:hover:text-white"
                 >
                   <PencilIcon />
                   {editNameLabel}
                 </button>
               </div>
-              <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-[rgba(var(--accent-orange),0.18)] bg-[rgba(var(--accent-orange),0.10)] px-3 py-1.5 text-[11px] font-semibold text-text-primary">
+              <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-[rgba(var(--accent-orange),0.12)] bg-[rgba(var(--accent-orange),0.08)] px-3 py-1.5 text-[11px] font-semibold text-text-secondary">
                 <StarIcon />
                 {labels.activeSupporter}
               </span>
             </div>
 
             {isEditingName ? (
-              <div className="mt-3 rounded-[1.15rem] border border-border-subtle bg-[rgba(var(--surface-muted),0.66)] p-3 dark:bg-white/6">
+              <div className="mt-3 rounded-[1.15rem] border border-black/[0.045] bg-[rgba(247,249,252,0.78)] p-3 dark:bg-white/6">
                 <input
                   value={nameDraft}
                   onChange={(event) => setNameDraft(event.target.value)}
@@ -299,16 +306,16 @@ export function ProfileScreen() {
               </div>
             ) : null}
 
-            <div className="mt-4 grid grid-cols-3 gap-0 overflow-hidden rounded-[1.15rem] border border-border-subtle bg-[rgba(var(--surface-muted),0.78)] dark:bg-white/6">
-              <div className="px-3 py-3 text-center">
+            <div className="mt-4 grid grid-cols-3 gap-2">
+              <div className="rounded-[1.05rem] border border-black/[0.04] bg-[rgba(247,249,252,0.88)] px-3 py-3 text-center dark:bg-white/6">
                 <p className="text-[11px] font-medium text-text-muted">{labels.rank}</p>
                 <p className="mt-1.5 text-base font-semibold text-text-primary">#{profile.currentRank}</p>
               </div>
-              <div className="border-x border-border-subtle px-3 py-3 text-center">
+              <div className="rounded-[1.05rem] border border-black/[0.04] bg-[rgba(247,249,252,0.88)] px-3 py-3 text-center dark:bg-white/6">
                 <p className="text-[11px] font-medium text-text-muted">{labels.points}</p>
                 <p className="mt-1.5 text-base font-semibold text-text-primary">{profile.points}</p>
               </div>
-              <div className="px-3 py-3 text-center">
+              <div className="rounded-[1.05rem] border border-black/[0.04] bg-[rgba(247,249,252,0.88)] px-3 py-3 text-center dark:bg-white/6">
                 <p className="text-[11px] font-medium text-text-muted">{labels.streak}</p>
                 <p className="mt-1.5 text-base font-semibold text-text-primary">{profile.streak}</p>
               </div>
@@ -317,56 +324,58 @@ export function ProfileScreen() {
         </div>
       </SectionCard>
 
-      <SectionCard className="border border-white/35 bg-white/68 px-4 py-4 shadow-[0_18px_42px_rgba(15,23,42,0.09)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
-        <div className="flex items-start justify-between gap-3">
+      <SectionCard className="border border-black/[0.045] bg-white/[0.88] px-4 py-4 shadow-[0_16px_34px_rgba(15,23,42,0.06)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
+        <div className="rounded-[1.2rem] border border-black/[0.04] bg-[rgba(247,249,252,0.74)] px-4 py-4 dark:bg-white/6">
           <div>
             <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted">{t('balanceLabel')}</p>
-            <h3 className="mt-2 text-[2rem] font-semibold tracking-tight text-text-primary">{formatMoney(profile.walletBalance)}</h3>
+            <h3 className="mt-3 text-center text-[2.35rem] font-semibold tracking-tight text-text-primary">{formatMoney(profile.walletBalance)}</h3>
           </div>
-        </div>
 
-        <div className="mt-4 flex flex-col gap-2.5">
-          <button
-            type="button"
-            className="inline-flex w-full items-center justify-center rounded-[1.15rem] bg-[linear-gradient(180deg,rgba(255,136,83,1),rgba(255,108,54,1))] px-4 py-3.5 text-[0.95rem] font-semibold text-white shadow-[0_18px_28px_rgba(255,116,55,0.22)] transition hover:brightness-105"
-          >
-            {labels.topUp}
-          </button>
-          <button
-            type="button"
-            className="inline-flex w-full items-center justify-center rounded-[1.05rem] border border-border-subtle bg-[rgba(var(--surface-muted),0.82)] px-4 py-3 text-sm font-semibold text-text-primary transition hover:bg-[rgba(var(--surface-muted),0.95)] dark:bg-white/7 dark:text-white dark:hover:bg-white/10"
-          >
-            {labels.withdraw}
-          </button>
+          <div className="mt-4 flex flex-col gap-2.5">
+            <button
+              type="button"
+              className="inline-flex w-full items-center justify-center rounded-[1.15rem] bg-[linear-gradient(180deg,rgba(255,136,83,1),rgba(255,108,54,1))] px-4 py-3.5 text-[0.95rem] font-semibold text-white shadow-[0_16px_26px_rgba(255,116,55,0.18)] transition hover:brightness-105"
+            >
+              {labels.topUp}
+            </button>
+            <button
+              type="button"
+              className="inline-flex w-full items-center justify-center rounded-[1.05rem] border border-black/[0.05] bg-white/72 px-4 py-3 text-sm font-semibold text-text-primary transition hover:bg-white dark:bg-white/7 dark:text-white dark:hover:bg-white/10"
+            >
+              {labels.withdraw}
+            </button>
+          </div>
         </div>
       </SectionCard>
 
-      <SectionCard className="border border-white/35 bg-white/62 px-2 py-2 shadow-[0_16px_34px_rgba(15,23,42,0.08)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
-        <div className="grid grid-cols-3 overflow-hidden rounded-[1.1rem]">
-          <div className="px-3 py-3 text-center">
+      <SectionCard className="border border-black/[0.045] bg-white/[0.82] px-2 py-2 shadow-[0_16px_34px_rgba(15,23,42,0.06)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
+        <div className="grid grid-cols-3 gap-2">
+          <div className="rounded-[1.05rem] border border-black/[0.04] bg-[rgba(247,249,252,0.82)] px-3 py-3 text-center dark:bg-white/6">
             <p className="text-[11px] font-medium text-text-muted">{labels.support}</p>
-            <p className="mt-2 text-[1.3rem] font-semibold tracking-tight text-text-primary">{formatMoney(profile.totalSupport)}</p>
+            <p className="mt-2 text-[1.22rem] font-semibold tracking-tight text-text-primary">{formatMoney(profile.totalSupport)}</p>
           </div>
-          <div className="border-x border-border-subtle px-3 py-3 text-center">
+          <div className="rounded-[1.05rem] border border-black/[0.04] bg-[rgba(247,249,252,0.82)] px-3 py-3 text-center dark:bg-white/6">
             <p className="text-[11px] font-medium text-text-muted">{labels.xp}</p>
-            <p className="mt-2 text-[1.3rem] font-semibold tracking-tight text-text-primary">{profile.xp}</p>
+            <p className="mt-2 text-[1.22rem] font-semibold tracking-tight text-text-primary">{profile.xp}</p>
           </div>
-          <div className="px-3 py-3 text-center">
+          <div className="rounded-[1.05rem] border border-black/[0.04] bg-[rgba(247,249,252,0.82)] px-3 py-3 text-center dark:bg-white/6">
             <p className="text-[11px] font-medium text-text-muted">{labels.streak}</p>
-            <p className="mt-2 text-[1.3rem] font-semibold tracking-tight text-text-primary">{profile.streak}</p>
+            <p className="mt-2 text-[1.22rem] font-semibold tracking-tight text-text-primary">{profile.streak}</p>
           </div>
         </div>
       </SectionCard>
 
-      <SectionCard className="border border-white/35 bg-white/62 px-4 py-4 shadow-[0_16px_34px_rgba(15,23,42,0.08)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
+      <SectionCard className="border border-black/[0.045] bg-white/[0.82] px-4 py-4 shadow-[0_16px_34px_rgba(15,23,42,0.06)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
         <div className="flex items-start justify-between gap-3">
           <div>
             <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted">{t('recentActivity')}</p>
           </div>
-          <span className="app-pill">{supportHistory.length}</span>
+          <span className="inline-flex min-w-[1.55rem] items-center justify-center rounded-full bg-[rgba(247,249,252,0.9)] px-2 py-1 text-[0.68rem] font-semibold text-text-secondary">
+            {supportHistory.length}
+          </span>
         </div>
 
-        <div className="mt-4 divide-y divide-border-subtle overflow-hidden rounded-[1.15rem] border border-border-subtle bg-[rgba(var(--surface-muted),0.82)] dark:bg-white/5">
+        <div className="mt-4 divide-y divide-black/[0.045] overflow-hidden rounded-[1.15rem] border border-black/[0.045] bg-[rgba(247,249,252,0.74)] dark:bg-white/5">
           {supportHistory.length ? (
             supportHistory.map((item) => {
               const correctedRussianCopy = getRussianHistoryCopy(item.id, item.eventTitleRu, item.participantRu);
@@ -377,12 +386,12 @@ export function ProfileScreen() {
                 <div key={item.id} className="flex items-start justify-between gap-3 px-3.5 py-3.5">
                   <div className="min-w-0">
                     <p className="truncate text-[12px] font-medium text-text-muted">{eventTitle}</p>
-                    <p className="mt-1.5 truncate text-sm font-semibold text-text-primary">
+                    <p className="mt-1.5 truncate text-[0.95rem] font-semibold text-text-primary">
                       {labels.activityAction}: {participant}
                     </p>
                   </div>
                   <div className="shrink-0 text-right">
-                    <p className="text-sm font-semibold text-text-primary">{formatMoney(item.amount)}</p>
+                    <p className="text-[0.95rem] font-semibold text-text-primary">{formatMoney(item.amount)}</p>
                     <p className="mt-1 text-[12px] text-text-muted">{formatTimestamp(item.createdAt, language)}</p>
                   </div>
                 </div>
@@ -394,63 +403,70 @@ export function ProfileScreen() {
         </div>
       </SectionCard>
 
-      <SectionCard className="border border-white/35 bg-white/62 px-4 py-4 shadow-[0_16px_34px_rgba(15,23,42,0.08)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
+      <SectionCard className="border border-black/[0.045] bg-white/[0.82] px-4 py-4 shadow-[0_16px_34px_rgba(15,23,42,0.06)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
         <div className="flex items-start justify-between gap-3">
           <div>
             <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted">{t('leaderboardTitle')}</p>
           </div>
-          <Link href="/leaderboard" className="app-pill">
-            {t('openLeaderboard')}
+          <Link
+            href="/leaderboard"
+            className="inline-flex items-center rounded-full border border-black/[0.045] bg-[rgba(247,249,252,0.86)] px-3 py-1.5 text-[0.74rem] font-semibold text-text-secondary transition hover:bg-white hover:text-text-primary"
+          >
+            {leaderboardCtaLabel}
           </Link>
         </div>
 
         <div className="mt-4 grid grid-cols-2 gap-3">
-          <div className="rounded-[1.15rem] border border-border-subtle bg-[rgba(var(--surface-muted),0.82)] px-3.5 py-3.5 dark:bg-white/5">
+          <div className="rounded-[1.15rem] border border-black/[0.045] bg-[rgba(247,249,252,0.82)] px-3.5 py-3.5 dark:bg-white/5">
             <p className="text-[11px] font-medium text-text-muted">{t('currentRank')}</p>
             <p className="mt-2 text-[1.45rem] font-semibold tracking-tight text-text-primary">#{profile.currentRank}</p>
           </div>
-          <div className="rounded-[1.15rem] border border-border-subtle bg-[rgba(var(--surface-muted),0.82)] px-3.5 py-3.5 dark:bg-white/5">
+          <div className="rounded-[1.15rem] border border-black/[0.045] bg-[rgba(247,249,252,0.82)] px-3.5 py-3.5 dark:bg-white/5">
             <p className="text-[11px] font-medium text-text-muted">{labels.toTopThree}</p>
             <p className="mt-2 text-[1.45rem] font-semibold tracking-tight text-text-primary">{pointsToTopThree}</p>
           </div>
         </div>
       </SectionCard>
 
-      <SectionCard className="border border-white/35 bg-white/62 px-4 py-2 shadow-[0_16px_34px_rgba(15,23,42,0.08)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
+      <SectionCard className="border border-black/[0.045] bg-white/[0.82] px-4 py-2 shadow-[0_16px_34px_rgba(15,23,42,0.06)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
         <Link href="/favorites" className="flex items-center justify-between gap-3 py-3">
           <div className="flex items-center gap-3">
-            <span className="inline-flex h-10 w-10 items-center justify-center rounded-[1rem] bg-[rgba(var(--accent-orange),0.10)] text-[rgb(var(--accent-orange))]">
+            <span className="inline-flex h-10 w-10 items-center justify-center rounded-[1rem] bg-[rgba(var(--accent-orange),0.08)] text-[rgb(var(--accent-orange))]">
               <HeartIcon />
             </span>
             <div>
               <p className="text-sm font-semibold text-text-primary">{labels.favorites}</p>
-              <p className="text-[12px] text-text-muted">{labels.savedEvents}</p>
+              <p className="text-[12px] text-text-muted">{favoritesSubtitle}</p>
             </div>
           </div>
           <div className="flex items-center gap-2 text-text-muted">
-            <span className="inline-flex h-7 min-w-7 items-center justify-center rounded-full bg-[rgba(var(--surface-muted),0.92)] px-2.5 text-[12px] font-semibold leading-none text-text-primary dark:bg-white/8 dark:text-white">
-              {favorites.length}
-            </span>
+            {favoriteCount > 0 ? (
+              <span className="inline-flex h-7 min-w-7 items-center justify-center rounded-full bg-[rgba(247,249,252,0.92)] px-2.5 text-[12px] font-semibold leading-none text-text-primary dark:bg-white/8 dark:text-white">
+                {favoriteCount}
+              </span>
+            ) : null}
             <ChevronIcon />
           </div>
         </Link>
 
-        <div className="border-t border-border-subtle" />
+        <div className="border-t border-black/[0.045]" />
 
         <Link href="/notifications" className="flex items-center justify-between gap-3 py-3">
           <div className="flex items-center gap-3">
-            <span className="inline-flex h-10 w-10 items-center justify-center rounded-[1rem] bg-[rgba(var(--accent-blue),0.10)] text-[rgb(var(--accent-blue))]">
+            <span className="inline-flex h-10 w-10 items-center justify-center rounded-[1rem] bg-[rgba(var(--accent-blue),0.08)] text-[rgb(var(--accent-blue))]">
               <BellIcon />
             </span>
             <div>
               <p className="text-sm font-semibold text-text-primary">{labels.notifications}</p>
-              <p className="text-[12px] text-text-muted">{labels.liveNow}</p>
+              <p className="text-[12px] text-text-muted">{notificationsSubtitle}</p>
             </div>
           </div>
           <div className="flex items-center gap-2 text-text-muted">
-            <span className="inline-flex h-7 min-w-7 items-center justify-center rounded-full bg-[rgba(var(--surface-muted),0.92)] px-2.5 text-[12px] font-semibold leading-none text-text-primary dark:bg-white/8 dark:text-white">
-              {liveFavoriteCount}
-            </span>
+            {liveFavoriteCount > 0 ? (
+              <span className="inline-flex h-7 min-w-7 items-center justify-center rounded-full bg-[rgba(247,249,252,0.92)] px-2.5 text-[12px] font-semibold leading-none text-text-primary dark:bg-white/8 dark:text-white">
+                {liveFavoriteCount}
+              </span>
+            ) : null}
             <ChevronIcon />
           </div>
         </Link>
