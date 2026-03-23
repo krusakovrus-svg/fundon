@@ -11,16 +11,17 @@ export interface AdminPageMeta {
   searchPlaceholder: string;
   periodLabel: string;
   primaryActionLabel?: string;
+  secondaryActionLabel?: string;
 }
 
 export const adminNavItems: AdminNavItem[] = [
   { id: 'dashboard', label: 'Дашборд', section: 'main', href: '/admin' },
-  { id: 'users', label: 'Пользователи', section: 'main' },
+  { id: 'users', label: 'Пользователи', section: 'main', href: '/admin/users' },
   { id: 'athletes', label: 'Спортсмены', section: 'main' },
   { id: 'events', label: 'События', section: 'main', href: '/admin/events' },
   { id: 'donations', label: 'Донаты', section: 'main' },
   { id: 'rooms', label: 'Комнаты', section: 'community' },
-  { id: 'ratings', label: 'Рейтинги', section: 'community' },
+  { id: 'ratings', label: 'Рейтинги', section: 'community', href: '/admin/ratings' },
   { id: 'notifications', label: 'Уведомления', section: 'community' },
   { id: 'analytics', label: 'Аналитика', section: 'system' },
   { id: 'moderation', label: 'Модерация', section: 'system' },
@@ -35,6 +36,16 @@ const defaultMeta: AdminPageMeta = {
 };
 
 export function getAdminPageMeta(pathname: string): AdminPageMeta {
+  if (pathname.startsWith('/admin/users')) {
+    return {
+      title: 'Пользователи',
+      description: 'Управление участниками платформы, балансами и активностью поддержки',
+      searchPlaceholder: 'Поиск по имени, email, телефону и никнейму',
+      periodLabel: 'Последние 30 дней',
+      primaryActionLabel: 'Добавить пользователя'
+    };
+  }
+
   if (pathname.startsWith('/admin/events')) {
     return {
       title: 'События',
@@ -42,6 +53,17 @@ export function getAdminPageMeta(pathname: string): AdminPageMeta {
       searchPlaceholder: 'Поиск по событиям, турнирам и участникам',
       periodLabel: 'Последние 7 дней',
       primaryActionLabel: 'Создать событие'
+    };
+  }
+
+  if (pathname.startsWith('/admin/ratings')) {
+    return {
+      title: 'Рейтинги',
+      description: 'Управление логикой начисления, пересчётом и состоянием рейтингов FUNDON',
+      searchPlaceholder: 'Поиск по пользователю, событию и правилу',
+      periodLabel: 'Текущий период',
+      primaryActionLabel: 'Пересчитать рейтинг',
+      secondaryActionLabel: 'Создать правило'
     };
   }
 

@@ -95,6 +95,15 @@ export function AdminTopbar() {
             <ChevronDownIcon />
           </button>
 
+          {meta.secondaryActionLabel ? (
+            <button
+              type="button"
+              className="rounded-[16px] border border-black/[0.06] bg-white px-5 py-3 text-[0.95rem] font-semibold text-slate-700 shadow-[0_12px_24px_rgba(15,23,42,0.05)]"
+            >
+              {meta.secondaryActionLabel}
+            </button>
+          ) : null}
+
           {meta.primaryActionLabel ? (
             <button
               type="button"
