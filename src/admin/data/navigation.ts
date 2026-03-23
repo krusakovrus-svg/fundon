@@ -20,7 +20,7 @@ export const adminNavItems: AdminNavItem[] = [
   { id: 'athletes', label: 'Спортсмены', section: 'main', href: '/admin/athletes' },
   { id: 'events', label: 'События', section: 'main', href: '/admin/events' },
   { id: 'donations', label: 'Донаты', section: 'main', href: '/admin/donations' },
-  { id: 'rooms', label: 'Комнаты', section: 'community' },
+  { id: 'rooms', label: 'Комнаты', section: 'community', href: '/admin/rooms' },
   { id: 'ratings', label: 'Рейтинги', section: 'community', href: '/admin/ratings' },
   { id: 'notifications', label: 'Уведомления', section: 'community' },
   { id: 'analytics', label: 'Аналитика', section: 'system' },
@@ -73,6 +73,16 @@ export function getAdminPageMeta(pathname: string): AdminPageMeta {
       searchPlaceholder: 'Поиск по событиям, турнирам и участникам',
       periodLabel: 'Последние 7 дней',
       primaryActionLabel: 'Создать событие'
+    };
+  }
+
+  if (pathname.startsWith('/admin/rooms')) {
+    return {
+      title: 'Комнаты',
+      description: 'Управление комнатами поддержки, активностью участников и модерацией',
+      searchPlaceholder: 'Поиск по комнате, событию, модератору и заметкам',
+      periodLabel: 'За месяц',
+      primaryActionLabel: 'Создать комнату'
     };
   }
 
