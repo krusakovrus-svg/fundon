@@ -42,10 +42,10 @@ export function getAdminPageMeta(pathname: string): AdminPageMeta {
   if (pathname.startsWith('/admin/donations')) {
     return {
       title: 'Донаты и транзакции',
-      description: 'Управление платежами, возвратами, спорами и внутренними комментариями',
+      description: 'Управление платежами, возвратами и спорными транзакциями FUNDON',
       searchPlaceholder: 'Поиск по ID, пользователю, событию и транзакции',
       periodLabel: 'Последние 30 дней',
-      secondaryActionLabel: 'Экспорт CSV'
+      secondaryActionLabel: 'Экспорт'
     };
   }
 
