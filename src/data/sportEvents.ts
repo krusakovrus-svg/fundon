@@ -1,6 +1,8 @@
 import { martialArtsEvents } from '@/data/martialArts';
 import type { Language, SportEventRecord } from '@/types';
 
+const supportedSportIds = new Set(['football', 'hockey', 'basketball', 'martial-arts', 'boxing', 'formula1']);
+
 const genericSportEvents: Record<string, SportEventRecord[]> = {
   football: [
     {
@@ -3109,6 +3111,12 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
     }
   ]
 };
+
+for (const sportId of Object.keys(genericSportEvents)) {
+  if (!supportedSportIds.has(sportId)) {
+    genericSportEvents[sportId] = [];
+  }
+}
 
 export const sportEventCatalog: Record<string, SportEventRecord[]> = {
   ...genericSportEvents,

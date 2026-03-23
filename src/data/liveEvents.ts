@@ -7,7 +7,9 @@ export interface LiveHubEvent extends EventRecord {
   leaderboard: LeaderboardEntry[];
 }
 
-export const liveEvents: LiveHubEvent[] = [
+const supportedLiveEventIds = new Set(['event_live_001']);
+
+const rawLiveEvents: LiveHubEvent[] = [
   {
     ...mockData.featuredEvent,
     categoryLabel: 'Martial arts',
@@ -231,3 +233,5 @@ export const liveEvents: LiveHubEvent[] = [
     ]
   }
 ];
+
+export const liveEvents: LiveHubEvent[] = rawLiveEvents.filter((event) => supportedLiveEventIds.has(event.id));
