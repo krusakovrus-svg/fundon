@@ -1046,85 +1046,169 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
     {
       id: 'hockey-nhl-1',
       sportId: 'hockey',
-      title: 'Hockey В· NHL В· USA',
-      titleRu: 'РҐРѕРєРєРµР№ В· NHL В· РЎРЁРђ',
-      startsAt: '2026-03-18T02:00:00+03:00',
-      endsAt: '2026-03-18T04:30:00+03:00',
+      title: 'Hockey · NHL · USA',
+      titleRu: 'Хоккей · NHL · США',
+      startsAt: '2026-03-24T02:30:00+03:00',
+      endsAt: '2026-03-24T05:00:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'montreal-canadiens', name: 'Montreal', nameRu: 'РњРѕРЅСЂРµР°Р»СЊ' },
-        { id: 'boston-bruins', name: 'Boston', nameRu: 'Р‘РѕСЃС‚РѕРЅ' }
+        { id: 'new-york-rangers', name: 'NY Rangers', nameRu: 'НЙ Рейнджерс' },
+        { id: 'ottawa-senators', name: 'Ottawa', nameRu: 'Оттава' }
       ]
     },
     {
-      id: 'hockey-nhl-2',
+      id: 'hockey-khl-gagarin-1',
       sportId: 'hockey',
-      title: 'Hockey В· NHL В· USA',
-      titleRu: 'РҐРѕРєРєРµР№ В· NHL В· РЎРЁРђ',
-      startsAt: '2026-03-18T02:00:00+03:00',
-      endsAt: '2026-03-18T04:30:00+03:00',
+      title: 'Hockey · KHL. Gagarin Cup · Russia',
+      titleRu: 'Хоккей · КХЛ. Кубок Гагарина · Россия',
+      startsAt: '2026-03-24T16:30:00+03:00',
+      endsAt: '2026-03-24T19:00:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'toronto-maple-leafs', name: 'Toronto', nameRu: 'РўРѕСЂРѕРЅС‚Рѕ' },
-        { id: 'new-york-islanders', name: 'NY Islanders', nameRu: 'РќР™ РђР№Р»РµРЅРґРµСЂСЃ' }
+        { id: 'avangard', name: 'Avangard', nameRu: 'Авангард' },
+        { id: 'neftekhimik', name: 'Neftekhimik', nameRu: 'Нефтехимик' }
       ]
     },
     {
-      id: 'hockey-nhl-3',
+      id: 'hockey-khl-gagarin-2',
       sportId: 'hockey',
-      title: 'Hockey В· NHL В· USA',
-      titleRu: 'РҐРѕРєРєРµР№ В· NHL В· РЎРЁРђ',
-      startsAt: '2026-03-18T02:00:00+03:00',
-      endsAt: '2026-03-18T04:30:00+03:00',
+      title: 'Hockey · KHL. Gagarin Cup · Russia',
+      titleRu: 'Хоккей · КХЛ. Кубок Гагарина · Россия',
+      startsAt: '2026-03-24T17:00:00+03:00',
+      endsAt: '2026-03-24T19:30:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'columbus-blue-jackets', name: 'Columbus', nameRu: 'РљРѕР»Р°РјР±СѓСЃ' },
-        { id: 'carolina-hurricanes', name: 'Carolina', nameRu: 'РљР°СЂРѕР»РёРЅР°' }
+        { id: 'metallurg-magnitogorsk', name: 'Metallurg Magnitogorsk', nameRu: 'Металлург Магнитогорск' },
+        { id: 'sibir', name: 'Sibir', nameRu: 'Сибирь' }
       ]
     },
     {
-      id: 'hockey-nhl-4',
+      id: 'hockey-khl-gagarin-3',
       sportId: 'hockey',
-      title: 'Hockey В· NHL В· USA',
-      titleRu: 'РҐРѕРєРєРµР№ В· NHL В· РЎРЁРђ',
-      startsAt: '2026-03-18T02:30:00+03:00',
-      endsAt: '2026-03-18T05:00:00+03:00',
+      title: 'Hockey · KHL. Gagarin Cup · Russia',
+      titleRu: 'Хоккей · КХЛ. Кубок Гагарина · Россия',
+      startsAt: '2026-03-24T19:30:00+03:00',
+      endsAt: '2026-03-24T22:00:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'chicago-blackhawks', name: 'Chicago', nameRu: 'Р§РёРєР°РіРѕ' },
-        { id: 'minnesota-wild', name: 'Minnesota', nameRu: 'РњРёРЅРЅРµСЃРѕС‚Р°' }
+        { id: 'lokomotiv-yaroslavl', name: 'Lokomotiv', nameRu: 'Локомотив' },
+        { id: 'spartak', name: 'Spartak', nameRu: 'Спартак' }
       ]
     },
     {
-      id: 'hockey-nhl-5',
+      id: 'hockey-khl-gagarin-4',
       sportId: 'hockey',
-      title: 'Hockey В· NHL В· USA',
-      titleRu: 'РҐРѕРєРєРµР№ В· NHL В· РЎРЁРђ',
-      startsAt: '2026-03-18T03:00:00+03:00',
-      endsAt: '2026-03-18T05:30:00+03:00',
+      title: 'Hockey · KHL. Gagarin Cup · Russia',
+      titleRu: 'Хоккей · КХЛ. Кубок Гагарина · Россия',
+      startsAt: '2026-03-24T19:30:00+03:00',
+      endsAt: '2026-03-24T22:00:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'winnipeg-jets', name: 'Winnipeg', nameRu: 'Р’РёРЅРЅРёРїРµРі' },
-        { id: 'nashville-predators', name: 'Nashville', nameRu: 'РќСЌС€РІРёР»Р»' }
+        { id: 'dinamo-minsk', name: 'Dinamo Minsk', nameRu: 'Динамо Минск' },
+        { id: 'dinamo-moscow', name: 'Dinamo Moscow', nameRu: 'Динамо Москва' }
       ]
     },
     {
-      id: 'hockey-nhl-6',
+      id: 'hockey-ahl-1',
       sportId: 'hockey',
-      title: 'Hockey В· NHL В· USA',
-      titleRu: 'РҐРѕРєРєРµР№ В· NHL В· РЎРЁРђ',
-      startsAt: '2026-03-18T04:00:00+03:00',
-      endsAt: '2026-03-18T06:30:00+03:00',
+      title: 'Hockey · AHL · USA',
+      titleRu: 'Хоккей · AHL · США',
+      startsAt: '2026-03-24T03:00:00+03:00',
+      endsAt: '2026-03-24T05:30:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'edmonton-oilers', name: 'Edmonton', nameRu: 'Р­РґРјРѕРЅС‚РѕРЅ' },
-        { id: 'san-jose-sharks', name: 'San Jose', nameRu: 'РЎР°РЅ РҐРѕСЃРµ' }
+        { id: 'manitoba-moose', name: 'Manitoba Moose', nameRu: 'Манитоба Муз' },
+        { id: 'tucson-roadrunners', name: 'Tucson Roadrunners', nameRu: 'Тусон Роадраннерз' }
+      ]
+    },
+    {
+      id: 'hockey-vhl-playoff-1',
+      sportId: 'hockey',
+      title: 'Hockey · VHL. Playoff · Russia',
+      titleRu: 'Хоккей · ВХЛ. Плей-офф · Россия',
+      startsAt: '2026-03-24T11:00:00+03:00',
+      endsAt: '2026-03-24T13:30:00+03:00',
+      displayDateEn: 'Tomorrow at',
+      displayDateRu: 'Завтра в',
+      participants: [
+        { id: 'magnitka', name: 'Magnitka', nameRu: 'Магнитка' },
+        { id: 'torpedo-gorky', name: 'Torpedo Gorky', nameRu: 'Торпедо Горький' }
+      ]
+    },
+    {
+      id: 'hockey-vhl-playoff-2',
+      sportId: 'hockey',
+      title: 'Hockey · VHL. Playoff · Russia',
+      titleRu: 'Хоккей · ВХЛ. Плей-офф · Россия',
+      startsAt: '2026-03-24T15:00:00+03:00',
+      endsAt: '2026-03-24T17:30:00+03:00',
+      displayDateEn: 'Tomorrow at',
+      displayDateRu: 'Завтра в',
+      participants: [
+        { id: 'metallurg-novokuznetsk', name: 'Metallurg Novokuznetsk', nameRu: 'Металлург Новокузнецк' },
+        { id: 'csk-vvs', name: 'CSK VVS', nameRu: 'ЦСК ВВС' }
+      ]
+    },
+    {
+      id: 'hockey-kazakhstan-high-league-1',
+      sportId: 'hockey',
+      title: 'Hockey · Higher League · Kazakhstan',
+      titleRu: 'Хоккей · Высшая лига · Казахстан',
+      startsAt: '2026-03-24T15:00:00+03:00',
+      endsAt: '2026-03-24T17:30:00+03:00',
+      displayDateEn: 'Tomorrow at',
+      displayDateRu: 'Завтра в',
+      participants: [
+        { id: 'saryarka', name: 'Saryarka', nameRu: 'Сарыарка' },
+        { id: 'torpedo-uk', name: 'Torpedo UK', nameRu: 'Торпедо УК' }
+      ]
+    },
+    {
+      id: 'hockey-khl-gagarin-5',
+      sportId: 'hockey',
+      title: 'Hockey · KHL. Gagarin Cup · Russia',
+      titleRu: 'Хоккей · КХЛ. Кубок Гагарина · Россия',
+      startsAt: '2026-03-24T16:29:00+03:00',
+      endsAt: '2026-03-24T18:59:00+03:00',
+      displayDateEn: 'Tomorrow at',
+      displayDateRu: 'Завтра в',
+      participants: [
+        { id: 'hosts-placeholder', name: 'Hosts', nameRu: 'Хозяева' },
+        { id: 'guests-placeholder', name: 'Guests', nameRu: 'Гости' }
+      ]
+    },
+    {
+      id: 'hockey-vhl-playoff-3',
+      sportId: 'hockey',
+      title: 'Hockey · VHL. Playoff · Russia',
+      titleRu: 'Хоккей · ВХЛ. Плей-офф · Россия',
+      startsAt: '2026-03-24T16:30:00+03:00',
+      endsAt: '2026-03-24T19:00:00+03:00',
+      displayDateEn: 'Tomorrow at',
+      displayDateRu: 'Завтра в',
+      participants: [
+        { id: 'chelmet', name: 'Chelmet', nameRu: 'Челмет' },
+        { id: 'omskie-krylia', name: 'Omskie Krylia', nameRu: 'Омские Крылья' }
+      ]
+    },
+    {
+      id: 'hockey-belarus-extraliga-1',
+      sportId: 'hockey',
+      title: 'Hockey · Extraliga · Belarus',
+      titleRu: 'Хоккей · Экстралига · Беларусь',
+      startsAt: '2026-03-24T18:00:00+03:00',
+      endsAt: '2026-03-24T20:30:00+03:00',
+      displayDateEn: 'Tomorrow at',
+      displayDateRu: 'Завтра в',
+      participants: [
+        { id: 'metallurg-zhlobin', name: 'Metallurg Zhlobin', nameRu: 'Металлург Жлобин' },
+        { id: 'vitebsk', name: 'Vitebsk', nameRu: 'Витебск' }
       ]
     }
   ],
@@ -4146,6 +4230,7 @@ export function formatSportEventTime(startsAt: string, language: Language) {
     hourCycle: 'h23'
   }).format(new Date(startsAt));
 }
+
 
 
 
