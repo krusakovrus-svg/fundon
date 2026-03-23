@@ -157,11 +157,11 @@ export function ProfileScreen() {
 
   const balanceHint = isRussian ? 'Доступно для поддержки и вывода' : 'Available for support and withdrawals';
   const sectionCardClass =
-    'border border-black/[0.045] bg-white/[0.84] shadow-[0_16px_34px_rgba(15,23,42,0.06)] backdrop-blur-xl dark:border-white/[0.06] dark:bg-[linear-gradient(180deg,rgba(18,24,37,0.88),rgba(11,16,27,0.82))] dark:shadow-[0_18px_30px_rgba(2,6,23,0.20)]';
+    'border border-black/[0.045] bg-white/[0.86] shadow-[0_16px_34px_rgba(15,23,42,0.06)] backdrop-blur-xl dark:border-white/[0.055] dark:bg-[linear-gradient(180deg,rgba(24,31,45,0.90),rgba(15,21,33,0.84))] dark:shadow-[0_20px_34px_rgba(2,6,23,0.22)]';
   const innerPanelClass =
-    'rounded-[1.15rem] border border-black/[0.04] bg-[rgba(247,249,252,0.82)] shadow-[inset_0_1px_0_rgba(255,255,255,0.72)] dark:border-white/[0.05] dark:bg-[linear-gradient(180deg,rgba(34,42,56,0.94),rgba(22,30,43,0.92))] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]';
+    'rounded-[1.15rem] border border-black/[0.04] bg-[rgba(247,249,252,0.82)] shadow-[inset_0_1px_0_rgba(255,255,255,0.72)] dark:border-white/[0.05] dark:bg-[linear-gradient(180deg,rgba(36,44,58,0.94),rgba(24,32,45,0.92))] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.035)]';
   const statTileClass =
-    'rounded-[1.05rem] border border-black/[0.04] bg-[rgba(247,249,252,0.88)] px-3 py-3 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] dark:border-white/[0.05] dark:bg-[linear-gradient(180deg,rgba(31,39,53,0.94),rgba(21,28,40,0.90))] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]';
+    'rounded-[1.05rem] border border-black/[0.04] bg-[rgba(247,249,252,0.88)] px-3 py-3 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] dark:border-white/[0.05] dark:bg-[linear-gradient(180deg,rgba(34,42,56,0.96),rgba(23,30,43,0.92))] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.035)]';
 
   useEffect(() => {
     const storedAvatar = getStoredProfileAvatar();
@@ -229,7 +229,7 @@ export function ProfileScreen() {
   };
 
   return (
-    <MainPageLayout className="space-y-4">
+    <MainPageLayout className="space-y-[0.95rem]">
       <PageHeader
         title={t('profileTitle')}
         description={t('profileHint')}
@@ -237,7 +237,7 @@ export function ProfileScreen() {
           <Link
             href="/notifications"
             aria-label={labels.goToNotifications}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-[1rem] border border-black/[0.045] bg-[rgba(247,249,252,0.72)] text-text-primary shadow-[0_8px_18px_rgba(15,23,42,0.04)] transition hover:bg-white dark:border-white/[0.08] dark:bg-white/[0.05] dark:text-white/[0.9] dark:hover:bg-white/[0.08] dark:shadow-none"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-[1rem] border border-black/[0.045] bg-[rgba(247,249,252,0.72)] text-text-primary shadow-[0_8px_18px_rgba(15,23,42,0.04)] transition hover:bg-white dark:border-white/[0.07] dark:bg-white/[0.045] dark:text-white/[0.9] dark:hover:bg-white/[0.07] dark:shadow-none"
           >
             <BellIcon />
           </Link>
@@ -249,7 +249,7 @@ export function ProfileScreen() {
 
         <div className="flex items-start gap-4">
           <div className="relative shrink-0">
-            <div className="flex h-[5.5rem] w-[5.5rem] items-center justify-center overflow-hidden rounded-[1.55rem] border border-black/[0.05] bg-white text-[1.95rem] font-semibold text-text-primary shadow-[0_12px_28px_rgba(15,23,42,0.08)] dark:border-white/[0.08] dark:bg-[linear-gradient(180deg,rgba(255,255,255,0.10),rgba(255,255,255,0.04))] dark:text-white dark:shadow-[0_12px_24px_rgba(2,6,23,0.16)]">
+            <div className="flex h-[5.5rem] w-[5.5rem] items-center justify-center overflow-hidden rounded-[1.55rem] border border-black/[0.05] bg-white text-[1.95rem] font-semibold text-text-primary shadow-[0_12px_28px_rgba(15,23,42,0.08)] dark:border-white/[0.07] dark:bg-[linear-gradient(160deg,rgba(255,255,255,0.12),rgba(255,124,65,0.08),rgba(74,144,226,0.07))] dark:text-white dark:shadow-[0_14px_26px_rgba(2,6,23,0.18)]">
               {avatarImage ? (
                 <img src={avatarImage} alt={displayName} className="h-full w-full object-cover" />
               ) : (
@@ -275,26 +275,26 @@ export function ProfileScreen() {
                 <button
                   type="button"
                   onClick={handleStartNameEdit}
-                  className="mt-2 inline-flex items-center gap-1.5 rounded-full border border-black/[0.045] bg-[rgba(247,249,252,0.82)] px-3 py-1.5 text-[12px] font-medium text-text-secondary transition hover:bg-white hover:text-text-primary dark:border-white/[0.08] dark:bg-white/[0.05] dark:text-white/[0.72] dark:hover:bg-white/[0.08] dark:hover:text-white"
+                  className="mt-2 inline-flex items-center gap-1.5 rounded-full border border-black/[0.045] bg-[rgba(247,249,252,0.82)] px-3 py-1.5 text-[12px] font-medium text-text-secondary transition hover:bg-white hover:text-text-primary dark:border-white/[0.07] dark:bg-white/[0.045] dark:text-white/[0.7] dark:hover:bg-white/[0.07] dark:hover:text-white"
                 >
                   <PencilIcon />
                   {editNameLabel}
                 </button>
               </div>
-              <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-black/[0.04] bg-[rgba(247,249,252,0.76)] px-3 py-1.5 text-[11px] font-semibold text-text-secondary dark:border-white/[0.08] dark:bg-white/[0.05] dark:text-white/[0.68]">
+              <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-black/[0.04] bg-[rgba(247,249,252,0.76)] px-3 py-1.5 text-[11px] font-semibold text-text-secondary dark:border-white/[0.06] dark:bg-white/[0.04] dark:text-white/[0.62]">
                 <StarIcon />
                 {labels.activeSupporter}
               </span>
             </div>
 
             {isEditingName ? (
-              <div className="mt-3 rounded-[1.15rem] border border-black/[0.045] bg-[rgba(247,249,252,0.78)] p-3 dark:border-white/[0.07] dark:bg-[linear-gradient(180deg,rgba(255,255,255,0.07),rgba(255,255,255,0.04))]">
+              <div className="mt-3 rounded-[1.15rem] border border-black/[0.045] bg-[rgba(247,249,252,0.78)] p-3 dark:border-white/[0.06] dark:bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.035))]">
                 <input
                   value={nameDraft}
                   onChange={(event) => setNameDraft(event.target.value)}
                   placeholder={namePlaceholder}
                   maxLength={32}
-                  className="w-full rounded-[0.95rem] border border-border-subtle bg-white/84 px-3.5 py-2.5 text-[0.95rem] text-text-primary outline-none transition placeholder:text-text-secondary focus:border-[rgba(var(--accent-orange),0.35)] dark:border-white/[0.08] dark:bg-white/[0.06] dark:text-white"
+                  className="w-full rounded-[0.95rem] border border-border-subtle bg-white/84 px-3.5 py-2.5 text-[0.95rem] text-text-primary outline-none transition placeholder:text-text-secondary focus:border-[rgba(var(--accent-orange),0.35)] dark:border-white/[0.06] dark:bg-white/[0.055] dark:text-white"
                 />
                 <div className="mt-3 flex gap-2">
                   <button
@@ -307,7 +307,7 @@ export function ProfileScreen() {
                   <button
                     type="button"
                     onClick={handleCancelNameEdit}
-                    className="inline-flex min-h-[2.6rem] flex-1 items-center justify-center rounded-[0.95rem] border border-border-subtle bg-white/72 px-3 py-2 text-[0.9rem] font-semibold text-text-primary transition hover:bg-white dark:border-white/[0.08] dark:bg-white/[0.06] dark:text-white dark:hover:bg-white/[0.09]"
+                    className="inline-flex min-h-[2.6rem] flex-1 items-center justify-center rounded-[0.95rem] border border-border-subtle bg-white/72 px-3 py-2 text-[0.9rem] font-semibold text-text-primary transition hover:bg-white dark:border-white/[0.06] dark:bg-white/[0.055] dark:text-white dark:hover:bg-white/[0.08]"
                   >
                     {cancelNameLabel}
                   </button>
@@ -317,16 +317,16 @@ export function ProfileScreen() {
 
             <div className="mt-4 grid grid-cols-3 gap-2">
               <div className={statTileClass}>
-                <p className="text-[11px] font-medium text-text-muted">{labels.rank}</p>
-                <p className="mt-1.5 text-base font-semibold text-text-primary">#{profile.currentRank}</p>
+                <p className="text-[11px] font-medium text-text-muted dark:text-white/[0.5]">{labels.rank}</p>
+                <p className="mt-1.5 text-base font-semibold text-text-primary dark:text-white">#{profile.currentRank}</p>
               </div>
               <div className={statTileClass}>
-                <p className="text-[11px] font-medium text-text-muted">{labels.points}</p>
-                <p className="mt-1.5 text-base font-semibold text-text-primary">{profile.points}</p>
+                <p className="text-[11px] font-medium text-text-muted dark:text-white/[0.5]">{labels.points}</p>
+                <p className="mt-1.5 text-base font-semibold text-text-primary dark:text-white">{profile.points}</p>
               </div>
               <div className={statTileClass}>
-                <p className="text-[11px] font-medium text-text-muted">{labels.streak}</p>
-                <p className="mt-1.5 text-base font-semibold text-text-primary">{profile.streak}</p>
+                <p className="text-[11px] font-medium text-text-muted dark:text-white/[0.5]">{labels.streak}</p>
+                <p className="mt-1.5 text-base font-semibold text-text-primary dark:text-white">{profile.streak}</p>
               </div>
             </div>
           </div>
@@ -334,7 +334,7 @@ export function ProfileScreen() {
       </SectionCard>
 
       <SectionCard className={cn(sectionCardClass, 'bg-white/[0.88] px-4 py-4')}>
-        <div className={cn(innerPanelClass, 'rounded-[1.2rem] px-4 py-4')}>
+        <div className={cn(innerPanelClass, 'rounded-[1.2rem] px-4 py-4 dark:border-[rgba(255,124,65,0.08)] dark:bg-[linear-gradient(180deg,rgba(38,46,61,0.96),rgba(25,33,46,0.92))]')}>
           <div>
             <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted dark:text-white/[0.42]">{t('balanceLabel')}</p>
             <h3 className="mt-3 text-center text-[2.35rem] font-semibold tracking-tight text-text-primary dark:text-white">{formatCurrency(profile.walletBalance, language)}</h3>
@@ -350,7 +350,7 @@ export function ProfileScreen() {
             </button>
             <button
               type="button"
-              className="inline-flex w-full items-center justify-center rounded-[1.05rem] border border-black/[0.05] bg-white/78 px-4 py-3 text-sm font-semibold text-text-primary transition hover:bg-white dark:border-white/[0.07] dark:bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.035))] dark:text-white/[0.92] dark:hover:bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.045))]"
+              className="inline-flex w-full items-center justify-center rounded-[1.05rem] border border-black/[0.05] bg-white/78 px-4 py-3 text-sm font-semibold text-text-primary transition hover:bg-white dark:border-white/[0.06] dark:bg-[linear-gradient(180deg,rgba(255,255,255,0.055),rgba(255,255,255,0.035))] dark:text-white/[0.92] dark:hover:bg-[linear-gradient(180deg,rgba(255,255,255,0.075),rgba(255,255,255,0.045))]"
             >
               {labels.withdraw}
             </button>
@@ -361,16 +361,16 @@ export function ProfileScreen() {
       <SectionCard className={cn(sectionCardClass, 'bg-white/[0.82] px-2 py-2')}>
         <div className="grid grid-cols-3 gap-2">
           <div className={statTileClass}>
-            <p className="text-[11px] font-medium text-text-muted">{labels.support}</p>
-            <p className="mt-2 text-[1.22rem] font-semibold tracking-tight text-text-primary">{formatCurrency(profile.totalSupport, language)}</p>
+            <p className="text-[11px] font-medium text-text-muted dark:text-white/[0.5]">{labels.support}</p>
+            <p className="mt-2 text-[1.22rem] font-semibold tracking-tight text-text-primary dark:text-white">{formatCurrency(profile.totalSupport, language)}</p>
           </div>
           <div className={statTileClass}>
-            <p className="text-[11px] font-medium text-text-muted">{labels.xp}</p>
-            <p className="mt-2 text-[1.22rem] font-semibold tracking-tight text-text-primary">{profile.xp}</p>
+            <p className="text-[11px] font-medium text-text-muted dark:text-white/[0.5]">{labels.xp}</p>
+            <p className="mt-2 text-[1.22rem] font-semibold tracking-tight text-text-primary dark:text-white">{profile.xp}</p>
           </div>
           <div className={statTileClass}>
-            <p className="text-[11px] font-medium text-text-muted">{labels.streak}</p>
-            <p className="mt-2 text-[1.22rem] font-semibold tracking-tight text-text-primary">{profile.streak}</p>
+            <p className="text-[11px] font-medium text-text-muted dark:text-white/[0.5]">{labels.streak}</p>
+            <p className="mt-2 text-[1.22rem] font-semibold tracking-tight text-text-primary dark:text-white">{profile.streak}</p>
           </div>
         </div>
       </SectionCard>
@@ -385,7 +385,7 @@ export function ProfileScreen() {
           </span>
         </div>
 
-        <div className="mt-4 divide-y divide-black/[0.045] overflow-hidden rounded-[1.15rem] border border-black/[0.045] bg-[rgba(247,249,252,0.74)] dark:border-white/[0.06] dark:divide-white/[0.06] dark:bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.035))]">
+        <div className="mt-4 divide-y divide-black/[0.045] overflow-hidden rounded-[1.15rem] border border-black/[0.045] bg-[rgba(247,249,252,0.74)] dark:border-white/[0.055] dark:divide-white/[0.05] dark:bg-[linear-gradient(180deg,rgba(37,45,59,0.94),rgba(24,31,44,0.90))]">
           {supportHistory.length ? (
             supportHistory.map((item) => {
               const correctedRussianCopy = getRussianHistoryCopy(item.id, item.eventTitleRu, item.participantRu);
@@ -396,12 +396,12 @@ export function ProfileScreen() {
                 <div key={item.id} className="flex items-start justify-between gap-3 px-3.5 py-3">
                   <div className="min-w-0">
                     <p className="truncate text-[12px] font-medium text-text-muted dark:text-white/[0.52]">{eventTitle}</p>
-                    <p className="mt-1.5 truncate text-[0.95rem] font-semibold text-text-primary">
+                    <p className="mt-1.5 truncate text-[0.95rem] font-semibold text-text-primary dark:text-white/[0.94]">
                       {labels.activityAction}: {participant}
                     </p>
                   </div>
                   <div className="shrink-0 text-right">
-                    <p className="text-[0.95rem] font-semibold text-text-primary">{formatCurrency(item.amount, language)}</p>
+                    <p className="text-[0.95rem] font-semibold text-text-primary dark:text-white/[0.94]">{formatCurrency(item.amount, language)}</p>
                     <p className="mt-1 text-[12px] text-text-muted dark:text-white/[0.48]">{formatTimestamp(item.createdAt, language)}</p>
                   </div>
                 </div>
@@ -428,12 +428,12 @@ export function ProfileScreen() {
 
         <div className="mt-4 grid grid-cols-2 gap-3">
           <div className={cn(innerPanelClass, 'rounded-[1.15rem] px-3.5 py-3.5')}>
-            <p className="text-[11px] font-medium text-text-muted">{t('currentRank')}</p>
-            <p className="mt-2 text-[1.45rem] font-semibold tracking-tight text-text-primary">#{profile.currentRank}</p>
+            <p className="text-[11px] font-medium text-text-muted dark:text-white/[0.5]">{t('currentRank')}</p>
+            <p className="mt-2 text-[1.45rem] font-semibold tracking-tight text-text-primary dark:text-white">#{profile.currentRank}</p>
           </div>
           <div className={cn(innerPanelClass, 'rounded-[1.15rem] px-3.5 py-3.5')}>
-            <p className="text-[11px] font-medium text-text-muted">{labels.toTopThree}</p>
-            <p className="mt-2 text-[1.45rem] font-semibold tracking-tight text-text-primary">{pointsToTopThree}</p>
+            <p className="text-[11px] font-medium text-text-muted dark:text-white/[0.5]">{labels.toTopThree}</p>
+            <p className="mt-2 text-[1.45rem] font-semibold tracking-tight text-text-primary dark:text-white">{pointsToTopThree}</p>
           </div>
         </div>
       </SectionCard>
