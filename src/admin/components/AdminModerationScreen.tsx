@@ -489,8 +489,8 @@ export function AdminModerationScreen() {
         </div>
       </section>
 
-      <section className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_23rem]">
-        <div className="rounded-[24px] border border-black/[0.05] bg-white/92 shadow-[0_18px_40px_rgba(15,23,42,0.06)]">
+      <section className="grid items-start gap-6 xl:grid-cols-[minmax(0,1fr)_23rem]">
+        <div className="self-start overflow-hidden rounded-[24px] border border-black/[0.05] bg-white/92 shadow-[0_18px_40px_rgba(15,23,42,0.06)]">
           <div className="flex items-center justify-between gap-4 border-b border-black/[0.045] px-6 py-5">
             <div>
               <h2 className="text-[1.18rem] font-semibold tracking-tight text-slate-900">Кейсы модерации</h2>
@@ -499,9 +499,11 @@ export function AdminModerationScreen() {
             <div className="rounded-full bg-[#f5f8fd] px-3 py-1.5 text-[0.78rem] font-semibold text-slate-500">{filteredCases.length} в очереди</div>
           </div>
 
-          <div className="overflow-x-auto px-4 py-4">
-            <div className="min-w-[1120px]">
-              <div className="grid grid-cols-[8rem_10rem_minmax(15rem,1.2fr)_minmax(13rem,1.05fr)_minmax(14rem,1.2fr)_11rem_9rem_8.5rem] gap-4 px-4 pb-3 text-[0.78rem] font-semibold uppercase tracking-[0.12em] text-slate-400">
+          <div className="px-4 py-4">
+            <div className="overflow-hidden rounded-[22px] border border-black/[0.045] bg-[linear-gradient(180deg,#fcfdff_0%,#f7f9fd_100%)]">
+              <div className="overflow-x-auto px-4 py-4 [scrollbar-color:rgba(148,163,184,0.35)_transparent] [scrollbar-width:thin]">
+                <div className="min-w-[1020px]">
+                  <div className="grid grid-cols-[7.25rem_9rem_minmax(13rem,1.15fr)_minmax(12rem,1fr)_minmax(12.5rem,1.1fr)_10rem_8rem_7.5rem] gap-4 px-4 pb-3 text-[0.78rem] font-semibold uppercase tracking-[0.12em] text-slate-400">
                 <span>ID / кейс</span>
                 <span>Тип</span>
                 <span>Объект</span>
@@ -522,7 +524,7 @@ export function AdminModerationScreen() {
                       type="button"
                       onClick={() => setSelectedCaseId(item.id)}
                       className={cn(
-                        'grid w-full grid-cols-[8rem_10rem_minmax(15rem,1.2fr)_minmax(13rem,1.05fr)_minmax(14rem,1.2fr)_11rem_9rem_8.5rem] items-center gap-4 rounded-[20px] border px-4 py-4 text-left shadow-[inset_0_1px_0_rgba(255,255,255,0.92)] transition',
+                        'grid w-full grid-cols-[7.25rem_9rem_minmax(13rem,1.15fr)_minmax(12rem,1fr)_minmax(12.5rem,1.1fr)_10rem_8rem_7.5rem] items-center gap-4 rounded-[20px] border px-4 py-4 text-left shadow-[inset_0_1px_0_rgba(255,255,255,0.92)] transition',
                         active
                           ? 'border-[#dbe7fb] bg-[linear-gradient(180deg,#ffffff_0%,#f6f9ff_100%)] shadow-[0_18px_34px_rgba(79,143,246,0.12)]'
                           : 'border-black/[0.045] bg-[linear-gradient(180deg,#ffffff_0%,#fafbfe_100%)] hover:border-[#dbe7fb] hover:bg-white'
@@ -586,6 +588,8 @@ export function AdminModerationScreen() {
                     </button>
                   );
                 })}
+                </div>
+                </div>
               </div>
             </div>
           </div>

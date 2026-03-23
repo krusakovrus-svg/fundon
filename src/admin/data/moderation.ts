@@ -113,7 +113,7 @@ export const adminModerationCases: AdminModerationCase[] = [
     typeLabel: 'Подозрительная транзакция',
     priority: 'high',
     status: 'new',
-    objectTitle: 'Донат ₽ 2 500',
+    objectTitle: 'Донат 2 500 ₽',
     objectMeta: 'FC Frankfurt vs Bayern Munich · Волков',
     user: 'Sergey Romanov',
     handle: '@romanov',
@@ -125,7 +125,7 @@ export const adminModerationCases: AdminModerationCase[] = [
     avatarTone: 'bg-[linear-gradient(135deg,#f1d4c7_0%,#d89a77_100%)]',
     summary: 'Платёж отмечен антифрод-правилом: резкая смена устройства и повторный донат на тот же side за 3 минуты.',
     targetSummary: 'Wallet: Unified Wallet · ID платежа 60 027 · Карта **** 5371',
-    transactionSummary: '₽ 2 500 · Волков · 11:58',
+    transactionSummary: '2 500 ₽ · Волков · 11:58',
     restrictionState: 'Временное ограничение на вывод не применялось',
     complaints: '1 связанный сигнал',
     history: [
@@ -200,7 +200,7 @@ export const adminModerationCases: AdminModerationCase[] = [
     avatarTone: 'bg-[linear-gradient(135deg,#f2cfbf_0%,#cf8f73_100%)]',
     summary: 'В комнате нашли серию однотипных сообщений с просьбой переводить вне платформы. Идёт проверка организатора и закрепов.',
     targetSummary: 'Комната Final Push · 214 участников · активность высокая',
-    transactionSummary: '4 связанных доната на общую сумму ₽ 18 400',
+    transactionSummary: '4 связанных доната · 18 400 ₽',
     restrictionState: 'Комната ограничена до завершения проверки',
     complaints: '2 связанные жалобы',
     history: [
@@ -235,7 +235,7 @@ export const adminModerationCases: AdminModerationCase[] = [
     avatarTone: 'bg-[linear-gradient(135deg,#f6dace_0%,#d79f8a_100%)]',
     summary: 'Совпадение по устройству подтвердилось, но отдельного нарушения не выявлено. Кейс закрыт после верификации профиля.',
     targetSummary: 'Профиль верифицирован · Совпадение по устройству объяснено',
-    transactionSummary: '₽ 700 суммарно · 2 платежа',
+    transactionSummary: '700 ₽ суммарно · 2 платежа',
     restrictionState: 'Ограничения сняты',
     complaints: 'Новых жалоб нет',
     history: [
@@ -257,7 +257,7 @@ export const adminModerationCases: AdminModerationCase[] = [
     typeLabel: 'Подозрительная транзакция',
     priority: 'medium',
     status: 'open',
-    objectTitle: 'Возврат по донату ₽ 8 000',
+    objectTitle: 'Возврат по донату 8 000 ₽',
     objectMeta: 'Team Russia vs USA · Крыло',
     user: 'Антон Крылов',
     handle: '@krilov',
@@ -269,7 +269,7 @@ export const adminModerationCases: AdminModerationCase[] = [
     avatarTone: 'bg-[linear-gradient(135deg,#eed1c2_0%,#cc8e74_100%)]',
     summary: 'Пользователь оспаривает списание после завершения эфира. Требуется сверка статуса live и платежного шлюза.',
     targetSummary: 'Chargeback request · Wallet hold active',
-    transactionSummary: '₽ 8 000 · спорный возврат',
+    transactionSummary: '8 000 ₽ · спорный возврат',
     restrictionState: 'Вывод временно ограничен до решения',
     complaints: 'Без жалоб',
     history: [
