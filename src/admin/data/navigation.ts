@@ -82,7 +82,7 @@ export function getAdminPageMeta(pathname: string): AdminPageMeta {
   if (pathname.startsWith('/admin/rooms')) {
     return {
       title: 'Комнаты',
-      description: 'Управление комнатами поддержки, активностью участников и модерацией',
+      description: 'Управление комнатами, активностью участников и модерацией FUNDON',
       searchPlaceholder: 'Поиск по комнате, событию, модератору и заметкам',
       periodLabel: 'За месяц',
       primaryActionLabel: 'Создать комнату'
