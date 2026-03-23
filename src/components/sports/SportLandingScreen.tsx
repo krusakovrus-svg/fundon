@@ -4,10 +4,10 @@ import Link from 'next/link';
 import { useEffect } from 'react';
 
 import { MainPageLayout } from '@/components/layout/MainPageLayout';
-import type { SportOption } from '@/data/sports';
 import { useLanguage } from '@/components/providers/LanguageProvider';
-import { setStoredSportPath } from '@/lib/sportsHome';
+import type { SportOption } from '@/data/sports';
 import { getSportHref } from '@/data/sports';
+import { setStoredSportPath } from '@/lib/sportsHome';
 
 export function SportLandingScreen({ sport }: { sport: SportOption }) {
   const { language } = useLanguage();
@@ -20,18 +20,13 @@ export function SportLandingScreen({ sport }: { sport: SportOption }) {
   return (
     <MainPageLayout className="space-y-4 pt-2">
       <section className="app-card app-section-card overflow-hidden">
-        <div className="space-y-3">
-          <p className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-text-muted">
-            {language === 'ru' ? 'Последний выбранный спорт' : 'Last selected sport'}
+        <div className="space-y-2">
+          <h1 className="text-[1.9rem] font-semibold tracking-tight text-text-primary">{title}</h1>
+          <p className="max-w-[24rem] text-[0.98rem] leading-relaxed text-text-secondary">
+            {language === 'ru'
+              ? 'Эта страница уже закреплена в нижнем меню как Дом. Здесь позже появятся эфиры, предстоящие события и быстрый вход в выбранный спорт.'
+              : 'This page is now pinned to Home in the bottom navigation. Live events, upcoming cards, and quick entry for this sport will appear here later.'}
           </p>
-          <div className="space-y-2">
-            <h1 className="text-[1.9rem] font-semibold tracking-tight text-text-primary">{title}</h1>
-            <p className="max-w-[24rem] text-[0.98rem] leading-relaxed text-text-secondary">
-              {language === 'ru'
-                ? 'Эта страница уже закреплена в нижнем меню как Дом. Здесь позже появятся эфиры, предстоящие события и быстрый вход в выбранный спорт.'
-                : 'This page is now pinned to Home in the bottom navigation. Live events, upcoming cards, and quick entry for this sport will appear here later.'}
-            </p>
-          </div>
         </div>
       </section>
 
