@@ -1388,85 +1388,169 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
     {
       id: 'basketball-nba-1',
       sportId: 'basketball',
-      title: 'Basketball В· USA В· NBA',
-      titleRu: 'Р‘Р°СЃРєРµС‚Р±РѕР» В· РЎРЁРђ В· NBA',
-      startsAt: '2026-03-18T02:00:00+03:00',
-      endsAt: '2026-03-18T04:30:00+03:00',
+      title: 'Basketball · USA · NBA',
+      titleRu: 'Баскетбол · США · NBA',
+      startsAt: '2026-03-24T02:00:00+03:00',
+      endsAt: '2026-03-24T04:30:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'orlando-magic', name: 'Orlando Magic', nameRu: 'РћСЂР»Р°РЅРґРѕ РњСЌРґР¶РёРє' },
-        { id: 'oklahoma-city-thunder', name: 'Oklahoma City Thunder', nameRu: 'РћРєР»Р°С…РѕРјР° РЎРёС‚Рё РўР°РЅРґРµСЂ' }
+        { id: 'detroit-pistons', name: 'Detroit Pistons', nameRu: 'Детройт Пистонс' },
+        { id: 'los-angeles-lakers', name: 'Los Angeles Lakers', nameRu: 'Лос-Анджелес Лейкерс' }
       ]
     },
     {
       id: 'basketball-nba-2',
       sportId: 'basketball',
-      title: 'Basketball В· USA В· NBA',
-      titleRu: 'Р‘Р°СЃРєРµС‚Р±РѕР» В· РЎРЁРђ В· NBA',
-      startsAt: '2026-03-18T02:00:00+03:00',
-      endsAt: '2026-03-18T04:30:00+03:00',
+      title: 'Basketball · USA · NBA',
+      titleRu: 'Баскетбол · США · NBA',
+      startsAt: '2026-03-24T02:00:00+03:00',
+      endsAt: '2026-03-24T04:30:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'charlotte-hornets', name: 'Charlotte Hornets', nameRu: 'РЁР°СЂР»РѕС‚С‚ РҐРѕСЂРЅРµС‚СЃ' },
-        { id: 'miami-heat', name: 'Miami Heat', nameRu: 'РњР°Р№Р°РјРё РҐРёС‚' }
+        { id: 'orlando-magic', name: 'Orlando Magic', nameRu: 'Орландо Мэджик' },
+        { id: 'indiana-pacers', name: 'Indiana Pacers', nameRu: 'Индиана Пэйсерс' }
       ]
     },
     {
       id: 'basketball-nba-3',
       sportId: 'basketball',
-      title: 'Basketball В· USA В· NBA',
-      titleRu: 'Р‘Р°СЃРєРµС‚Р±РѕР» В· РЎРЁРђ В· NBA',
-      startsAt: '2026-03-18T02:00:00+03:00',
-      endsAt: '2026-03-18T04:30:00+03:00',
+      title: 'Basketball · USA · NBA',
+      titleRu: 'Баскетбол · США · NBA',
+      startsAt: '2026-03-24T02:00:00+03:00',
+      endsAt: '2026-03-24T04:30:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'washington-wizards', name: 'Washington Wizards', nameRu: 'Р’Р°С€РёРЅРіС‚РѕРЅ РЈРёР·Р°СЂРґСЃ' },
-        { id: 'detroit-pistons', name: 'Detroit Pistons', nameRu: 'Р”РµС‚СЂРѕР№С‚ РџРёСЃС‚РѕРЅСЃ' }
+        { id: 'miami-heat', name: 'Miami Heat', nameRu: 'Майами Хит' },
+        { id: 'san-antonio-spurs', name: 'San Antonio Spurs', nameRu: 'Сан-Антонио Спёрс' }
       ]
     },
     {
       id: 'basketball-nba-4',
       sportId: 'basketball',
-      title: 'Basketball В· USA В· NBA',
-      titleRu: 'Р‘Р°СЃРєРµС‚Р±РѕР» В· РЎРЁРђ В· NBA',
-      startsAt: '2026-03-18T02:30:00+03:00',
-      endsAt: '2026-03-18T05:00:00+03:00',
+      title: 'Basketball · USA · NBA',
+      titleRu: 'Баскетбол · США · NBA',
+      startsAt: '2026-03-24T02:00:00+03:00',
+      endsAt: '2026-03-24T04:30:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'new-york-knicks', name: 'New York Knicks', nameRu: 'РќСЊСЋ-Р™РѕСЂРє РќРёРєСЃ' },
-        { id: 'indiana-pacers', name: 'Indiana Pacers', nameRu: 'РРЅРґРёР°РЅР° РџСЌР№СЃРµСЂСЃ' }
+        { id: 'philadelphia-76ers', name: 'Philadelphia 76ers', nameRu: 'Филадельфия 76-е' },
+        { id: 'oklahoma-city-thunder', name: 'Oklahoma City Thunder', nameRu: 'Оклахома Сити Тандер' }
       ]
     },
     {
       id: 'basketball-nba-5',
       sportId: 'basketball',
-      title: 'Basketball В· USA В· NBA',
-      titleRu: 'Р‘Р°СЃРєРµС‚Р±РѕР» В· РЎРЁРђ В· NBA',
-      startsAt: '2026-03-18T03:00:00+03:00',
-      endsAt: '2026-03-18T05:30:00+03:00',
+      title: 'Basketball · USA · NBA',
+      titleRu: 'Баскетбол · США · NBA',
+      startsAt: '2026-03-24T02:30:00+03:00',
+      endsAt: '2026-03-24T05:00:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'milwaukee-bucks', name: 'Milwaukee Bucks', nameRu: 'РњРёР»СѓРѕРєРё Р‘Р°РєСЃ' },
-        { id: 'cleveland-cavaliers', name: 'Cleveland Cavaliers', nameRu: 'РљР»РёРІР»РµРЅРґ РљР°РІР°Р»СЊРµСЂСЃ' }
+        { id: 'atlanta-hawks', name: 'Atlanta Hawks', nameRu: 'Атланта Хокс' },
+        { id: 'memphis-grizzlies', name: 'Memphis Grizzlies', nameRu: 'Мемфис Гриззлис' }
       ]
     },
     {
       id: 'basketball-nba-6',
       sportId: 'basketball',
-      title: 'Basketball В· USA В· NBA',
-      titleRu: 'Р‘Р°СЃРєРµС‚Р±РѕР» В· РЎРЁРђ В· NBA',
-      startsAt: '2026-03-18T03:00:00+03:00',
-      endsAt: '2026-03-18T05:30:00+03:00',
+      title: 'Basketball · USA · NBA',
+      titleRu: 'Баскетбол · США · NBA',
+      startsAt: '2026-03-24T03:00:00+03:00',
+      endsAt: '2026-03-24T05:30:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'minnesota-timberwolves', name: 'Minnesota Timberwolves', nameRu: 'РњРёРЅРЅРµСЃРѕС‚Р° РўРёРјР±РµСЂРІСѓР»РІР·' },
-        { id: 'phoenix-suns', name: 'Phoenix Suns', nameRu: 'Р¤РёРЅРёРєСЃ РЎР°РЅР·' }
+        { id: 'chicago-bulls', name: 'Chicago Bulls', nameRu: 'Чикаго Буллз' },
+        { id: 'houston-rockets', name: 'Houston Rockets', nameRu: 'Хьюстон Рокетс' }
+      ]
+    },
+    {
+      id: 'basketball-nba-7',
+      sportId: 'basketball',
+      title: 'Basketball · USA · NBA',
+      titleRu: 'Баскетбол · США · NBA',
+      startsAt: '2026-03-24T04:00:00+03:00',
+      endsAt: '2026-03-24T06:30:00+03:00',
+      displayDateEn: 'Tomorrow at',
+      displayDateRu: 'Завтра в',
+      participants: [
+        { id: 'utah-jazz', name: 'Utah Jazz', nameRu: 'Юта Джаз' },
+        { id: 'toronto-raptors', name: 'Toronto Raptors', nameRu: 'Торонто Рэпторс' }
+      ]
+    },
+    {
+      id: 'basketball-nba-8',
+      sportId: 'basketball',
+      title: 'Basketball · USA · NBA',
+      titleRu: 'Баскетбол · США · NBA',
+      startsAt: '2026-03-24T04:30:00+03:00',
+      endsAt: '2026-03-24T07:00:00+03:00',
+      displayDateEn: 'Tomorrow at',
+      displayDateRu: 'Завтра в',
+      participants: [
+        { id: 'dallas-mavericks', name: 'Dallas Mavericks', nameRu: 'Даллас Маверикс' },
+        { id: 'golden-state-warriors', name: 'Golden State Warriors', nameRu: 'Голден Стэйт Уорриорз' }
+      ]
+    },
+    {
+      id: 'basketball-nba-9',
+      sportId: 'basketball',
+      title: 'Basketball · USA · NBA',
+      titleRu: 'Баскетбол · США · NBA',
+      startsAt: '2026-03-24T05:00:00+03:00',
+      endsAt: '2026-03-24T07:30:00+03:00',
+      displayDateEn: 'Tomorrow at',
+      displayDateRu: 'Завтра в',
+      participants: [
+        { id: 'portland-trail-blazers', name: 'Portland Trail Blazers', nameRu: 'Портленд Трэйл Блэйзерс' },
+        { id: 'brooklyn-nets', name: 'Brooklyn Nets', nameRu: 'Бруклин Нетс' }
+      ]
+    },
+    {
+      id: 'basketball-nba-10',
+      sportId: 'basketball',
+      title: 'Basketball · USA · NBA',
+      titleRu: 'Баскетбол · США · NBA',
+      startsAt: '2026-03-24T05:30:00+03:00',
+      endsAt: '2026-03-24T08:00:00+03:00',
+      displayDateEn: 'Tomorrow at',
+      displayDateRu: 'Завтра в',
+      participants: [
+        { id: 'los-angeles-clippers', name: 'Los Angeles Clippers', nameRu: 'Лос-Анджелес Клипперс' },
+        { id: 'milwaukee-bucks', name: 'Milwaukee Bucks', nameRu: 'Милуоки Бакс' }
+      ]
+    },
+    {
+      id: 'basketball-nbb-1',
+      sportId: 'basketball',
+      title: 'Basketball · Brazil · NBB',
+      titleRu: 'Баскетбол · Бразилия · NBB',
+      startsAt: '2026-03-24T02:00:00+03:00',
+      endsAt: '2026-03-24T04:00:00+03:00',
+      displayDateEn: 'Tomorrow at',
+      displayDateRu: 'Завтра в',
+      participants: [
+        { id: 'flamengo', name: 'Flamengo', nameRu: 'Фламенго' },
+        { id: 'paulistano', name: 'Paulistano', nameRu: 'Паулистано' }
+      ]
+    },
+    {
+      id: 'basketball-nbb-2',
+      sportId: 'basketball',
+      title: 'Basketball · Brazil · NBB',
+      titleRu: 'Баскетбол · Бразилия · NBB',
+      startsAt: '2026-03-24T02:15:00+03:00',
+      endsAt: '2026-03-24T04:15:00+03:00',
+      displayDateEn: 'Tomorrow at',
+      displayDateRu: 'Завтра в',
+      participants: [
+        { id: 'brasilia-basket', name: 'Brasilia Basket', nameRu: 'Бразилиа Баскет' },
+        { id: 'mogi-das-cruzes', name: 'Mogi das Cruzes', nameRu: 'Можи дас Крузис' }
       ]
     }
   ],
