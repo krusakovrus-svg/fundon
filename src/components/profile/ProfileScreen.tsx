@@ -117,12 +117,9 @@ export function ProfileScreen() {
     streak: isRussian ? 'Серия' : 'Streak',
     support: isRussian ? 'Поддержка' : 'Support',
     xp: isRussian ? 'Очки опыта' : 'XP',
-    balanceHint: isRussian ? 'Готово для поддержки в один тап' : 'Ready for one-tap support',
     topUp: isRussian ? 'Пополнить' : 'Top up',
     withdraw: isRussian ? 'Вывести' : 'Withdraw',
-    recentActivityTitle: isRussian ? 'Последние действия' : 'Recent activity',
     activityAction: isRussian ? 'Поддержка' : 'Supported',
-    rankSummary: isRussian ? 'Место в рейтинге' : 'Rating',
     toTopThree: isRussian ? 'До топ-3' : 'To top 3',
     favorites: isRussian ? 'Избранное' : 'Favorites',
     notifications: isRussian ? 'Уведомления' : 'Notifications',
@@ -234,7 +231,6 @@ export function ProfileScreen() {
           <div>
             <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted">{t('balanceLabel')}</p>
             <h3 className="mt-2 text-[2rem] font-semibold tracking-tight text-text-primary">{formatMoney(profile.walletBalance)}</h3>
-            <p className="mt-1.5 text-sm text-text-secondary">{labels.balanceHint}</p>
           </div>
         </div>
 
@@ -275,7 +271,6 @@ export function ProfileScreen() {
         <div className="flex items-start justify-between gap-3">
           <div>
             <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted">{t('recentActivity')}</p>
-            <h3 className="mt-2 text-lg font-semibold text-text-primary">{labels.recentActivityTitle}</h3>
           </div>
           <span className="app-pill">{supportHistory.length}</span>
         </div>
@@ -312,7 +307,6 @@ export function ProfileScreen() {
         <div className="flex items-start justify-between gap-3">
           <div>
             <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted">{t('leaderboardTitle')}</p>
-            <h3 className="mt-2 text-lg font-semibold text-text-primary">{labels.rankSummary}</h3>
           </div>
           <Link href="/leaderboard" className="app-pill">
             {t('openLeaderboard')}
