@@ -47,8 +47,8 @@ function DrawerLink({ item, currentPath, onClose }: { item: DrawerItem; currentP
       className={cn(
         'group flex items-center justify-between gap-3 rounded-[18px] border px-3 py-3 transition duration-200',
         isActive
-          ? 'border-black/[0.045] bg-[linear-gradient(180deg,rgba(255,255,255,0.86),rgba(247,249,252,0.94))] text-text-primary shadow-[0_10px_22px_rgba(15,23,42,0.05)] dark:border-white/[0.05] dark:bg-[linear-gradient(180deg,rgba(255,255,255,0.055),rgba(255,255,255,0.028))] dark:text-white dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]'
-          : 'border-transparent text-text-primary hover:border-black/[0.035] hover:bg-white/[0.62] dark:text-white/[0.92] dark:hover:border-white/[0.04] dark:hover:bg-white/[0.035]'
+          ? 'border-black/[0.045] bg-[linear-gradient(180deg,rgba(255,255,255,0.86),rgba(247,249,252,0.94))] text-text-primary shadow-[0_10px_22px_rgba(15,23,42,0.05)] dark:border-white/[0.05] dark:bg-[linear-gradient(180deg,rgba(255,124,65,0.10),rgba(255,255,255,0.035))] dark:text-white dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]'
+          : 'border-transparent text-text-primary hover:border-black/[0.035] hover:bg-white/[0.62] dark:text-white/[0.92] dark:hover:border-white/[0.04] dark:hover:bg-white/[0.045]'
       )}
     >
       <div className="min-w-0">
@@ -70,7 +70,7 @@ function DrawerLink({ item, currentPath, onClose }: { item: DrawerItem; currentP
         <span
           className={cn(
             'h-1.5 w-1.5 rounded-full transition',
-            isActive ? 'bg-accent-orange' : 'bg-transparent group-hover:bg-black/[0.16] dark:group-hover:bg-white/[0.16]'
+            isActive ? 'bg-accent-orange' : 'bg-transparent group-hover:bg-black/[0.16] dark:group-hover:bg-white/[0.14]'
           )}
         />
       </div>
@@ -238,8 +238,8 @@ export function SideMenuDrawer({ isOpen, currentPath, onClose }: SideMenuDrawerP
       )}
       aria-hidden={!isOpen}
     >
-      <div className="app-card flex h-full min-h-0 flex-col overflow-hidden rounded-[2rem] px-4 py-4 dark:border-white/[0.05] dark:bg-[linear-gradient(180deg,rgba(15,20,29,0.96),rgba(9,13,21,0.96))] dark:shadow-[0_22px_54px_rgba(0,0,0,0.42)]">
-        <div className="rounded-[1.45rem] border border-black/[0.045] bg-[linear-gradient(180deg,rgba(255,255,255,0.88),rgba(247,249,252,0.78))] px-3.5 py-3 shadow-[0_12px_28px_rgba(15,23,42,0.05)] backdrop-blur-xl dark:border-white/[0.05] dark:bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02))] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">
+      <div className="app-card flex h-full min-h-0 flex-col overflow-hidden rounded-[2rem] px-4 py-4 dark:border-white/[0.05] dark:bg-[linear-gradient(180deg,rgba(20,27,41,0.94),rgba(13,18,30,0.92))] dark:shadow-[0_18px_40px_rgba(2,6,23,0.30)]">
+        <div className="rounded-[1.45rem] border border-black/[0.045] bg-[linear-gradient(180deg,rgba(255,255,255,0.88),rgba(247,249,252,0.78))] px-3.5 py-3 shadow-[0_12px_28px_rgba(15,23,42,0.05)] backdrop-blur-xl dark:border-white/[0.05] dark:bg-[linear-gradient(180deg,rgba(255,255,255,0.055),rgba(255,255,255,0.028))] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">
           <div className="flex items-center gap-3">
             <div className="flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-[14px] border border-black/[0.04] bg-white text-[15px] font-semibold text-text-primary shadow-[0_6px_16px_rgba(15,23,42,0.06)] dark:border-white/[0.04] dark:bg-white/[0.06] dark:text-white dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">
               {avatarImage ? <img src={avatarImage} alt={displayName} className="h-full w-full object-cover" /> : avatarLetter}
@@ -282,7 +282,7 @@ export function SideMenuDrawer({ isOpen, currentPath, onClose }: SideMenuDrawerP
           </div>
 
           <div className="mt-3 space-y-2 border-t border-black/[0.045] pt-3 dark:border-white/[0.04]">
-            <div className="flex items-center justify-between gap-3 rounded-[16px] px-1.5 py-1.5 transition hover:bg-[rgba(247,249,252,0.7)] dark:hover:bg-white/[0.03]">
+            <div className="flex items-center justify-between gap-3 rounded-[16px] px-1.5 py-1.5 transition hover:bg-[rgba(247,249,252,0.7)] dark:hover:bg-white/[0.04]">
               <div className="min-w-0">
                 <p className="text-[11px] font-medium leading-none text-text-secondary dark:text-white/[0.48]">{t('language')}</p>
               </div>
@@ -291,7 +291,7 @@ export function SideMenuDrawer({ isOpen, currentPath, onClose }: SideMenuDrawerP
               </div>
             </div>
 
-            <div className="flex items-center justify-between gap-3 rounded-[16px] px-1.5 py-1.5 transition hover:bg-[rgba(247,249,252,0.7)] dark:hover:bg-white/[0.03]">
+            <div className="flex items-center justify-between gap-3 rounded-[16px] px-1.5 py-1.5 transition hover:bg-[rgba(247,249,252,0.7)] dark:hover:bg-white/[0.04]">
               <div className="min-w-0">
                 <p className="text-[11px] font-medium leading-none text-text-secondary dark:text-white/[0.48]">{t('theme')}</p>
               </div>

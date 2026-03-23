@@ -30,6 +30,14 @@ function ChevronIcon() {
   );
 }
 
+function SparkGlyph() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className="h-[1rem] w-[1rem]" fill="none" stroke="currentColor" strokeWidth="1.9">
+      <path d="M12 3.8 13.9 8l4.3 1.7-4.3 1.7-1.9 4.2-1.9-4.2-4.3-1.7L10.1 8 12 3.8Z" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 function ParticipantBadge({ participant }: { participant: SportEventParticipant }) {
   const visual = getParticipantVisual(participant);
 
@@ -101,6 +109,32 @@ function SectionHeader({ title, count }: { title: string; count: number }) {
       <span className="inline-flex min-w-[1.55rem] items-center justify-center rounded-full bg-black/[0.035] px-2 py-1 text-[0.68rem] font-semibold text-text-secondary dark:bg-white/[0.06]">
         {count}
       </span>
+    </div>
+  );
+}
+
+function EmptyFeedCard({
+  title,
+  description,
+  eyebrow
+}: {
+  title: string;
+  description: string;
+  eyebrow: string;
+}) {
+  return (
+    <div className="overflow-hidden rounded-[1.3rem] border border-black/[0.045] bg-[linear-gradient(180deg,rgba(255,255,255,0.84),rgba(247,249,252,0.74))] px-4 py-4 shadow-[0_12px_26px_rgba(15,23,42,0.05)] dark:border-white/8 dark:bg-[linear-gradient(180deg,rgba(255,255,255,0.055),rgba(255,255,255,0.028))] dark:shadow-[0_14px_28px_rgba(2,6,23,0.16)]">
+      <div className="flex items-start gap-3">
+        <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-[1rem] bg-[rgba(var(--accent-orange),0.08)] text-[rgb(var(--accent-orange))] dark:bg-[rgba(var(--accent-orange),0.14)]">
+          <SparkGlyph />
+        </span>
+
+        <div className="min-w-0">
+          <p className="text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-text-muted">{eyebrow}</p>
+          <p className="mt-2 text-[0.98rem] font-semibold text-text-primary">{title}</p>
+          <p className="mt-1.5 text-[0.84rem] leading-6 text-text-secondary">{description}</p>
+        </div>
+      </div>
     </div>
   );
 }
@@ -182,6 +216,7 @@ export function HomeScreen() {
     liveSection: isRussian ? 'В эфире' : 'Live',
     todaySection: isRussian ? 'Сегодня' : 'Today',
     openAllEvents: isRussian ? 'Смотреть всё расписание' : 'See full schedule',
+    openAllEventsHint: isRussian ? 'Все ближайшие эфиры и расписание дня' : 'All upcoming live events and the day schedule',
     searchPlaceholder: isRussian ? 'Событие, команда или турнир' : 'Event, team, or tournament',
     noLive: isRussian ? 'Сейчас в этой ленте нет прямых эфиров.' : 'There are no live events in this feed right now.',
     noToday: isRussian ? 'Сегодня в этой ленте пока нет ближайших событий.' : 'There are no nearby events in this feed for today yet.',
@@ -190,7 +225,9 @@ export function HomeScreen() {
     featuredCategory: isRussian ? 'Единоборства' : liveEvents[0].categoryLabel,
     featuredStage: isRussian ? 'Раунд 3/5' : liveEvents[0].stageLabel ?? '',
     featuredVenue: isRussian ? 'O2 Arena, Лондон' : liveEvents[0].venue,
-    featuredStatus: isRussian ? 'Главный эфир дня' : 'Featured live event'
+    featuredStatus: isRussian ? 'Главный эфир дня' : 'Featured live event',
+    featuredCtaHint: isRussian ? 'Поддержка, live-динамика и ход события в одном экране' : 'Support, live momentum, and match flow in one screen',
+    emptyEyebrow: isRussian ? 'Лента пуста' : 'Feed is clear'
   };
 
   useEffect(() => {
@@ -237,7 +274,7 @@ export function HomeScreen() {
   return (
     <MainPageLayout className="space-y-4 pt-2">
       <section className="app-card app-section-card overflow-hidden px-4 py-4">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,124,65,0.22),transparent_34%),radial-gradient(circle_at_bottom_left,rgba(74,144,226,0.14),transparent_36%),linear-gradient(180deg,rgba(255,255,255,0.18),rgba(255,255,255,0.04))]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,124,65,0.18),transparent_34%),radial-gradient(circle_at_bottom_left,rgba(74,144,226,0.10),transparent_38%),linear-gradient(180deg,rgba(255,255,255,0.14),rgba(255,255,255,0.03))]" />
 
         <div className="relative">
           <div className="flex items-start justify-between gap-3">
@@ -268,13 +305,25 @@ export function HomeScreen() {
             </div>
           </div>
 
-          <div className="mt-5">
+          <div className="mt-5 rounded-[1.28rem] border border-white/55 bg-[linear-gradient(180deg,rgba(255,255,255,0.48),rgba(255,255,255,0.26))] p-2.5 shadow-[0_12px_24px_rgba(15,23,42,0.06)] backdrop-blur-sm dark:border-white/8 dark:bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02))] dark:shadow-[0_16px_28px_rgba(2,6,23,0.18)]">
+            <div className="flex items-center justify-between gap-3 px-2 py-1">
+              <div className="min-w-0">
+                <p className="text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-text-muted">{labels.featuredStatus}</p>
+                <p className="mt-1 text-[0.82rem] leading-5 text-text-secondary">{labels.featuredCtaHint}</p>
+              </div>
+              <span className="shrink-0 rounded-full border border-white/70 bg-white/72 px-2.5 py-1 text-[0.76rem] font-semibold text-text-primary shadow-[0_6px_14px_rgba(255,255,255,0.30)] dark:border-white/10 dark:bg-white/[0.06] dark:text-white dark:shadow-none">
+                {liveEvents[0].timerLabel}
+              </span>
+            </div>
+
             <Link
               href="/live"
-              className="inline-flex min-h-[3.15rem] w-full items-center justify-center gap-2 rounded-[1.1rem] bg-white px-4 py-3 text-[0.95rem] font-semibold text-text-primary shadow-[0_14px_28px_rgba(15,23,42,0.10)] transition hover:bg-white/96 dark:bg-white/12 dark:text-white dark:shadow-none dark:hover:bg-white/16"
+              className="mt-2 inline-flex min-h-[3.15rem] w-full items-center justify-between rounded-[1.05rem] border border-white/70 bg-[linear-gradient(135deg,rgba(255,255,255,0.94),rgba(255,245,240,0.96))] px-4 py-3 text-[0.95rem] font-semibold text-text-primary shadow-[0_12px_24px_rgba(15,23,42,0.08)] transition hover:brightness-[1.01] dark:border-white/8 dark:bg-[linear-gradient(135deg,rgba(255,124,65,0.16),rgba(255,255,255,0.05))] dark:text-white dark:shadow-none dark:hover:bg-[linear-gradient(135deg,rgba(255,124,65,0.18),rgba(255,255,255,0.06))]"
             >
               <span>{labels.support}</span>
-              <ChevronIcon />
+              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[rgba(var(--accent-orange),0.08)] text-[rgb(var(--accent-orange))] dark:bg-white/12 dark:text-[rgb(var(--accent-orange))]">
+                <ChevronIcon />
+              </span>
             </Link>
           </div>
         </div>
@@ -312,9 +361,7 @@ export function HomeScreen() {
               ))}
             </div>
           ) : (
-            <div className="rounded-[1.3rem] border border-black/5 bg-white/68 px-4 py-5 text-[0.92rem] text-text-secondary shadow-[0_14px_32px_rgba(15,23,42,0.05)] dark:border-white/8 dark:bg-white/6 dark:shadow-none">
-              {labels.noLive}
-            </div>
+            <EmptyFeedCard title={labels.liveSection} description={labels.noLive} eyebrow={labels.emptyEyebrow} />
           )}
         </section>
 
@@ -327,18 +374,19 @@ export function HomeScreen() {
               ))}
             </div>
           ) : (
-            <div className="rounded-[1.3rem] border border-black/5 bg-white/68 px-4 py-5 text-[0.92rem] text-text-secondary shadow-[0_14px_32px_rgba(15,23,42,0.05)] dark:border-white/8 dark:bg-white/6 dark:shadow-none">
-              {labels.noToday}
-            </div>
+            <EmptyFeedCard title={labels.todaySection} description={labels.noToday} eyebrow={labels.emptyEyebrow} />
           )}
         </section>
 
         <Link
           href="/events"
-          className="flex items-center justify-between rounded-[1.3rem] border border-black/5 bg-white/72 px-4 py-3.5 text-[0.95rem] font-medium text-text-primary shadow-[0_12px_28px_rgba(15,23,42,0.05)] transition hover:bg-white dark:border-white/8 dark:bg-white/[0.04] dark:hover:bg-white/[0.06] dark:shadow-none"
+          className="group flex items-center justify-between rounded-[1.3rem] border border-black/[0.045] bg-[linear-gradient(180deg,rgba(255,255,255,0.78),rgba(247,249,252,0.72))] px-4 py-3.5 text-[0.95rem] text-text-primary shadow-[0_10px_22px_rgba(15,23,42,0.04)] transition hover:bg-white dark:border-white/8 dark:bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.03))] dark:hover:bg-white/[0.06] dark:shadow-[0_14px_26px_rgba(2,6,23,0.14)]"
         >
-          <span>{labels.openAllEvents}</span>
-          <span className="text-text-secondary">
+          <div className="min-w-0">
+            <p className="font-semibold">{labels.openAllEvents}</p>
+            <p className="mt-1 text-[0.78rem] font-medium text-text-secondary">{labels.openAllEventsHint}</p>
+          </div>
+          <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[rgba(var(--surface-muted),0.68)] text-text-secondary transition group-hover:text-text-primary dark:bg-white/[0.06]">
             <ChevronIcon />
           </span>
         </Link>

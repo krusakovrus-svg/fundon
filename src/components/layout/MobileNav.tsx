@@ -96,7 +96,7 @@ export function MobileNav() {
   return (
     <nav className="pointer-events-none fixed inset-x-0 bottom-0 z-40 flex justify-center px-4 pb-4 sm:pb-5">
       <div
-        className="pointer-events-auto w-full rounded-[28px] border border-white/65 bg-[color:var(--nav-surface)]/92 p-2 shadow-[0_18px_42px_rgba(15,23,42,0.16)] backdrop-blur-xl ring-1 ring-white/45 dark:border-white/10 dark:bg-[color:var(--nav-surface)]/88 dark:shadow-[0_24px_52px_rgba(2,6,23,0.52)] dark:ring-white/8"
+        className="pointer-events-auto w-full rounded-[28px] border border-black/[0.045] bg-[linear-gradient(180deg,rgba(255,255,255,0.86),rgba(247,249,252,0.78))] p-2 shadow-[0_14px_30px_rgba(15,23,42,0.10)] backdrop-blur-xl ring-1 ring-white/55 dark:border-white/8 dark:bg-[linear-gradient(180deg,rgba(21,28,42,0.82),rgba(13,19,31,0.78))] dark:shadow-[0_18px_34px_rgba(2,6,23,0.34)] dark:ring-white/6"
         style={{ maxWidth: "calc(var(--page-max-width) - (var(--page-padding-x) * 2))" }}
       >
         <div className="grid grid-cols-5 gap-1.5">
@@ -116,9 +116,7 @@ export function MobileNav() {
                 className={cn(
                   "group flex h-14 items-center justify-center rounded-[22px] transition-all duration-200",
                   isActive
-                    ? key === "home"
-                      ? "scale-[1.01] bg-[color:var(--nav-active-surface)] text-[color:var(--nav-active-text)] shadow-[0_12px_28px_rgba(255,87,34,0.22)] ring-1 ring-white/55 dark:shadow-[0_14px_30px_rgba(255,94,58,0.24)] dark:ring-white/10"
-                      : "bg-[color:var(--nav-active-surface)] text-[color:var(--nav-active-text)] shadow-[0_10px_24px_rgba(255,87,34,0.18)] dark:shadow-[0_14px_30px_rgba(255,94,58,0.2)]"
+                    ? "bg-[linear-gradient(180deg,rgba(255,122,63,0.12),rgba(255,255,255,0.82))] text-[rgb(var(--text-primary))] shadow-[0_10px_22px_rgba(255,124,65,0.12)] ring-1 ring-white/60 dark:bg-[linear-gradient(180deg,rgba(255,124,65,0.16),rgba(255,255,255,0.05))] dark:text-white dark:shadow-[0_12px_24px_rgba(255,124,65,0.12)] dark:ring-white/8"
                     : "text-[color:var(--text-secondary)] hover:bg-black/[0.04] hover:text-[color:var(--text-primary)] dark:hover:bg-white/[0.06] dark:hover:text-[color:var(--text-primary)]",
                 )}
               >
@@ -126,8 +124,8 @@ export function MobileNav() {
                   className={cn(
                     "flex h-10 w-10 items-center justify-center rounded-full transition-all duration-200",
                     isActive
-                      ? "bg-white/80 text-[color:var(--nav-active-icon)] shadow-[0_10px_22px_rgba(255,255,255,0.62)] dark:bg-white/12 dark:text-white dark:shadow-none"
-                      : "bg-transparent text-current group-hover:bg-white/75 group-hover:shadow-[0_8px_18px_rgba(255,255,255,0.45)] dark:group-hover:bg-white/10 dark:group-hover:shadow-none",
+                      ? "bg-white/78 text-[rgb(var(--accent-orange))] shadow-[0_8px_18px_rgba(255,255,255,0.48)] dark:bg-white/10 dark:text-[rgb(var(--accent-orange))] dark:shadow-none"
+                      : "bg-transparent text-current group-hover:bg-white/70 group-hover:shadow-[0_8px_18px_rgba(255,255,255,0.36)] dark:group-hover:bg-white/8 dark:group-hover:shadow-none",
                   )}
                 >
                   <Icon />
