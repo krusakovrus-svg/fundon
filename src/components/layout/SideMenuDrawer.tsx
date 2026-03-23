@@ -35,6 +35,14 @@ function getSportIdFromPath(path: string) {
   return path.replace('/sports/', '') || 'martial-arts';
 }
 
+function formatWalletBalance(value: number) {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    maximumFractionDigits: 0
+  }).format(value);
+}
+
 function DrawerLink({ item, currentPath, onClose }: { item: DrawerItem; currentPath: string; onClose: () => void }) {
   const isActive = item.matches(currentPath);
   const showBadge = item.badge !== undefined && item.badge !== 0 && item.badge !== '0';
@@ -44,28 +52,32 @@ function DrawerLink({ item, currentPath, onClose }: { item: DrawerItem; currentP
       href={item.href}
       onClick={onClose}
       className={cn(
-        'group flex items-center justify-between gap-3 rounded-[20px] px-3 py-3 transition duration-200 dark:text-white dark:hover:text-white',
+        'group flex items-center justify-between gap-3 rounded-[18px] border px-3 py-3 transition duration-200',
         isActive
-          ? 'bg-white/70 text-text-primary shadow-[0_10px_30px_rgba(15,23,42,0.08)] dark:border dark:border-white/[0.05] dark:bg-[linear-gradient(180deg,rgba(255,255,255,0.055),rgba(255,255,255,0.028))] dark:text-white dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]'
-          : 'text-text-primary hover:bg-white/40 dark:text-white/[0.92] dark:hover:bg-white/[0.035]'
+          ? 'border-black/[0.045] bg-[linear-gradient(180deg,rgba(255,255,255,0.86),rgba(247,249,252,0.94))] text-text-primary shadow-[0_10px_22px_rgba(15,23,42,0.05)] dark:border-white/[0.05] dark:bg-[linear-gradient(180deg,rgba(255,255,255,0.055),rgba(255,255,255,0.028))] dark:text-white dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]'
+          : 'border-transparent text-text-primary hover:border-black/[0.035] hover:bg-white/[0.62] dark:text-white/[0.92] dark:hover:border-white/[0.04] dark:hover:bg-white/[0.035]'
       )}
     >
       <div className="min-w-0">
-        <p className="truncate text-[14px] font-semibold leading-[1.15] tracking-tight dark:text-white/[0.94]">{item.label}</p>
+        <p className="truncate text-[14px] font-semibold leading-[1.15] tracking-tight text-text-primary dark:text-white/[0.94]">
+          {item.label}
+        </p>
         {item.subtitle ? (
           <p className="mt-1 truncate text-[11px] leading-[1.2] text-text-secondary/80 dark:text-white/[0.42]">{item.subtitle}</p>
         ) : null}
       </div>
+
       <div className="flex shrink-0 items-center gap-2">
         {showBadge ? (
-          <span className="inline-flex min-w-[1.6rem] items-center justify-center rounded-full border border-border/15 bg-white/55 px-1.5 py-0.5 text-[10px] font-medium text-text-secondary dark:border-white/[0.06] dark:bg-white/[0.045] dark:text-white/[0.62]">
+          <span className="inline-flex min-w-[1.55rem] items-center justify-center rounded-full border border-black/[0.045] bg-[rgba(247,249,252,0.92)] px-1.5 py-0.5 text-[10px] font-medium text-text-secondary dark:border-white/[0.06] dark:bg-white/[0.045] dark:text-white/[0.62]">
             {item.badge}
           </span>
         ) : null}
+
         <span
           className={cn(
             'h-1.5 w-1.5 rounded-full transition',
-            isActive ? 'bg-accent-orange/90' : 'bg-transparent group-hover:bg-border/40 dark:group-hover:bg-white/[0.16]'
+            isActive ? 'bg-accent-orange' : 'bg-transparent group-hover:bg-black/[0.16] dark:group-hover:bg-white/[0.16]'
           )}
         />
       </div>
@@ -136,8 +148,7 @@ export function SideMenuDrawer({ isOpen, currentPath, onClose }: SideMenuDrawerP
     };
   }, []);
 
-  const preferredSportPath = storedHomePath;
-  const currentSport = getSportById(getSportIdFromPath(preferredSportPath));
+  const currentSport = getSportById(getSportIdFromPath(storedHomePath));
   const currentSportLabel = currentSport ? (language === 'ru' ? currentSport.labelRu : currentSport.label) : '';
   const favoriteCount = favorites.length;
   const liveFavoriteCount = favorites.filter((event) => isSportEventLive(event)).length;
@@ -146,11 +157,11 @@ export function SideMenuDrawer({ isOpen, currentPath, onClose }: SideMenuDrawerP
   const compactSwitcherClass =
     'w-full justify-between rounded-[13px] bg-transparent p-[2px] [&_button]:min-h-[28px] [&_button]:rounded-[10px] [&_button]:px-2 [&_button]:py-1 [&_button]:text-[11px] [&_button]:leading-none';
 
-  const primaryItems = useMemo<DrawerItem[]>(
+  const mainItems = useMemo<DrawerItem[]>(
     () => [
       {
         href: '/home',
-        label: language === 'ru' ? 'Дом' : 'Home',
+        label: language === 'ru' ? 'Р”РѕРј' : 'Home',
         subtitle: currentSportLabel,
         matches: (path) => path === '/home' || path === '/'
       },
@@ -163,6 +174,17 @@ export function SideMenuDrawer({ isOpen, currentPath, onClose }: SideMenuDrawerP
         href: '/events',
         label: t('navEvents'),
         matches: (path) => path.startsWith('/events')
+      }
+    ],
+    [currentSportLabel, language, t]
+  );
+
+  const personalItems = useMemo<DrawerItem[]>(
+    () => [
+      {
+        href: '/profile',
+        label: t('navProfile'),
+        matches: (path) => path.startsWith('/profile')
       },
       {
         href: '/favorites',
@@ -177,16 +199,11 @@ export function SideMenuDrawer({ isOpen, currentPath, onClose }: SideMenuDrawerP
         matches: (path) => path.startsWith('/notifications')
       }
     ],
-    [currentSportLabel, favoriteCount, language, liveFavoriteCount, t]
+    [favoriteCount, liveFavoriteCount, t]
   );
 
-  const secondaryItems = useMemo<DrawerItem[]>(
+  const socialItems = useMemo<DrawerItem[]>(
     () => [
-      {
-        href: '/profile',
-        label: t('navProfile'),
-        matches: (path) => path.startsWith('/profile')
-      },
       {
         href: '/leaderboard',
         label: t('navLeaderboard'),
@@ -217,23 +234,24 @@ export function SideMenuDrawer({ isOpen, currentPath, onClose }: SideMenuDrawerP
       aria-hidden={!isOpen}
     >
       <div className="app-card flex h-full min-h-0 flex-col overflow-hidden rounded-[2rem] px-4 py-4 dark:border-white/[0.05] dark:bg-[linear-gradient(180deg,rgba(15,20,29,0.96),rgba(9,13,21,0.96))] dark:shadow-[0_22px_54px_rgba(0,0,0,0.42)]">
-        <div className="rounded-[1.5rem] border border-white/40 bg-white/55 px-3.5 py-3 shadow-[0_14px_34px_rgba(15,23,42,0.08)] backdrop-blur-xl dark:border-white/[0.05] dark:bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02))] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">
+        <div className="rounded-[1.45rem] border border-black/[0.045] bg-[linear-gradient(180deg,rgba(255,255,255,0.88),rgba(247,249,252,0.78))] px-3.5 py-3 shadow-[0_12px_28px_rgba(15,23,42,0.05)] backdrop-blur-xl dark:border-white/[0.05] dark:bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02))] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">
           <div className="flex items-center gap-3">
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-[14px] bg-white/75 text-[15px] font-semibold text-text-primary shadow-[0_6px_18px_rgba(15,23,42,0.08)] dark:bg-white/[0.06] dark:text-white dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">
-              {avatarImage ? (
-                <img src={avatarImage} alt={displayName} className="h-full w-full object-cover" />
-              ) : (
-                avatarLetter
-              )}
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-[14px] border border-black/[0.04] bg-white text-[15px] font-semibold text-text-primary shadow-[0_6px_16px_rgba(15,23,42,0.06)] dark:border-white/[0.04] dark:bg-white/[0.06] dark:text-white dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">
+              {avatarImage ? <img src={avatarImage} alt={displayName} className="h-full w-full object-cover" /> : avatarLetter}
             </div>
+
             <div className="min-w-0 flex-1">
               <p className="truncate text-[15px] font-semibold leading-tight text-text-primary dark:text-white/[0.94]">{displayName}</p>
               <div className="mt-1.5 flex flex-wrap gap-1.5 text-[10px] text-text-secondary dark:text-white/[0.52]">
-                <span className="inline-flex items-center rounded-full bg-white/70 px-2 py-0.5 font-medium dark:border dark:border-white/[0.04] dark:bg-white/[0.045]">#{mockData.profile.currentRank}</span>
-                <span className="inline-flex items-center rounded-full bg-white/70 px-2 py-0.5 font-medium dark:border dark:border-white/[0.04] dark:bg-white/[0.045]">
+                <span className="inline-flex items-center rounded-full border border-black/[0.035] bg-white/86 px-2 py-0.5 font-medium dark:border dark:border-white/[0.04] dark:bg-white/[0.045]">
+                  #{mockData.profile.currentRank}
+                </span>
+                <span className="inline-flex items-center rounded-full border border-black/[0.035] bg-white/86 px-2 py-0.5 font-medium dark:border dark:border-white/[0.04] dark:bg-white/[0.045]">
                   {mockData.profile.points} {t('points')}
                 </span>
-                <span className="inline-flex items-center rounded-full bg-white/70 px-2 py-0.5 font-medium dark:border dark:border-white/[0.04] dark:bg-white/[0.045]">${mockData.profile.walletBalance}</span>
+                <span className="inline-flex items-center rounded-full border border-black/[0.035] bg-white/86 px-2 py-0.5 font-medium dark:border dark:border-white/[0.04] dark:bg-white/[0.045]">
+                  {formatWalletBalance(mockData.profile.walletBalance)}
+                </span>
               </div>
             </div>
           </div>
@@ -241,19 +259,25 @@ export function SideMenuDrawer({ isOpen, currentPath, onClose }: SideMenuDrawerP
 
         <div className="mt-4 flex min-h-0 flex-1 flex-col overflow-y-auto pr-1">
           <div className="space-y-1">
-            {primaryItems.map((item) => (
+            {mainItems.map((item) => (
               <DrawerLink key={item.href} item={item} currentPath={currentPath} onClose={onClose} />
             ))}
           </div>
 
-          <div className="mt-3 space-y-1 border-t border-border/6 pt-3 dark:border-white/[0.04]">
-            {secondaryItems.map((item) => (
+          <div className="mt-3 space-y-1 border-t border-black/[0.045] pt-3 dark:border-white/[0.04]">
+            {personalItems.map((item) => (
               <DrawerLink key={item.href} item={item} currentPath={currentPath} onClose={onClose} />
             ))}
           </div>
 
-          <div className="mt-3 space-y-2 border-t border-border/6 pt-3 dark:border-white/[0.04]">
-            <div className="flex items-center justify-between gap-3 rounded-[16px] px-1.5 py-1.5 transition hover:bg-surface-subtle/50 dark:hover:bg-white/[0.03]">
+          <div className="mt-3 space-y-1 border-t border-black/[0.045] pt-3 dark:border-white/[0.04]">
+            {socialItems.map((item) => (
+              <DrawerLink key={item.href} item={item} currentPath={currentPath} onClose={onClose} />
+            ))}
+          </div>
+
+          <div className="mt-3 space-y-2 border-t border-black/[0.045] pt-3 dark:border-white/[0.04]">
+            <div className="flex items-center justify-between gap-3 rounded-[16px] px-1.5 py-1.5 transition hover:bg-[rgba(247,249,252,0.7)] dark:hover:bg-white/[0.03]">
               <div className="min-w-0">
                 <p className="text-[11px] font-medium leading-none text-text-secondary dark:text-white/[0.48]">{t('language')}</p>
               </div>
@@ -262,7 +286,7 @@ export function SideMenuDrawer({ isOpen, currentPath, onClose }: SideMenuDrawerP
               </div>
             </div>
 
-            <div className="flex items-center justify-between gap-3 rounded-[16px] px-1.5 py-1.5 transition hover:bg-surface-subtle/50 dark:hover:bg-white/[0.03]">
+            <div className="flex items-center justify-between gap-3 rounded-[16px] px-1.5 py-1.5 transition hover:bg-[rgba(247,249,252,0.7)] dark:hover:bg-white/[0.03]">
               <div className="min-w-0">
                 <p className="text-[11px] font-medium leading-none text-text-secondary dark:text-white/[0.48]">{t('theme')}</p>
               </div>
