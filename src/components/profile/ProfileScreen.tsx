@@ -9,12 +9,57 @@ import { useFavorites } from '@/components/providers/FavoritesProvider';
 import { useLanguage } from '@/components/providers/LanguageProvider';
 import { PageHeader } from '@/components/ui/PageHeader';
 import { SectionCard } from '@/components/ui/SectionCard';
-import { liveEvents } from '@/data/liveEvents';
 import { mockData } from '@/data/mock';
 import { isSportEventLive } from '@/data/sportEvents';
 import { getStoredProfileAvatar, setStoredProfileAvatar } from '@/lib/profileAvatar';
 
-function formatHistoryTimestamp(iso: string, language: 'ru' | 'en') {
+function BellIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-[1.05rem] w-[1.05rem]" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <path d="M15 17h5l-1.4-1.6a2.2 2.2 0 0 1-.6-1.5V11a6 6 0 1 0-12 0v2.9c0 .6-.2 1.1-.6 1.5L4 17h5" />
+      <path d="M10 19a2 2 0 0 0 4 0" />
+    </svg>
+  );
+}
+
+function CameraIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-[0.95rem] w-[0.95rem]" fill="none" stroke="currentColor" strokeWidth="1.9">
+      <path d="M8 6.5 9.4 5h5.2L16 6.5h1.9A2.1 2.1 0 0 1 20 8.6v7.8a2.1 2.1 0 0 1-2.1 2.1H6.1A2.1 2.1 0 0 1 4 16.4V8.6a2.1 2.1 0 0 1 2.1-2.1H8Z" />
+      <circle cx="12" cy="12.5" r="3.3" />
+    </svg>
+  );
+}
+
+function ChevronIcon() {
+  return (
+    <svg viewBox="0 0 20 20" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <path d="m7 4 6 6-6 6" />
+    </svg>
+  );
+}
+
+function StarIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-[0.95rem] w-[0.95rem]" fill="currentColor">
+      <path d="m12 2.8 2.7 5.5 6.1.9-4.4 4.3 1 6.1L12 16.8l-5.4 2.8 1-6.1L3.2 9.2l6.1-.9L12 2.8Z" />
+    </svg>
+  );
+}
+
+function HeartIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-[0.95rem] w-[0.95rem]" fill="currentColor">
+      <path d="M12 20.4 4.9 13.8A4.8 4.8 0 0 1 12 7.4a4.8 4.8 0 0 1 7.1 6.4L12 20.4Z" />
+    </svg>
+  );
+}
+
+function formatMoney(value: number) {
+  return `$${value.toLocaleString('en-US')}`;
+}
+
+function formatTimestamp(iso: string, language: 'ru' | 'en') {
   return new Intl.DateTimeFormat(language === 'ru' ? 'ru-RU' : 'en-GB', {
     day: 'numeric',
     month: 'short',
@@ -24,6 +69,33 @@ function formatHistoryTimestamp(iso: string, language: 'ru' | 'en') {
   }).format(new Date(iso));
 }
 
+function getRussianProfileName(value: string) {
+  return value === 'Р’С‹' ? 'Вы' : value;
+}
+
+function getRussianHistoryCopy(itemId: string, eventTitleRu: string, participantRu: string) {
+  const corrected: Record<string, { eventTitleRu: string; participantRu: string }> = {
+    profile_support_001: {
+      eventTitleRu: 'Вечер боя в Лондоне',
+      participantRu: 'Мерфи'
+    },
+    profile_support_002: {
+      eventTitleRu: 'UPVL. Лига Наций',
+      participantRu: 'Бельгия (Pro)'
+    },
+    profile_support_004: {
+      eventTitleRu: 'Вечер боя в Лондоне',
+      participantRu: 'Мерфи'
+    },
+    profile_support_005: {
+      eventTitleRu: 'UPVL. Лига Наций',
+      participantRu: 'Франция (Pro)'
+    }
+  };
+
+  return corrected[itemId] ?? { eventTitleRu, participantRu };
+}
+
 export function ProfileScreen() {
   const { favorites } = useFavorites();
   const { language, t } = useLanguage();
@@ -31,32 +103,33 @@ export function ProfileScreen() {
   const supportHistory = mockData.profileSupportHistory;
   const avatarInputRef = useRef<HTMLInputElement>(null);
   const [avatarImage, setAvatarImage] = useState<string | null>(null);
-  const displayName = language === 'ru' ? profile.displayNameRu : profile.displayName;
-  const currentLiveEvent = liveEvents.find((event) => event.id === profile.currentLiveEventId) ?? liveEvents[0];
-  const selectedParticipant =
-    currentLiveEvent?.participants.find((participant) => participant.id === profile.selectedParticipantId) ?? null;
-  const selectedSide = selectedParticipant
-    ? language === 'ru'
-      ? selectedParticipant.teamLabelRu
-      : selectedParticipant.teamLabel
-    : language === 'ru'
-      ? profile.selectedParticipantRu
-      : profile.selectedParticipant;
+  const isRussian = language === 'ru';
+  const displayName = isRussian ? getRussianProfileName(profile.displayNameRu) : profile.displayName;
   const liveFavoriteCount = favorites.filter((event) => isSportEventLive(event)).length;
-  const topThreeEntry = mockData.leaderboard[mockData.leaderboard.length - 1];
-  const topThreeThreshold = topThreeEntry ? topThreeEntry.points : profile.points;
-  const heroBadgeText = `${profile.points} ${t('points')}`;
-  const heroStreakText = `${profile.streak} ${t('streak')}`;
+  const thirdPlacePoints = mockData.leaderboard[mockData.leaderboard.length - 1]?.points ?? profile.points;
+  const pointsToTopThree = Math.max(thirdPlacePoints - profile.points, 0);
   const avatarLetter = displayName.slice(0, 1).toUpperCase();
-  const avatarPickerLabel = language === 'ru' ? 'Выбрать аватар' : 'Choose avatar';
-  const avatarActions = {
-    topUp: language === 'ru' ? 'Пополнить' : 'Top up',
-    withdraw: language === 'ru' ? 'Вывести' : 'Withdraw'
-  };
-  const metricLabels = {
-    support: language === 'ru' ? 'Поддержка' : 'Support',
-    xp: language === 'ru' ? 'Очки опыта' : t('xp'),
-    streak: language === 'ru' ? 'Серия' : 'Streak'
+
+  const labels = {
+    activeSupporter: isRussian ? 'Активный фанат' : 'Active fan',
+    rank: isRussian ? 'Место' : 'Rank',
+    points: isRussian ? 'Очков' : 'Points',
+    streak: isRussian ? 'Серия' : 'Streak',
+    support: isRussian ? 'Поддержка' : 'Support',
+    xp: isRussian ? 'Очки опыта' : 'XP',
+    balanceHint: isRussian ? 'Готово для поддержки в один тап' : 'Ready for one-tap support',
+    topUp: isRussian ? 'Пополнить' : 'Top up',
+    withdraw: isRussian ? 'Вывести' : 'Withdraw',
+    recentActivityTitle: isRussian ? 'Последние действия' : 'Recent activity',
+    activityAction: isRussian ? 'Поддержка' : 'Supported',
+    rankSummary: isRussian ? 'Место в рейтинге' : 'Rating',
+    toTopThree: isRussian ? 'До топ-3' : 'To top 3',
+    favorites: isRussian ? 'Избранное' : 'Favorites',
+    notifications: isRussian ? 'Уведомления' : 'Notifications',
+    savedEvents: isRussian ? 'Сохранённые события' : 'Saved events',
+    liveNow: isRussian ? 'Сейчас в эфире' : 'Live now',
+    avatarPicker: isRussian ? 'Выбрать аватар' : 'Choose avatar',
+    goToNotifications: isRussian ? 'Открыть уведомления' : 'Open notifications'
   };
 
   useEffect(() => {
@@ -72,7 +145,6 @@ export function ProfileScreen() {
 
   const handleAvatarChange = (event: ChangeEvent<HTMLInputElement>) => {
     const selectedFile = event.target.files?.[0];
-
     if (!selectedFile || !selectedFile.type.startsWith('image/')) {
       event.target.value = '';
       return;
@@ -91,195 +163,156 @@ export function ProfileScreen() {
 
   return (
     <MainPageLayout className="space-y-4">
-      <PageHeader title={t('profileTitle')} description={t('profileHint')} />
+      <PageHeader
+        title={t('profileTitle')}
+        actions={
+          <Link
+            href="/notifications"
+            aria-label={labels.goToNotifications}
+            className="inline-flex h-11 w-11 items-center justify-center rounded-[1.05rem] border border-border-subtle bg-white/70 text-text-primary transition hover:bg-white/90 dark:bg-white/8 dark:text-white dark:hover:bg-white/12"
+          >
+            <BellIcon />
+          </Link>
+        }
+      />
 
-      <SectionCard className="overflow-hidden border border-white/35 bg-white/60 px-4 py-4 shadow-[0_18px_42px_rgba(15,23,42,0.10)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
-        <input
-          ref={avatarInputRef}
-          type="file"
-          accept="image/*"
-          className="sr-only"
-          onChange={handleAvatarChange}
-        />
-        <div className="flex items-center gap-4">
-          <div className="relative flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-[18px] bg-white/75 text-[1.3rem] font-semibold text-text-primary shadow-[0_8px_20px_rgba(15,23,42,0.08)] dark:bg-white/10 dark:text-white dark:shadow-none">
-            {avatarImage ? (
-              <img src={avatarImage} alt={displayName} className="h-full w-full object-cover" />
-            ) : (
-              avatarLetter
-            )}
+      <SectionCard className="border border-white/35 bg-white/65 px-4 py-4 shadow-[0_18px_42px_rgba(15,23,42,0.09)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
+        <input ref={avatarInputRef} type="file" accept="image/*" className="sr-only" onChange={handleAvatarChange} />
+
+        <div className="flex items-start gap-4">
+          <div className="relative shrink-0">
+            <div className="flex h-[5.5rem] w-[5.5rem] items-center justify-center overflow-hidden rounded-[1.65rem] border border-white/75 bg-white text-[1.95rem] font-semibold text-text-primary shadow-[0_14px_34px_rgba(15,23,42,0.10)] dark:border-white/10 dark:bg-white/8 dark:text-white dark:shadow-none">
+              {avatarImage ? (
+                <img src={avatarImage} alt={displayName} className="h-full w-full object-cover" />
+              ) : (
+                avatarLetter
+              )}
+            </div>
             <button
               type="button"
-              aria-label={avatarPickerLabel}
-              title={avatarPickerLabel}
               onClick={handleAvatarButtonClick}
-              className="absolute -bottom-1 -right-1 inline-flex h-7 w-7 items-center justify-center rounded-full border border-white/85 bg-white text-base font-semibold text-text-primary shadow-[0_10px_20px_rgba(15,23,42,0.12)] transition hover:bg-white/90 dark:border-white/12 dark:bg-[#1B1D24] dark:text-white dark:shadow-none"
+              aria-label={labels.avatarPicker}
+              title={labels.avatarPicker}
+              className="absolute -bottom-1 -right-1 inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/90 bg-[rgb(var(--accent-orange))] text-white shadow-[0_12px_24px_rgba(255,116,55,0.24)] transition hover:brightness-105"
             >
-              +
+              <CameraIcon />
             </button>
           </div>
+
           <div className="min-w-0 flex-1">
             <div className="flex items-start justify-between gap-3">
               <div className="min-w-0">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted">{t('you')}</p>
-                <h2 className="mt-1.5 truncate text-[1.7rem] font-semibold tracking-tight text-text-primary">
-                  {displayName}
-                </h2>
+                <h2 className="mt-1.5 truncate text-[1.7rem] font-semibold tracking-tight text-text-primary">{displayName}</h2>
               </div>
-              <span className="inline-flex shrink-0 items-center rounded-full border border-white/45 bg-white/70 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-text-secondary dark:border-white/8 dark:bg-white/8">#{profile.currentRank}</span>
+              <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-[rgba(var(--accent-orange),0.18)] bg-[rgba(var(--accent-orange),0.10)] px-3 py-1.5 text-[11px] font-semibold text-text-primary">
+                <StarIcon />
+                {labels.activeSupporter}
+              </span>
             </div>
-            <div className="mt-3 flex flex-wrap gap-2 text-xs text-text-secondary">
-              <span className="inline-flex items-center rounded-full bg-white/70 px-2.5 py-1 font-medium dark:bg-white/8">{heroBadgeText}</span>
-              <span className="inline-flex items-center rounded-full bg-white/70 px-2.5 py-1 font-medium dark:bg-white/8">{heroStreakText}</span>
+
+            <div className="mt-4 grid grid-cols-3 gap-0 overflow-hidden rounded-[1.15rem] border border-border-subtle bg-[rgba(var(--surface-muted),0.78)] dark:bg-white/6">
+              <div className="px-3 py-3 text-center">
+                <p className="text-[11px] font-medium text-text-muted">{labels.rank}</p>
+                <p className="mt-1.5 text-base font-semibold text-text-primary">#{profile.currentRank}</p>
+              </div>
+              <div className="border-x border-border-subtle px-3 py-3 text-center">
+                <p className="text-[11px] font-medium text-text-muted">{labels.points}</p>
+                <p className="mt-1.5 text-base font-semibold text-text-primary">{profile.points}</p>
+              </div>
+              <div className="px-3 py-3 text-center">
+                <p className="text-[11px] font-medium text-text-muted">{labels.streak}</p>
+                <p className="mt-1.5 text-base font-semibold text-text-primary">{profile.streak}</p>
+              </div>
             </div>
           </div>
         </div>
       </SectionCard>
 
-      {currentLiveEvent ? (
-        <SectionCard className="border border-white/35 bg-white/60 px-4 py-4 shadow-[0_18px_42px_rgba(15,23,42,0.10)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
-          <div className="flex items-start justify-between gap-3">
-            <div className="min-w-0">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted">{t('liveEvent')}</p>
-              <h3 className="mt-2 text-[1.1rem] font-semibold text-text-primary">
-                {language === 'ru' ? currentLiveEvent.headlineRu : currentLiveEvent.headline}
-              </h3>
-              <p className="mt-2 text-sm text-text-secondary/90">
-                {language === 'ru' ? currentLiveEvent.categoryLabelRu : currentLiveEvent.categoryLabel}
-                {' · '}
-                {language === 'ru' ? currentLiveEvent.stageLabelRu : currentLiveEvent.stageLabel}
-                {currentLiveEvent.timerLabel ? ` · ${currentLiveEvent.timerLabel}` : ''}
-              </p>
-            </div>
-            <span className="inline-flex shrink-0 items-center rounded-full border border-accent-orange/20 bg-accent-orange/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-accent-orange">{t('liveStatus')}</span>
-          </div>
-
-          <div className="mt-4 grid grid-cols-2 gap-3">
-            <div className="rounded-[1.1rem] border border-white/45 bg-white/60 px-3 py-3 dark:border-white/8 dark:bg-white/6">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted">{t('selectedTeam')}</p>
-              <p className="mt-2 text-sm font-medium text-text-primary">{selectedSide}</p>
-            </div>
-            <div className="rounded-[1.1rem] border border-white/45 bg-white/60 px-3 py-3 dark:border-white/8 dark:bg-white/6">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted">{t('supportSummary')}</p>
-              <p className="mt-2 text-sm font-medium text-text-primary">${profile.lastSupportAmount}</p>
-            </div>
-          </div>
-
-          <div className="mt-4 flex items-center justify-between gap-3 text-sm text-text-secondary/90">
-            <span>{language === 'ru' ? currentLiveEvent.venueRu : currentLiveEvent.venue}</span>
-            <Link href="/live" className="app-pill">
-              {t('openLiveEvent')}
-            </Link>
-          </div>
-        </SectionCard>
-      ) : null}
-
-      <SectionCard className="border border-white/35 bg-white/55 px-4 py-4 shadow-[0_16px_34px_rgba(15,23,42,0.08)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
-        <div className="flex items-center justify-between gap-4">
-          <div className="min-w-0">
+      <SectionCard className="border border-white/35 bg-white/68 px-4 py-4 shadow-[0_18px_42px_rgba(15,23,42,0.09)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
+        <div className="flex items-start justify-between gap-3">
+          <div>
             <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted">{t('balanceLabel')}</p>
-            <p className="mt-2 text-[1.65rem] font-semibold tracking-tight text-text-primary">${profile.walletBalance}</p>
+            <h3 className="mt-2 text-[2rem] font-semibold tracking-tight text-text-primary">{formatMoney(profile.walletBalance)}</h3>
+            <p className="mt-1.5 text-sm text-text-secondary">{labels.balanceHint}</p>
           </div>
-          <div className="flex min-w-[116px] flex-col gap-2">
-            <button
-              type="button"
-              className="inline-flex items-center justify-center rounded-[14px] border border-border-subtle bg-white px-3 py-2 text-sm font-semibold text-text-primary transition hover:bg-white/90 dark:bg-white/10 dark:text-white dark:hover:bg-white/14"
-            >
-              {avatarActions.topUp}
-            </button>
-            <button
-              type="button"
-              className="inline-flex items-center justify-center rounded-[14px] border border-border-subtle bg-surface-subtle px-3 py-2 text-sm font-semibold text-text-primary transition hover:bg-white/70 dark:hover:bg-white/10"
-            >
-              {avatarActions.withdraw}
-            </button>
+        </div>
+
+        <div className="mt-4 flex flex-col gap-2.5">
+          <button
+            type="button"
+            className="inline-flex w-full items-center justify-center rounded-[1.15rem] bg-[linear-gradient(180deg,rgba(255,136,83,1),rgba(255,108,54,1))] px-4 py-3.5 text-[0.95rem] font-semibold text-white shadow-[0_18px_28px_rgba(255,116,55,0.22)] transition hover:brightness-105"
+          >
+            {labels.topUp}
+          </button>
+          <button
+            type="button"
+            className="inline-flex w-full items-center justify-center rounded-[1.05rem] border border-border-subtle bg-[rgba(var(--surface-muted),0.82)] px-4 py-3 text-sm font-semibold text-text-primary transition hover:bg-[rgba(var(--surface-muted),0.95)] dark:bg-white/7 dark:text-white dark:hover:bg-white/10"
+          >
+            {labels.withdraw}
+          </button>
+        </div>
+      </SectionCard>
+
+      <SectionCard className="border border-white/35 bg-white/62 px-2 py-2 shadow-[0_16px_34px_rgba(15,23,42,0.08)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
+        <div className="grid grid-cols-3 overflow-hidden rounded-[1.1rem]">
+          <div className="px-3 py-3 text-center">
+            <p className="text-[11px] font-medium text-text-muted">{labels.support}</p>
+            <p className="mt-2 text-[1.3rem] font-semibold tracking-tight text-text-primary">{formatMoney(profile.totalSupport)}</p>
+          </div>
+          <div className="border-x border-border-subtle px-3 py-3 text-center">
+            <p className="text-[11px] font-medium text-text-muted">{labels.xp}</p>
+            <p className="mt-2 text-[1.3rem] font-semibold tracking-tight text-text-primary">{profile.xp}</p>
+          </div>
+          <div className="px-3 py-3 text-center">
+            <p className="text-[11px] font-medium text-text-muted">{labels.streak}</p>
+            <p className="mt-2 text-[1.3rem] font-semibold tracking-tight text-text-primary">{profile.streak}</p>
           </div>
         </div>
       </SectionCard>
 
-      <div className="grid grid-cols-3 gap-3">
-        <SectionCard className="flex min-h-[88px] items-center justify-center border border-white/35 bg-white/55 px-3 py-3 text-center shadow-[0_16px_34px_rgba(15,23,42,0.08)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
-          <div>
-            <p className="text-[11px] font-medium leading-tight text-text-muted">{metricLabels.support}</p>
-            <p className="mt-2 text-[1.25rem] font-semibold tracking-tight text-text-primary">${profile.totalSupport}</p>
-          </div>
-        </SectionCard>
-        <SectionCard className="flex min-h-[88px] items-center justify-center border border-white/35 bg-white/55 px-3 py-3 text-center shadow-[0_16px_34px_rgba(15,23,42,0.08)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
-          <div>
-            <p className="text-[11px] font-medium leading-tight text-text-muted">{metricLabels.xp}</p>
-            <p className="mt-2 text-[1.25rem] font-semibold tracking-tight text-text-primary">{profile.xp}</p>
-          </div>
-        </SectionCard>
-        <SectionCard className="flex min-h-[88px] items-center justify-center border border-white/35 bg-white/55 px-3 py-3 text-center shadow-[0_16px_34px_rgba(15,23,42,0.08)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
-          <div>
-            <p className="text-[11px] font-medium leading-tight text-text-muted">{metricLabels.streak}</p>
-            <p className="mt-2 text-[1.25rem] font-semibold tracking-tight text-text-primary">{profile.streak}</p>
-          </div>
-        </SectionCard>
-      </div>
-
-      <div className="grid grid-cols-2 gap-3">
-        <Link href="/favorites" className="block">
-          <SectionCard className="h-full px-4 py-4">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted">{t('favoritesTitle')}</p>
-            <p className="mt-3 text-[1.6rem] font-semibold tracking-tight text-text-primary">{favorites.length}</p>
-            <p className="mt-1 text-sm text-text-secondary">{t('allEvents')}</p>
-          </SectionCard>
-        </Link>
-        <Link href="/notifications" className="block">
-          <SectionCard className="h-full px-4 py-4">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted">{t('notificationsTitle')}</p>
-            <p className="mt-3 text-[1.6rem] font-semibold tracking-tight text-text-primary">{liveFavoriteCount}</p>
-            <p className="mt-1 text-sm text-text-secondary">{t('liveNow')}</p>
-          </SectionCard>
-        </Link>
-      </div>
-
-      <SectionCard className="px-4 py-4">
+      <SectionCard className="border border-white/35 bg-white/62 px-4 py-4 shadow-[0_16px_34px_rgba(15,23,42,0.08)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
         <div className="flex items-start justify-between gap-3">
           <div>
             <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted">{t('recentActivity')}</p>
-            <h3 className="mt-2 text-lg font-semibold text-text-primary">{t('supportSummary')}</h3>
+            <h3 className="mt-2 text-lg font-semibold text-text-primary">{labels.recentActivityTitle}</h3>
           </div>
           <span className="app-pill">{supportHistory.length}</span>
         </div>
 
-        <div className="mt-4 space-y-3">
+        <div className="mt-4 divide-y divide-border-subtle overflow-hidden rounded-[1.15rem] border border-border-subtle bg-[rgba(var(--surface-muted),0.82)] dark:bg-white/5">
           {supportHistory.length ? (
-            supportHistory.map((item) => (
-              <div
-                key={item.id}
-                className="rounded-[18px] border border-border-subtle bg-surface-subtle px-3 py-3"
-              >
-                <div className="flex items-start justify-between gap-3">
+            supportHistory.map((item) => {
+              const correctedRussianCopy = getRussianHistoryCopy(item.id, item.eventTitleRu, item.participantRu);
+              const participant = isRussian ? correctedRussianCopy.participantRu : item.participant;
+              const eventTitle = isRussian ? correctedRussianCopy.eventTitleRu : item.eventTitle;
+
+              return (
+                <div key={item.id} className="flex items-start justify-between gap-3 px-3.5 py-3.5">
                   <div className="min-w-0">
-                    <p className="text-sm font-semibold text-text-primary">
-                      {language === 'ru' ? item.participantRu : item.participant}
-                    </p>
-                    <p className="mt-1 truncate text-sm text-text-secondary">
-                      {language === 'ru' ? item.eventTitleRu : item.eventTitle}
+                    <p className="truncate text-[12px] font-medium text-text-muted">{eventTitle}</p>
+                    <p className="mt-1.5 truncate text-sm font-semibold text-text-primary">
+                      {labels.activityAction}: {participant}
                     </p>
                   </div>
-                  <p className="shrink-0 text-sm font-semibold text-accent">${item.amount}</p>
+                  <div className="shrink-0 text-right">
+                    <p className="text-sm font-semibold text-text-primary">{formatMoney(item.amount)}</p>
+                    <p className="mt-1 text-[12px] text-text-muted">{formatTimestamp(item.createdAt, language)}</p>
+                  </div>
                 </div>
-                <p className="mt-2 text-xs text-text-muted">
-                  {formatHistoryTimestamp(item.createdAt, language)}
-                </p>
-              </div>
-            ))
+              );
+            })
           ) : (
-            <p className="text-sm text-text-secondary">{t('comingSoon')}</p>
+            <div className="px-3.5 py-4 text-sm text-text-secondary">{t('comingSoon')}</div>
           )}
         </div>
       </SectionCard>
 
-      <SectionCard className="px-4 py-4">
+      <SectionCard className="border border-white/35 bg-white/62 px-4 py-4 shadow-[0_16px_34px_rgba(15,23,42,0.08)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
         <div className="flex items-start justify-between gap-3">
           <div>
             <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted">{t('leaderboardTitle')}</p>
-            <h3 className="mt-2 text-lg font-semibold text-text-primary">
-              #{profile.currentRank} · {profile.points} {t('points')}
-            </h3>
+            <h3 className="mt-2 text-lg font-semibold text-text-primary">{labels.rankSummary}</h3>
           </div>
           <Link href="/leaderboard" className="app-pill">
             {t('openLeaderboard')}
@@ -287,15 +320,55 @@ export function ProfileScreen() {
         </div>
 
         <div className="mt-4 grid grid-cols-2 gap-3">
-          <div className="rounded-[18px] border border-border-subtle bg-surface-subtle px-3 py-3">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted">{t('currentRank')}</p>
-            <p className="mt-2 text-base font-semibold text-text-primary">#{profile.currentRank}</p>
+          <div className="rounded-[1.15rem] border border-border-subtle bg-[rgba(var(--surface-muted),0.82)] px-3.5 py-3.5 dark:bg-white/5">
+            <p className="text-[11px] font-medium text-text-muted">{t('currentRank')}</p>
+            <p className="mt-2 text-[1.45rem] font-semibold tracking-tight text-text-primary">#{profile.currentRank}</p>
           </div>
-          <div className="rounded-[18px] border border-border-subtle bg-surface-subtle px-3 py-3">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted">{t('topThree')}</p>
-            <p className="mt-2 text-base font-semibold text-text-primary">{topThreeThreshold} {t('points')}</p>
+          <div className="rounded-[1.15rem] border border-border-subtle bg-[rgba(var(--surface-muted),0.82)] px-3.5 py-3.5 dark:bg-white/5">
+            <p className="text-[11px] font-medium text-text-muted">{labels.toTopThree}</p>
+            <p className="mt-2 text-[1.45rem] font-semibold tracking-tight text-text-primary">{pointsToTopThree}</p>
           </div>
         </div>
+      </SectionCard>
+
+      <SectionCard className="border border-white/35 bg-white/62 px-4 py-2 shadow-[0_16px_34px_rgba(15,23,42,0.08)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
+        <Link href="/favorites" className="flex items-center justify-between gap-3 py-3">
+          <div className="flex items-center gap-3">
+            <span className="inline-flex h-10 w-10 items-center justify-center rounded-[1rem] bg-[rgba(var(--accent-orange),0.10)] text-[rgb(var(--accent-orange))]">
+              <HeartIcon />
+            </span>
+            <div>
+              <p className="text-sm font-semibold text-text-primary">{labels.favorites}</p>
+              <p className="text-[12px] text-text-muted">{labels.savedEvents}</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-2 text-text-muted">
+            <span className="rounded-full bg-[rgba(var(--surface-muted),0.92)] px-2.5 py-1 text-[12px] font-semibold text-text-primary dark:bg-white/8 dark:text-white">
+              {favorites.length}
+            </span>
+            <ChevronIcon />
+          </div>
+        </Link>
+
+        <div className="border-t border-border-subtle" />
+
+        <Link href="/notifications" className="flex items-center justify-between gap-3 py-3">
+          <div className="flex items-center gap-3">
+            <span className="inline-flex h-10 w-10 items-center justify-center rounded-[1rem] bg-[rgba(var(--accent-blue),0.10)] text-[rgb(var(--accent-blue))]">
+              <BellIcon />
+            </span>
+            <div>
+              <p className="text-sm font-semibold text-text-primary">{labels.notifications}</p>
+              <p className="text-[12px] text-text-muted">{labels.liveNow}</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-2 text-text-muted">
+            <span className="rounded-full bg-[rgba(var(--surface-muted),0.92)] px-2.5 py-1 text-[12px] font-semibold text-text-primary dark:bg-white/8 dark:text-white">
+              {liveFavoriteCount}
+            </span>
+            <ChevronIcon />
+          </div>
+        </Link>
       </SectionCard>
     </MainPageLayout>
   );
