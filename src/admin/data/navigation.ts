@@ -17,7 +17,7 @@ export interface AdminPageMeta {
 export const adminNavItems: AdminNavItem[] = [
   { id: 'dashboard', label: 'Дашборд', section: 'main', href: '/admin' },
   { id: 'users', label: 'Пользователи', section: 'main', href: '/admin/users' },
-  { id: 'athletes', label: 'Спортсмены', section: 'main' },
+  { id: 'athletes', label: 'Спортсмены', section: 'main', href: '/admin/athletes' },
   { id: 'events', label: 'События', section: 'main', href: '/admin/events' },
   { id: 'donations', label: 'Донаты', section: 'main', href: '/admin/donations' },
   { id: 'rooms', label: 'Комнаты', section: 'community' },
@@ -53,6 +53,16 @@ export function getAdminPageMeta(pathname: string): AdminPageMeta {
       searchPlaceholder: 'Поиск по имени, email, телефону и никнейму',
       periodLabel: 'Последние 30 дней',
       primaryActionLabel: 'Добавить пользователя'
+    };
+  }
+
+  if (pathname.startsWith('/admin/athletes')) {
+    return {
+      title: 'Спортсмены',
+      description: 'Управление спортсменами, командами, эфирными статусами и поддержкой',
+      searchPlaceholder: 'Поиск по имени, команде, стране и виду спорта',
+      periodLabel: 'Последние 30 дней',
+      primaryActionLabel: 'Добавить спортсмена'
     };
   }
 
