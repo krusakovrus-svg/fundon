@@ -105,7 +105,7 @@ export function MobileNav() {
               key === "home"
                 ? pathname === "/home" || pathname === "/"
                 : key === "search"
-                  ? pathname === "/sports"
+                  ? pathname === "/sports" || pathname?.startsWith("/sports/")
                   : pathname === href || pathname.startsWith(`${href}/`);
 
             return (

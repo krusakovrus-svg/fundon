@@ -69,11 +69,13 @@ export function TopUtilityBar({ isMenuOpen, onToggleMenu }: TopUtilityBarProps) 
   const { language, t } = useLanguage();
   const balance = mockData.profile.walletBalance;
   const isHomePage = pathname === '/home';
-  const isSportsPage = pathname?.startsWith('/sports');
+  const isSportsIndexPage = pathname === '/sports';
+  const isSportDetailPage = pathname?.startsWith('/sports/');
   const isFavoritesPage = pathname?.startsWith('/favorites');
   const isNotificationsPage = pathname?.startsWith('/notifications');
   const menuLabel = language === 'ru' ? 'Меню' : 'Menu';
   const homeTitle = language === 'ru' ? 'Главная' : 'Home';
+  const sportsTitle = language === 'ru' ? 'Спорт' : 'Sports';
 
   const handleBack = () => {
     if (typeof window !== 'undefined' && window.history.length > 1) {
@@ -84,7 +86,9 @@ export function TopUtilityBar({ isMenuOpen, onToggleMenu }: TopUtilityBarProps) 
     router.push('/live');
   };
 
-  if (isHomePage) {
+  if (isHomePage || isSportsIndexPage) {
+    const title = isHomePage ? homeTitle : sportsTitle;
+
     return (
       <div className="app-topbar-wrap">
         <div className="relative flex items-center gap-3">
@@ -99,7 +103,7 @@ export function TopUtilityBar({ isMenuOpen, onToggleMenu }: TopUtilityBarProps) 
           </button>
 
           <div className="min-w-0 flex-1 px-1 text-center">
-            <p className="truncate text-[1.02rem] font-semibold tracking-tight text-text-primary">{homeTitle}</p>
+            <p className="truncate text-[1.02rem] font-semibold tracking-tight text-text-primary">{title}</p>
           </div>
 
           <div className="flex shrink-0 items-center gap-1.5">
@@ -136,7 +140,7 @@ export function TopUtilityBar({ isMenuOpen, onToggleMenu }: TopUtilityBarProps) 
           <MenuIcon />
         </button>
 
-        {isSportsPage ? (
+        {isSportDetailPage ? (
           <button type="button" aria-label={t('backLabel')} onClick={handleBack} className="app-topbar-icon app-card">
             <ArrowLeftIcon />
           </button>

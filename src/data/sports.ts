@@ -36,7 +36,6 @@ export const sportOptions: SportOption[] = [
   { id: 'table-tennis', label: 'Table tennis', labelRu: 'Настольный теннис', icon: 'table-tennis', live: true },
   { id: 'basketball', label: 'Basketball', labelRu: 'Баскетбол', icon: 'basketball', live: true },
   { id: 'cybersport', label: 'Cybersport', labelRu: 'Киберспорт', icon: 'esports', live: true },
-  { id: 'esport', label: 'E-sport', labelRu: 'E-sport', icon: 'esports', live: true, info: true },
   { id: 'volleyball', label: 'Volleyball', labelRu: 'Волейбол', icon: 'volleyball', live: true },
   { id: 'martial-arts', label: 'Martial arts', labelRu: 'Единоборства', icon: 'martial-arts', info: true },
   { id: 'boxing', label: 'Boxing', labelRu: 'Бокс', icon: 'boxing' },
@@ -54,10 +53,21 @@ export const sportOptions: SportOption[] = [
   { id: 'field-hockey', label: 'Bandy', labelRu: 'Хоккей с мячом', icon: 'field-hockey' }
 ];
 
+export const prioritySportIds = ['football', 'hockey', 'basketball', 'martial-arts', 'boxing', 'formula1'] as const;
+
+const sportAliases: Record<string, string> = {
+  esport: 'cybersport'
+};
+
+export function normalizeSportId(id: string) {
+  return sportAliases[id] ?? id;
+}
+
 export function getSportById(id: string) {
-  return sportOptions.find((sport) => sport.id === id);
+  return sportOptions.find((sport) => sport.id === normalizeSportId(id));
 }
 
 export function getSportHref(id: string) {
-  return id === 'martial-arts' ? '/sports/martial-arts' : `/sports/${id}`;
+  const normalizedId = normalizeSportId(id);
+  return normalizedId === 'martial-arts' ? '/sports/martial-arts' : `/sports/${normalizedId}`;
 }
