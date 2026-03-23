@@ -36,3 +36,6 @@ Thumbs.db
 *.temp
 *.bak
 *.orig
+
+# Local duplicate workspace that must never be committed
+fundon/
