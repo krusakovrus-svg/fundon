@@ -79,8 +79,10 @@ function formatTimestamp(iso: string, language: 'ru' | 'en') {
   }).format(new Date(iso));
 }
 
+const LEGACY_BROKEN_VIEWER_NAME = '\u0420\u2019\u0421\u2039';
+
 function getRussianProfileName(value: string) {
-  return value === 'Р’С‹' ? 'Вы' : value;
+  return value === LEGACY_BROKEN_VIEWER_NAME ? 'Вы' : value;
 }
 
 function getRussianHistoryCopy(itemId: string, eventTitleRu: string, participantRu: string) {
@@ -149,11 +151,11 @@ export function ProfileScreen() {
   const saveNameLabel = isRussian ? 'Сохранить' : 'Save';
   const cancelNameLabel = isRussian ? 'Отмена' : 'Cancel';
 
-  const leaderboardCtaLabel = isRussian ? 'Р РµР№С‚РёРЅРі' : 'Leaderboard';
+  const leaderboardCtaLabel = isRussian ? 'Рейтинг' : 'Leaderboard';
   const favoritesSubtitle =
-    favoriteCount > 0 ? labels.savedEvents : isRussian ? 'РџРѕРєР° РЅРµС‚ СЃРѕС…СЂР°РЅС‘РЅРЅС‹С… СЃРѕР±С‹С‚РёР№' : 'No saved events yet';
+    favoriteCount > 0 ? labels.savedEvents : isRussian ? 'Пока нет сохранённых событий' : 'No saved events yet';
   const notificationsSubtitle =
-    liveFavoriteCount > 0 ? labels.liveNow : isRussian ? 'РџРѕРєР° РЅРµС‚ live-СѓРІРµРґРѕРјР»РµРЅРёР№' : 'No live alerts yet';
+    liveFavoriteCount > 0 ? labels.liveNow : isRussian ? 'Пока нет live-уведомлений' : 'No live alerts yet';
 
   useEffect(() => {
     const storedAvatar = getStoredProfileAvatar();

@@ -161,7 +161,7 @@ export function SideMenuDrawer({ isOpen, currentPath, onClose }: SideMenuDrawerP
     () => [
       {
         href: '/home',
-        label: language === 'ru' ? 'Р”РѕРј' : 'Home',
+        label: language === 'ru' ? 'Дом' : 'Home',
         subtitle: currentSportLabel,
         matches: (path) => path === '/home' || path === '/'
       },

@@ -1216,85 +1216,85 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
     {
       id: 'tennis-wta-miami-1',
       sportId: 'tennis',
-      title: 'Tennis В· WTA В· WTA1000. Miami. USA',
-      titleRu: 'РўРµРЅРЅРёСЃ В· WTA В· WTA1000. РњР°Р№Р°РјРё. РЎРЁРђ',
+      title: 'Tennis · WTA · WTA1000. Miami. USA',
+      titleRu: 'Теннис · WTA · WTA1000. Майами. США',
       startsAt: '2026-03-18T02:00:00+03:00',
       endsAt: '2026-03-18T04:00:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'sonmez-z', name: 'Sonmez Z.', nameRu: 'РЎРѕРЅРјРµР· Р—.' },
-        { id: 'haddad-maia-b', name: 'Haddad Maia B.', nameRu: 'РҐР°РґРґР°Рґ РњР°Р№СЏ Р‘.' }
+        { id: 'sonmez-z', name: 'Sonmez Z.', nameRu: 'Сонмез З.' },
+        { id: 'haddad-maia-b', name: 'Haddad Maia B.', nameRu: 'Хаддад Майя Б.' }
       ]
     },
     {
       id: 'tennis-wta-miami-2',
       sportId: 'tennis',
-      title: 'Tennis В· WTA В· WTA1000. Miami. USA',
-      titleRu: 'РўРµРЅРЅРёСЃ В· WTA В· WTA1000. РњР°Р№Р°РјРё. РЎРЁРђ',
+      title: 'Tennis · WTA · WTA1000. Miami. USA',
+      titleRu: 'Теннис · WTA · WTA1000. Майами. США',
       startsAt: '2026-03-18T03:10:00+03:00',
       endsAt: '2026-03-18T05:10:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'siniakova-k', name: 'Siniakova K.', nameRu: 'РЎРёРЅСЏРєРѕРІР° Рљ.' },
+        { id: 'siniakova-k', name: 'Siniakova K.', nameRu: 'Синякова К.' },
         { id: 'osorio-k', name: 'Osorio K.', nameRu: 'РћСЃРѕСЂРёРѕ Рљ.' }
       ]
     },
     {
       id: 'tennis-asuncion-1',
       sportId: 'tennis',
-      title: 'Tennis В· ATP. Challenger В· Asuncion. Paraguay',
-      titleRu: 'РўРµРЅРЅРёСЃ В· ATP. Р§РµР»Р»РµРЅРґР¶РµСЂ В· РђСЃСѓРЅСЃСЊРѕРЅ. РџР°СЂР°РіРІР°Р№',
+      title: 'Tennis · ATP. Challenger · Asuncion. Paraguay',
+      titleRu: 'Теннис · ATP. Челленджер · Асунсьон. Парагвай',
       startsAt: '2026-03-18T00:10:00+03:00',
       endsAt: '2026-03-18T02:10:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'bueno-g', name: 'Bueno G.', nameRu: 'Р‘СѓР·РЅРѕ Р“.' },
-        { id: 'didoni-bonini-jp', name: 'Didoni Bonini J.P.', nameRu: 'Р”РёРґРѕРЅРё Р‘РѕРЅРёРЅРё Р–.Рџ.' }
+        { id: 'bueno-g', name: 'Bueno G.', nameRu: 'Бузно Г.' },
+        { id: 'didoni-bonini-jp', name: 'Didoni Bonini J.P.', nameRu: 'Дидони Бонини Ж.П.' }
       ]
     },
     {
       id: 'tennis-asuncion-2',
       sportId: 'tennis',
-      title: 'Tennis В· ATP. Challenger В· Asuncion. Paraguay',
-      titleRu: 'РўРµРЅРЅРёСЃ В· ATP. Р§РµР»Р»РµРЅРґР¶РµСЂ В· РђСЃСѓРЅСЃСЊРѕРЅ. РџР°СЂР°РіРІР°Р№',
+      title: 'Tennis · ATP. Challenger · Asuncion. Paraguay',
+      titleRu: 'Теннис · ATP. Челленджер · Асунсьон. Парагвай',
       startsAt: '2026-03-18T00:10:00+03:00',
       endsAt: '2026-03-18T02:10:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'midon-l', name: 'Midon L.', nameRu: 'РњРёРґРѕРЅ Р›.' },
-        { id: 'villanueva-g', name: 'Villanueva G.', nameRu: 'Р’РёР»Р»Р°РЅСѓСЌРІР° Р“.' }
+        { id: 'midon-l', name: 'Midon L.', nameRu: 'Мидон Л.' },
+        { id: 'villanueva-g', name: 'Villanueva G.', nameRu: 'Виллануэва Г.' }
       ]
     },
     {
       id: 'tennis-asuncion-3',
       sportId: 'tennis',
-      title: 'Tennis В· ATP. Challenger В· Asuncion. Paraguay',
-      titleRu: 'РўРµРЅРЅРёСЃ В· ATP. Р§РµР»Р»РµРЅРґР¶РµСЂ В· РђСЃСѓРЅСЃСЊРѕРЅ. РџР°СЂР°РіРІР°Р№',
+      title: 'Tennis · ATP. Challenger · Asuncion. Paraguay',
+      titleRu: 'Теннис · ATP. Челленджер · Асунсьон. Парагвай',
       startsAt: '2026-03-18T01:00:00+03:00',
       endsAt: '2026-03-18T03:00:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'dellien-m', name: 'Dellien M.', nameRu: 'Р”РµР»Р»РёРµРЅ Рњ.' },
-        { id: 'nunez-vera-ac', name: 'Nunez Vera A.C.', nameRu: 'РќСѓРЅСЊРµСЃ Р’РµСЂР° Рђ.РЎ.' }
+        { id: 'dellien-m', name: 'Dellien M.', nameRu: 'Деллиен М.' },
+        { id: 'nunez-vera-ac', name: 'Nunez Vera A.C.', nameRu: 'Нуньес Вера А.С.' }
       ]
     },
     {
       id: 'tennis-morelos-1',
       sportId: 'tennis',
-      title: 'Tennis В· ATP. Challenger В· Morelos. Mexico',
-      titleRu: 'РўРµРЅРЅРёСЃ В· ATP. Р§РµР»Р»РµРЅРґР¶РµСЂ В· РњРѕСЂРµР»РѕСЃ. РњРµРєСЃРёРєР°',
+      title: 'Tennis · ATP. Challenger · Morelos. Mexico',
+      titleRu: 'Теннис · ATP. Челленджер · Морелос. Мексика',
       startsAt: '2026-03-18T01:00:00+03:00',
       endsAt: '2026-03-18T03:00:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'hernandez-serrano-xa', name: 'Hernandez Serrano X.A.', nameRu: 'Р­СЂРЅР°РЅРґРµСЃ РЎРµСЂСЂР°РЅРѕ РҐ.Рђ.' },
-        { id: 'colson-t', name: 'Colson T.', nameRu: 'РљРѕР»СЃРѕРЅ Рў.' }
+        { id: 'hernandez-serrano-xa', name: 'Hernandez Serrano X.A.', nameRu: 'Эрнандес Серрано Х.А.' },
+        { id: 'colson-t', name: 'Colson T.', nameRu: 'Колсон Т.' }
       ]
     }
   ],
@@ -1302,85 +1302,85 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
     {
       id: 'table-tennis-tt-cup-1',
       sportId: 'table-tennis',
-      title: 'Table tennis В· International В· TT-Cup',
-      titleRu: 'РќР°СЃС‚РѕР»СЊРЅС‹Р№ С‚РµРЅРЅРёСЃ В· РњРµР¶РґСѓРЅР°СЂРѕРґРЅС‹Рµ В· TT-Cup',
+      title: 'Table tennis · International · TT-Cup',
+      titleRu: 'Настольный теннис · Международные · TT-Cup',
       startsAt: '2026-03-18T00:10:00+03:00',
       endsAt: '2026-03-18T01:10:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'baros-a', name: 'Baros A.', nameRu: 'Р‘Р°СЂРѕС€ Рђ.', country: 'Czech Republic' },
-        { id: 'zaskodny-m', name: 'Zaskodny M.', nameRu: 'Р—Р°С€РєРѕРґРЅРё Рњ.', country: 'Czech Republic' }
+        { id: 'baros-a', name: 'Baros A.', nameRu: 'Барош А.', country: 'Czech Republic' },
+        { id: 'zaskodny-m', name: 'Zaskodny M.', nameRu: 'Зашкодни М.', country: 'Czech Republic' }
       ]
     },
     {
       id: 'table-tennis-tt-cup-2',
       sportId: 'table-tennis',
-      title: 'Table tennis В· International В· TT-Cup',
-      titleRu: 'РќР°СЃС‚РѕР»СЊРЅС‹Р№ С‚РµРЅРЅРёСЃ В· РњРµР¶РґСѓРЅР°СЂРѕРґРЅС‹Рµ В· TT-Cup',
+      title: 'Table tennis · International · TT-Cup',
+      titleRu: 'Настольный теннис · Международные · TT-Cup',
       startsAt: '2026-03-18T00:20:00+03:00',
       endsAt: '2026-03-18T01:20:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'viskocil-z', name: 'Viskocil Z.', nameRu: 'Р’РёСЃРєРѕС†РёР» Р—.', country: 'Czech Republic' },
-        { id: 'barsa-t', name: 'Barsa T.', nameRu: 'Р‘Р°СЂСЃР° Рў.', country: 'Czech Republic' }
+        { id: 'viskocil-z', name: 'Viskocil Z.', nameRu: 'Вискоцил З.', country: 'Czech Republic' },
+        { id: 'barsa-t', name: 'Barsa T.', nameRu: 'Барса Т.', country: 'Czech Republic' }
       ]
     },
     {
       id: 'table-tennis-tt-cup-3',
       sportId: 'table-tennis',
-      title: 'Table tennis В· International В· TT-Cup',
-      titleRu: 'РќР°СЃС‚РѕР»СЊРЅС‹Р№ С‚РµРЅРЅРёСЃ В· РњРµР¶РґСѓРЅР°СЂРѕРґРЅС‹Рµ В· TT-Cup',
+      title: 'Table tennis · International · TT-Cup',
+      titleRu: 'Настольный теннис · Международные · TT-Cup',
       startsAt: '2026-03-18T00:25:00+03:00',
       endsAt: '2026-03-18T01:25:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'kazacky-a', name: 'Kazacky A.', nameRu: 'РљР°Р·Р°С†РєРёР№ Рђ.', country: 'Czech Republic' },
-        { id: 'kulisek-m-1', name: 'Kulisek M.', nameRu: 'РљСѓР»РёС€РµРє Рњ.', country: 'Czech Republic' }
+        { id: 'kazacky-a', name: 'Kazacky A.', nameRu: 'Казацкий А.', country: 'Czech Republic' },
+        { id: 'kulisek-m-1', name: 'Kulisek M.', nameRu: 'Кулишек М.', country: 'Czech Republic' }
       ]
     },
     {
       id: 'table-tennis-tt-cup-4',
       sportId: 'table-tennis',
-      title: 'Table tennis В· International В· TT-Cup',
-      titleRu: 'РќР°СЃС‚РѕР»СЊРЅС‹Р№ С‚РµРЅРЅРёСЃ В· РњРµР¶РґСѓРЅР°СЂРѕРґРЅС‹Рµ В· TT-Cup',
+      title: 'Table tennis · International · TT-Cup',
+      titleRu: 'Настольный теннис · Международные · TT-Cup',
       startsAt: '2026-03-18T00:50:00+03:00',
       endsAt: '2026-03-18T01:50:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'dvorak-martin', name: 'Dvorak Martin', nameRu: 'Р”РІРѕСЂР°Рє РњР°СЂС‚РёРЅ', country: 'Czech Republic' },
-        { id: 'mach-y', name: 'Mach Y.', nameRu: 'РњР°С… РЇ.', country: 'Czech Republic' }
+        { id: 'dvorak-martin', name: 'Dvorak Martin', nameRu: 'Дворак Мартин', country: 'Czech Republic' },
+        { id: 'mach-y', name: 'Mach Y.', nameRu: 'Мах Я.', country: 'Czech Republic' }
       ]
     },
     {
       id: 'table-tennis-tt-cup-5',
       sportId: 'table-tennis',
-      title: 'Table tennis В· International В· TT-Cup',
-      titleRu: 'РќР°СЃС‚РѕР»СЊРЅС‹Р№ С‚РµРЅРЅРёСЃ В· РњРµР¶РґСѓРЅР°СЂРѕРґРЅС‹Рµ В· TT-Cup',
+      title: 'Table tennis · International · TT-Cup',
+      titleRu: 'Настольный теннис · Международные · TT-Cup',
       startsAt: '2026-03-18T00:55:00+03:00',
       endsAt: '2026-03-18T01:55:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'brozek-michal', name: 'Brozek Michal', nameRu: 'Р‘СЂРѕР¶РµРє РњРёС…Р°Р»', country: 'Czech Republic' },
-        { id: 'kulisek-m-2', name: 'Kulisek M.', nameRu: 'РљСѓР»РёС€РµРє Рњ.', country: 'Czech Republic' }
+        { id: 'brozek-michal', name: 'Brozek Michal', nameRu: 'Брожек Михал', country: 'Czech Republic' },
+        { id: 'kulisek-m-2', name: 'Kulisek M.', nameRu: 'Кулишек М.', country: 'Czech Republic' }
       ]
     },
     {
       id: 'table-tennis-tt-cup-6',
       sportId: 'table-tennis',
-      title: 'Table tennis В· International В· TT-Cup',
-      titleRu: 'РќР°СЃС‚РѕР»СЊРЅС‹Р№ С‚РµРЅРЅРёСЃ В· РњРµР¶РґСѓРЅР°СЂРѕРґРЅС‹Рµ В· TT-Cup',
+      title: 'Table tennis · International · TT-Cup',
+      titleRu: 'Настольный теннис · Международные · TT-Cup',
       startsAt: '2026-03-18T01:25:00+03:00',
       endsAt: '2026-03-18T02:25:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'giza-d', name: 'Giza D.', nameRu: 'Р“РёР·Р° Р”.', country: 'Czech Republic' },
-        { id: 'kazacky-a-2', name: 'Kazacky A.', nameRu: 'РљР°Р·Р°С†РєРёР№ Рђ.', country: 'Czech Republic' }
+        { id: 'giza-d', name: 'Giza D.', nameRu: 'Гиза Д.', country: 'Czech Republic' },
+        { id: 'kazacky-a-2', name: 'Kazacky A.', nameRu: 'Казацкий А.', country: 'Czech Republic' }
       ]
     }
   ],
@@ -1558,12 +1558,12 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
     {
       id: 'cybersport-dota2-epl-1',
       sportId: 'cybersport',
-      title: 'Cybersport В· Dota-2 В· European Pro League. Season 35 2026',
-      titleRu: 'РљРёР±РµСЂСЃРїРѕСЂС‚ В· Dota-2 В· European Pro League. Season 35 2026',
+      title: 'Cybersport · Dota-2 · European Pro League. Season 35 2026',
+      titleRu: 'Киберспорт · Dota-2 · European Pro League. Season 35 2026',
       startsAt: '2026-03-18T16:00:00+03:00',
       endsAt: '2026-03-18T19:00:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
         { id: 'navi-junior', name: 'NAVI Junior', nameRu: 'NAVI Junior' },
         { id: 'astini-plus-5', name: 'Astini+5', nameRu: 'Astini+5' }
@@ -1572,12 +1572,12 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
     {
       id: 'cybersport-cs-aorus-1',
       sportId: 'cybersport',
-      title: 'Cybersport В· Counter-strike В· Aorus League. Brazil Online Stage 2',
-      titleRu: 'РљРёР±РµСЂСЃРїРѕСЂС‚ В· Counter-strike В· Aorus League. Brazil Online Stage 2',
+      title: 'Cybersport · Counter-strike · Aorus League. Brazil Online Stage 2',
+      titleRu: 'Киберспорт · Counter-strike · Aorus League. Brazil Online Stage 2',
       startsAt: '2026-03-18T00:00:00+03:00',
       endsAt: '2026-03-18T03:00:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
         { id: 'galorys', name: 'Galorys', nameRu: 'Galorys' },
         { id: 'mibr-academy', name: 'MIBR Academy', nameRu: 'MIBR Academy' }
@@ -1586,12 +1586,12 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
     {
       id: 'cybersport-cs-aorus-2',
       sportId: 'cybersport',
-      title: 'Cybersport В· Counter-strike В· Aorus League. Brazil Online Stage 2',
-      titleRu: 'РљРёР±РµСЂСЃРїРѕСЂС‚ В· Counter-strike В· Aorus League. Brazil Online Stage 2',
+      title: 'Cybersport · Counter-strike · Aorus League. Brazil Online Stage 2',
+      titleRu: 'Киберспорт · Counter-strike · Aorus League. Brazil Online Stage 2',
       startsAt: '2026-03-18T01:00:00+03:00',
       endsAt: '2026-03-18T04:00:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
         { id: 'bounty-hunters-esports', name: 'Bounty Hunters Esports', nameRu: 'Bounty Hunters Esports' },
         { id: 'keyd', name: 'Keyd', nameRu: 'Keyd' }
@@ -1600,12 +1600,12 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
     {
       id: 'cybersport-cs-cct-sa-1',
       sportId: 'cybersport',
-      title: 'Cybersport В· Counter-strike В· CCT South America. Series 10',
-      titleRu: 'РљРёР±РµСЂСЃРїРѕСЂС‚ В· Counter-strike В· CCT South America. Series 10',
+      title: 'Cybersport · Counter-strike · CCT South America. Series 10',
+      titleRu: 'Киберспорт · Counter-strike · CCT South America. Series 10',
       startsAt: '2026-03-18T01:00:00+03:00',
       endsAt: '2026-03-18T04:00:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
         { id: 'uno-mille', name: 'UNO MILLE', nameRu: 'UNO MILLE' },
         { id: 'here-we-go-again', name: 'HereWeGoAgain', nameRu: 'HereWeGoAgain' }
@@ -1614,12 +1614,12 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
     {
       id: 'cybersport-valorant-ces-1',
       sportId: 'cybersport',
-      title: 'Cybersport В· Valorant В· China Evolution Series. Act 1 2026',
-      titleRu: 'РљРёР±РµСЂСЃРїРѕСЂС‚ В· Valorant В· China Evolution Series. Act 1 2026',
+      title: 'Cybersport · Valorant · China Evolution Series. Act 1 2026',
+      titleRu: 'Киберспорт · Valorant · China Evolution Series. Act 1 2026',
       startsAt: '2026-03-18T12:00:00+03:00',
       endsAt: '2026-03-18T15:00:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
         { id: 'dragon-ranger-gaming', name: 'Dragon Ranger Gaming', nameRu: 'Dragon Ranger Gaming' },
         { id: 'any-questions-gaming', name: 'Any Questions Gaming', nameRu: 'Any Questions Gaming' }
@@ -1628,12 +1628,12 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
     {
       id: 'cybersport-cs-nodwin-1',
       sportId: 'cybersport',
-      title: 'Cybersport В· Counter-strike В· NODWIN Clutch Series. Season 6 2026',
-      titleRu: 'РљРёР±РµСЂСЃРїРѕСЂС‚ В· Counter-strike В· NODWIN Clutch Series. Season 6 2026',
+      title: 'Cybersport · Counter-strike · NODWIN Clutch Series. Season 6 2026',
+      titleRu: 'Киберспорт · Counter-strike · NODWIN Clutch Series. Season 6 2026',
       startsAt: '2026-03-18T12:00:00+03:00',
       endsAt: '2026-03-18T15:00:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
         { id: 'ex-ruby', name: 'ex-RUBY', nameRu: 'ex-RUBY' },
         { id: 'the-last-resort', name: 'The Last Resort', nameRu: 'The Last Resort' }
@@ -1644,8 +1644,8 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
     {
       id: 'esport-high-cup-1',
       sportId: 'esport',
-      title: 'E-sport В· Cyberhockey В· NHL. High Cup (3x4 min)',
-      titleRu: 'E-sport В· РљРёР±РµСЂС…РѕРєРєРµР№ В· NHL. High Cup (3x4 РјРёРЅ)',
+      title: 'E-sport · Cyberhockey · NHL. High Cup (3x4 min)',
+      titleRu: 'E-sport · Киберхоккей · NHL. High Cup (3x4 мин)',
       startsAt: '2026-03-17T19:00:00+03:00',
       endsAt: '2026-03-17T21:00:00+03:00',
       displayDateEn: 'Live',
@@ -1653,79 +1653,79 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
       displayTimeEn: "2nd p., 36'",
       displayTimeRu: "2-Р№ Рї., 36'",
       participants: [
-        { id: 'minnakhmetov-yel', name: 'Minnakhmetov (YEL)', nameRu: 'РњРёРЅРЅР°С…РјРµС‚РѕРІ (YEL)' },
+        { id: 'minnakhmetov-yel', name: 'Minnakhmetov (YEL)', nameRu: 'Миннахметов (YEL)' },
         { id: 'idrisov-gre', name: 'Idrisov (GRE)', nameRu: 'РРґСЂРёСЃРѕРІ (GRE)' }
       ]
     },
     {
       id: 'esport-high-cup-2',
       sportId: 'esport',
-      title: 'E-sport В· Cyberhockey В· NHL. High Cup (3x4 min)',
-      titleRu: 'E-sport В· РљРёР±РµСЂС…РѕРєРєРµР№ В· NHL. High Cup (3x4 РјРёРЅ)',
+      title: 'E-sport · Cyberhockey · NHL. High Cup (3x4 min)',
+      titleRu: 'E-sport · Киберхоккей · NHL. High Cup (3x4 мин)',
       startsAt: '2026-03-17T19:05:00+03:00',
       endsAt: '2026-03-17T21:05:00+03:00',
       displayDateEn: 'Live',
       displayDateRu: 'Live',
       displayTimeEn: 'In play',
-      displayTimeRu: 'РњР°С‚С‡ РёРґРµС‚',
+      displayTimeRu: 'Матч идет',
       participants: [
-        { id: 'kartashov-blk', name: 'Kartashov (BLK)', nameRu: 'РљР°СЂС‚Р°С€РѕРІ (BLK)' },
-        { id: 'gaibullin-blu', name: 'Gaibullin (BLU)', nameRu: 'Р“Р°Р№Р±СѓР»Р»РёРЅ (BLU)' }
+        { id: 'kartashov-blk', name: 'Kartashov (BLK)', nameRu: 'Карташов (BLK)' },
+        { id: 'gaibullin-blu', name: 'Gaibullin (BLU)', nameRu: 'Гайбуллин (BLU)' }
       ]
     },
     {
       id: 'esport-fc-penalty-1',
       sportId: 'esport',
-      title: 'E-sport В· Cyberfootball В· FC. Ultimate Penalty League',
-      titleRu: 'E-sport В· РљРёР±РµСЂС„СѓС‚Р±РѕР» В· FC. Ultimate Penalty League',
+      title: 'E-sport · Cyberfootball · FC. Ultimate Penalty League',
+      titleRu: 'E-sport · Киберфутбол · FC. Ultimate Penalty League',
       startsAt: '2026-03-17T19:10:00+03:00',
       endsAt: '2026-03-17T21:10:00+03:00',
       displayDateEn: 'Live',
       displayDateRu: 'Live',
       displayTimeEn: "Penalties, 0'",
-      displayTimeRu: "РџРµРЅР°Р»СЊС‚Рё, 0'",
+      displayTimeRu: "Пенальти, 0'",
       participants: [
-        { id: 'inter-milan-lynj9r', name: 'Inter Milan (lynj9r)', nameRu: 'РРЅС‚РµСЂ РњРёР»Р°РЅ (lynj9r)' },
-        { id: 'borussia-dortmund-weresk03', name: 'Borussia Dortmund (weresk03)', nameRu: 'Р‘РѕСЂСѓСЃСЃРёСЏ Р”РѕСЂС‚РјСѓРЅРґ (weresk03)' }
+        { id: 'inter-milan-lynj9r', name: 'Inter Milan (lynj9r)', nameRu: 'Интер Милан (lynj9r)' },
+        { id: 'borussia-dortmund-weresk03', name: 'Borussia Dortmund (weresk03)', nameRu: 'Боруссия Дортмунд (weresk03)' }
       ]
     },
     {
       id: 'esport-fc-penalty-2',
       sportId: 'esport',
-      title: 'E-sport В· Cyberfootball В· FC. Ultimate Penalty League',
-      titleRu: 'E-sport В· РљРёР±РµСЂС„СѓС‚Р±РѕР» В· FC. Ultimate Penalty League',
+      title: 'E-sport · Cyberfootball · FC. Ultimate Penalty League',
+      titleRu: 'E-sport · Киберфутбол · FC. Ultimate Penalty League',
       startsAt: '2026-03-17T19:15:00+03:00',
       endsAt: '2026-03-17T21:15:00+03:00',
       displayDateEn: 'Live',
       displayDateRu: 'Live',
       displayTimeEn: "Penalties, 0'",
-      displayTimeRu: "РџРµРЅР°Р»СЊС‚Рё, 0'",
+      displayTimeRu: "Пенальти, 0'",
       participants: [
-        { id: 'borussia-dortmund-weresk03-b', name: 'Borussia Dortmund (weresk03)', nameRu: 'Р‘РѕСЂСѓСЃСЃРёСЏ Р”РѕСЂС‚РјСѓРЅРґ (weresk03)' },
-        { id: 'inter-milan-lynj9r-b', name: 'Inter Milan (lynj9r)', nameRu: 'РРЅС‚РµСЂ РњРёР»Р°РЅ (lynj9r)' }
+        { id: 'borussia-dortmund-weresk03-b', name: 'Borussia Dortmund (weresk03)', nameRu: 'Боруссия Дортмунд (weresk03)' },
+        { id: 'inter-milan-lynj9r-b', name: 'Inter Milan (lynj9r)', nameRu: 'Интер Милан (lynj9r)' }
       ]
     },
     {
       id: 'esport-fc-volta-high-cup-1',
       sportId: 'esport',
-      title: 'E-sport В· Cyberfootball В· FC 24. 5x5 Volta High Cup (2x3 min)',
-      titleRu: 'E-sport В· РљРёР±РµСЂС„СѓС‚Р±РѕР» В· FC 24. 5x5 Volta High Cup (2x3 РјРёРЅ)',
+      title: 'E-sport · Cyberfootball · FC 24. 5x5 Volta High Cup (2x3 min)',
+      titleRu: 'E-sport · Киберфутбол · FC 24. 5x5 Volta High Cup (2x3 мин)',
       startsAt: '2026-03-17T19:20:00+03:00',
       endsAt: '2026-03-17T21:20:00+03:00',
       displayDateEn: 'Live',
       displayDateRu: 'Live',
       displayTimeEn: "2nd h., 4'",
-      displayTimeRu: "2-Р№ С‚., 4'",
+      displayTimeRu: "2-й т., 4'",
       participants: [
-        { id: 'sharafulin-arsenal', name: 'Sharafullin (Arsenal)', nameRu: 'РЁР°СЂР°С„СѓР»Р»РёРЅ (РђСЂСЃРµРЅР°Р»)' },
-        { id: 'strokov-juventus', name: 'Strokov (Juventus)', nameRu: 'РЎС‚СЂРѕРєРѕРІ (Р®РІРµРЅС‚СѓСЃ)' }
+        { id: 'sharafulin-arsenal', name: 'Sharafullin (Arsenal)', nameRu: 'Шарафуллин (Арсенал)' },
+        { id: 'strokov-juventus', name: 'Strokov (Juventus)', nameRu: 'Строков (Ювентус)' }
       ]
     },
     {
       id: 'esport-uel-hockey-1',
       sportId: 'esport',
-      title: 'E-sport В· Cyberhockey В· NHL. United Esports League (3x4 min)',
-      titleRu: 'E-sport В· РљРёР±РµСЂС…РѕРєРєРµР№ В· NHL. United Esports League (3x4 РјРёРЅ)',
+      title: 'E-sport · Cyberhockey · NHL. United Esports League (3x4 min)',
+      titleRu: 'E-sport · Киберхоккей · NHL. United Esports League (3x4 мин)',
       startsAt: '2026-03-17T19:25:00+03:00',
       endsAt: '2026-03-17T21:25:00+03:00',
       displayDateEn: 'Live',
@@ -1733,15 +1733,15 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
       displayTimeEn: "2nd p., 28'",
       displayTimeRu: "2-Р№ Рї., 28'",
       participants: [
-        { id: 'buffalo-deer69', name: 'Buffalo Sabres (deer69)', nameRu: 'Р‘Р°С„С„Р°Р»Рѕ РЎРµР№Р±СЂР· (deer69)' },
-        { id: 'anaheim-pat95', name: 'Anaheim Ducks (Pat95)', nameRu: 'РђРЅР°С…Р°Р№Рј Р”Р°РєСЃ (Pat95)' }
+        { id: 'buffalo-deer69', name: 'Buffalo Sabres (deer69)', nameRu: 'Баффало Сейбрз (deer69)' },
+        { id: 'anaheim-pat95', name: 'Anaheim Ducks (Pat95)', nameRu: 'Анахайм Дакс (Pat95)' }
       ]
     },
     {
       id: 'esport-uel-hockey-2',
       sportId: 'esport',
-      title: 'E-sport В· Cyberhockey В· NHL. United Esports League (3x4 min)',
-      titleRu: 'E-sport В· РљРёР±РµСЂС…РѕРєРєРµР№ В· NHL. United Esports League (3x4 РјРёРЅ)',
+      title: 'E-sport · Cyberhockey · NHL. United Esports League (3x4 min)',
+      titleRu: 'E-sport · Киберхоккей · NHL. United Esports League (3x4 мин)',
       startsAt: '2026-03-17T19:30:00+03:00',
       endsAt: '2026-03-17T21:30:00+03:00',
       displayDateEn: 'Live',
@@ -1749,15 +1749,15 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
       displayTimeEn: "1st p., 5'",
       displayTimeRu: "1-Р№ Рї., 5'",
       participants: [
-        { id: 'philadelphia-kurt', name: 'Philadelphia Flyers (KURT COBAI...)', nameRu: 'Р¤РёР»Р°РґРµР»СЊС„РёСЏ Р¤Р»Р°Р№РµСЂСЃ (KURT COBAI...)' },
-        { id: 'tampa-bay-aleex', name: 'Tampa-Bay Lightning (ALEEX)', nameRu: 'РўР°РјРїР°-Р‘СЌР№ Р›Р°Р№С‚РЅРёРЅРі (ALEEX)' }
+        { id: 'philadelphia-kurt', name: 'Philadelphia Flyers (KURT COBAI...)', nameRu: 'Филадельфия Флайерс (KURT COBAI...)' },
+        { id: 'tampa-bay-aleex', name: 'Tampa-Bay Lightning (ALEEX)', nameRu: 'Тампа-Бэй Лайтнинг (ALEEX)' }
       ]
     },
     {
       id: 'esport-uel-hockey-3',
       sportId: 'esport',
-      title: 'E-sport В· Cyberhockey В· NHL. United Esports League (3x4 min)',
-      titleRu: 'E-sport В· РљРёР±РµСЂС…РѕРєРєРµР№ В· NHL. United Esports League (3x4 РјРёРЅ)',
+      title: 'E-sport · Cyberhockey · NHL. United Esports League (3x4 min)',
+      titleRu: 'E-sport · Киберхоккей · NHL. United Esports League (3x4 мин)',
       startsAt: '2026-03-17T19:35:00+03:00',
       endsAt: '2026-03-17T21:35:00+03:00',
       displayDateEn: 'Live',
@@ -1765,31 +1765,31 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
       displayTimeEn: "1st p., 19'",
       displayTimeRu: "1-Р№ Рї., 19'",
       participants: [
-        { id: 'chicago-oil76', name: 'Chicago Blackhawks (OIL76)', nameRu: 'Р§РёРєР°РіРѕ Р‘Р»СЌРєС…РѕРєСЃ (OIL76)' },
-        { id: 'islanders-puck', name: 'New York Islanders (puck)', nameRu: 'РќСЊСЋ-Р™РѕСЂРє РђР№Р»РµРЅРґРµСЂСЃ (puck)' }
+        { id: 'chicago-oil76', name: 'Chicago Blackhawks (OIL76)', nameRu: 'Чикаго Блэкхокс (OIL76)' },
+        { id: 'islanders-puck', name: 'New York Islanders (puck)', nameRu: 'Нью-Йорк Айлендерс (puck)' }
       ]
     },
     {
       id: 'esport-h2h2-hockey-1',
       sportId: 'esport',
-      title: 'E-sport В· Cyberhockey В· NHL. H2H-2 League (3x4 min)',
-      titleRu: 'E-sport В· РљРёР±РµСЂС…РѕРєРєРµР№ В· NHL. H2H-2 Р›РёРіР° (3x4 РјРёРЅ)',
+      title: 'E-sport · Cyberhockey · NHL. H2H-2 League (3x4 min)',
+      titleRu: 'E-sport · Киберхоккей · NHL. H2H-2 Лига (3x4 мин)',
       startsAt: '2026-03-17T19:40:00+03:00',
       endsAt: '2026-03-17T21:40:00+03:00',
       displayDateEn: 'Live',
       displayDateRu: 'Live',
       displayTimeEn: 'In play',
-      displayTimeRu: 'РњР°С‚С‡ РёРґРµС‚',
+      displayTimeRu: 'Матч идет',
       participants: [
-        { id: 'edmonton-master-ily', name: 'Edmonton Oilers (MASTER_ILY)', nameRu: 'Р­РґРјРѕРЅС‚РѕРЅ РћР№Р»РµСЂР· (MASTER_ILY)' },
-        { id: 'ottawa-garage10', name: 'Ottawa Senators (Garage10)', nameRu: 'РћС‚С‚Р°РІР° РЎРµРЅР°С‚РѕСЂР· (Garage10)' }
+        { id: 'edmonton-master-ily', name: 'Edmonton Oilers (MASTER_ILY)', nameRu: 'Эдмонтон Ойлерз (MASTER_ILY)' },
+        { id: 'ottawa-garage10', name: 'Ottawa Senators (Garage10)', nameRu: 'Оттава Сенаторз (Garage10)' }
       ]
     },
     {
       id: 'esport-h2h-hockey-1',
       sportId: 'esport',
-      title: 'E-sport В· Cyberhockey В· NHL. H2H League (3x4 min)',
-      titleRu: 'E-sport В· РљРёР±РµСЂС…РѕРєРєРµР№ В· NHL. H2H Р›РёРіР° (3x4 РјРёРЅ)',
+      title: 'E-sport · Cyberhockey · NHL. H2H League (3x4 min)',
+      titleRu: 'E-sport · Киберхоккей · NHL. H2H Лига (3x4 мин)',
       startsAt: '2026-03-17T19:45:00+03:00',
       endsAt: '2026-03-17T21:45:00+03:00',
       displayDateEn: 'Live',
@@ -1797,88 +1797,88 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
       displayTimeEn: "1st p., 17'",
       displayTimeRu: "1-Р№ Рї., 17'",
       participants: [
-        { id: 'la-kings-arm-ava23', name: 'Los Angeles Kings (ARM_AVA23)', nameRu: 'Р›РѕСЃ-РђРЅРґР¶РµР»РµСЃ РљРёРЅРіР· (ARM_AVA23)' },
-        { id: 'nashville-mukha', name: 'Nashville Predators (Mukha)', nameRu: 'РќСЌС€РІРёР»Р» РџСЂРµРґР°С‚РѕСЂР· (Mukha)' }
+        { id: 'la-kings-arm-ava23', name: 'Los Angeles Kings (ARM_AVA23)', nameRu: 'Лос-Анджелес Кингз (ARM_AVA23)' },
+        { id: 'nashville-mukha', name: 'Nashville Predators (Mukha)', nameRu: 'Нэшвилл Предаторз (Mukha)' }
       ]
     },
     {
       id: 'esport-h2h-football-1',
       sportId: 'esport',
-      title: 'E-sport В· Cyberfootball В· H2H Liga-2 (2x4 min)',
-      titleRu: 'E-sport В· РљРёР±РµСЂС„СѓС‚Р±РѕР» В· H2H Liga-2 (2x4 РјРёРЅ)',
+      title: 'E-sport · Cyberfootball · H2H Liga-2 (2x4 min)',
+      titleRu: 'E-sport · Киберфутбол · H2H Liga-2 (2x4 мин)',
       startsAt: '2026-03-17T19:50:00+03:00',
       endsAt: '2026-03-17T21:50:00+03:00',
       displayDateEn: 'Live',
       displayDateRu: 'Live',
       displayTimeEn: "1st h., 2'",
-      displayTimeRu: "1-Р№ С‚., 2'",
+      displayTimeRu: "1-й т., 2'",
       participants: [
-        { id: 'germany-ivanoffstyle', name: 'Germany (ivanoffstyle)', nameRu: 'Р“РµСЂРјР°РЅРёСЏ (ivanoffstyle)', country: 'Germany' },
-        { id: 'france-sfp', name: 'France (Sfp)', nameRu: 'Р¤СЂР°РЅС†РёСЏ (Sfp)', country: 'France' }
+        { id: 'germany-ivanoffstyle', name: 'Germany (ivanoffstyle)', nameRu: 'Германия (ivanoffstyle)', country: 'Germany' },
+        { id: 'france-sfp', name: 'France (Sfp)', nameRu: 'Франция (Sfp)', country: 'France' }
       ]
     },
     {
       id: 'esport-liga1-khabarovsk-1',
       sportId: 'esport',
-      title: 'E-sport В· Cyberfootball В· FC. Liga-1. Khabarovsk (2x4 min)',
-      titleRu: 'E-sport В· РљРёР±РµСЂС„СѓС‚Р±РѕР» В· FC. Р›РёРіР°-1. РҐР°Р±Р°СЂРѕРІСЃРє (2x4 РјРёРЅ)',
+      title: 'E-sport · Cyberfootball · FC. Liga-1. Khabarovsk (2x4 min)',
+      titleRu: 'E-sport · Киберфутбол · FC. Лига-1. Хабаровск (2x4 мин)',
       startsAt: '2026-03-17T19:55:00+03:00',
       endsAt: '2026-03-17T21:55:00+03:00',
       displayDateEn: 'Live',
       displayDateRu: 'Live',
       displayTimeEn: 'Match finished',
-      displayTimeRu: 'РњР°С‚С‡ Р·Р°РІРµСЂС€РµРЅ',
+      displayTimeRu: 'Матч завершен',
       participants: [
-        { id: 'italy-gamekova', name: 'Italy (GAMEKOVA)', nameRu: 'РС‚Р°Р»РёСЏ (GAMEKOVA)', country: 'Italy' },
-        { id: 'spain-maverick', name: 'Spain (MAVERICK)', nameRu: 'РСЃРїР°РЅРёСЏ (MAVERICK)', country: 'Spain' }
+        { id: 'italy-gamekova', name: 'Italy (GAMEKOVA)', nameRu: 'Италия (GAMEKOVA)', country: 'Italy' },
+        { id: 'spain-maverick', name: 'Spain (MAVERICK)', nameRu: 'Испания (MAVERICK)', country: 'Spain' }
       ]
     },
     {
       id: 'esport-h2h-volta-1',
       sportId: 'esport',
-      title: 'E-sport В· Cyberfootball В· H2H Volta (2x3 min)',
-      titleRu: 'E-sport В· РљРёР±РµСЂС„СѓС‚Р±РѕР» В· H2H Volta (2x3 РјРёРЅ)',
+      title: 'E-sport · Cyberfootball · H2H Volta (2x3 min)',
+      titleRu: 'E-sport · Киберфутбол · H2H Volta (2x3 мин)',
       startsAt: '2026-03-17T20:00:00+03:00',
       endsAt: '2026-03-17T22:00:00+03:00',
       displayDateEn: 'Live',
       displayDateRu: 'Live',
       displayTimeEn: 'In play',
-      displayTimeRu: 'РњР°С‚С‡ РёРґРµС‚',
+      displayTimeRu: 'Матч идет',
       participants: [
-        { id: 'morocco-indifference', name: 'Morocco (Indifference)', nameRu: 'РњР°СЂРѕРєРєРѕ (Indifference)', country: 'Morocco' },
-        { id: 'denmark-pritistreet', name: 'Denmark (PRITISTREET)', nameRu: 'Р”Р°РЅРёСЏ (PRITISTREET)', country: 'Denmark' }
+        { id: 'morocco-indifference', name: 'Morocco (Indifference)', nameRu: 'Марокко (Indifference)', country: 'Morocco' },
+        { id: 'denmark-pritistreet', name: 'Denmark (PRITISTREET)', nameRu: 'Дания (PRITISTREET)', country: 'Denmark' }
       ]
     },
     {
       id: 'esport-fc-volta-high-cup-2',
       sportId: 'esport',
-      title: 'E-sport В· Cyberfootball В· FC 24. 5x5 Volta High Cup (2x3 min)',
-      titleRu: 'E-sport В· РљРёР±РµСЂС„СѓС‚Р±РѕР» В· FC 24. 5x5 Volta High Cup (2x3 РјРёРЅ)',
+      title: 'E-sport · Cyberfootball · FC 24. 5x5 Volta High Cup (2x3 min)',
+      titleRu: 'E-sport · Киберфутбол · FC 24. 5x5 Volta High Cup (2x3 мин)',
       startsAt: '2026-03-17T20:05:00+03:00',
       endsAt: '2026-03-17T22:05:00+03:00',
       displayDateEn: 'Live',
       displayDateRu: 'Live',
       displayTimeEn: 'In play',
-      displayTimeRu: 'РњР°С‚С‡ РёРґРµС‚',
+      displayTimeRu: 'Матч идет',
       participants: [
-        { id: 'petrov-atletico', name: 'Petrov (Atletico M)', nameRu: 'РџРµС‚СЂРѕРІ (РђС‚Р»РµС‚РёРєРѕ Рњ)' },
-        { id: 'sharafulin-arsenal-b', name: 'Sharafullin (Arsenal)', nameRu: 'РЁР°СЂР°С„СѓР»РёРЅ (РђСЂСЃРµРЅР°Р»)' }
+        { id: 'petrov-atletico', name: 'Petrov (Atletico M)', nameRu: 'Петров (Атлетико М)' },
+        { id: 'sharafulin-arsenal-b', name: 'Sharafullin (Arsenal)', nameRu: 'Шарафулин (Арсенал)' }
       ]
     },
     {
       id: 'esport-fc-united-esports-1',
       sportId: 'esport',
-      title: 'E-sport В· Cyberfootball В· FC. United Esports Leagues (2x4 min)',
-      titleRu: 'E-sport В· РљРёР±РµСЂС„СѓС‚Р±РѕР» В· FC. United Esports Leagues (2x4 РјРёРЅ)',
+      title: 'E-sport · Cyberfootball · FC. United Esports Leagues (2x4 min)',
+      titleRu: 'E-sport · Киберфутбол · FC. United Esports Leagues (2x4 мин)',
       startsAt: '2026-03-17T20:10:00+03:00',
       endsAt: '2026-03-17T22:10:00+03:00',
       displayDateEn: 'Live',
       displayDateRu: 'Live',
       displayTimeEn: 'In play',
-      displayTimeRu: 'РњР°С‚С‡ РёРґРµС‚',
+      displayTimeRu: 'Матч идет',
       participants: [
-        { id: 'borussia-dortmund-makelele', name: 'Borussia Dortmund (Makelele)', nameRu: 'Р‘РѕСЂСѓСЃСЃРёСЏ Р”РѕСЂС‚РјСѓРЅРґ (Makelele)' },
-        { id: 'tottenham-isco', name: 'Tottenham (ISCO)', nameRu: 'РўРѕС‚С‚РµРЅС…СЌРј (ISCO)' }
+        { id: 'borussia-dortmund-makelele', name: 'Borussia Dortmund (Makelele)', nameRu: 'Боруссия Дортмунд (Makelele)' },
+        { id: 'tottenham-isco', name: 'Tottenham (ISCO)', nameRu: 'Тоттенхэм (ISCO)' }
       ]
     }
   ],
@@ -1886,401 +1886,401 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
     {
       id: 'volleyball-russia-superleague-1',
       sportId: 'volleyball',
-      title: 'Volleyball В· Russia В· Super League',
-      titleRu: 'Р’РѕР»РµР№Р±РѕР» В· Р РѕСЃСЃРёСЏ В· РЎСѓРїРµСЂР»РёРіР°',
+      title: 'Volleyball · Russia · Super League',
+      titleRu: 'Волейбол · Россия · Суперлига',
       startsAt: '2026-03-17T17:00:00+03:00',
       endsAt: '2026-03-17T19:00:00+03:00',
       displayDateEn: 'Today at',
-      displayDateRu: 'РЎРµРіРѕРґРЅСЏ РІ',
+      displayDateRu: 'Сегодня в',
       participants: [
-        { id: 'dynamo-ufa', name: 'Dynamo Ural Ufa', nameRu: 'Р”РёРЅР°РјРѕ РЈСЂР°Р» РЈС„Р°' },
-        { id: 'belogorie', name: 'Belogorie', nameRu: 'Р‘РµР»РѕРіРѕСЂСЊРµ' }
+        { id: 'dynamo-ufa', name: 'Dynamo Ural Ufa', nameRu: 'Динамо Урал Уфа' },
+        { id: 'belogorie', name: 'Belogorie', nameRu: 'Белогорье' }
       ]
     },
     {
       id: 'volleyball-poland-plusliga-1',
       sportId: 'volleyball',
-      title: 'Volleyball В· Poland В· PlusLiga',
-      titleRu: 'Р’РѕР»РµР№Р±РѕР» В· РџРѕР»СЊС€Р° В· РџР»СЋСЃ-Р»РёРіР°',
+      title: 'Volleyball · Poland · PlusLiga',
+      titleRu: 'Волейбол · Польша · Плюс-лига',
       startsAt: '2026-03-17T19:30:00+03:00',
       endsAt: '2026-03-17T21:30:00+03:00',
       displayDateEn: 'Today at',
-      displayDateRu: 'РЎРµРіРѕРґРЅСЏ РІ',
+      displayDateRu: 'Сегодня в',
       participants: [
-        { id: 'cuprum-lubin', name: 'Cuprum Lubin', nameRu: 'РљСѓРїСЂСѓРј Р›СЋР±РёРЅ' },
-        { id: 'kedzierzyn-kozle', name: 'Kedzierzyn Kozle', nameRu: 'РљРµРЅРґР·РµР¶РёРЅ РљРѕР·Р»Рµ' }
+        { id: 'cuprum-lubin', name: 'Cuprum Lubin', nameRu: 'Купрум Любин' },
+        { id: 'kedzierzyn-kozle', name: 'Kedzierzyn Kozle', nameRu: 'Кендзежин Козле' }
       ]
     },
     {
       id: 'volleyball-poland-plusliga-2',
       sportId: 'volleyball',
-      title: 'Volleyball В· Poland В· PlusLiga',
-      titleRu: 'Р’РѕР»РµР№Р±РѕР» В· РџРѕР»СЊС€Р° В· РџР»СЋСЃ-Р»РёРіР°',
+      title: 'Volleyball · Poland · PlusLiga',
+      titleRu: 'Волейбол · Польша · Плюс-лига',
       startsAt: '2026-03-17T22:00:00+03:00',
       endsAt: '2026-03-18T00:00:00+03:00',
       displayDateEn: 'Today at',
-      displayDateRu: 'РЎРµРіРѕРґРЅСЏ РІ',
+      displayDateRu: 'Сегодня в',
       participants: [
-        { id: 'trefl-gdansk', name: 'Trefl Gdansk', nameRu: 'РўСЂРµС„Р» Р“РґР°РЅСЊСЃРє' },
-        { id: 'politechnika-lublin', name: 'Politechnika Lublin', nameRu: 'РџРѕР»РёС‚РµС…РЅРёРєР° Р›СЋР±Р»РёРЅ' }
+        { id: 'trefl-gdansk', name: 'Trefl Gdansk', nameRu: 'Трефл Гданьск' },
+        { id: 'politechnika-lublin', name: 'Politechnika Lublin', nameRu: 'Политехника Люблин' }
       ]
     },
     {
       id: 'volleyball-italy-serie-a1-1',
       sportId: 'volleyball',
-      title: 'Volleyball В· Italy В· Serie A1',
-      titleRu: 'Р’РѕР»РµР№Р±РѕР» В· РС‚Р°Р»РёСЏ В· РЎРµСЂРёСЏ A1',
+      title: 'Volleyball · Italy · Serie A1',
+      titleRu: 'Волейбол · Италия · Серия A1',
       startsAt: '2026-03-17T22:30:00+03:00',
       endsAt: '2026-03-18T00:30:00+03:00',
       displayDateEn: 'Today at',
-      displayDateRu: 'РЎРµРіРѕРґРЅСЏ РІ',
+      displayDateRu: 'Сегодня в',
       participants: [
-        { id: 'modena', name: 'Modena', nameRu: 'РњРѕРґРµРЅР°' },
-        { id: 'piacenza', name: 'Piacenza', nameRu: 'РџСЊСЏС‡РµРЅС†Р°' }
+        { id: 'modena', name: 'Modena', nameRu: 'Модена' },
+        { id: 'piacenza', name: 'Piacenza', nameRu: 'Пьяченца' }
       ]
     },
     {
       id: 'volleyball-brazil-superliga-1',
       sportId: 'volleyball',
-      title: 'Volleyball В· Brazil В· Superliga',
-      titleRu: 'Р’РѕР»РµР№Р±РѕР» В· Р‘СЂР°Р·РёР»РёСЏ В· РЎСѓРїРµСЂР»РёРіР°',
+      title: 'Volleyball · Brazil · Superliga',
+      titleRu: 'Волейбол · Бразилия · Суперлига',
       startsAt: '2026-03-18T01:00:00+03:00',
       endsAt: '2026-03-18T03:00:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'sao-jose-dos-campos', name: 'Sao Jose dos Campos', nameRu: 'РЎР°РЅ Р–РѕР·Рµ РґСѓСЃ РљР°РјРїСѓСЃ' },
-        { id: 'joinville', name: 'Joinville', nameRu: 'Р–РѕРёРЅРІРёР»Р»Рµ' }
+        { id: 'sao-jose-dos-campos', name: 'Sao Jose dos Campos', nameRu: 'Сан Жозе дус Кампус' },
+        { id: 'joinville', name: 'Joinville', nameRu: 'Жоинвилле' }
       ]
     },
     {
       id: 'volleyball-czech-extraliga-1',
       sportId: 'volleyball',
-      title: 'Volleyball В· Czech Republic В· Extraliga',
-      titleRu: 'Р’РѕР»РµР№Р±РѕР» В· Р§РµС…РёСЏ В· Р­РєСЃС‚СЂР°Р»РёРіР°',
+      title: 'Volleyball · Czech Republic · Extraliga',
+      titleRu: 'Волейбол · Чехия · Экстралига',
       startsAt: '2026-03-17T21:00:00+03:00',
       endsAt: '2026-03-17T23:00:00+03:00',
       displayDateEn: 'Today at',
-      displayDateRu: 'РЎРµРіРѕРґРЅСЏ РІ',
+      displayDateRu: 'Сегодня в',
       participants: [
-        { id: 'benatky', name: 'Benatky nad Jizerou', nameRu: 'Р‘РµРЅР°С‚РєРё РЅР°Рґ Р™РёР·РµСЂРѕСѓ' },
-        { id: 'brno', name: 'Brno', nameRu: 'Р‘СЂРЅРѕ' }
+        { id: 'benatky', name: 'Benatky nad Jizerou', nameRu: 'Бенатки над Йизероу' },
+        { id: 'brno', name: 'Brno', nameRu: 'Брно' }
       ]
     },
     {
       id: 'volleyball-czech-extraliga-2',
       sportId: 'volleyball',
-      title: 'Volleyball В· Czech Republic В· Extraliga',
-      titleRu: 'Р’РѕР»РµР№Р±РѕР» В· Р§РµС…РёСЏ В· Р­РєСЃС‚СЂР°Р»РёРіР°',
+      title: 'Volleyball · Czech Republic · Extraliga',
+      titleRu: 'Волейбол · Чехия · Экстралига',
       startsAt: '2026-03-17T21:30:00+03:00',
       endsAt: '2026-03-17T23:30:00+03:00',
       displayDateEn: 'Today at',
-      displayDateRu: 'РЎРµРіРѕРґРЅСЏ РІ',
+      displayDateRu: 'Сегодня в',
       participants: [
-        { id: 'pribram', name: 'Pribram', nameRu: 'РџСЂРёР±СЂР°Рј' },
-        { id: 'ostrava', name: 'Ostrava', nameRu: 'РћСЃС‚СЂР°РІР°' }
+        { id: 'pribram', name: 'Pribram', nameRu: 'Прибрам' },
+        { id: 'ostrava', name: 'Ostrava', nameRu: 'Острава' }
       ]
     },
     {
       id: 'volleyball-russia-upvl-live',
       sportId: 'volleyball',
-      title: 'Volleyball В· Russia В· UPVL. Nations League (best of 3 sets)',
-      titleRu: 'Р’РѕР»РµР№Р±РѕР» В· Р РѕСЃСЃРёСЏ В· UPVL. Р›РёРіР° РќР°С†РёР№ (РјР°С‚С‡ РёР· 3-С… СЃРµС‚РѕРІ)',
+      title: 'Volleyball · Russia · UPVL. Nations League (best of 3 sets)',
+      titleRu: 'Волейбол · Россия · UPVL. Лига Наций (матч из 3-х сетов)',
       startsAt: '2026-03-17T18:00:00+03:00',
       endsAt: '2026-03-17T20:00:00+03:00',
       displayDateEn: 'Live',
       displayDateRu: 'Live',
       displayTimeEn: 'Match finished',
-      displayTimeRu: 'РњР°С‚С‡ Р·Р°РІРµСЂС€РµРЅ',
+      displayTimeRu: 'Матч завершен',
       participants: [
-        { id: 'france-pro', name: 'France (Pro)', nameRu: 'Р¤СЂР°РЅС†РёСЏ (Pro)', country: 'France' },
-        { id: 'belgium-pro', name: 'Belgium (Pro)', nameRu: 'Р‘РµР»СЊРіРёСЏ (Pro)', country: 'Belgium' }
+        { id: 'france-pro', name: 'France (Pro)', nameRu: 'Франция (Pro)', country: 'France' },
+        { id: 'belgium-pro', name: 'Belgium (Pro)', nameRu: 'Бельгия (Pro)', country: 'Belgium' }
       ]
     },
     {
       id: 'volleyball-philippines-pvl-live',
       sportId: 'volleyball',
-      title: 'Volleyball В· Philippines В· PVL. Women',
-      titleRu: 'Р’РѕР»РµР№Р±РѕР» В· Р¤РёР»РёРїРїРёРЅС‹ В· PVL. Р–РµРЅС‰РёРЅС‹',
+      title: 'Volleyball · Philippines · PVL. Women',
+      titleRu: 'Волейбол · Филиппины · PVL. Женщины',
       startsAt: '2026-03-17T18:30:00+03:00',
       endsAt: '2026-03-17T20:30:00+03:00',
       displayDateEn: 'Live',
       displayDateRu: 'Live',
       displayTimeEn: '2nd set',
-      displayTimeRu: '2-Р№ СЃРµС‚',
+      displayTimeRu: '2-й сет',
       participants: [
-        { id: 'farm-fresh-w', name: 'Farm Fresh (W)', nameRu: 'Р¤Р°СЂРј Р¤СЂСЌС€ (Р¶)' },
-        { id: 'cool-smashers-w', name: 'Cool Smashers (W)', nameRu: 'РљСѓР» РЎРјСЌС€РµСЂСЃ (Р¶)' }
+        { id: 'farm-fresh-w', name: 'Farm Fresh (W)', nameRu: 'Фарм Фрэш (ж)' },
+        { id: 'cool-smashers-w', name: 'Cool Smashers (W)', nameRu: 'Кул Смэшерс (ж)' }
       ]
     },
     {
       id: 'volleyball-russia-youth-live',
       sportId: 'volleyball',
-      title: 'Volleyball В· Russia В· Youth League. Women',
-      titleRu: 'Р’РѕР»РµР№Р±РѕР» В· Р РѕСЃСЃРёСЏ В· РњРѕР»РѕРґРµР¶РЅР°СЏ Р»РёРіР°. Р–РµРЅС‰РёРЅС‹',
+      title: 'Volleyball · Russia · Youth League. Women',
+      titleRu: 'Волейбол · Россия · Молодежная лига. Женщины',
       startsAt: '2026-03-17T18:45:00+03:00',
       endsAt: '2026-03-17T20:45:00+03:00',
       displayDateEn: 'Live',
       displayDateRu: 'Live',
       displayTimeEn: '3rd set',
-      displayTimeRu: '3-Р№ СЃРµС‚',
+      displayTimeRu: '3-й сет',
       participants: [
-        { id: 'zarechie-odintsovo-2-w', name: 'Zarechie Odintsovo 2 (Youth) (W)', nameRu: 'Р—Р°СЂРµС‡СЊРµ РћРґРёРЅС†РѕРІРѕ 2 (РјРѕР») (Р¶)' },
-        { id: 'dinamo-metar-3-w', name: 'Dinamo Metar 3 (Youth) (W)', nameRu: 'Р”РёРЅР°РјРѕ РњРµС‚Р°СЂ 3 (РјРѕР») (Р¶)' }
+        { id: 'zarechie-odintsovo-2-w', name: 'Zarechie Odintsovo 2 (Youth) (W)', nameRu: 'Заречье Одинцово 2 (мол) (ж)' },
+        { id: 'dinamo-metar-3-w', name: 'Dinamo Metar 3 (Youth) (W)', nameRu: 'Динамо Метар 3 (мол) (ж)' }
       ]
     },
     {
       id: 'volleyball-finland-w-1',
       sportId: 'volleyball',
-      title: 'Volleyball В· Finland В· Mestaruusliiga. Women',
-      titleRu: 'Р’РѕР»РµР№Р±РѕР» В· Р¤РёРЅР»СЏРЅРґРёСЏ В· РњРµСЃС‚Р°СЂСѓСѓСЃР»РёРіР°. Р–РµРЅС‰РёРЅС‹',
+      title: 'Volleyball · Finland · Mestaruusliiga. Women',
+      titleRu: 'Волейбол · Финляндия · Местарууслига. Женщины',
       startsAt: '2026-03-17T19:00:00+03:00',
       endsAt: '2026-03-17T21:00:00+03:00',
       displayDateEn: 'Today at',
-      displayDateRu: 'РЎРµРіРѕРґРЅСЏ РІ',
+      displayDateRu: 'Сегодня в',
       participants: [
-        { id: 'kangasala-w', name: 'Kangasala (W)', nameRu: 'РљР°РЅРіР°СЃР°Р»Р° (Р¶)' },
-        { id: 'vampula-w', name: 'Vampula (W)', nameRu: 'Р’Р°РјРїСѓР»Р° (Р¶)' }
+        { id: 'kangasala-w', name: 'Kangasala (W)', nameRu: 'Кангасала (ж)' },
+        { id: 'vampula-w', name: 'Vampula (W)', nameRu: 'Вампула (ж)' }
       ]
     },
     {
       id: 'volleyball-finland-w-2',
       sportId: 'volleyball',
-      title: 'Volleyball В· Finland В· Mestaruusliiga. Women',
-      titleRu: 'Р’РѕР»РµР№Р±РѕР» В· Р¤РёРЅР»СЏРЅРґРёСЏ В· РњРµСЃС‚Р°СЂСѓСѓСЃР»РёРіР°. Р–РµРЅС‰РёРЅС‹',
+      title: 'Volleyball · Finland · Mestaruusliiga. Women',
+      titleRu: 'Волейбол · Финляндия · Местарууслига. Женщины',
       startsAt: '2026-03-17T19:30:00+03:00',
       endsAt: '2026-03-17T21:30:00+03:00',
       displayDateEn: 'Today at',
-      displayDateRu: 'РЎРµРіРѕРґРЅСЏ РІ',
+      displayDateRu: 'Сегодня в',
       participants: [
-        { id: 'liigalokki-w', name: 'Liigalokki (W)', nameRu: 'Р›РёРіР°Р»Р»РѕРєРё (Р¶)' },
-        { id: 'viesti-salo-w', name: 'Viesti Salo (W)', nameRu: 'Р’РёРµСЃС‚Рё РЎР°Р»Рѕ (Р¶)' }
+        { id: 'liigalokki-w', name: 'Liigalokki (W)', nameRu: 'Лигаллоки (ж)' },
+        { id: 'viesti-salo-w', name: 'Viesti Salo (W)', nameRu: 'Виести Сало (ж)' }
       ]
     },
     {
       id: 'volleyball-finland-1',
       sportId: 'volleyball',
-      title: 'Volleyball В· Finland В· Mestaruusliiga',
-      titleRu: 'Р’РѕР»РµР№Р±РѕР» В· Р¤РёРЅР»СЏРЅРґРёСЏ В· РњРµСЃС‚Р°СЂСѓСѓСЃР»РёРіР°',
+      title: 'Volleyball · Finland · Mestaruusliiga',
+      titleRu: 'Волейбол · Финляндия · Местарууслига',
       startsAt: '2026-03-17T19:30:00+03:00',
       endsAt: '2026-03-17T21:30:00+03:00',
       displayDateEn: 'Today at',
-      displayDateRu: 'РЎРµРіРѕРґРЅСЏ РІ',
+      displayDateRu: 'Сегодня в',
       participants: [
-        { id: 'hurrikaani', name: 'Hurrikaani', nameRu: 'РҐСѓСЂСЂРёРєР°Р°РЅРё' },
-        { id: 'savo', name: 'Savo', nameRu: 'РЎР°РІРѕ' }
+        { id: 'hurrikaani', name: 'Hurrikaani', nameRu: 'Хуррикаани' },
+        { id: 'savo', name: 'Savo', nameRu: 'Саво' }
       ]
     },
     {
       id: 'volleyball-switzerland-1',
       sportId: 'volleyball',
-      title: 'Volleyball В· Switzerland В· NLA',
-      titleRu: 'Р’РѕР»РµР№Р±РѕР» В· РЁРІРµР№С†Р°СЂРёСЏ В· NLA',
+      title: 'Volleyball · Switzerland · NLA',
+      titleRu: 'Волейбол · Швейцария · NLA',
       startsAt: '2026-03-17T21:30:00+03:00',
       endsAt: '2026-03-17T23:30:00+03:00',
       displayDateEn: 'Today at',
-      displayDateRu: 'РЎРµРіРѕРґРЅСЏ РІ',
+      displayDateRu: 'Сегодня в',
       participants: [
-        { id: 'volley-nafels', name: 'Volley Nafels', nameRu: 'Р’РѕР»Р»РµР№ РќР°РµС„РµР»СЃ' },
-        { id: 'chenois-geneve', name: 'Chenois Geneve', nameRu: 'Р§РµРЅРѕР№СЃ Р–РµРЅРµРІР°' }
+        { id: 'volley-nafels', name: 'Volley Nafels', nameRu: 'Воллей Наефелс' },
+        { id: 'chenois-geneve', name: 'Chenois Geneve', nameRu: 'Ченойс Женева' }
       ]
     },
     {
       id: 'volleyball-rwanda-live',
       sportId: 'volleyball',
-      title: 'Volleyball В· Rwanda В· National League. Women',
-      titleRu: 'Р’РѕР»РµР№Р±РѕР» В· Р СѓР°РЅРґР° В· РќР°С†РёРѕРЅР°Р»СЊРЅР°СЏ Р»РёРіР°. Р–РµРЅС‰РёРЅС‹',
+      title: 'Volleyball · Rwanda · National League. Women',
+      titleRu: 'Волейбол · Руанда · Национальная лига. Женщины',
       startsAt: '2026-03-17T20:00:00+03:00',
       endsAt: '2026-03-17T22:00:00+03:00',
       displayDateEn: 'Live',
       displayDateRu: 'Live',
       displayTimeEn: 'In play',
-      displayTimeRu: 'РњР°С‚С‡ РёРґРµС‚',
+      displayTimeRu: 'Матч идет',
       participants: [
-        { id: 'polis-w', name: 'Polis (W)', nameRu: 'РџРѕР»РёСЃ (Р¶)' },
-        { id: 'kepler-w', name: 'Kepler (W)', nameRu: 'РљРµРїР»РµСЂ (Р¶)' }
+        { id: 'polis-w', name: 'Polis (W)', nameRu: 'Полис (ж)' },
+        { id: 'kepler-w', name: 'Kepler (W)', nameRu: 'Кеплер (ж)' }
       ]
     },
     {
       id: 'volleyball-sweden-1',
       sportId: 'volleyball',
-      title: 'Volleyball В· Sweden В· Elitserien',
-      titleRu: 'Р’РѕР»РµР№Р±РѕР» В· РЁРІРµС†РёСЏ В· Р­Р»РёС‚СЃРµСЂРёСЏ',
+      title: 'Volleyball · Sweden · Elitserien',
+      titleRu: 'Волейбол · Швеция · Элитсерия',
       startsAt: '2026-03-17T21:00:00+03:00',
       endsAt: '2026-03-17T23:00:00+03:00',
       displayDateEn: 'Today at',
-      displayDateRu: 'РЎРµРіРѕРґРЅСЏ РІ',
+      displayDateRu: 'Сегодня в',
       participants: [
-        { id: 'habo', name: 'Habo', nameRu: 'РҐР°Р±Рѕ' },
-        { id: 'sodertalje', name: 'Sodertalje', nameRu: 'РЎРµРґРµСЂС‚РµР»СЊРµ' }
+        { id: 'habo', name: 'Habo', nameRu: 'Хабо' },
+        { id: 'sodertalje', name: 'Sodertalje', nameRu: 'Седертелье' }
       ]
     },
     {
       id: 'volleyball-slovakia-1',
       sportId: 'volleyball',
-      title: 'Volleyball В· Slovakia В· Extraliga',
-      titleRu: 'Р’РѕР»РµР№Р±РѕР» В· РЎР»РѕРІР°РєРёСЏ В· Р­РєСЃС‚СЂР°Р»РёРіР°',
+      title: 'Volleyball · Slovakia · Extraliga',
+      titleRu: 'Волейбол · Словакия · Экстралига',
       startsAt: '2026-03-17T21:00:00+03:00',
       endsAt: '2026-03-17T23:00:00+03:00',
       displayDateEn: 'Today at',
-      displayDateRu: 'РЎРµРіРѕРґРЅСЏ РІ',
+      displayDateRu: 'Сегодня в',
       participants: [
-        { id: 'spartak-myjava', name: 'Spartak Myjava', nameRu: 'РЎРїР°СЂС‚Р°Рє РњРёСЏРІР°' },
-        { id: 'vkp-bratislava', name: 'VKP Bratislava', nameRu: 'Р’РљРџ Р‘СЂР°С‚РёСЃР»Р°РІР°' }
+        { id: 'spartak-myjava', name: 'Spartak Myjava', nameRu: 'Спартак Миява' },
+        { id: 'vkp-bratislava', name: 'VKP Bratislava', nameRu: 'ВКП Братислава' }
       ]
     },
     {
       id: 'volleyball-china-live',
       sportId: 'volleyball',
-      title: 'Volleyball В· China В· CVL. Women',
-      titleRu: 'Р’РѕР»РµР№Р±РѕР» В· РљРёС‚Р°Р№ В· CVL. Р–РµРЅС‰РёРЅС‹',
+      title: 'Volleyball · China · CVL. Women',
+      titleRu: 'Волейбол · Китай · CVL. Женщины',
       startsAt: '2026-03-17T19:00:00+03:00',
       endsAt: '2026-03-17T21:00:00+03:00',
       displayDateEn: 'Live',
       displayDateRu: 'Live',
       displayTimeEn: 'Break',
-      displayTimeRu: 'РџРµСЂРµСЂС‹РІ',
+      displayTimeRu: 'Перерыв',
       participants: [
-        { id: 'shandong-w', name: 'Shandong (W)', nameRu: 'РЁР°РЅСЊРґСѓРЅ (Р¶)' },
-        { id: 'shanghai-w', name: 'Shanghai (W)', nameRu: 'РЁР°РЅС…Р°Р№ (Р¶)' }
+        { id: 'shandong-w', name: 'Shandong (W)', nameRu: 'Шаньдун (ж)' },
+        { id: 'shanghai-w', name: 'Shanghai (W)', nameRu: 'Шанхай (ж)' }
       ]
     },
     {
       id: 'volleyball-argentina-1',
       sportId: 'volleyball',
-      title: 'Volleyball В· Argentina В· Serie A1',
-      titleRu: 'Р’РѕР»РµР№Р±РѕР» В· РђСЂРіРµРЅС‚РёРЅР° В· РЎРµСЂРёСЏ A1',
+      title: 'Volleyball · Argentina · Serie A1',
+      titleRu: 'Волейбол · Аргентина · Серия A1',
       startsAt: '2026-03-18T00:30:00+03:00',
       endsAt: '2026-03-18T02:30:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'tucuman-gimnasia', name: 'Tucuman Gimnasia', nameRu: 'РўСѓРєСѓРјР°РЅ РҐРёРјРЅР°Р·РёСЏ' },
-        { id: 'ciudad-buenos-aires', name: 'Ciudad de Buenos Aires', nameRu: 'РЎСЊСЋРґР°Рґ РґРµ Р‘СѓСЌРЅРѕСЃ РђР№СЂРµСЃ' }
+        { id: 'tucuman-gimnasia', name: 'Tucuman Gimnasia', nameRu: 'Тукуман Химназия' },
+        { id: 'ciudad-buenos-aires', name: 'Ciudad de Buenos Aires', nameRu: 'Сьюдад де Буэнос Айрес' }
       ]
     },
     {
       id: 'volleyball-argentina-2',
       sportId: 'volleyball',
-      title: 'Volleyball В· Argentina В· Serie A1',
-      titleRu: 'Р’РѕР»РµР№Р±РѕР» В· РђСЂРіРµРЅС‚РёРЅР° В· РЎРµСЂРёСЏ A1',
+      title: 'Volleyball · Argentina · Serie A1',
+      titleRu: 'Волейбол · Аргентина · Серия A1',
       startsAt: '2026-03-18T03:30:00+03:00',
       endsAt: '2026-03-18T05:30:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'monteros', name: 'Monteros', nameRu: 'РњРѕРЅС‚РµСЂРѕСЃ' },
-        { id: 'upln-san-juan', name: 'UPLN San Juan', nameRu: 'РЈРџР›Рќ РЎР°РЅ РҐСѓР°РЅ' }
+        { id: 'monteros', name: 'Monteros', nameRu: 'Монтерос' },
+        { id: 'upln-san-juan', name: 'UPLN San Juan', nameRu: 'УПЛН Сан Хуан' }
       ]
     },
     {
       id: 'volleyball-russia-superleague-2',
       sportId: 'volleyball',
-      title: 'Volleyball В· Russia В· Super League',
-      titleRu: 'Р’РѕР»РµР№Р±РѕР» В· Р РѕСЃСЃРёСЏ В· РЎСѓРїРµСЂР»РёРіР°',
+      title: 'Volleyball · Russia · Super League',
+      titleRu: 'Волейбол · Россия · Суперлига',
       startsAt: '2026-03-18T17:00:00+03:00',
       endsAt: '2026-03-18T19:00:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'gazprom-ugra-volley', name: 'Gazprom Ugra', nameRu: 'Р“Р°Р·РїСЂРѕРј Р®РіСЂР°' },
-        { id: 'yenisey', name: 'Yenisey', nameRu: 'Р•РЅРёСЃРµР№' }
+        { id: 'gazprom-ugra-volley', name: 'Gazprom Ugra', nameRu: 'Газпром Югра' },
+        { id: 'yenisey', name: 'Yenisey', nameRu: 'Енисей' }
       ]
     },
     {
       id: 'volleyball-russia-superleague-3',
       sportId: 'volleyball',
-      title: 'Volleyball В· Russia В· Super League',
-      titleRu: 'Р’РѕР»РµР№Р±РѕР» В· Р РѕСЃСЃРёСЏ В· РЎСѓРїРµСЂР»РёРіР°',
+      title: 'Volleyball · Russia · Super League',
+      titleRu: 'Волейбол · Россия · Суперлига',
       startsAt: '2026-03-18T17:00:00+03:00',
       endsAt: '2026-03-18T19:00:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'fakel-yamal', name: 'Fakel Yamal', nameRu: 'Р¤Р°РєРµР» РЇРјР°Р»' },
-        { id: 'nova', name: 'Nova', nameRu: 'РќРѕРІР°' }
+        { id: 'fakel-yamal', name: 'Fakel Yamal', nameRu: 'Факел Ямал' },
+        { id: 'nova', name: 'Nova', nameRu: 'Нова' }
       ]
     },
     {
       id: 'volleyball-russia-superleague-4',
       sportId: 'volleyball',
-      title: 'Volleyball В· Russia В· Super League',
-      titleRu: 'Р’РѕР»РµР№Р±РѕР» В· Р РѕСЃСЃРёСЏ В· РЎСѓРїРµСЂР»РёРіР°',
+      title: 'Volleyball · Russia · Super League',
+      titleRu: 'Волейбол · Россия · Суперлига',
       startsAt: '2026-03-18T19:00:00+03:00',
       endsAt: '2026-03-18T21:00:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'gorkiy', name: 'Gorkiy', nameRu: 'Р“РѕСЂСЊРєРёР№' },
-        { id: 'dinamo-lo', name: 'Dinamo-LO', nameRu: 'Р”РёРЅР°РјРѕ-Р›Рћ' }
+        { id: 'gorkiy', name: 'Gorkiy', nameRu: 'Горький' },
+        { id: 'dinamo-lo', name: 'Dinamo-LO', nameRu: 'Динамо-ЛО' }
       ]
     },
     {
       id: 'volleyball-challenge-cup-w',
       sportId: 'volleyball',
-      title: 'Volleyball В· International Clubs В· Challenge Cup. Women',
-      titleRu: 'Р’РѕР»РµР№Р±РѕР» В· РњРµР¶РґСѓРЅР°СЂРѕРґРЅС‹Рµ. РљР»СѓР±С‹ В· РљСѓР±РѕРє РІС‹Р·РѕРІР°. Р–РµРЅС‰РёРЅС‹',
+      title: 'Volleyball · International Clubs · Challenge Cup. Women',
+      titleRu: 'Волейбол · Международные. Клубы · Кубок вызова. Женщины',
       startsAt: '2026-03-18T20:00:00+03:00',
       endsAt: '2026-03-18T22:00:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'panathinaikos-w-volley', name: 'Panathinaikos (W)', nameRu: 'РџР°РЅР°С‚РёРЅР°РёРєРѕСЃ (Р¶)' },
-        { id: 'vallefoglia-w', name: 'Vallefoglia (W)', nameRu: 'Р’Р°Р»Р»РµС„РѕР»СЊСЏ (Р¶)' }
+        { id: 'panathinaikos-w-volley', name: 'Panathinaikos (W)', nameRu: 'Панатинаикос (ж)' },
+        { id: 'vallefoglia-w', name: 'Vallefoglia (W)', nameRu: 'Валлефолья (ж)' }
       ]
     },
     {
       id: 'volleyball-italy-serie-a1-2',
       sportId: 'volleyball',
-      title: 'Volleyball В· Italy В· Serie A1',
-      titleRu: 'Р’РѕР»РµР№Р±РѕР» В· РС‚Р°Р»РёСЏ В· РЎРµСЂРёСЏ A1',
+      title: 'Volleyball · Italy · Serie A1',
+      titleRu: 'Волейбол · Италия · Серия A1',
       startsAt: '2026-03-18T22:30:00+03:00',
       endsAt: '2026-03-19T00:30:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'verona', name: 'Verona', nameRu: 'Р’РµСЂРѕРЅР°' },
-        { id: 'milan', name: 'Milan', nameRu: 'РњРёР»Р°РЅ' }
+        { id: 'verona', name: 'Verona', nameRu: 'Верона' },
+        { id: 'milan', name: 'Milan', nameRu: 'Милан' }
       ]
     },
     {
       id: 'volleyball-italy-serie-a1-3',
       sportId: 'volleyball',
-      title: 'Volleyball В· Italy В· Serie A1',
-      titleRu: 'Р’РѕР»РµР№Р±РѕР» В· РС‚Р°Р»РёСЏ В· РЎРµСЂРёСЏ A1',
+      title: 'Volleyball · Italy · Serie A1',
+      titleRu: 'Волейбол · Италия · Серия A1',
       startsAt: '2026-03-18T22:30:00+03:00',
       endsAt: '2026-03-19T00:30:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'perugia', name: 'Perugia', nameRu: 'РџРµСЂСѓРґР¶Р°' },
-        { id: 'vero-monza', name: 'Vero Monza', nameRu: 'Р’РµСЂРѕ РњРѕРЅС†Р°' }
+        { id: 'perugia', name: 'Perugia', nameRu: 'Перуджа' },
+        { id: 'vero-monza', name: 'Vero Monza', nameRu: 'Веро Монца' }
       ]
     },
     {
       id: 'volleyball-italy-serie-a1-4',
       sportId: 'volleyball',
-      title: 'Volleyball В· Italy В· Serie A1',
-      titleRu: 'Р’РѕР»РµР№Р±РѕР» В· РС‚Р°Р»РёСЏ В· РЎРµСЂРёСЏ A1',
+      title: 'Volleyball · Italy · Serie A1',
+      titleRu: 'Волейбол · Италия · Серия A1',
       startsAt: '2026-03-18T22:30:00+03:00',
       endsAt: '2026-03-19T00:30:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'trentino', name: 'Trentino', nameRu: 'РўСЂРµРЅС‚РёРЅРѕ' },
-        { id: 'cucine-lube', name: 'Cucine Lube', nameRu: 'РљСѓС‡РёРЅРµ Р›СѓР±Рµ' }
+        { id: 'trentino', name: 'Trentino', nameRu: 'Трентино' },
+        { id: 'cucine-lube', name: 'Cucine Lube', nameRu: 'Кучине Лубе' }
       ]
     },
     {
       id: 'volleyball-greece-cup-1',
       sportId: 'volleyball',
-      title: 'Volleyball В· Greece В· Cup',
-      titleRu: 'Р’РѕР»РµР№Р±РѕР» В· Р“СЂРµС†РёСЏ В· РљСѓР±РѕРє',
+      title: 'Volleyball · Greece · Cup',
+      titleRu: 'Волейбол · Греция · Кубок',
       startsAt: '2026-03-19T18:00:00+03:00',
       endsAt: '2026-03-19T20:00:00+03:00',
       participants: [
-        { id: 'ofi', name: 'OFI', nameRu: 'РћР¤Р' },
-        { id: 'panathinaikos', name: 'Panathinaikos', nameRu: 'РџР°РЅР°С‚РёРЅР°РёРєРѕСЃ' }
+        { id: 'ofi', name: 'OFI', nameRu: 'ОФИ' },
+        { id: 'panathinaikos', name: 'Panathinaikos', nameRu: 'Панатинаикос' }
       ]
     }
   ],
@@ -2502,181 +2502,181 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
     {
       id: 'baseball-mlb-preseason-1',
       sportId: 'baseball',
-      title: 'Baseball В· USA В· MLB. Preseason Games',
-      titleRu: 'Р‘РµР№СЃР±РѕР» В· РЎРЁРђ В· MLB. РџСЂРµРґСЃРµР·РѕРЅРЅС‹Рµ РёРіСЂС‹',
+      title: 'Baseball · USA · MLB. Preseason Games',
+      titleRu: 'Бейсбол · США · MLB. Предсезонные игры',
       startsAt: '2026-03-17T20:05:00+03:00',
       endsAt: '2026-03-17T23:05:00+03:00',
       displayDateEn: 'Today at',
-      displayDateRu: 'РЎРµРіРѕРґРЅСЏ РІ',
+      displayDateRu: 'Сегодня в',
       participants: [
-        { id: 'detroit-tigers', name: 'Detroit Tigers', nameRu: 'Р”РµС‚СЂРѕР№С‚ РўР°Р№РіРµСЂР·' },
-        { id: 'baltimore-orioles', name: 'Baltimore Orioles', nameRu: 'Р‘Р°Р»С‚РёРјРѕСЂ РћСЂРёРѕР»СЃ' }
+        { id: 'detroit-tigers', name: 'Detroit Tigers', nameRu: 'Детройт Тайгерз' },
+        { id: 'baltimore-orioles', name: 'Baltimore Orioles', nameRu: 'Балтимор Ориолс' }
       ]
     },
     {
       id: 'baseball-mlb-preseason-2',
       sportId: 'baseball',
-      title: 'Baseball В· USA В· MLB. Preseason Games',
-      titleRu: 'Р‘РµР№СЃР±РѕР» В· РЎРЁРђ В· MLB. РџСЂРµРґСЃРµР·РѕРЅРЅС‹Рµ РёРіСЂС‹',
+      title: 'Baseball · USA · MLB. Preseason Games',
+      titleRu: 'Бейсбол · США · MLB. Предсезонные игры',
       startsAt: '2026-03-17T20:05:00+03:00',
       endsAt: '2026-03-17T23:05:00+03:00',
       displayDateEn: 'Today at',
-      displayDateRu: 'РЎРµРіРѕРґРЅСЏ РІ',
+      displayDateRu: 'Сегодня в',
       participants: [
-        { id: 'philadelphia-phillies', name: 'Philadelphia Phillies', nameRu: 'Р¤РёР»Р°РґРµР»СЊС„РёСЏ Р¤РёР»Р»РёСЃ' },
-        { id: 'minnesota-twins', name: 'Minnesota Twins', nameRu: 'РњРёРЅРЅРµСЃРѕС‚Р° РўРІРёРЅСЃ' }
+        { id: 'philadelphia-phillies', name: 'Philadelphia Phillies', nameRu: 'Филадельфия Филлис' },
+        { id: 'minnesota-twins', name: 'Minnesota Twins', nameRu: 'Миннесота Твинс' }
       ]
     },
     {
       id: 'baseball-mlb-preseason-3',
       sportId: 'baseball',
-      title: 'Baseball В· USA В· MLB. Preseason Games',
-      titleRu: 'Р‘РµР№СЃР±РѕР» В· РЎРЁРђ В· MLB. РџСЂРµРґСЃРµР·РѕРЅРЅС‹Рµ РёРіСЂС‹',
+      title: 'Baseball · USA · MLB. Preseason Games',
+      titleRu: 'Бейсбол · США · MLB. Предсезонные игры',
       startsAt: '2026-03-17T20:05:00+03:00',
       endsAt: '2026-03-17T23:05:00+03:00',
       displayDateEn: 'Today at',
-      displayDateRu: 'РЎРµРіРѕРґРЅСЏ РІ',
+      displayDateRu: 'Сегодня в',
       participants: [
-        { id: 'pittsburgh-pirates', name: 'Pittsburgh Pirates', nameRu: 'РџРёС‚С‚СЃР±СѓСЂРі РџР°Р№СЂРµС‚СЃ' },
-        { id: 'houston-astros', name: 'Houston Astros', nameRu: 'РҐСЊСЋСЃС‚РѕРЅ РђСЃС‚СЂРѕСЃ' }
+        { id: 'pittsburgh-pirates', name: 'Pittsburgh Pirates', nameRu: 'Питтсбург Пайретс' },
+        { id: 'houston-astros', name: 'Houston Astros', nameRu: 'Хьюстон Астрос' }
       ]
     },
     {
       id: 'baseball-mlb-preseason-4',
       sportId: 'baseball',
-      title: 'Baseball В· USA В· MLB. Preseason Games',
-      titleRu: 'Р‘РµР№СЃР±РѕР» В· РЎРЁРђ В· MLB. РџСЂРµРґСЃРµР·РѕРЅРЅС‹Рµ РёРіСЂС‹',
+      title: 'Baseball · USA · MLB. Preseason Games',
+      titleRu: 'Бейсбол · США · MLB. Предсезонные игры',
       startsAt: '2026-03-17T20:05:00+03:00',
       endsAt: '2026-03-17T23:05:00+03:00',
       displayDateEn: 'Today at',
-      displayDateRu: 'РЎРµРіРѕРґРЅСЏ РІ',
+      displayDateRu: 'Сегодня в',
       participants: [
-        { id: 'tampa-bay-rays', name: 'Tampa Bay Rays', nameRu: 'РўР°РјРїР° Р‘СЌР№ Р РµР№СЃ' },
-        { id: 'new-york-yankees-1', name: 'New York Yankees', nameRu: 'РќСЊСЋ Р™РѕСЂРє РЇРЅРєРёР·' }
+        { id: 'tampa-bay-rays', name: 'Tampa Bay Rays', nameRu: 'Тампа Бэй Рейс' },
+        { id: 'new-york-yankees-1', name: 'New York Yankees', nameRu: 'Нью Йорк Янкиз' }
       ]
     },
     {
       id: 'baseball-mlb-preseason-5',
       sportId: 'baseball',
-      title: 'Baseball В· USA В· MLB. Preseason Games',
-      titleRu: 'Р‘РµР№СЃР±РѕР» В· РЎРЁРђ В· MLB. РџСЂРµРґСЃРµР·РѕРЅРЅС‹Рµ РёРіСЂС‹',
+      title: 'Baseball · USA · MLB. Preseason Games',
+      titleRu: 'Бейсбол · США · MLB. Предсезонные игры',
       startsAt: '2026-03-17T20:05:00+03:00',
       endsAt: '2026-03-17T23:05:00+03:00',
       displayDateEn: 'Today at',
-      displayDateRu: 'РЎРµРіРѕРґРЅСЏ РІ',
+      displayDateRu: 'Сегодня в',
       participants: [
-        { id: 'boston-red-sox', name: 'Boston Red Sox', nameRu: 'Р‘РѕСЃС‚РѕРЅ Р СЌРґ РЎРѕРєСЃ' },
-        { id: 'atlanta-braves', name: 'Atlanta Braves', nameRu: 'РђС‚Р»Р°РЅС‚Р° Р‘СЂСЌР№РІР·' }
+        { id: 'boston-red-sox', name: 'Boston Red Sox', nameRu: 'Бостон Рэд Сокс' },
+        { id: 'atlanta-braves', name: 'Atlanta Braves', nameRu: 'Атланта Брэйвз' }
       ]
     },
     {
       id: 'baseball-mlb-preseason-6',
       sportId: 'baseball',
-      title: 'Baseball В· USA В· MLB. Preseason Games',
-      titleRu: 'Р‘РµР№СЃР±РѕР» В· РЎРЁРђ В· MLB. РџСЂРµРґСЃРµР·РѕРЅРЅС‹Рµ РёРіСЂС‹',
+      title: 'Baseball · USA · MLB. Preseason Games',
+      titleRu: 'Бейсбол · США · MLB. Предсезонные игры',
       startsAt: '2026-03-17T20:05:00+03:00',
       endsAt: '2026-03-17T23:05:00+03:00',
       displayDateEn: 'Today at',
-      displayDateRu: 'РЎРµРіРѕРґРЅСЏ РІ',
+      displayDateRu: 'Сегодня в',
       participants: [
-        { id: 'washington-nationals', name: 'Washington Nationals', nameRu: 'Р’Р°С€РёРЅРіС‚РѕРЅ РќСЌС€РёРѕРЅР°Р»СЃ' },
-        { id: 'st-louis-cardinals', name: 'St. Louis Cardinals', nameRu: 'РЎРµРЅС‚ Р›СѓРёСЃ РљР°СЂРґРёРЅР°Р»СЃ' }
+        { id: 'washington-nationals', name: 'Washington Nationals', nameRu: 'Вашингтон Нэшионалс' },
+        { id: 'st-louis-cardinals', name: 'St. Louis Cardinals', nameRu: 'Сент Луис Кардиналс' }
       ]
     },
     {
       id: 'baseball-mlb-preseason-7',
       sportId: 'baseball',
-      title: 'Baseball В· USA В· MLB. Preseason Games',
-      titleRu: 'Р‘РµР№СЃР±РѕР» В· РЎРЁРђ В· MLB. РџСЂРµРґСЃРµР·РѕРЅРЅС‹Рµ РёРіСЂС‹',
+      title: 'Baseball · USA · MLB. Preseason Games',
+      titleRu: 'Бейсбол · США · MLB. Предсезонные игры',
       startsAt: '2026-03-17T20:10:00+03:00',
       endsAt: '2026-03-17T23:10:00+03:00',
       displayDateEn: 'Today at',
-      displayDateRu: 'РЎРµРіРѕРґРЅСЏ РІ',
+      displayDateRu: 'Сегодня в',
       participants: [
-        { id: 'miami-marlins', name: 'Miami Marlins', nameRu: 'РњР°Р№Р°РјРё РњР°СЂР»РёРЅР·' },
-        { id: 'new-york-mets', name: 'New York Mets', nameRu: 'РќСЊСЋ Р™РѕСЂРє РњРµС‚СЃ' }
+        { id: 'miami-marlins', name: 'Miami Marlins', nameRu: 'Майами Марлинз' },
+        { id: 'new-york-mets', name: 'New York Mets', nameRu: 'Нью Йорк Метс' }
       ]
     },
     {
       id: 'baseball-mlb-preseason-8',
       sportId: 'baseball',
-      title: 'Baseball В· USA В· MLB. Preseason Games',
-      titleRu: 'Р‘РµР№СЃР±РѕР» В· РЎРЁРђ В· MLB. РџСЂРµРґСЃРµР·РѕРЅРЅС‹Рµ РёРіСЂС‹',
+      title: 'Baseball · USA · MLB. Preseason Games',
+      titleRu: 'Бейсбол · США · MLB. Предсезонные игры',
       startsAt: '2026-03-17T23:05:00+03:00',
       endsAt: '2026-03-18T02:05:00+03:00',
       displayDateEn: 'Today at',
-      displayDateRu: 'РЎРµРіРѕРґРЅСЏ РІ',
+      displayDateRu: 'Сегодня в',
       participants: [
-        { id: 'chicago-white-sox', name: 'Chicago White Sox', nameRu: 'Р§РёРєР°РіРѕ РЈР°Р№С‚ РЎРѕРєСЃ' },
-        { id: 'oakland-athletics', name: 'Oakland Athletics', nameRu: 'РћРєР»РµРЅРґ РђС‚Р»РµС‚РёРєСЃ' }
+        { id: 'chicago-white-sox', name: 'Chicago White Sox', nameRu: 'Чикаго Уайт Сокс' },
+        { id: 'oakland-athletics', name: 'Oakland Athletics', nameRu: 'Окленд Атлетикс' }
       ]
     },
     {
       id: 'baseball-world-classic-1',
       sportId: 'baseball',
-      title: 'Baseball В· International В· World Classic',
-      titleRu: 'Р‘РµР№СЃР±РѕР» В· РњРµР¶РґСѓРЅР°СЂРѕРґРЅС‹Рµ В· РњРёСЂРѕРІР°СЏ РљР»Р°СЃСЃРёРєР°',
+      title: 'Baseball · International · World Classic',
+      titleRu: 'Бейсбол · Международные · Мировая Классика',
       startsAt: '2026-03-18T03:00:00+03:00',
       endsAt: '2026-03-18T06:00:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'usa-baseball', name: 'USA', nameRu: 'РЎРЁРђ', country: 'United States' },
-        { id: 'venezuela-baseball', name: 'Venezuela', nameRu: 'Р’РµРЅРµСЃСѓСЌР»Р°', country: 'Venezuela' }
+        { id: 'usa-baseball', name: 'USA', nameRu: 'США', country: 'United States' },
+        { id: 'venezuela-baseball', name: 'Venezuela', nameRu: 'Венесуэла', country: 'Venezuela' }
       ]
     },
     {
       id: 'baseball-mlb-preseason-9',
       sportId: 'baseball',
-      title: 'Baseball В· USA В· MLB. Preseason Games',
-      titleRu: 'Р‘РµР№СЃР±РѕР» В· РЎРЁРђ В· MLB. РџСЂРµРґСЃРµР·РѕРЅРЅС‹Рµ РёРіСЂС‹',
+      title: 'Baseball · USA · MLB. Preseason Games',
+      titleRu: 'Бейсбол · США · MLB. Предсезонные игры',
       startsAt: '2026-03-18T04:05:00+03:00',
       endsAt: '2026-03-18T07:05:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'chicago-cubs', name: 'Chicago Cubs', nameRu: 'Р§РёРєР°РіРѕ РљР°Р±СЃ' },
-        { id: 'los-angeles-angels', name: 'Los Angeles Angels', nameRu: 'Р›РѕСЃ РђРЅРґР¶РµР»РµСЃ Р­Р№РЅРґР¶РµР»Р·' }
+        { id: 'chicago-cubs', name: 'Chicago Cubs', nameRu: 'Чикаго Кабс' },
+        { id: 'los-angeles-angels', name: 'Los Angeles Angels', nameRu: 'Лос Анджелес Эйнджелз' }
       ]
     },
     {
       id: 'baseball-mlb-preseason-10',
       sportId: 'baseball',
-      title: 'Baseball В· USA В· MLB. Preseason Games',
-      titleRu: 'Р‘РµР№СЃР±РѕР» В· РЎРЁРђ В· MLB. РџСЂРµРґСЃРµР·РѕРЅРЅС‹Рµ РёРіСЂС‹',
+      title: 'Baseball · USA · MLB. Preseason Games',
+      titleRu: 'Бейсбол · США · MLB. Предсезонные игры',
       startsAt: '2026-03-18T04:05:00+03:00',
       endsAt: '2026-03-18T07:05:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'kansas-city-royals', name: 'Kansas City Royals', nameRu: 'РљР°РЅР·Р°СЃ РЎРёС‚Рё Р РѕСЏР»СЃ' },
-        { id: 'los-angeles-dodgers', name: 'Los Angeles Dodgers', nameRu: 'Р›РѕСЃ РђРЅРґР¶РµР»РµСЃ Р”РѕРґР¶РµСЂСЃ' }
+        { id: 'kansas-city-royals', name: 'Kansas City Royals', nameRu: 'Канзас Сити Роялс' },
+        { id: 'los-angeles-dodgers', name: 'Los Angeles Dodgers', nameRu: 'Лос Анджелес Доджерс' }
       ]
     },
     {
       id: 'baseball-mlb-preseason-11',
       sportId: 'baseball',
-      title: 'Baseball В· USA В· MLB. Preseason Games',
-      titleRu: 'Р‘РµР№СЃР±РѕР» В· РЎРЁРђ В· MLB. РџСЂРµРґСЃРµР·РѕРЅРЅС‹Рµ РёРіСЂС‹',
+      title: 'Baseball · USA · MLB. Preseason Games',
+      titleRu: 'Бейсбол · США · MLB. Предсезонные игры',
       startsAt: '2026-03-18T04:05:00+03:00',
       endsAt: '2026-03-18T07:05:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'cincinnati-reds', name: 'Cincinnati Reds', nameRu: 'Р¦РёРЅС†РёРЅРЅР°С‚Рё Р РµРґР·' },
-        { id: 'cleveland-guardians', name: 'Cleveland Guardians', nameRu: 'РљР»РёРІР»РµРЅРґ Р“Р°СЂРґРёР°РЅСЃ' }
+        { id: 'cincinnati-reds', name: 'Cincinnati Reds', nameRu: 'Цинциннати Редз' },
+        { id: 'cleveland-guardians', name: 'Cleveland Guardians', nameRu: 'Кливленд Гардианс' }
       ]
     },
     {
       id: 'baseball-mlb-1',
       sportId: 'baseball',
-      title: 'Baseball В· USA В· MLB',
-      titleRu: 'Р‘РµР№СЃР±РѕР» В· РЎРЁРђ В· MLB',
+      title: 'Baseball · USA · MLB',
+      titleRu: 'Бейсбол · США · MLB',
       startsAt: '2026-03-26T03:05:00+03:00',
       endsAt: '2026-03-26T06:05:00+03:00',
       participants: [
-        { id: 'san-francisco-giants', name: 'San Francisco Giants', nameRu: 'РЎР°РЅ Р¤СЂР°РЅС†РёСЃРєРѕ Р”Р¶Р°Р№РµРЅС‚СЃ' },
-        { id: 'new-york-yankees-2', name: 'New York Yankees', nameRu: 'РќСЊСЋ Р™РѕСЂРє РЇРЅРєРёР·' }
+        { id: 'san-francisco-giants', name: 'San Francisco Giants', nameRu: 'Сан Франциско Джайентс' },
+        { id: 'new-york-yankees-2', name: 'New York Yankees', nameRu: 'Нью Йорк Янкиз' }
       ]
     }
   ],
@@ -2684,661 +2684,661 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
     {
       id: 'rugby-nrl-1',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby League В· NRL',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-13 В· NRL',
+      title: 'Rugby · Rugby League · NRL',
+      titleRu: 'Регби · Регби-13 · NRL',
       startsAt: '2026-03-19T12:00:00+03:00',
       endsAt: '2026-03-19T14:00:00+03:00',
       participants: [
-        { id: 'canberra-raiders-1', name: 'Canberra Raiders', nameRu: 'РљР°РЅР±РµСЂСЂР° Р Р°Р№РґРµСЂР·' },
-        { id: 'canterbury-bulldogs-1', name: 'Canterbury Bulldogs', nameRu: 'РљР°РЅС‚РµСЂР±Р°СЂРё Р‘СѓР»РґРѕРіСЃ' }
+        { id: 'canberra-raiders-1', name: 'Canberra Raiders', nameRu: 'Канберра Райдерз' },
+        { id: 'canterbury-bulldogs-1', name: 'Canterbury Bulldogs', nameRu: 'Кантербари Булдогс' }
       ]
     },
     {
       id: 'rugby-superleague-1',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby League В· England. Super League',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-13 В· РђРЅРіР»РёСЏ. РЎСѓРїРµСЂР»РёРіР°',
+      title: 'Rugby · Rugby League · England. Super League',
+      titleRu: 'Регби · Регби-13 · Англия. Суперлига',
       startsAt: '2026-03-19T23:00:00+03:00',
       endsAt: '2026-03-20T01:00:00+03:00',
       participants: [
-        { id: 'wigan-warriors', name: 'Wigan Warriors', nameRu: 'РЈРёРіР°РЅ РЈРѕСЂСЂРёРѕСЂР·' },
-        { id: 'york-knights', name: 'York Knights', nameRu: 'Р™РѕСЂРє РќР°Р№С‚СЃ' }
+        { id: 'wigan-warriors', name: 'Wigan Warriors', nameRu: 'Уиган Уорриорз' },
+        { id: 'york-knights', name: 'York Knights', nameRu: 'Йорк Найтс' }
       ]
     },
     {
       id: 'rugby-super-rugby-1',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby Union В· Super Rugby',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-15 В· РЎСѓРїРµСЂ Р РµРіР±Рё',
+      title: 'Rugby · Rugby Union · Super Rugby',
+      titleRu: 'Регби · Регби-15 · Супер Регби',
       startsAt: '2026-03-20T09:05:00+03:00',
       endsAt: '2026-03-20T11:05:00+03:00',
       participants: [
-        { id: 'highlanders', name: 'Highlanders', nameRu: 'РҐР°Р№Р»РµРЅРґРµСЂСЃ' },
-        { id: 'hurricanes', name: 'Hurricanes', nameRu: 'РҐР°СЂСЂРёРєРµР№РЅР·' }
+        { id: 'highlanders', name: 'Highlanders', nameRu: 'Хайлендерс' },
+        { id: 'hurricanes', name: 'Hurricanes', nameRu: 'Харрикейнз' }
       ]
     },
     {
       id: 'rugby-nrl-2',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby League В· NRL',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-13 В· NRL',
+      title: 'Rugby · Rugby League · NRL',
+      titleRu: 'Регби · Регби-13 · NRL',
       startsAt: '2026-03-20T10:00:00+03:00',
       endsAt: '2026-03-20T12:00:00+03:00',
       participants: [
-        { id: 'sydney-roosters', name: 'Sydney Roosters', nameRu: 'РЎРёРґРЅРµР№ Р СѓСЃС‚РµСЂСЃ' },
-        { id: 'penrith-panthers-1', name: 'Penrith Panthers', nameRu: 'РџРµРЅСЂРёС‚ РџР°РЅС‚РµСЂР·' }
+        { id: 'sydney-roosters', name: 'Sydney Roosters', nameRu: 'Сидней Рустерс' },
+        { id: 'penrith-panthers-1', name: 'Penrith Panthers', nameRu: 'Пенрит Пантерз' }
       ]
     },
     {
       id: 'rugby-super-rugby-2',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby Union В· Super Rugby',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-15 В· РЎСѓРїРµСЂ Р РµРіР±Рё',
+      title: 'Rugby · Rugby Union · Super Rugby',
+      titleRu: 'Регби · Регби-15 · Супер Регби',
       startsAt: '2026-03-20T11:35:00+03:00',
       endsAt: '2026-03-20T13:35:00+03:00',
       participants: [
-        { id: 'brumbies', name: 'Brumbies', nameRu: 'Р‘СЂР°РјР±РёР·' },
-        { id: 'chiefs', name: 'Chiefs', nameRu: 'Р§РёС„Р·' }
+        { id: 'brumbies', name: 'Brumbies', nameRu: 'Брамбиз' },
+        { id: 'chiefs', name: 'Chiefs', nameRu: 'Чифз' }
       ]
     },
     {
       id: 'rugby-nrl-3',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby League В· NRL',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-13 В· NRL',
+      title: 'Rugby · Rugby League · NRL',
+      titleRu: 'Регби · Регби-13 · NRL',
       startsAt: '2026-03-20T12:00:00+03:00',
       endsAt: '2026-03-20T14:00:00+03:00',
       participants: [
-        { id: 'melbourne-storm', name: 'Melbourne Storm', nameRu: 'РњРµР»СЊР±СѓСЂРЅ РЁС‚РѕСЂРј' },
-        { id: 'brisbane-broncos-1', name: 'Brisbane Broncos', nameRu: 'Р‘СЂРёСЃР±РµР№РЅ Р‘СЂРѕРЅРєРѕСЃ' }
+        { id: 'melbourne-storm', name: 'Melbourne Storm', nameRu: 'Мельбурн Шторм' },
+        { id: 'brisbane-broncos-1', name: 'Brisbane Broncos', nameRu: 'Брисбейн Бронкос' }
       ]
     },
     {
       id: 'rugby-urc-1',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby Union В· United Rugby Championship',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-15 В· Р®РЅР°Р№С‚РµРґ Р§РµРјРїРёРѕРЅС€РёРї',
+      title: 'Rugby · Rugby Union · United Rugby Championship',
+      titleRu: 'Регби · Регби-15 · Юнайтед Чемпионшип',
       startsAt: '2026-03-20T20:00:00+03:00',
       endsAt: '2026-03-20T22:00:00+03:00',
       participants: [
-        { id: 'vodacom-blue-bulls', name: 'Vodacom Blue Bulls', nameRu: 'Р’РѕРґР°РєРѕРј Р‘Р»СЋ Р‘СѓР»Р»Р·' },
-        { id: 'cardiff', name: 'Cardiff', nameRu: 'РљР°СЂРґРёС„С„' }
+        { id: 'vodacom-blue-bulls', name: 'Vodacom Blue Bulls', nameRu: 'Водаком Блю Буллз' },
+        { id: 'cardiff', name: 'Cardiff', nameRu: 'Кардифф' }
       ]
     },
     {
       id: 'rugby-superleague-2',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby League В· England. Super League',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-13 В· РђРЅРіР»РёСЏ. РЎСѓРїРµСЂР»РёРіР°',
+      title: 'Rugby · Rugby League · England. Super League',
+      titleRu: 'Регби · Регби-13 · Англия. Суперлига',
       startsAt: '2026-03-20T22:00:00+03:00',
       endsAt: '2026-03-21T00:00:00+03:00',
       participants: [
-        { id: 'toulouse-olympique-xiii', name: 'Toulouse Olympique XIII', nameRu: 'РўСѓР»СѓР·Р° РћР»РёРјРїРёРє XIII' },
-        { id: 'saint-helens', name: 'Saint Helens', nameRu: 'РЎРµР№РЅС‚ Р­Р»РµРЅСЃ' }
+        { id: 'toulouse-olympique-xiii', name: 'Toulouse Olympique XIII', nameRu: 'Тулуза Олимпик XIII' },
+        { id: 'saint-helens', name: 'Saint Helens', nameRu: 'Сейнт Эленс' }
       ]
     },
     {
       id: 'rugby-urc-2',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby Union В· United Rugby Championship',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-15 В· Р®РЅР°Р№С‚РµРґ Р§РµРјРїРёРѕРЅС€РёРї',
+      title: 'Rugby · Rugby Union · United Rugby Championship',
+      titleRu: 'Регби · Регби-15 · Юнайтед Чемпионшип',
       startsAt: '2026-03-20T22:45:00+03:00',
       endsAt: '2026-03-21T00:45:00+03:00',
       participants: [
-        { id: 'ulster', name: 'Ulster', nameRu: 'РђР»СЃС‚РµСЂ' },
-        { id: 'connacht', name: 'Connacht', nameRu: 'РљРѕРЅРЅР°С…С‚' }
+        { id: 'ulster', name: 'Ulster', nameRu: 'Алстер' },
+        { id: 'connacht', name: 'Connacht', nameRu: 'Коннахт' }
       ]
     },
     {
       id: 'rugby-premiership-1',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby Union В· England. Premiership',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-15 В· РђРЅРіР»РёСЏ. РџСЂРµРјСЊРµСЂ-Р›РёРіР°',
+      title: 'Rugby · Rugby Union · England. Premiership',
+      titleRu: 'Регби · Регби-15 · Англия. Премьер-Лига',
       startsAt: '2026-03-20T22:45:00+03:00',
       endsAt: '2026-03-21T00:45:00+03:00',
       participants: [
-        { id: 'bath-rugby', name: 'Bath Rugby', nameRu: 'Р‘Р°С‚ Р РµРіР±Рё' },
-        { id: 'saracens', name: 'Saracens', nameRu: 'РЎР°СЂР°РєРµРЅСЃ' }
+        { id: 'bath-rugby', name: 'Bath Rugby', nameRu: 'Бат Регби' },
+        { id: 'saracens', name: 'Saracens', nameRu: 'Саракенс' }
       ]
     },
     {
       id: 'rugby-urc-3',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby Union В· United Rugby Championship',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-15 В· Р®РЅР°Р№С‚РµРґ Р§РµРјРїРёРѕРЅС€РёРї',
+      title: 'Rugby · Rugby Union · United Rugby Championship',
+      titleRu: 'Регби · Регби-15 · Юнайтед Чемпионшип',
       startsAt: '2026-03-20T22:45:00+03:00',
       endsAt: '2026-03-21T00:45:00+03:00',
       participants: [
-        { id: 'scarlets', name: 'Scarlets', nameRu: 'РЎРєР°СЂР»РµС‚СЃ' },
-        { id: 'zebre', name: 'Zebre', nameRu: 'Р¦РµР±СЂРµ' }
+        { id: 'scarlets', name: 'Scarlets', nameRu: 'Скарлетс' },
+        { id: 'zebre', name: 'Zebre', nameRu: 'Цебре' }
       ]
     },
     {
       id: 'rugby-superleague-3',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby League В· England. Super League',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-13 В· РђРЅРіР»РёСЏ. РЎСѓРїРµСЂР»РёРіР°',
+      title: 'Rugby · Rugby League · England. Super League',
+      titleRu: 'Регби · Регби-13 · Англия. Суперлига',
       startsAt: '2026-03-20T23:00:00+03:00',
       endsAt: '2026-03-21T01:00:00+03:00',
       participants: [
-        { id: 'bradford-bulls', name: 'Bradford Bulls', nameRu: 'Р‘СЂР°РґС„РѕСЂРґ Р‘СѓР»Р»СЃ' },
-        { id: 'huddersfield-giants', name: 'Huddersfield Giants', nameRu: 'РҐР°РґРґРµСЂСЃС„РёР»Рґ Р”Р¶Р°Р№РЅС‚СЃ' }
+        { id: 'bradford-bulls', name: 'Bradford Bulls', nameRu: 'Брадфорд Буллс' },
+        { id: 'huddersfield-giants', name: 'Huddersfield Giants', nameRu: 'Хаддерсфилд Джайнтс' }
       ]
     },
     {
       id: 'rugby-superleague-4',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby League В· England. Super League',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-13 В· РђРЅРіР»РёСЏ. РЎСѓРїРµСЂР»РёРіР°',
+      title: 'Rugby · Rugby League · England. Super League',
+      titleRu: 'Регби · Регби-13 · Англия. Суперлига',
       startsAt: '2026-03-20T23:00:00+03:00',
       endsAt: '2026-03-21T01:00:00+03:00',
       participants: [
-        { id: 'wakefield-trinity', name: 'Wakefield Trinity', nameRu: 'РЈСЌР№РєС„РёР»Рґ РўСЂРёРЅРёС‚Рё' },
-        { id: 'leigh-leopards', name: 'Leigh Leopards', nameRu: 'Р›Рё Р›РµРѕРїР°СЂРґСЃ' }
+        { id: 'wakefield-trinity', name: 'Wakefield Trinity', nameRu: 'Уэйкфилд Тринити' },
+        { id: 'leigh-leopards', name: 'Leigh Leopards', nameRu: 'Ли Леопардс' }
       ]
     },
     {
       id: 'rugby-super-rugby-3',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby Union В· Super Rugby',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-15 В· РЎСѓРїРµСЂ Р РµРіР±Рё',
+      title: 'Rugby · Rugby Union · Super Rugby',
+      titleRu: 'Регби · Регби-15 · Супер Регби',
       startsAt: '2026-03-21T06:35:00+03:00',
       endsAt: '2026-03-21T08:35:00+03:00',
       participants: [
-        { id: 'fijian-drua', name: 'Fijian Drua', nameRu: 'Р¤РёРґР¶РёР№СЃРєР°СЏ РґСЂСѓР°' },
-        { id: 'queensland-reds', name: 'Queensland Reds', nameRu: 'РљРІРёРЅСЃР»РµРЅРґ Р РµРґСЃ' }
+        { id: 'fijian-drua', name: 'Fijian Drua', nameRu: 'Фиджийская друа' },
+        { id: 'queensland-reds', name: 'Queensland Reds', nameRu: 'Квинсленд Редс' }
       ]
     },
     {
       id: 'rugby-nrl-4',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby League В· NRL',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-13 В· NRL',
+      title: 'Rugby · Rugby League · NRL',
+      titleRu: 'Регби · Регби-13 · NRL',
       startsAt: '2026-03-21T07:00:00+03:00',
       endsAt: '2026-03-21T09:00:00+03:00',
       participants: [
-        { id: 'newcastle-knights-1', name: 'Newcastle Knights', nameRu: 'РќСЊСЋРєР°СЃР» РќР°Р№С‚СЃ' },
-        { id: 'new-zealand-warriors-1', name: 'New Zealand Warriors', nameRu: 'Р’Р°СЂСЂРёРѕСЂР· РќРѕРІР°СЏ Р—РµР»Р°РЅРґРёСЏ' }
+        { id: 'newcastle-knights-1', name: 'Newcastle Knights', nameRu: 'Ньюкасл Найтс' },
+        { id: 'new-zealand-warriors-1', name: 'New Zealand Warriors', nameRu: 'Варриорз Новая Зеландия' }
       ]
     },
     {
       id: 'rugby-super-rugby-4',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby Union В· Super Rugby',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-15 В· РЎСѓРїРµСЂ Р РµРіР±Рё',
+      title: 'Rugby · Rugby Union · Super Rugby',
+      titleRu: 'Регби · Регби-15 · Супер Регби',
       startsAt: '2026-03-21T09:05:00+03:00',
       endsAt: '2026-03-21T11:05:00+03:00',
       participants: [
-        { id: 'moana-pasifika', name: 'Moana Pasifika', nameRu: 'РњРѕР°РЅР° РџР°СЃРёС„РёРєР°' },
-        { id: 'crusaders', name: 'Crusaders', nameRu: 'РљСЂСѓСЃР°РґРµСЂСЃ' }
+        { id: 'moana-pasifika', name: 'Moana Pasifika', nameRu: 'Моана Пасифика' },
+        { id: 'crusaders', name: 'Crusaders', nameRu: 'Крусадерс' }
       ]
     },
     {
       id: 'rugby-nrl-5',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby League В· NRL',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-13 В· NRL',
+      title: 'Rugby · Rugby League · NRL',
+      titleRu: 'Регби · Регби-13 · NRL',
       startsAt: '2026-03-21T09:30:00+03:00',
       endsAt: '2026-03-21T11:30:00+03:00',
       participants: [
-        { id: 'cronulla-sharks-1', name: 'Cronulla Sutherland Sharks', nameRu: 'РљСЂРѕРЅР°Р»Р»Р° РЎР°Р·РµСЂР»РµРЅРґ РЁР°СЂРєСЃ' },
-        { id: 'dolphins-1', name: 'Dolphins', nameRu: 'Р”РѕР»С„РёРЅСЃ' }
+        { id: 'cronulla-sharks-1', name: 'Cronulla Sutherland Sharks', nameRu: 'Кроналла Сазерленд Шаркс' },
+        { id: 'dolphins-1', name: 'Dolphins', nameRu: 'Долфинс' }
       ]
     },
     {
       id: 'rugby-super-rugby-5',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby Union В· Super Rugby',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-15 В· РЎСѓРїРµСЂ Р РµРіР±Рё',
+      title: 'Rugby · Rugby Union · Super Rugby',
+      titleRu: 'Регби · Регби-15 · Супер Регби',
       startsAt: '2026-03-21T11:35:00+03:00',
       endsAt: '2026-03-21T13:35:00+03:00',
       participants: [
-        { id: 'waratahs', name: 'Waratahs', nameRu: 'Р’Р°СЂР°С‚Р°СЃ' },
-        { id: 'blues', name: 'Blues', nameRu: 'Р‘Р»СЋР·' }
+        { id: 'waratahs', name: 'Waratahs', nameRu: 'Варатас' },
+        { id: 'blues', name: 'Blues', nameRu: 'Блюз' }
       ]
     },
     {
       id: 'rugby-nrl-6',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby League В· NRL',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-13 В· NRL',
+      title: 'Rugby · Rugby League · NRL',
+      titleRu: 'Регби · Регби-13 · NRL',
       startsAt: '2026-03-21T11:35:00+03:00',
       endsAt: '2026-03-21T13:35:00+03:00',
       participants: [
-        { id: 'south-sydney-rabbitohs', name: 'South Sydney Rabbitohs', nameRu: 'Р РµР±Р±РёС‚РѕР· Р®Р¶РЅС‹Р№ РЎРёРґРЅРµР№' },
-        { id: 'wests-tigers-1', name: 'Wests Tigers', nameRu: 'Р’РµСЃС‚СЃ РўР°Р№РіРµСЂР·' }
+        { id: 'south-sydney-rabbitohs', name: 'South Sydney Rabbitohs', nameRu: 'Реббитоз Южный Сидней' },
+        { id: 'wests-tigers-1', name: 'Wests Tigers', nameRu: 'Вестс Тайгерз' }
       ]
     },
     {
       id: 'rugby-urc-4',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby Union В· United Rugby Championship',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-15 В· Р®РЅР°Р№С‚РµРґ Р§РµРјРїРёРѕРЅС€РёРї',
+      title: 'Rugby · Rugby Union · United Rugby Championship',
+      titleRu: 'Регби · Регби-15 · Юнайтед Чемпионшип',
       startsAt: '2026-03-21T15:45:00+03:00',
       endsAt: '2026-03-21T17:45:00+03:00',
       participants: [
-        { id: 'lions', name: 'Lions', nameRu: 'Р›Р°Р№РѕРЅР·' },
-        { id: 'edinburgh', name: 'Edinburgh', nameRu: 'Р­РґРёРЅР±СѓСЂРі' }
+        { id: 'lions', name: 'Lions', nameRu: 'Лайонз' },
+        { id: 'edinburgh', name: 'Edinburgh', nameRu: 'Эдинбург' }
       ]
     },
     {
       id: 'rugby-top14-1',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby Union В· France. Top 14',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-15 В· Р¤СЂР°РЅС†РёСЏ. РўРѕРї 14',
+      title: 'Rugby · Rugby Union · France. Top 14',
+      titleRu: 'Регби · Регби-15 · Франция. Топ 14',
       startsAt: '2026-03-21T16:30:00+03:00',
       endsAt: '2026-03-21T18:30:00+03:00',
       participants: [
-        { id: 'clermont', name: 'Clermont', nameRu: 'РљР»РµСЂРјРѕРЅ' },
-        { id: 'montpellier-1', name: 'Montpellier', nameRu: 'РњРѕРЅРїРµР»СЊРµ' }
+        { id: 'clermont', name: 'Clermont', nameRu: 'Клермон' },
+        { id: 'montpellier-1', name: 'Montpellier', nameRu: 'Монпелье' }
       ]
     },
     {
       id: 'rugby-urc-5',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby Union В· United Rugby Championship',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-15 В· Р®РЅР°Р№С‚РµРґ Р§РµРјРїРёРѕРЅС€РёРї',
+      title: 'Rugby · Rugby Union · United Rugby Championship',
+      titleRu: 'Регби · Регби-15 · Юнайтед Чемпионшип',
       startsAt: '2026-03-21T18:00:00+03:00',
       endsAt: '2026-03-21T20:00:00+03:00',
       participants: [
-        { id: 'benetton-treviso', name: 'Benetton Treviso', nameRu: 'Р‘РµРЅРµС‚С‚РѕРЅ РўСЂРµРІРёР·Рѕ' },
-        { id: 'ospreys', name: 'Ospreys', nameRu: 'РћСЃРїСЂРµР№Р·' }
+        { id: 'benetton-treviso', name: 'Benetton Treviso', nameRu: 'Бенеттон Тревизо' },
+        { id: 'ospreys', name: 'Ospreys', nameRu: 'Оспрейз' }
       ]
     },
     {
       id: 'rugby-superleague-5',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby League В· England. Super League',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-13 В· РђРЅРіР»РёСЏ. РЎСѓРїРµСЂР»РёРіР°',
+      title: 'Rugby · Rugby League · England. Super League',
+      titleRu: 'Регби · Регби-13 · Англия. Суперлига',
       startsAt: '2026-03-21T18:00:00+03:00',
       endsAt: '2026-03-21T20:00:00+03:00',
       participants: [
-        { id: 'warrington-wolves', name: 'Warrington Wolves', nameRu: 'Р’Р°СЂСЂРёРЅРіС‚РѕРЅ Р’СѓР»С„Р·' },
-        { id: 'castleford-tigers', name: 'Castleford Tigers', nameRu: 'РљР°СЃР»С„РѕСЂРґ РўР°Р№РіРµСЂР·' }
+        { id: 'warrington-wolves', name: 'Warrington Wolves', nameRu: 'Варрингтон Вулфз' },
+        { id: 'castleford-tigers', name: 'Castleford Tigers', nameRu: 'Каслфорд Тайгерз' }
       ]
     },
     {
       id: 'rugby-premiership-2',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby Union В· England. Premiership',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-15 В· РђРЅРіР»РёСЏ. РџСЂРµРјСЊРµСЂ-Р›РёРіР°',
+      title: 'Rugby · Rugby Union · England. Premiership',
+      titleRu: 'Регби · Регби-15 · Англия. Премьер-Лига',
       startsAt: '2026-03-21T18:00:00+03:00',
       endsAt: '2026-03-21T20:00:00+03:00',
       participants: [
-        { id: 'northampton-saints', name: 'Northampton Saints', nameRu: 'РќРѕСЂС‚РіРµРјРїС‚РѕРЅ РЎСЌР№РЅС‚СЃ' },
-        { id: 'newcastle-rad-bulls', name: 'Newcastle Rad Bulls', nameRu: 'РќСЊСЋРєР°СЃР» Р Р°Рґ Р‘СѓР»Р»СЃ' }
+        { id: 'northampton-saints', name: 'Northampton Saints', nameRu: 'Нортгемптон Сэйнтс' },
+        { id: 'newcastle-rad-bulls', name: 'Newcastle Rad Bulls', nameRu: 'Ньюкасл Рад Буллс' }
       ]
     },
     {
       id: 'rugby-premiership-3',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby Union В· England. Premiership',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-15 В· РђРЅРіР»РёСЏ. РџСЂРµРјСЊРµСЂ-Р›РёРіР°',
+      title: 'Rugby · Rugby Union · England. Premiership',
+      titleRu: 'Регби · Регби-15 · Англия. Премьер-Лига',
       startsAt: '2026-03-21T18:00:00+03:00',
       endsAt: '2026-03-21T20:00:00+03:00',
       participants: [
-        { id: 'harlequins', name: 'Harlequins', nameRu: 'РҐР°СЂР»РµРєРёРЅ' },
-        { id: 'gloucester', name: 'Gloucester', nameRu: 'Р“Р»РѕСЃС‚РµСЂ' }
+        { id: 'harlequins', name: 'Harlequins', nameRu: 'Харлекин' },
+        { id: 'gloucester', name: 'Gloucester', nameRu: 'Глостер' }
       ]
     },
     {
       id: 'rugby-urc-6',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby Union В· United Rugby Championship',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-15 В· Р®РЅР°Р№С‚РµРґ Р§РµРјРїРёРѕРЅС€РёРї',
+      title: 'Rugby · Rugby Union · United Rugby Championship',
+      titleRu: 'Регби · Регби-15 · Юнайтед Чемпионшип',
       startsAt: '2026-03-21T18:00:00+03:00',
       endsAt: '2026-03-21T20:00:00+03:00',
       participants: [
-        { id: 'sharks', name: 'Sharks', nameRu: 'РЁР°СЂРєСЃ' },
-        { id: 'munster', name: 'Munster', nameRu: 'РњР°РЅСЃС‚РµСЂ' }
+        { id: 'sharks', name: 'Sharks', nameRu: 'Шаркс' },
+        { id: 'munster', name: 'Munster', nameRu: 'Манстер' }
       ]
     },
     {
       id: 'rugby-premiership-4',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby Union В· England. Premiership',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-15 В· РђРЅРіР»РёСЏ. РџСЂРµРјСЊРµСЂ-Р›РёРіР°',
+      title: 'Rugby · Rugby Union · England. Premiership',
+      titleRu: 'Регби · Регби-15 · Англия. Премьер-Лига',
       startsAt: '2026-03-21T18:05:00+03:00',
       endsAt: '2026-03-21T20:05:00+03:00',
       participants: [
-        { id: 'exeter-chiefs', name: 'Exeter Chiefs', nameRu: 'Р­РєСЃРµС‚РµСЂ Р§РёС„СЃ' },
-        { id: 'sale-sharks', name: 'Sale Sharks', nameRu: 'РЎРµР№Р» РЁР°СЂРєСЃ' }
+        { id: 'exeter-chiefs', name: 'Exeter Chiefs', nameRu: 'Эксетер Чифс' },
+        { id: 'sale-sharks', name: 'Sale Sharks', nameRu: 'Сейл Шаркс' }
       ]
     },
     {
       id: 'rugby-top14-2',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby Union В· France. Top 14',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-15 В· Р¤СЂР°РЅС†РёСЏ. РўРѕРї 14',
+      title: 'Rugby · Rugby Union · France. Top 14',
+      titleRu: 'Регби · Регби-15 · Франция. Топ 14',
       startsAt: '2026-03-21T18:35:00+03:00',
       endsAt: '2026-03-21T20:35:00+03:00',
       participants: [
-        { id: 'perpignan', name: 'Perpignan', nameRu: 'РџРµСЂРїРёРЅСЊСЏРЅ' },
-        { id: 'lyon-ou', name: 'Lyon Olympique Universitaire', nameRu: 'Р›РёРѕРЅ РћР»РёРјРїРёРє РЈРЅРёРІРµСЂСЃРёС‚РµС‚РµСЂ' }
+        { id: 'perpignan', name: 'Perpignan', nameRu: 'Перпиньян' },
+        { id: 'lyon-ou', name: 'Lyon Olympique Universitaire', nameRu: 'Лион Олимпик Университетер' }
       ]
     },
     {
       id: 'rugby-top14-3',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby Union В· France. Top 14',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-15 В· Р¤СЂР°РЅС†РёСЏ. РўРѕРї 14',
+      title: 'Rugby · Rugby Union · France. Top 14',
+      titleRu: 'Регби · Регби-15 · Франция. Топ 14',
       startsAt: '2026-03-21T18:35:00+03:00',
       endsAt: '2026-03-21T20:35:00+03:00',
       participants: [
-        { id: 'racing-92', name: 'Racing 92', nameRu: 'Р Р°СЃРёРЅРі 92' },
-        { id: 'castres-olympique', name: 'Castres Olympique', nameRu: 'РљР°СЃС‚СЂРµСЃ РћР»РёРјРїРёРє' }
+        { id: 'racing-92', name: 'Racing 92', nameRu: 'Расинг 92' },
+        { id: 'castres-olympique', name: 'Castres Olympique', nameRu: 'Кастрес Олимпик' }
       ]
     },
     {
       id: 'rugby-top14-4',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby Union В· France. Top 14',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-15 В· Р¤СЂР°РЅС†РёСЏ. РўРѕРї 14',
+      title: 'Rugby · Rugby Union · France. Top 14',
+      titleRu: 'Регби · Регби-15 · Франция. Топ 14',
       startsAt: '2026-03-21T18:35:00+03:00',
       endsAt: '2026-03-21T20:35:00+03:00',
       participants: [
-        { id: 'toulon', name: 'Toulon', nameRu: 'РўСѓР»РѕРЅ' },
-        { id: 'stade-francais', name: 'Stade Francais Paris', nameRu: 'РЎС‚РµР№Рґ Р¤СЂР°РЅСЃРµ РџР°СЂРёР¶' }
+        { id: 'toulon', name: 'Toulon', nameRu: 'Тулон' },
+        { id: 'stade-francais', name: 'Stade Francais Paris', nameRu: 'Стейд Франсе Париж' }
       ]
     },
     {
       id: 'rugby-top14-5',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby Union В· France. Top 14',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-15 В· Р¤СЂР°РЅС†РёСЏ. РўРѕРї 14',
+      title: 'Rugby · Rugby Union · France. Top 14',
+      titleRu: 'Регби · Регби-15 · Франция. Топ 14',
       startsAt: '2026-03-21T18:35:00+03:00',
       endsAt: '2026-03-21T20:35:00+03:00',
       participants: [
-        { id: 'us-montalbanais', name: 'US Montalbanais', nameRu: 'РЈРЎ РњРѕРЅС‚Р°Р»СЊР±Р°РЅР°Р№Р·' },
-        { id: 'aviron-bayonne', name: 'Aviron Bayonne', nameRu: 'РђРІРёСЂРѕРЅ Р‘Р°Р№РѕРЅРЅРµ' }
+        { id: 'us-montalbanais', name: 'US Montalbanais', nameRu: 'УС Монтальбанайз' },
+        { id: 'aviron-bayonne', name: 'Aviron Bayonne', nameRu: 'Авирон Байонне' }
       ]
     },
     {
       id: 'rugby-urc-7',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby Union В· United Rugby Championship',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-15 В· Р®РЅР°Р№С‚РµРґ Р§РµРјРїРёРѕРЅС€РёРї',
+      title: 'Rugby · Rugby Union · United Rugby Championship',
+      titleRu: 'Регби · Регби-15 · Юнайтед Чемпионшип',
       startsAt: '2026-03-21T20:30:00+03:00',
       endsAt: '2026-03-21T22:30:00+03:00',
       participants: [
-        { id: 'glasgow-warriors', name: 'Glasgow Warriors', nameRu: 'Р“Р»Р°Р·РіРѕ РЈРѕСЂСЂРёРѕСЂР·' },
-        { id: 'leinster', name: 'Leinster', nameRu: 'Р›РµРЅСЃС‚РµСЂ' }
+        { id: 'glasgow-warriors', name: 'Glasgow Warriors', nameRu: 'Глазго Уорриорз' },
+        { id: 'leinster', name: 'Leinster', nameRu: 'Ленстер' }
       ]
     },
     {
       id: 'rugby-superleague-6',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby League В· England. Super League',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-13 В· РђРЅРіР»РёСЏ. РЎСѓРїРµСЂР»РёРіР°',
+      title: 'Rugby · Rugby League · England. Super League',
+      titleRu: 'Регби · Регби-13 · Англия. Суперлига',
       startsAt: '2026-03-21T20:30:00+03:00',
       endsAt: '2026-03-21T22:30:00+03:00',
       participants: [
-        { id: 'catalans-dragons', name: 'Catalans Dragons', nameRu: 'РљР°С‚Р°Р»Р°РЅСЃ Р”СЂР°РіРѕРЅСЃ' },
-        { id: 'hull-kr', name: 'Hull Kingston Rovers', nameRu: 'РҐР°Р»Р» РљРёРЅРіСЃС‚РѕРЅ Р РѕРІРµСЂСЃ' }
+        { id: 'catalans-dragons', name: 'Catalans Dragons', nameRu: 'Каталанс Драгонс' },
+        { id: 'hull-kr', name: 'Hull Kingston Rovers', nameRu: 'Халл Кингстон Роверс' }
       ]
     },
     {
       id: 'rugby-top14-6',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby Union В· France. Top 14',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-15 В· Р¤СЂР°РЅС†РёСЏ. РўРѕРї 14',
+      title: 'Rugby · Rugby Union · France. Top 14',
+      titleRu: 'Регби · Регби-15 · Франция. Топ 14',
       startsAt: '2026-03-21T23:00:00+03:00',
       endsAt: '2026-03-22T01:00:00+03:00',
       participants: [
-        { id: 'la-rochelle', name: 'La Rochelle', nameRu: 'Р›Р° Р РѕС€РµР»Р»СЊ' },
-        { id: 'section-paloise', name: 'Section Paloise', nameRu: 'РЎРµРєСЃСЊРѕРЅ РџР°Р»СѓР°' }
+        { id: 'la-rochelle', name: 'La Rochelle', nameRu: 'Ла Рошелль' },
+        { id: 'section-paloise', name: 'Section Paloise', nameRu: 'Сексьон Палуа' }
       ]
     },
     {
       id: 'rugby-nrl-7',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby League В· NRL',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-13 В· NRL',
+      title: 'Rugby · Rugby League · NRL',
+      titleRu: 'Регби · Регби-13 · NRL',
       startsAt: '2026-03-22T08:05:00+03:00',
       endsAt: '2026-03-22T10:05:00+03:00',
       participants: [
-        { id: 'parramatta-eels-1', name: 'Parramatta Eels', nameRu: 'РџР°СЂСЂР°РјР°С‚С‚Р° Р­Р»СЃ' },
-        { id: 'st-george-illawarra-1', name: 'St George Illawarra', nameRu: 'РЎРµРЅС‚ Р”Р¶РѕСЂРґР¶ РР»Р»Р°РІР°СЂР°' }
+        { id: 'parramatta-eels-1', name: 'Parramatta Eels', nameRu: 'Парраматта Элс' },
+        { id: 'st-george-illawarra-1', name: 'St George Illawarra', nameRu: 'Сент Джордж Иллавара' }
       ]
     },
     {
       id: 'rugby-nrl-8',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby League В· NRL',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-13 В· NRL',
+      title: 'Rugby · Rugby League · NRL',
+      titleRu: 'Регби · Регби-13 · NRL',
       startsAt: '2026-03-22T10:15:00+03:00',
       endsAt: '2026-03-22T12:15:00+03:00',
       participants: [
-        { id: 'north-queensland-cowboys-1', name: 'North Queensland Cowboys', nameRu: 'РќРѕСЂС‚ РљРІРёРЅСЃР»РµРЅРґ РљР°СѓР±РѕР№СЃ' },
-        { id: 'gold-coast-titans-1', name: 'Gold Coast Titans', nameRu: 'Р“РѕР»Рґ РљРѕСЃС‚ РўРёС‚Р°РЅСЃ' }
+        { id: 'north-queensland-cowboys-1', name: 'North Queensland Cowboys', nameRu: 'Норт Квинсленд Каубойс' },
+        { id: 'gold-coast-titans-1', name: 'Gold Coast Titans', nameRu: 'Голд Кост Титанс' }
       ]
     },
     {
       id: 'rugby-urc-8',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby Union В· United Rugby Championship',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-15 В· Р®РЅР°Р№С‚РµРґ Р§РµРјРїРёРѕРЅС€РёРї',
+      title: 'Rugby · Rugby Union · United Rugby Championship',
+      titleRu: 'Регби · Регби-15 · Юнайтед Чемпионшип',
       startsAt: '2026-03-22T16:00:00+03:00',
       endsAt: '2026-03-22T18:00:00+03:00',
       participants: [
-        { id: 'stormers', name: 'Stormers', nameRu: 'РЎС‚РѕСЂРјРµСЂР·' },
-        { id: 'dragons', name: 'Dragons', nameRu: 'Р”СЂСЌРіРѕРЅСЃ' }
+        { id: 'stormers', name: 'Stormers', nameRu: 'Стормерз' },
+        { id: 'dragons', name: 'Dragons', nameRu: 'Дрэгонс' }
       ]
     },
     {
       id: 'rugby-premiership-5',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby Union В· England. Premiership',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-15 В· РђРЅРіР»РёСЏ. РџСЂРµРјСЊРµСЂ-Р›РёРіР°',
+      title: 'Rugby · Rugby Union · England. Premiership',
+      titleRu: 'Регби · Регби-15 · Англия. Премьер-Лига',
       startsAt: '2026-03-22T18:00:00+03:00',
       endsAt: '2026-03-22T20:00:00+03:00',
       participants: [
-        { id: 'leicester-tigers', name: 'Leicester Tigers', nameRu: 'Р›РµСЃС‚РµСЂ РўР°Р№РіРµСЂР·' },
-        { id: 'bristol-bears', name: 'Bristol Bears', nameRu: 'Р‘СЂРёСЃС‚РѕР»СЊ Р‘СЌСЂСЃ' }
+        { id: 'leicester-tigers', name: 'Leicester Tigers', nameRu: 'Лестер Тайгерз' },
+        { id: 'bristol-bears', name: 'Bristol Bears', nameRu: 'Бристоль Бэрс' }
       ]
     },
     {
       id: 'rugby-superleague-7',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby League В· England. Super League',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-13 В· РђРЅРіР»РёСЏ. РЎСѓРїРµСЂР»РёРіР°',
+      title: 'Rugby · Rugby League · England. Super League',
+      titleRu: 'Регби · Регби-13 · Англия. Суперлига',
       startsAt: '2026-03-22T18:00:00+03:00',
       endsAt: '2026-03-22T20:00:00+03:00',
       participants: [
-        { id: 'hull-fc', name: 'Hull', nameRu: 'РҐР°Р»Р»' },
-        { id: 'leeds-rhinos', name: 'Leeds Rhinos', nameRu: 'Р›РёРґСЃ Р РёРЅРѕСЃ' }
+        { id: 'hull-fc', name: 'Hull', nameRu: 'Халл' },
+        { id: 'leeds-rhinos', name: 'Leeds Rhinos', nameRu: 'Лидс Ринос' }
       ]
     },
     {
       id: 'rugby-top14-7',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby Union В· France. Top 14',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-15 В· Р¤СЂР°РЅС†РёСЏ. РўРѕРї 14',
+      title: 'Rugby · Rugby Union · France. Top 14',
+      titleRu: 'Регби · Регби-15 · Франция. Топ 14',
       startsAt: '2026-03-22T23:05:00+03:00',
       endsAt: '2026-03-23T01:05:00+03:00',
       participants: [
-        { id: 'bordeaux-begles', name: 'Bordeaux Begles', nameRu: 'Р‘РѕСЂРґРѕ Р‘РµРіР»СЊ' },
-        { id: 'toulouse', name: 'Toulouse', nameRu: 'РўСѓР»СѓР·Р°' }
+        { id: 'bordeaux-begles', name: 'Bordeaux Begles', nameRu: 'Бордо Бегль' },
+        { id: 'toulouse', name: 'Toulouse', nameRu: 'Тулуза' }
       ]
     },
     {
       id: 'rugby-nrl-9',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby League В· NRL',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-13 В· NRL',
+      title: 'Rugby · Rugby League · NRL',
+      titleRu: 'Регби · Регби-13 · NRL',
       startsAt: '2026-03-26T12:00:00+03:00',
       endsAt: '2026-03-26T14:00:00+03:00',
       participants: [
-        { id: 'manly-sea-eagles', name: 'Manly Sea Eagles', nameRu: 'РњСЌРЅР»Рё РЎРё РРіР»Р·' },
-        { id: 'sydney-roosters-2', name: 'Sydney Roosters', nameRu: 'РЎРёРґРЅРµР№ Р СѓСЃС‚РµСЂСЃ' }
+        { id: 'manly-sea-eagles', name: 'Manly Sea Eagles', nameRu: 'Мэнли Си Иглз' },
+        { id: 'sydney-roosters-2', name: 'Sydney Roosters', nameRu: 'Сидней Рустерс' }
       ]
     },
     {
       id: 'rugby-pro-d2-1',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby Union В· France. Pro D2',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-15 В· Р¤СЂР°РЅС†РёСЏ. РџСЂРѕ Р”2',
+      title: 'Rugby · Rugby Union · France. Pro D2',
+      titleRu: 'Регби · Регби-15 · Франция. Про Д2',
       startsAt: '2026-03-26T23:00:00+03:00',
       endsAt: '2026-03-27T01:00:00+03:00',
       participants: [
-        { id: 'provence', name: 'Provence', nameRu: 'РџСЂРѕРІР°РЅСЃ' },
-        { id: 'colomiers', name: 'Colomiers', nameRu: 'РљРѕР»РѕРјСЊРµ' }
+        { id: 'provence', name: 'Provence', nameRu: 'Прованс' },
+        { id: 'colomiers', name: 'Colomiers', nameRu: 'Коломье' }
       ]
     },
     {
       id: 'rugby-nrl-10',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby League В· NRL',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-13 В· NRL',
+      title: 'Rugby · Rugby League · NRL',
+      titleRu: 'Регби · Регби-13 · NRL',
       startsAt: '2026-03-27T10:00:00+03:00',
       endsAt: '2026-03-27T12:00:00+03:00',
       participants: [
-        { id: 'new-zealand-warriors-2', name: 'New Zealand Warriors', nameRu: 'Р’Р°СЂСЂРёРѕСЂР· РќРѕРІР°СЏ Р—РµР»Р°РЅРґРёСЏ' },
-        { id: 'wests-tigers-2', name: 'Wests Tigers', nameRu: 'Р’РµСЃС‚СЃ РўР°Р№РіРµСЂР·' }
+        { id: 'new-zealand-warriors-2', name: 'New Zealand Warriors', nameRu: 'Варриорз Новая Зеландия' },
+        { id: 'wests-tigers-2', name: 'Wests Tigers', nameRu: 'Вестс Тайгерз' }
       ]
     },
     {
       id: 'rugby-nrl-11',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby League В· NRL',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-13 В· NRL',
+      title: 'Rugby · Rugby League · NRL',
+      titleRu: 'Регби · Регби-13 · NRL',
       startsAt: '2026-03-27T12:00:00+03:00',
       endsAt: '2026-03-27T14:00:00+03:00',
       participants: [
-        { id: 'brisbane-broncos-2', name: 'Brisbane Broncos', nameRu: 'Р‘СЂРёСЃР±РµР№РЅ Р‘СЂРѕРЅРєРѕСЃ' },
-        { id: 'dolphins-2', name: 'Dolphins', nameRu: 'Р”РѕР»С„РёРЅСЃ' }
+        { id: 'brisbane-broncos-2', name: 'Brisbane Broncos', nameRu: 'Брисбейн Бронкос' },
+        { id: 'dolphins-2', name: 'Dolphins', nameRu: 'Долфинс' }
       ]
     },
     {
       id: 'rugby-pro-d2-2',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby Union В· France. Pro D2',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-15 В· Р¤СЂР°РЅС†РёСЏ. РџСЂРѕ Р”2',
+      title: 'Rugby · Rugby Union · France. Pro D2',
+      titleRu: 'Регби · Регби-15 · Франция. Про Д2',
       startsAt: '2026-03-27T21:30:00+03:00',
       endsAt: '2026-03-27T23:30:00+03:00',
       participants: [
-        { id: 'beziers-herault', name: 'Beziers Herault', nameRu: 'Р‘РµР·СЊРµ Р­СЂРѕ' },
-        { id: 'agen', name: 'Agen', nameRu: 'РђРіРµРЅ' }
+        { id: 'beziers-herault', name: 'Beziers Herault', nameRu: 'Безье Эро' },
+        { id: 'agen', name: 'Agen', nameRu: 'Аген' }
       ]
     },
     {
       id: 'rugby-pro-d2-3',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby Union В· France. Pro D2',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-15 В· Р¤СЂР°РЅС†РёСЏ. РџСЂРѕ Р”2',
+      title: 'Rugby · Rugby Union · France. Pro D2',
+      titleRu: 'Регби · Регби-15 · Франция. Про Д2',
       startsAt: '2026-03-27T21:30:00+03:00',
       endsAt: '2026-03-27T23:30:00+03:00',
       participants: [
-        { id: 'vannes', name: 'Vannes', nameRu: 'Р’Р°РЅРЅ' },
-        { id: 'uson-nevers', name: 'USON Nevers', nameRu: 'РЈСЃРѕРЅ РќРµРІРµСЂ' }
+        { id: 'vannes', name: 'Vannes', nameRu: 'Ванн' },
+        { id: 'uson-nevers', name: 'USON Nevers', nameRu: 'Усон Невер' }
       ]
     },
     {
       id: 'rugby-pro-d2-4',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby Union В· France. Pro D2',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-15 В· Р¤СЂР°РЅС†РёСЏ. РџСЂРѕ Р”2',
+      title: 'Rugby · Rugby Union · France. Pro D2',
+      titleRu: 'Регби · Регби-15 · Франция. Про Д2',
       startsAt: '2026-03-27T21:30:00+03:00',
       endsAt: '2026-03-27T23:30:00+03:00',
       participants: [
-        { id: 'dax', name: 'Dax', nameRu: 'Р”Р°РєСЃ' },
-        { id: 'grenoble', name: 'Grenoble', nameRu: 'Р“СЂРµРЅРѕР±Р»СЊ' }
+        { id: 'dax', name: 'Dax', nameRu: 'Дакс' },
+        { id: 'grenoble', name: 'Grenoble', nameRu: 'Гренобль' }
       ]
     },
     {
       id: 'rugby-pro-d2-5',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby Union В· France. Pro D2',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-15 В· Р¤СЂР°РЅС†РёСЏ. РџСЂРѕ Р”2',
+      title: 'Rugby · Rugby Union · France. Pro D2',
+      titleRu: 'Регби · Регби-15 · Франция. Про Д2',
       startsAt: '2026-03-27T21:30:00+03:00',
       endsAt: '2026-03-27T23:30:00+03:00',
       participants: [
-        { id: 'carcassonne', name: 'Carcassonne', nameRu: 'РљР°СЂРєР°СЃСЃРѕРЅ' },
-        { id: 'stade-montois', name: 'Stade Montois', nameRu: 'РЎС‚Р°Рґ РњРѕРЅС‚СѓР°' }
+        { id: 'carcassonne', name: 'Carcassonne', nameRu: 'Каркассон' },
+        { id: 'stade-montois', name: 'Stade Montois', nameRu: 'Стад Монтуа' }
       ]
     },
     {
       id: 'rugby-pro-d2-6',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby Union В· France. Pro D2',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-15 В· Р¤СЂР°РЅС†РёСЏ. РџСЂРѕ Р”2',
+      title: 'Rugby · Rugby Union · France. Pro D2',
+      titleRu: 'Регби · Регби-15 · Франция. Про Д2',
       startsAt: '2026-03-27T21:30:00+03:00',
       endsAt: '2026-03-27T23:30:00+03:00',
       participants: [
-        { id: 'stade-aurillacois', name: 'Stade Aurillacois', nameRu: 'РЎС‚РµР№Рґ РћСЂРёР№Р°Рє' },
-        { id: 'biarritz', name: 'Biarritz', nameRu: 'Р‘РёР°СЂСЂРёС†' }
+        { id: 'stade-aurillacois', name: 'Stade Aurillacois', nameRu: 'Стейд Орийак' },
+        { id: 'biarritz', name: 'Biarritz', nameRu: 'Биарриц' }
       ]
     },
     {
       id: 'rugby-pro-d2-7',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby Union В· France. Pro D2',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-15 В· Р¤СЂР°РЅС†РёСЏ. РџСЂРѕ Р”2',
+      title: 'Rugby · Rugby Union · France. Pro D2',
+      titleRu: 'Регби · Регби-15 · Франция. Про Д2',
       startsAt: '2026-03-27T23:00:00+03:00',
       endsAt: '2026-03-28T01:00:00+03:00',
       participants: [
-        { id: 'soyaux-angouleme', name: 'Soyaux Angouleme', nameRu: 'РЎСѓР°Р№Рѕ РђРЅРіСѓР»РµРј' },
-        { id: 'brive', name: 'Brive', nameRu: 'Р‘СЂРёРІ' }
+        { id: 'soyaux-angouleme', name: 'Soyaux Angouleme', nameRu: 'Суайо Ангулем' },
+        { id: 'brive', name: 'Brive', nameRu: 'Брив' }
       ]
     },
     {
       id: 'rugby-nrl-12',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby League В· NRL',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-13 В· NRL',
+      title: 'Rugby · Rugby League · NRL',
+      titleRu: 'Регби · Регби-13 · NRL',
       startsAt: '2026-03-28T07:00:00+03:00',
       endsAt: '2026-03-28T09:00:00+03:00',
       participants: [
-        { id: 'canterbury-bulldogs-2', name: 'Canterbury Bulldogs', nameRu: 'РљР°РЅС‚РµСЂР±Р°СЂРё Р‘СѓР»РґРѕРіСЃ' },
-        { id: 'newcastle-knights-2', name: 'Newcastle Knights', nameRu: 'РќСЊСЋРєР°СЃР» РќР°Р№С‚СЃ' }
+        { id: 'canterbury-bulldogs-2', name: 'Canterbury Bulldogs', nameRu: 'Кантербари Булдогс' },
+        { id: 'newcastle-knights-2', name: 'Newcastle Knights', nameRu: 'Ньюкасл Найтс' }
       ]
     },
     {
       id: 'rugby-nrl-13',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby League В· NRL',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-13 В· NRL',
+      title: 'Rugby · Rugby League · NRL',
+      titleRu: 'Регби · Регби-13 · NRL',
       startsAt: '2026-03-28T09:30:00+03:00',
       endsAt: '2026-03-28T11:30:00+03:00',
       participants: [
-        { id: 'penrith-panthers-2', name: 'Penrith Panthers', nameRu: 'РџРµРЅСЂРёС‚ РџР°РЅС‚РµСЂР·' },
-        { id: 'parramatta-eels-2', name: 'Parramatta Eels', nameRu: 'РџР°СЂСЂР°РјР°С‚С‚Р° Р­Р»СЃ' }
+        { id: 'penrith-panthers-2', name: 'Penrith Panthers', nameRu: 'Пенрит Пантерз' },
+        { id: 'parramatta-eels-2', name: 'Parramatta Eels', nameRu: 'Парраматта Элс' }
       ]
     },
     {
       id: 'rugby-nrl-14',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby League В· NRL',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-13 В· NRL',
+      title: 'Rugby · Rugby League · NRL',
+      titleRu: 'Регби · Регби-13 · NRL',
       startsAt: '2026-03-28T11:35:00+03:00',
       endsAt: '2026-03-28T13:35:00+03:00',
       participants: [
-        { id: 'north-queensland-cowboys-2', name: 'North Queensland Cowboys', nameRu: 'РќРѕСЂС‚ РљРІРёРЅСЃР»РµРЅРґ РљР°СѓР±РѕР№СЃ' },
-        { id: 'melbourne-storm-2', name: 'Melbourne Storm', nameRu: 'РњРµР»СЊР±СѓСЂРЅ РЁС‚РѕСЂРј' }
+        { id: 'north-queensland-cowboys-2', name: 'North Queensland Cowboys', nameRu: 'Норт Квинсленд Каубойс' },
+        { id: 'melbourne-storm-2', name: 'Melbourne Storm', nameRu: 'Мельбурн Шторм' }
       ]
     },
     {
       id: 'rugby-nrl-15',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby League В· NRL',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-13 В· NRL',
+      title: 'Rugby · Rugby League · NRL',
+      titleRu: 'Регби · Регби-13 · NRL',
       startsAt: '2026-03-29T08:05:00+03:00',
       endsAt: '2026-03-29T10:05:00+03:00',
       participants: [
-        { id: 'canberra-raiders-2', name: 'Canberra Raiders', nameRu: 'РљР°РЅР±РµСЂСЂР° Р Р°Р№РґРµСЂР·' },
-        { id: 'cronulla-sharks-2', name: 'Cronulla Sutherland Sharks', nameRu: 'РљСЂРѕРЅР°Р»Р»Р° РЎР°Р·РµСЂР»РµРЅРґ РЁР°СЂРєСЃ' }
+        { id: 'canberra-raiders-2', name: 'Canberra Raiders', nameRu: 'Канберра Райдерз' },
+        { id: 'cronulla-sharks-2', name: 'Cronulla Sutherland Sharks', nameRu: 'Кроналла Сазерленд Шаркс' }
       ]
     },
     {
       id: 'rugby-nrl-16',
       sportId: 'rugby',
-      title: 'Rugby В· Rugby League В· NRL',
-      titleRu: 'Р РµРіР±Рё В· Р РµРіР±Рё-13 В· NRL',
+      title: 'Rugby · Rugby League · NRL',
+      titleRu: 'Регби · Регби-13 · NRL',
       startsAt: '2026-03-29T10:15:00+03:00',
       endsAt: '2026-03-29T12:15:00+03:00',
       participants: [
-        { id: 'gold-coast-titans-2', name: 'Gold Coast Titans', nameRu: 'Р“РѕР»Рґ РљРѕСЃС‚ РўРёС‚Р°РЅСЃ' },
-        { id: 'st-george-illawarra-2', name: 'St George Illawarra', nameRu: 'РЎРµРЅС‚ Р”Р¶РѕСЂРґР¶ РР»Р»Р°РІР°СЂР°' }
+        { id: 'gold-coast-titans-2', name: 'Gold Coast Titans', nameRu: 'Голд Кост Титанс' },
+        { id: 'st-george-illawarra-2', name: 'St George Illawarra', nameRu: 'Сент Джордж Иллавара' }
       ]
     }
   ],
@@ -3364,85 +3364,85 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
     {
       id: 'afl-1',
       sportId: 'australian-football',
-      title: 'Australian football В· Australia В· AFL',
-      titleRu: 'РђРІСЃС‚СЂР°Р»РёР№СЃРєРёР№ С„СѓС‚Р±РѕР» В· РђРІСЃС‚СЂР°Р»РёСЏ В· AFL',
+      title: 'Australian football · Australia · AFL',
+      titleRu: 'Австралийский футбол · Австралия · AFL',
       startsAt: '2026-03-19T11:30:00+03:00',
       endsAt: '2026-03-19T14:00:00+03:00',
       participants: [
-        { id: 'hawthorn-hawks', name: 'Hawthorn Hawks', nameRu: 'РҐРѕС‚РѕСЂРЅ РҐРѕРєСЃ' },
-        { id: 'sydney-swans', name: 'Sydney Swans', nameRu: 'РЎРёРґРЅРµР№ РЎСѓРѕРЅСЃ' }
+        { id: 'hawthorn-hawks', name: 'Hawthorn Hawks', nameRu: 'Хоторн Хокс' },
+        { id: 'sydney-swans', name: 'Sydney Swans', nameRu: 'Сидней Суонс' }
       ]
     },
     {
       id: 'afl-2',
       sportId: 'australian-football',
-      title: 'Australian football В· Australia В· AFL',
-      titleRu: 'РђРІСЃС‚СЂР°Р»РёР№СЃРєРёР№ С„СѓС‚Р±РѕР» В· РђРІСЃС‚СЂР°Р»РёСЏ В· AFL',
+      title: 'Australian football · Australia · AFL',
+      titleRu: 'Австралийский футбол · Австралия · AFL',
       startsAt: '2026-03-20T11:40:00+03:00',
       endsAt: '2026-03-20T14:10:00+03:00',
       participants: [
-        { id: 'adelaide-crows', name: 'Adelaide Crows', nameRu: 'РђРґРµР»Р°РёРґР° РљСЂРѕСѓСЃ' },
-        { id: 'western-bulldogs', name: 'Western Bulldogs', nameRu: 'Р’РµСЃС‚РµСЂРЅ Р‘СѓР»Р»РґРѕРіСЃ' }
+        { id: 'adelaide-crows', name: 'Adelaide Crows', nameRu: 'Аделаида Кроус' },
+        { id: 'western-bulldogs', name: 'Western Bulldogs', nameRu: 'Вестерн Буллдогс' }
       ]
     },
     {
       id: 'afl-3',
       sportId: 'australian-football',
-      title: 'Australian football В· Australia В· AFL',
-      titleRu: 'РђРІСЃС‚СЂР°Р»РёР№СЃРєРёР№ С„СѓС‚Р±РѕР» В· РђРІСЃС‚СЂР°Р»РёСЏ В· AFL',
+      title: 'Australian football · Australia · AFL',
+      titleRu: 'Австралийский футбол · Австралия · AFL',
       startsAt: '2026-03-21T05:15:00+03:00',
       endsAt: '2026-03-21T07:45:00+03:00',
       participants: [
-        { id: 'richmond-tigers', name: 'Richmond Tigers', nameRu: 'Р РёС‡РјРѕРЅРґ РўР°Р№РіРµСЂСЃ' },
-        { id: 'gold-coast-suns', name: 'Gold Coast Suns', nameRu: 'Р“РѕР»Рґ РљРѕСЃС‚ РЎР°РЅСЃ' }
+        { id: 'richmond-tigers', name: 'Richmond Tigers', nameRu: 'Ричмонд Тайгерс' },
+        { id: 'gold-coast-suns', name: 'Gold Coast Suns', nameRu: 'Голд Кост Санс' }
       ]
     },
     {
       id: 'afl-4',
       sportId: 'australian-football',
-      title: 'Australian football В· Australia В· AFL',
-      titleRu: 'РђРІСЃС‚СЂР°Р»РёР№СЃРєРёР№ С„СѓС‚Р±РѕР» В· РђРІСЃС‚СЂР°Р»РёСЏ В· AFL',
+      title: 'Australian football · Australia · AFL',
+      titleRu: 'Австралийский футбол · Австралия · AFL',
       startsAt: '2026-03-21T08:15:00+03:00',
       endsAt: '2026-03-21T10:45:00+03:00',
       participants: [
-        { id: 'gws-giants', name: 'GWS Giants', nameRu: 'Р“Р’РЎ Р”Р¶Р°Р№РµРЅС‚СЃ' },
-        { id: 'st-kilda-saints', name: 'St. Kilda Saints', nameRu: 'РЎС‚. РљРёР»СЊРґР° РЎРµР№РЅС‚СЃ' }
+        { id: 'gws-giants', name: 'GWS Giants', nameRu: 'ГВС Джайентс' },
+        { id: 'st-kilda-saints', name: 'St. Kilda Saints', nameRu: 'Ст. Кильда Сейнтс' }
       ]
     },
     {
       id: 'afl-5',
       sportId: 'australian-football',
-      title: 'Australian football В· Australia В· AFL',
-      titleRu: 'РђРІСЃС‚СЂР°Р»РёР№СЃРєРёР№ С„СѓС‚Р±РѕР» В· РђРІСЃС‚СЂР°Р»РёСЏ В· AFL',
+      title: 'Australian football · Australia · AFL',
+      titleRu: 'Австралийский футбол · Австралия · AFL',
       startsAt: '2026-03-21T11:35:00+03:00',
       endsAt: '2026-03-21T14:05:00+03:00',
       participants: [
-        { id: 'fremantle-dockers', name: 'Fremantle Dockers', nameRu: 'Р¤СЂРёРјР°РЅС‚Р» Р”РѕРєРµСЂСЃ' },
-        { id: 'melbourne-demons', name: 'Melbourne Demons', nameRu: 'РњРµР»СЊР±СѓСЂРЅ Р”РµРјРѕРЅСЃ' }
+        { id: 'fremantle-dockers', name: 'Fremantle Dockers', nameRu: 'Фримантл Докерс' },
+        { id: 'melbourne-demons', name: 'Melbourne Demons', nameRu: 'Мельбурн Демонс' }
       ]
     },
     {
       id: 'afl-6',
       sportId: 'australian-football',
-      title: 'Australian football В· Australia В· AFL',
-      titleRu: 'РђРІСЃС‚СЂР°Р»РёР№СЃРєРёР№ С„СѓС‚Р±РѕР» В· РђРІСЃС‚СЂР°Р»РёСЏ В· AFL',
+      title: 'Australian football · Australia · AFL',
+      titleRu: 'Австралийский футбол · Австралия · AFL',
       startsAt: '2026-03-22T07:15:00+03:00',
       endsAt: '2026-03-22T09:45:00+03:00',
       participants: [
-        { id: 'port-adelaide-power', name: 'Port Adelaide Power', nameRu: 'РџРѕСЂС‚ РђРґРµР»Р°РёРґР° РџР°СѓСЌСЂ' },
-        { id: 'essendon-bombers', name: 'Essendon Bombers', nameRu: 'Р­СЃСЃРµРЅРґРѕРЅ Р‘РѕРјР±РµСЂСЃ' }
+        { id: 'port-adelaide-power', name: 'Port Adelaide Power', nameRu: 'Порт Аделаида Пауэр' },
+        { id: 'essendon-bombers', name: 'Essendon Bombers', nameRu: 'Эссендон Бомберс' }
       ]
     },
     {
       id: 'afl-7',
       sportId: 'australian-football',
-      title: 'Australian football В· Australia В· AFL',
-      titleRu: 'РђРІСЃС‚СЂР°Р»РёР№СЃРєРёР№ С„СѓС‚Р±РѕР» В· РђРІСЃС‚СЂР°Р»РёСЏ В· AFL',
+      title: 'Australian football · Australia · AFL',
+      titleRu: 'Австралийский футбол · Австралия · AFL',
       startsAt: '2026-03-22T10:10:00+03:00',
       endsAt: '2026-03-22T12:40:00+03:00',
       participants: [
-        { id: 'west-coast-eagles', name: 'West Coast Eagles', nameRu: 'Р’РµСЃС‚ РљРѕСЃС‚ РРіР»Р·' },
-        { id: 'north-melbourne-kangaroos', name: 'North Melbourne Kangaroos', nameRu: 'РќРѕСЂС‚ РњРµР»СЊР±СѓСЂРЅ РљРµРЅРіСѓСЂСѓР·' }
+        { id: 'west-coast-eagles', name: 'West Coast Eagles', nameRu: 'Вест Кост Иглз' },
+        { id: 'north-melbourne-kangaroos', name: 'North Melbourne Kangaroos', nameRu: 'Норт Мельбурн Кенгуруз' }
       ]
     }
   ],
@@ -3450,55 +3450,55 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
     {
       id: 'water-polo-len-euro-cup-1',
       sportId: 'water-polo',
-      title: 'Water polo В· International Clubs В· LEN Euro Cup',
-      titleRu: 'Р’РѕРґРЅРѕРµ РїРѕР»Рѕ В· РњРµР¶РґСѓРЅР°СЂРѕРґРЅС‹Рµ. РљР»СѓР±С‹ В· LEN Euro Cup',
+      title: 'Water polo · International Clubs · LEN Euro Cup',
+      titleRu: 'Водное поло · Международные. Клубы · LEN Euro Cup',
       startsAt: '2026-03-18T13:00:00+03:00',
       endsAt: '2026-03-18T15:00:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'bvsc-zuglo', name: 'BVSC Zuglo', nameRu: 'Р‘Р‘РЎРљ Р—СѓРіР»Рѕ' },
-        { id: 'orad', name: 'Orad', nameRu: 'РћСЂР°Рґ' }
+        { id: 'bvsc-zuglo', name: 'BVSC Zuglo', nameRu: 'ББСК Зугло' },
+        { id: 'orad', name: 'Orad', nameRu: 'Орад' }
       ]
     },
     {
       id: 'water-polo-len-euro-cup-2',
       sportId: 'water-polo',
-      title: 'Water polo В· International Clubs В· LEN Euro Cup',
-      titleRu: 'Р’РѕРґРЅРѕРµ РїРѕР»Рѕ В· РњРµР¶РґСѓРЅР°СЂРѕРґРЅС‹Рµ. РљР»СѓР±С‹ В· LEN Euro Cup',
+      title: 'Water polo · International Clubs · LEN Euro Cup',
+      titleRu: 'Водное поло · Международные. Клубы · LEN Euro Cup',
       startsAt: '2026-03-18T13:00:00+03:00',
       endsAt: '2026-03-18T15:00:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'primorac-kotor', name: 'VK Primorac Kotor', nameRu: 'Р’Рљ РџСЂРёРјРѕСЂР°С† РљРѕС‚РѕСЂ' },
-        { id: 'radnicki-kragujevac', name: 'Radnicki Kragujevac', nameRu: 'Р Р°РґРЅРёС‡РєРё РљСЂР°РіСѓРµРІР°С†' }
+        { id: 'primorac-kotor', name: 'VK Primorac Kotor', nameRu: 'ВК Приморац Котор' },
+        { id: 'radnicki-kragujevac', name: 'Radnicki Kragujevac', nameRu: 'Раднички Крагуевац' }
       ]
     },
     {
       id: 'water-polo-len-euro-cup-3',
       sportId: 'water-polo',
-      title: 'Water polo В· International Clubs В· LEN Euro Cup',
-      titleRu: 'Р’РѕРґРЅРѕРµ РїРѕР»Рѕ В· РњРµР¶РґСѓРЅР°СЂРѕРґРЅС‹Рµ. РљР»СѓР±С‹ В· LEN Euro Cup',
+      title: 'Water polo · International Clubs · LEN Euro Cup',
+      titleRu: 'Водное поло · Международные. Клубы · LEN Euro Cup',
       startsAt: '2026-03-18T13:00:00+03:00',
       endsAt: '2026-03-18T15:00:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'marseille', name: 'Marseille', nameRu: 'РњР°СЂСЃРµР»СЊ' },
-        { id: 'sabadell', name: 'Sabadell', nameRu: 'РЎР°Р±Р°РґРµР»СЊ' }
+        { id: 'marseille', name: 'Marseille', nameRu: 'Марсель' },
+        { id: 'sabadell', name: 'Sabadell', nameRu: 'Сабадель' }
       ]
     },
     {
       id: 'water-polo-len-euro-cup-4',
       sportId: 'water-polo',
-      title: 'Water polo В· International Clubs В· LEN Euro Cup',
-      titleRu: 'Р’РѕРґРЅРѕРµ РїРѕР»Рѕ В· РњРµР¶РґСѓРЅР°СЂРѕРґРЅС‹Рµ. РљР»СѓР±С‹ В· LEN Euro Cup',
+      title: 'Water polo · International Clubs · LEN Euro Cup',
+      titleRu: 'Водное поло · Международные. Клубы · LEN Euro Cup',
       startsAt: '2026-03-19T20:00:00+03:00',
       endsAt: '2026-03-19T22:00:00+03:00',
       participants: [
-        { id: 'panathinaikos', name: 'Panathinaikos', nameRu: 'РџР°РЅР°С‚РёРЅР°РёРєРѕСЃ' },
-        { id: 'jadran-split', name: 'Jadran Split', nameRu: 'РЇРґСЂР°РЅ РЎРїР»РёС‚' }
+        { id: 'panathinaikos', name: 'Panathinaikos', nameRu: 'Панатинаикос' },
+        { id: 'jadran-split', name: 'Jadran Split', nameRu: 'Ядран Сплит' }
       ]
     }
   ],
@@ -3506,381 +3506,381 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
     {
       id: 'handball-hungary-1',
       sportId: 'handball',
-      title: 'Handball В· Hungary В· NB I. Women',
-      titleRu: 'Р“Р°РЅРґР±РѕР» В· Р’РµРЅРіСЂРёСЏ В· NB I. Р–РµРЅС‰РёРЅС‹',
+      title: 'Handball · Hungary · NB I. Women',
+      titleRu: 'Гандбол · Венгрия · NB I. Женщины',
       startsAt: '2026-03-17T20:00:00+03:00',
       endsAt: '2026-03-17T22:00:00+03:00',
       displayDateEn: 'Today at',
-      displayDateRu: 'РЎРµРіРѕРґРЅСЏ РІ',
+      displayDateRu: 'Сегодня в',
       participants: [
-        { id: 'dvsc-w', name: 'DVSC (W)', nameRu: 'Р”Р’РЎРљ (Р¶)' },
-        { id: 'moyra-budaors-w', name: 'Moyra Budaors (W)', nameRu: 'РњРѕР№СЂР° Р‘СѓРґР°РѕСЂС€ (Р¶)' }
+        { id: 'dvsc-w', name: 'DVSC (W)', nameRu: 'ДВСК (ж)' },
+        { id: 'moyra-budaors-w', name: 'Moyra Budaors (W)', nameRu: 'Мойра Будаорш (ж)' }
       ]
     },
     {
       id: 'handball-sweden-1',
       sportId: 'handball',
-      title: 'Handball В· Sweden В· Allsvenskan',
-      titleRu: 'Р“Р°РЅРґР±РѕР» В· РЁРІРµС†РёСЏ В· РђР»Р»СЃРІРµРЅСЃРєР°РЅ',
+      title: 'Handball · Sweden · Allsvenskan',
+      titleRu: 'Гандбол · Швеция · Аллсвенскан',
       startsAt: '2026-03-17T21:00:00+03:00',
       endsAt: '2026-03-17T23:00:00+03:00',
       displayDateEn: 'Today at',
-      displayDateRu: 'РЎРµРіРѕРґРЅСЏ РІ',
+      displayDateRu: 'Сегодня в',
       participants: [
-        { id: 'tyreso', name: 'Tyreso', nameRu: 'РўСЋСЂРµСЃС‘' },
-        { id: 'aranas', name: 'Aranas', nameRu: 'РђСЂР°РЅР°СЃ' }
+        { id: 'tyreso', name: 'Tyreso', nameRu: 'Тюресё' },
+        { id: 'aranas', name: 'Aranas', nameRu: 'Аранас' }
       ]
     },
     {
       id: 'handball-norway-1',
       sportId: 'handball',
-      title: 'Handball В· Norway В· Eliteserien. Women',
-      titleRu: 'Р“Р°РЅРґР±РѕР» В· РќРѕСЂРІРµРіРёСЏ В· Р­Р»РёС‚СЃРµСЂРёСЏ. Р–РµРЅС‰РёРЅС‹',
+      title: 'Handball · Norway · Eliteserien. Women',
+      titleRu: 'Гандбол · Норвегия · Элитсерия. Женщины',
       startsAt: '2026-03-18T20:00:00+03:00',
       endsAt: '2026-03-18T22:00:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'baerum-w', name: 'Baerum (W)', nameRu: 'Р‘РµСЂСѓРј (Р¶)' },
-        { id: 'fana-w', name: 'Fana (W)', nameRu: 'Р¤Р°РЅР° (Р¶)' }
+        { id: 'baerum-w', name: 'Baerum (W)', nameRu: 'Берум (ж)' },
+        { id: 'fana-w', name: 'Fana (W)', nameRu: 'Фана (ж)' }
       ]
     },
     {
       id: 'handball-norway-2',
       sportId: 'handball',
-      title: 'Handball В· Norway В· Eliteserien. Women',
-      titleRu: 'Р“Р°РЅРґР±РѕР» В· РќРѕСЂРІРµРіРёСЏ В· Р­Р»РёС‚СЃРµСЂРёСЏ. Р–РµРЅС‰РёРЅС‹',
+      title: 'Handball · Norway · Eliteserien. Women',
+      titleRu: 'Гандбол · Норвегия · Элитсерия. Женщины',
       startsAt: '2026-03-18T20:00:00+03:00',
       endsAt: '2026-03-18T22:00:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'byasen-w', name: 'Byasen (W)', nameRu: 'Р‘СЊСЏСЃРµРЅ (Р¶)' },
-        { id: 'fredrikstad-w', name: 'Fredrikstad (W)', nameRu: 'Р¤СЂРµРґСЂРёРєСЃС‚Р°Рґ (Р¶)' }
+        { id: 'byasen-w', name: 'Byasen (W)', nameRu: 'Бьясен (ж)' },
+        { id: 'fredrikstad-w', name: 'Fredrikstad (W)', nameRu: 'Фредрикстад (ж)' }
       ]
     },
     {
       id: 'handball-norway-3',
       sportId: 'handball',
-      title: 'Handball В· Norway В· Eliteserien. Women',
-      titleRu: 'Р“Р°РЅРґР±РѕР» В· РќРѕСЂРІРµРіРёСЏ В· Р­Р»РёС‚СЃРµСЂРёСЏ. Р–РµРЅС‰РёРЅС‹',
+      title: 'Handball · Norway · Eliteserien. Women',
+      titleRu: 'Гандбол · Норвегия · Элитсерия. Женщины',
       startsAt: '2026-03-18T20:00:00+03:00',
       endsAt: '2026-03-18T22:00:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'larvik-w', name: 'Larvik (W)', nameRu: 'Р›Р°СЂРІРёРє (Р¶)' },
-        { id: 'oppsal-w', name: 'Oppsal (W)', nameRu: 'РћРїСЃР°Р»СЊ (Р¶)' }
+        { id: 'larvik-w', name: 'Larvik (W)', nameRu: 'Ларвик (ж)' },
+        { id: 'oppsal-w', name: 'Oppsal (W)', nameRu: 'Опсаль (ж)' }
       ]
     },
     {
       id: 'handball-norway-4',
       sportId: 'handball',
-      title: 'Handball В· Norway В· Eliteserien. Women',
-      titleRu: 'Р“Р°РЅРґР±РѕР» В· РќРѕСЂРІРµРіРёСЏ В· Р­Р»РёС‚СЃРµСЂРёСЏ. Р–РµРЅС‰РёРЅС‹',
+      title: 'Handball · Norway · Eliteserien. Women',
+      titleRu: 'Гандбол · Норвегия · Элитсерия. Женщины',
       startsAt: '2026-03-18T20:00:00+03:00',
       endsAt: '2026-03-18T22:00:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'molde-w', name: 'Molde (W)', nameRu: 'РњРµР»СЊРґРµ (Р¶)' },
-        { id: 'fjellhammer-w', name: 'Fjellhammer (W)', nameRu: 'Р¤СЊРµР»С…Р°РјРјРµСЂ (Р¶)' }
+        { id: 'molde-w', name: 'Molde (W)', nameRu: 'Мельде (ж)' },
+        { id: 'fjellhammer-w', name: 'Fjellhammer (W)', nameRu: 'Фьелхаммер (ж)' }
       ]
     },
     {
       id: 'handball-norway-5',
       sportId: 'handball',
-      title: 'Handball В· Norway В· Eliteserien. Women',
-      titleRu: 'Р“Р°РЅРґР±РѕР» В· РќРѕСЂРІРµРіРёСЏ В· Р­Р»РёС‚СЃРµСЂРёСЏ. Р–РµРЅС‰РёРЅС‹',
+      title: 'Handball · Norway · Eliteserien. Women',
+      titleRu: 'Гандбол · Норвегия · Элитсерия. Женщины',
       startsAt: '2026-03-18T20:00:00+03:00',
       endsAt: '2026-03-18T22:00:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'tertnes-w', name: 'Tertnes (W)', nameRu: 'РўРµСЂС‚РЅРµСЃ (Р¶)' },
-        { id: 'relingen-w', name: 'Relingen (W)', nameRu: 'Р РµР»РёРЅРіРµРЅ (Р¶)' }
+        { id: 'tertnes-w', name: 'Tertnes (W)', nameRu: 'Тертнес (ж)' },
+        { id: 'relingen-w', name: 'Relingen (W)', nameRu: 'Релинген (ж)' }
       ]
     },
     {
       id: 'handball-norway-6',
       sportId: 'handball',
-      title: 'Handball В· Norway В· Eliteserien. Women',
-      titleRu: 'Р“Р°РЅРґР±РѕР» В· РќРѕСЂРІРµРіРёСЏ В· Р­Р»РёС‚СЃРµСЂРёСЏ. Р–РµРЅС‰РёРЅС‹',
+      title: 'Handball · Norway · Eliteserien. Women',
+      titleRu: 'Гандбол · Норвегия · Элитсерия. Женщины',
       startsAt: '2026-03-18T20:15:00+03:00',
       endsAt: '2026-03-18T22:15:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'storhamar-w', name: 'Storhamar (W)', nameRu: 'РЎС‚РѕСЂС…Р°РјР°СЂ (Р¶)' },
-        { id: 'sola-w', name: 'Sola (W)', nameRu: 'РЎРѕР»Р° (Р¶)' }
+        { id: 'storhamar-w', name: 'Storhamar (W)', nameRu: 'Сторхамар (ж)' },
+        { id: 'sola-w', name: 'Sola (W)', nameRu: 'Сола (ж)' }
       ]
     },
     {
       id: 'handball-denmark-1',
       sportId: 'handball',
-      title: 'Handball В· Denmark В· Top League. Women',
-      titleRu: 'Р“Р°РЅРґР±РѕР» В· Р”Р°РЅРёСЏ В· Р’С‹СЃС€Р°СЏ Р»РёРіР°. Р–РµРЅС‰РёРЅС‹',
+      title: 'Handball · Denmark · Top League. Women',
+      titleRu: 'Гандбол · Дания · Высшая лига. Женщины',
       startsAt: '2026-03-18T21:00:00+03:00',
       endsAt: '2026-03-18T23:00:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'bjerringbro-w', name: 'Bjerringbro (W)', nameRu: 'Р‘СЊРµСЂСЂРёРЅРіР±СЂРѕ (Р¶)' },
-        { id: 'esbjerg-domestic-w', name: 'Esbjerg (W)', nameRu: 'Р­СЃР±СЊРµСЂРі (Р¶)' }
+        { id: 'bjerringbro-w', name: 'Bjerringbro (W)', nameRu: 'Бьеррингбро (ж)' },
+        { id: 'esbjerg-domestic-w', name: 'Esbjerg (W)', nameRu: 'Эсбьерг (ж)' }
       ]
     },
     {
       id: 'handball-denmark-2',
       sportId: 'handball',
-      title: 'Handball В· Denmark В· Top League. Women',
-      titleRu: 'Р“Р°РЅРґР±РѕР» В· Р”Р°РЅРёСЏ В· Р’С‹СЃС€Р°СЏ Р»РёРіР°. Р–РµРЅС‰РёРЅС‹',
+      title: 'Handball · Denmark · Top League. Women',
+      titleRu: 'Гандбол · Дания · Высшая лига. Женщины',
       startsAt: '2026-03-18T21:00:00+03:00',
       endsAt: '2026-03-18T23:00:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'viborg-w', name: 'Viborg (W)', nameRu: 'Р’РёР±РѕСЂРі (Р¶)' },
-        { id: 'hoj-elite-w', name: 'Hoj Elite (W)', nameRu: 'РҐРѕР№ Р­Р»РёС‚ (Р¶)' }
+        { id: 'viborg-w', name: 'Viborg (W)', nameRu: 'Виборг (ж)' },
+        { id: 'hoj-elite-w', name: 'Hoj Elite (W)', nameRu: 'Хой Элит (ж)' }
       ]
     },
     {
       id: 'handball-denmark-3',
       sportId: 'handball',
-      title: 'Handball В· Denmark В· Top League. Women',
-      titleRu: 'Р“Р°РЅРґР±РѕР» В· Р”Р°РЅРёСЏ В· Р’С‹СЃС€Р°СЏ Р»РёРіР°. Р–РµРЅС‰РёРЅС‹',
+      title: 'Handball · Denmark · Top League. Women',
+      titleRu: 'Гандбол · Дания · Высшая лига. Женщины',
       startsAt: '2026-03-18T21:00:00+03:00',
       endsAt: '2026-03-18T23:00:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'nykobing-w', name: 'Nykobing (W)', nameRu: 'РќСЋРєРµР±РёРЅРі (Р¶)' },
-        { id: 'skanderborg-domestic-w', name: 'Skanderborg (W)', nameRu: 'РЎРєР°РЅРґРµСЂР±РѕСЂРі (Р¶)' }
+        { id: 'nykobing-w', name: 'Nykobing (W)', nameRu: 'Нюкебинг (ж)' },
+        { id: 'skanderborg-domestic-w', name: 'Skanderborg (W)', nameRu: 'Скандерборг (ж)' }
       ]
     },
     {
       id: 'handball-sweden-2',
       sportId: 'handball',
-      title: 'Handball В· Sweden В· Allsvenskan',
-      titleRu: 'Р“Р°РЅРґР±РѕР» В· РЁРІРµС†РёСЏ В· РђР»Р»СЃРІРµРЅСЃРєР°РЅ',
+      title: 'Handball · Sweden · Allsvenskan',
+      titleRu: 'Гандбол · Швеция · Аллсвенскан',
       startsAt: '2026-03-18T21:00:00+03:00',
       endsAt: '2026-03-18T23:00:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'skanela-if', name: 'Skanela IF', nameRu: 'РЎРєР°РЅРµР»Р° РР¤' },
-        { id: 'sk-tumba', name: 'SK Tumba', nameRu: 'РЎРљ РўСѓРјР±Р°' }
+        { id: 'skanela-if', name: 'Skanela IF', nameRu: 'Сканела ИФ' },
+        { id: 'sk-tumba', name: 'SK Tumba', nameRu: 'СК Тумба' }
       ]
     },
     {
       id: 'handball-germany-1',
       sportId: 'handball',
-      title: 'Handball В· Germany В· Bundesliga. Women',
-      titleRu: 'Р“Р°РЅРґР±РѕР» В· Р“РµСЂРјР°РЅРёСЏ В· Р‘СѓРЅРґРµСЃР»РёРіР°. Р–РµРЅС‰РёРЅС‹',
+      title: 'Handball · Germany · Bundesliga. Women',
+      titleRu: 'Гандбол · Германия · Бундеслига. Женщины',
       startsAt: '2026-03-18T21:00:00+03:00',
       endsAt: '2026-03-18T23:00:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'frisch-auf-goppingen-w', name: 'Frisch Auf Goppingen (W)', nameRu: 'Р¤СЂРёС€ Р“С‘РїРїРёРЅРіРµРЅ (Р¶)' },
-        { id: 'borussia-dortmund-domestic-w', name: 'Borussia Dortmund (W)', nameRu: 'Р‘РѕСЂСѓСЃСЃРёСЏ Р”РѕСЂС‚РјСѓРЅРґ (Р¶)' }
+        { id: 'frisch-auf-goppingen-w', name: 'Frisch Auf Goppingen (W)', nameRu: 'Фриш Гёппинген (ж)' },
+        { id: 'borussia-dortmund-domestic-w', name: 'Borussia Dortmund (W)', nameRu: 'Боруссия Дортмунд (ж)' }
       ]
     },
     {
       id: 'handball-germany-2',
       sportId: 'handball',
-      title: 'Handball В· Germany В· Bundesliga. Women',
-      titleRu: 'Р“Р°РЅРґР±РѕР» В· Р“РµСЂРјР°РЅРёСЏ В· Р‘СѓРЅРґРµСЃР»РёРіР°. Р–РµРЅС‰РёРЅС‹',
+      title: 'Handball · Germany · Bundesliga. Women',
+      titleRu: 'Гандбол · Германия · Бундеслига. Женщины',
       startsAt: '2026-03-18T21:00:00+03:00',
       endsAt: '2026-03-18T23:00:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'union-halle-neustadt-w', name: 'Union Halle-Neustadt (W)', nameRu: 'Р®РЅРёРѕРЅ Р“Р°Р»Р»Рµ РќСЊРѕС€С‚Р°РґС‚ (Р¶)' },
-        { id: 'bensheim-auerbach-w', name: 'Bensheim Auerbach (W)', nameRu: 'Р‘РµРЅС€Р°Р№Рј РђСѓСЂР±Р°С… (Р¶)' }
+        { id: 'union-halle-neustadt-w', name: 'Union Halle-Neustadt (W)', nameRu: 'Юнион Галле Ньоштадт (ж)' },
+        { id: 'bensheim-auerbach-w', name: 'Bensheim Auerbach (W)', nameRu: 'Беншайм Аурбах (ж)' }
       ]
     },
     {
       id: 'handball-denmark-4',
       sportId: 'handball',
-      title: 'Handball В· Denmark В· Top League. Women',
-      titleRu: 'Р“Р°РЅРґР±РѕР» В· Р”Р°РЅРёСЏ В· Р’С‹СЃС€Р°СЏ Р»РёРіР°. Р–РµРЅС‰РёРЅС‹',
+      title: 'Handball · Denmark · Top League. Women',
+      titleRu: 'Гандбол · Дания · Высшая лига. Женщины',
       startsAt: '2026-03-18T22:00:00+03:00',
       endsAt: '2026-03-19T00:00:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'horsens-w', name: 'Horsens (W)', nameRu: 'РҐРѕСЂСЃРµРЅСЃ (Р¶)' },
-        { id: 'copenhagen-w', name: 'Copenhagen (W)', nameRu: 'РљРѕРїРµРЅРіР°РіРµРЅ (Р¶)' }
+        { id: 'horsens-w', name: 'Horsens (W)', nameRu: 'Хорсенс (ж)' },
+        { id: 'copenhagen-w', name: 'Copenhagen (W)', nameRu: 'Копенгаген (ж)' }
       ]
     },
     {
       id: 'handball-poland-1',
       sportId: 'handball',
-      title: 'Handball В· Poland В· Superliga. Women',
-      titleRu: 'Р“Р°РЅРґР±РѕР» В· РџРѕР»СЊС€Р° В· РЎСѓРїРµСЂР»РёРіР°. Р–РµРЅС‰РёРЅС‹',
+      title: 'Handball · Poland · Superliga. Women',
+      titleRu: 'Гандбол · Польша · Суперлига. Женщины',
       startsAt: '2026-03-18T22:30:00+03:00',
       endsAt: '2026-03-19T00:30:00+03:00',
       displayDateEn: 'Tomorrow at',
-      displayDateRu: 'Р—Р°РІС‚СЂР° РІ',
+      displayDateRu: 'Завтра в',
       participants: [
-        { id: 'zaglebie-lubin-w', name: 'Zaglebie Lubin (W)', nameRu: 'Р—Р°РіР»РµРјР±Рµ Р›СЋР±РёРЅ (Р¶)' },
-        { id: 'mks-piotrcovia-w', name: 'MKS Piotrcovia (W)', nameRu: 'РњРљРЎ РџРµС‚СЂРѕРєРѕРІРёСЏ (Р¶)' }
+        { id: 'zaglebie-lubin-w', name: 'Zaglebie Lubin (W)', nameRu: 'Заглембе Любин (ж)' },
+        { id: 'mks-piotrcovia-w', name: 'MKS Piotrcovia (W)', nameRu: 'МКС Петроковия (ж)' }
       ]
     },
     {
       id: 'handball-korea-1',
       sportId: 'handball',
-      title: 'Handball В· South Korea В· National League. Women',
-      titleRu: 'Р“Р°РЅРґР±РѕР» В· Р®Р¶РЅР°СЏ РљРѕСЂРµСЏ В· РќР°С†РёРѕРЅР°Р»СЊРЅР°СЏ Р»РёРіР°. Р–РµРЅС‰РёРЅС‹',
+      title: 'Handball · South Korea · National League. Women',
+      titleRu: 'Гандбол · Южная Корея · Национальная лига. Женщины',
       startsAt: '2026-03-19T12:00:00+03:00',
       endsAt: '2026-03-19T14:00:00+03:00',
       participants: [
-        { id: 'busan-w', name: 'Busan (W)', nameRu: 'РџСѓСЃР°РЅ (Р¶)' },
-        { id: 'gyeongnam-w', name: 'Gyeongnam (W)', nameRu: 'РљС‘РЅРЅР°Рј (Р¶)' }
+        { id: 'busan-w', name: 'Busan (W)', nameRu: 'Пусан (ж)' },
+        { id: 'gyeongnam-w', name: 'Gyeongnam (W)', nameRu: 'Кённам (ж)' }
       ]
     },
     {
       id: 'handball-korea-2',
       sportId: 'handball',
-      title: 'Handball В· South Korea В· National League. Women',
-      titleRu: 'Р“Р°РЅРґР±РѕР» В· Р®Р¶РЅР°СЏ РљРѕСЂРµСЏ В· РќР°С†РёРѕРЅР°Р»СЊРЅР°СЏ Р»РёРіР°. Р–РµРЅС‰РёРЅС‹',
+      title: 'Handball · South Korea · National League. Women',
+      titleRu: 'Гандбол · Южная Корея · Национальная лига. Женщины',
       startsAt: '2026-03-19T14:00:00+03:00',
       endsAt: '2026-03-19T16:00:00+03:00',
       participants: [
-        { id: 'incheon-w', name: 'Incheon (W)', nameRu: 'РРЅС‡С…РѕРЅ (Р¶)' },
-        { id: 'seoul-w', name: 'Seoul (W)', nameRu: 'РЎРµСѓР» (Р¶)' }
+        { id: 'incheon-w', name: 'Incheon (W)', nameRu: 'Инчхон (ж)' },
+        { id: 'seoul-w', name: 'Seoul (W)', nameRu: 'Сеул (ж)' }
       ]
     },
     {
       id: 'handball-poland-2',
       sportId: 'handball',
-      title: 'Handball В· Poland В· Superliga. Women',
-      titleRu: 'Р“Р°РЅРґР±РѕР» В· РџРѕР»СЊС€Р° В· РЎСѓРїРµСЂР»РёРіР°. Р–РµРЅС‰РёРЅС‹',
+      title: 'Handball · Poland · Superliga. Women',
+      titleRu: 'Гандбол · Польша · Суперлига. Женщины',
       startsAt: '2026-03-19T20:00:00+03:00',
       endsAt: '2026-03-19T22:00:00+03:00',
       participants: [
-        { id: 'energa-koszalin-w', name: 'Energa Koszalin (W)', nameRu: 'Р­РЅРµСЂРіР° РљРѕС€Р°Р»РёРЅ (Р¶)' },
-        { id: 'gmina-kobierzyce-w', name: 'Gmina Kobierzyce (W)', nameRu: 'Р“РјРёРЅР° РљРѕР±РµР¶РёС†Рµ (Р¶)' }
+        { id: 'energa-koszalin-w', name: 'Energa Koszalin (W)', nameRu: 'Энерга Кошалин (ж)' },
+        { id: 'gmina-kobierzyce-w', name: 'Gmina Kobierzyce (W)', nameRu: 'Гмина Кобежице (ж)' }
       ]
     },
     {
       id: 'handball-denmark-5',
       sportId: 'handball',
-      title: 'Handball В· Denmark В· Top League. Women',
-      titleRu: 'Р“Р°РЅРґР±РѕР» В· Р”Р°РЅРёСЏ В· Р’С‹СЃС€Р°СЏ Р»РёРіР°. Р–РµРЅС‰РёРЅС‹',
+      title: 'Handball · Denmark · Top League. Women',
+      titleRu: 'Гандбол · Дания · Высшая лига. Женщины',
       startsAt: '2026-03-19T21:00:00+03:00',
       endsAt: '2026-03-19T23:00:00+03:00',
       participants: [
-        { id: 'sonderjyske-w', name: 'Sonderjyske (W)', nameRu: 'РЎРµРЅРґРµСЂСЋСЃРєРµ (Р¶)' },
-        { id: 'herning-ikast-domestic-w', name: 'Herning Ikast (W)', nameRu: 'РҐРµСЂРЅРёРЅРі РРєР°СЃС‚ (Р¶)' }
+        { id: 'sonderjyske-w', name: 'Sonderjyske (W)', nameRu: 'Сендерюске (ж)' },
+        { id: 'herning-ikast-domestic-w', name: 'Herning Ikast (W)', nameRu: 'Хернинг Икаст (ж)' }
       ]
     },
     {
       id: 'handball-denmark-6',
       sportId: 'handball',
-      title: 'Handball В· Denmark В· Top League. Women',
-      titleRu: 'Р“Р°РЅРґР±РѕР» В· Р”Р°РЅРёСЏ В· Р’С‹СЃС€Р°СЏ Р»РёРіР°. Р–РµРЅС‰РёРЅС‹',
+      title: 'Handball · Denmark · Top League. Women',
+      titleRu: 'Гандбол · Дания · Высшая лига. Женщины',
       startsAt: '2026-03-20T20:30:00+03:00',
       endsAt: '2026-03-20T22:30:00+03:00',
       participants: [
-        { id: 'silkeborg-voel-w', name: 'Silkeborg-Voel (W)', nameRu: 'РЎРёР»СЊРєРµР±РѕСЂРі Р’РѕСЌР»СЊ (Р¶)' },
-        { id: 'eh-aalborg-w', name: 'EH Aalborg (W)', nameRu: 'EH РћР»СЊР±РѕСЂРі (Р¶)' }
+        { id: 'silkeborg-voel-w', name: 'Silkeborg-Voel (W)', nameRu: 'Силькеборг Воэль (ж)' },
+        { id: 'eh-aalborg-w', name: 'EH Aalborg (W)', nameRu: 'EH Ольборг (ж)' }
       ]
     },
     {
       id: 'handball-cl-1',
       sportId: 'handball',
-      title: 'Handball В· International Clubs В· Champions League 2025/2026',
-      titleRu: 'Р“Р°РЅРґР±РѕР» В· РњРµР¶РґСѓРЅР°СЂРѕРґРЅС‹Рµ. РљР»СѓР±С‹ В· Р›РёРіР° С‡РµРјРїРёРѕРЅРѕРІ 2025/2026',
+      title: 'Handball · International Clubs · Champions League 2025/2026',
+      titleRu: 'Гандбол · Международные. Клубы · Лига чемпионов 2025/2026',
       startsAt: '2026-03-21T18:00:00+03:00',
       endsAt: '2026-03-21T20:00:00+03:00',
       participants: [
-        { id: 'podravka-vegeta-w', name: 'Podravka Vegeta (W)', nameRu: 'РџРѕРґСЂР°РІРєР° Р’РµРіРµС‚Р° (Р¶)' },
-        { id: 'esbjerg-cl-w', name: 'Esbjerg (W)', nameRu: 'Р­СЃР±СЊРµСЂРі (Р¶)' }
+        { id: 'podravka-vegeta-w', name: 'Podravka Vegeta (W)', nameRu: 'Подравка Вегета (ж)' },
+        { id: 'esbjerg-cl-w', name: 'Esbjerg (W)', nameRu: 'Эсбьерг (ж)' }
       ]
     },
     {
       id: 'handball-cl-2',
       sportId: 'handball',
-      title: 'Handball В· International Clubs В· Champions League 2025/2026',
-      titleRu: 'Р“Р°РЅРґР±РѕР» В· РњРµР¶РґСѓРЅР°СЂРѕРґРЅС‹Рµ. РљР»СѓР±С‹ В· Р›РёРіР° С‡РµРјРїРёРѕРЅРѕРІ 2025/2026',
+      title: 'Handball · International Clubs · Champions League 2025/2026',
+      titleRu: 'Гандбол · Международные. Клубы · Лига чемпионов 2025/2026',
       startsAt: '2026-03-21T20:00:00+03:00',
       endsAt: '2026-03-21T22:00:00+03:00',
       participants: [
-        { id: 'dvsc-cl-w', name: 'DVSC (W)', nameRu: 'Р”Р’РЎРљ (Р¶)' },
-        { id: 'odense-w', name: 'Odense (W)', nameRu: 'Р”РҐР“ РћРґРµРЅСЃРµ (Р¶)' }
+        { id: 'dvsc-cl-w', name: 'DVSC (W)', nameRu: 'ДВСК (ж)' },
+        { id: 'odense-w', name: 'Odense (W)', nameRu: 'ДХГ Оденсе (ж)' }
       ]
     },
     {
       id: 'handball-cl-3',
       sportId: 'handball',
-      title: 'Handball В· International Clubs В· Champions League 2025/2026',
-      titleRu: 'Р“Р°РЅРґР±РѕР» В· РњРµР¶РґСѓРЅР°СЂРѕРґРЅС‹Рµ. РљР»СѓР±С‹ В· Р›РёРіР° С‡РµРјРїРёРѕРЅРѕРІ 2025/2026',
+      title: 'Handball · International Clubs · Champions League 2025/2026',
+      titleRu: 'Гандбол · Международные. Клубы · Лига чемпионов 2025/2026',
       startsAt: '2026-03-22T16:00:00+03:00',
       endsAt: '2026-03-22T18:00:00+03:00',
       participants: [
-        { id: 'borussia-dortmund-cl-w', name: 'Borussia Dortmund (W)', nameRu: 'Р‘РѕСЂСѓСЃСЃРёСЏ Р”РѕСЂС‚РјСѓРЅРґ (Р¶)' },
-        { id: 'ferencvaros-w', name: 'Ferencvaros (W)', nameRu: 'Р¤РµСЂРµРЅС†РІР°СЂРѕС€ (Р¶)' }
+        { id: 'borussia-dortmund-cl-w', name: 'Borussia Dortmund (W)', nameRu: 'Боруссия Дортмунд (ж)' },
+        { id: 'ferencvaros-w', name: 'Ferencvaros (W)', nameRu: 'Ференцварош (ж)' }
       ]
     },
     {
       id: 'handball-cl-4',
       sportId: 'handball',
-      title: 'Handball В· International Clubs В· Champions League 2025/2026',
-      titleRu: 'Р“Р°РЅРґР±РѕР» В· РњРµР¶РґСѓРЅР°СЂРѕРґРЅС‹Рµ. РљР»СѓР±С‹ В· Р›РёРіР° С‡РµРјРїРёРѕРЅРѕРІ 2025/2026',
+      title: 'Handball · International Clubs · Champions League 2025/2026',
+      titleRu: 'Гандбол · Международные. Клубы · Лига чемпионов 2025/2026',
       startsAt: '2026-03-22T18:00:00+03:00',
       endsAt: '2026-03-22T20:00:00+03:00',
       participants: [
-        { id: 'herning-ikast-cl-w', name: 'Herning Ikast (W)', nameRu: 'РҐРµСЂРЅРёРЅРі РРєР°СЃС‚ (Р¶)' },
-        { id: 'gloria-bistrita-w', name: 'Gloria Bistrita Nasaud (W)', nameRu: 'Р“Р»РѕСЂРёСЏ Р‘РёСЃС‚СЂРёС†Р° РќСЌСЃСЌСѓРґ (Р¶)' }
+        { id: 'herning-ikast-cl-w', name: 'Herning Ikast (W)', nameRu: 'Хернинг Икаст (ж)' },
+        { id: 'gloria-bistrita-w', name: 'Gloria Bistrita Nasaud (W)', nameRu: 'Глория Бистрица Нэсэуд (ж)' }
       ]
     },
     {
       id: 'handball-ehf-europe-1',
       sportId: 'handball',
-      title: 'Handball В· International Clubs В· EHF European League',
-      titleRu: 'Р“Р°РЅРґР±РѕР» В· РњРµР¶РґСѓРЅР°СЂРѕРґРЅС‹Рµ. РљР»СѓР±С‹ В· Р›РёРіР° Р•РІСЂРѕРїС‹ Р•Р“Р¤',
+      title: 'Handball · International Clubs · EHF European League',
+      titleRu: 'Гандбол · Международные. Клубы · Лига Европы ЕГФ',
       startsAt: '2026-03-31T19:45:00+03:00',
       endsAt: '2026-03-31T21:15:00+03:00',
       participants: [
-        { id: 'kristianstad', name: 'Kristianstad', nameRu: 'РљСЂРёСЃС‚РёР°РЅСЃС‚Р°Рґ' },
-        { id: 'nasic-nexe', name: 'Nasic Nexe', nameRu: 'РќР°СЃРёС‡ РќРµРєСЃ' }
+        { id: 'kristianstad', name: 'Kristianstad', nameRu: 'Кристианстад' },
+        { id: 'nasic-nexe', name: 'Nasic Nexe', nameRu: 'Насич Некс' }
       ]
     },
     {
       id: 'handball-ehf-europe-2',
       sportId: 'handball',
-      title: 'Handball В· International Clubs В· EHF European League',
-      titleRu: 'Р“Р°РЅРґР±РѕР» В· РњРµР¶РґСѓРЅР°СЂРѕРґРЅС‹Рµ. РљР»СѓР±С‹ В· Р›РёРіР° Р•РІСЂРѕРїС‹ Р•Р“Р¤',
+      title: 'Handball · International Clubs · EHF European League',
+      titleRu: 'Гандбол · Международные. Клубы · Лига Европы ЕГФ',
       startsAt: '2026-03-31T19:45:00+03:00',
       endsAt: '2026-03-31T21:15:00+03:00',
       participants: [
-        { id: 'skanderborg-ehf', name: 'Skanderborg', nameRu: 'РЎРєР°РЅРґРµСЂР±РѕСЂРі' },
-        { id: 'flensburg-handewitt', name: 'Flensburg-Handewitt', nameRu: 'Р¤Р»РµРЅСЃР±СѓСЂРі РҐР°РЅРґСЌРІРёРёС‚' }
+        { id: 'skanderborg-ehf', name: 'Skanderborg', nameRu: 'Скандерборг' },
+        { id: 'flensburg-handewitt', name: 'Flensburg-Handewitt', nameRu: 'Фленсбург Хандэвиит' }
       ]
     },
     {
       id: 'handball-ehf-europe-3',
       sportId: 'handball',
-      title: 'Handball В· International Clubs В· EHF European League',
-      titleRu: 'Р“Р°РЅРґР±РѕР» В· РњРµР¶РґСѓРЅР°СЂРѕРґРЅС‹Рµ. РљР»СѓР±С‹ В· Р›РёРіР° Р•РІСЂРѕРїС‹ Р•Р“Р¤',
+      title: 'Handball · International Clubs · EHF European League',
+      titleRu: 'Гандбол · Международные. Клубы · Лига Европы ЕГФ',
       startsAt: '2026-03-31T21:45:00+03:00',
       endsAt: '2026-03-31T23:15:00+03:00',
       participants: [
-        { id: 'montpellier', name: 'Montpellier', nameRu: 'РњРѕРЅРїРµР»СЊРµ' },
-        { id: 'elverum', name: 'Elverum', nameRu: 'Р­Р»СЊРІРµСЂСѓРј' }
+        { id: 'montpellier', name: 'Montpellier', nameRu: 'Монпелье' },
+        { id: 'elverum', name: 'Elverum', nameRu: 'Эльверум' }
       ]
     },
     {
       id: 'handball-ehf-europe-4',
       sportId: 'handball',
-      title: 'Handball В· International Clubs В· EHF European League',
-      titleRu: 'Р“Р°РЅРґР±РѕР» В· РњРµР¶РґСѓРЅР°СЂРѕРґРЅС‹Рµ. РљР»СѓР±С‹ В· Р›РёРіР° Р•РІСЂРѕРїС‹ Р•Р“Р¤',
+      title: 'Handball · International Clubs · EHF European League',
+      titleRu: 'Гандбол · Международные. Клубы · Лига Европы ЕГФ',
       startsAt: '2026-03-31T21:45:00+03:00',
       endsAt: '2026-03-31T23:15:00+03:00',
       participants: [
-        { id: 'fredericia-1990', name: 'Fredericia 1990', nameRu: 'Р¤СЂРµРґРµСЂРёСЃРёСЏ 1990' },
-        { id: 'melsungen', name: 'Melsungen', nameRu: 'РњРµР»СЊР·СѓРЅРіРµРЅ' }
+        { id: 'fredericia-1990', name: 'Fredericia 1990', nameRu: 'Фредерисия 1990' },
+        { id: 'melsungen', name: 'Melsungen', nameRu: 'Мельзунген' }
       ]
     }
   ],
@@ -3888,98 +3888,98 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
     {
       id: 'darts-modus-1',
       sportId: 'darts',
-      title: 'Darts В· International В· Modus Super Series',
-      titleRu: 'Р”Р°СЂС‚СЃ В· РњРµР¶РґСѓРЅР°СЂРѕРґРЅС‹Рµ В· Modus Super Series',
+      title: 'Darts · International · Modus Super Series',
+      titleRu: 'Дартс · Международные · Modus Super Series',
       startsAt: '2026-03-17T12:00:00+03:00',
       endsAt: '2026-03-17T13:30:00+03:00',
       displayDateEn: 'Live',
       displayDateRu: 'Live',
       displayTimeEn: 'In play',
-      displayTimeRu: 'Р’ РёРіСЂРµ',
+      displayTimeRu: 'В игре',
       participants: [
-        { id: 'cottiss-k', name: 'Cottiss K.', nameRu: 'РљРѕС‚С‚РёСЃСЃ Рљ.', country: 'England' },
-        { id: 'walker-j', name: 'Walker J.', nameRu: 'РЈРѕР»РєРµСЂ Р”Р¶.', country: 'England' }
+        { id: 'cottiss-k', name: 'Cottiss K.', nameRu: 'Коттисс К.', country: 'England' },
+        { id: 'walker-j', name: 'Walker J.', nameRu: 'Уолкер Дж.', country: 'England' }
       ]
     },
     {
       id: 'darts-modus-2',
       sportId: 'darts',
-      title: 'Darts В· International В· Modus Super Series',
-      titleRu: 'Р”Р°СЂС‚СЃ В· РњРµР¶РґСѓРЅР°СЂРѕРґРЅС‹Рµ В· Modus Super Series',
+      title: 'Darts · International · Modus Super Series',
+      titleRu: 'Дартс · Международные · Modus Super Series',
       startsAt: '2026-03-17T14:30:00+03:00',
       endsAt: '2026-03-17T15:00:00+03:00',
       displayDateEn: 'Today at',
-      displayDateRu: 'РЎРµРіРѕРґРЅСЏ РІ',
+      displayDateRu: 'Сегодня в',
       participants: [
-        { id: 'spee-a-1', name: 'Spee A.', nameRu: 'РЁРїРµРµ Рђ.', country: 'Netherlands' },
+        { id: 'spee-a-1', name: 'Spee A.', nameRu: 'Шпее А.', country: 'Netherlands' },
         { id: 'hunt-joe-1', name: 'Hunt, Joe', nameRu: 'Hunt, Joe', country: 'England' }
       ]
     },
     {
       id: 'darts-modus-3',
       sportId: 'darts',
-      title: 'Darts В· International В· Modus Super Series',
-      titleRu: 'Р”Р°СЂС‚СЃ В· РњРµР¶РґСѓРЅР°СЂРѕРґРЅС‹Рµ В· Modus Super Series',
+      title: 'Darts · International · Modus Super Series',
+      titleRu: 'Дартс · Международные · Modus Super Series',
       startsAt: '2026-03-17T14:45:00+03:00',
       endsAt: '2026-03-17T15:15:00+03:00',
       displayDateEn: 'Today at',
-      displayDateRu: 'РЎРµРіРѕРґРЅСЏ РІ',
+      displayDateRu: 'Сегодня в',
       participants: [
         { id: 'drayton-jack-1', name: 'Drayton, Jack', nameRu: 'Drayton, Jack', country: 'England' },
-        { id: 'hunt-a-1', name: 'Hunt A.', nameRu: 'РҐР°РЅС‚ Рђ.', country: 'England' }
+        { id: 'hunt-a-1', name: 'Hunt A.', nameRu: 'Хант А.', country: 'England' }
       ]
     },
     {
       id: 'darts-modus-4',
       sportId: 'darts',
-      title: 'Darts В· International В· Modus Super Series',
-      titleRu: 'Р”Р°СЂС‚СЃ В· РњРµР¶РґСѓРЅР°СЂРѕРґРЅС‹Рµ В· Modus Super Series',
+      title: 'Darts · International · Modus Super Series',
+      titleRu: 'Дартс · Международные · Modus Super Series',
       startsAt: '2026-03-17T15:05:00+03:00',
       endsAt: '2026-03-17T15:35:00+03:00',
       displayDateEn: 'Today at',
-      displayDateRu: 'РЎРµРіРѕРґРЅСЏ РІ',
+      displayDateRu: 'Сегодня в',
       participants: [
-        { id: 'spee-a-2', name: 'Spee A.', nameRu: 'РЁРїРµРµ Рђ.', country: 'Netherlands' },
+        { id: 'spee-a-2', name: 'Spee A.', nameRu: 'Шпее А.', country: 'Netherlands' },
         { id: 'cottiss-kevin-1', name: 'Cottiss, Kevin', nameRu: 'Cottiss, Kevin', country: 'England' }
       ]
     },
     {
       id: 'darts-modus-5',
       sportId: 'darts',
-      title: 'Darts В· International В· Modus Super Series',
-      titleRu: 'Р”Р°СЂС‚СЃ В· РњРµР¶РґСѓРЅР°СЂРѕРґРЅС‹Рµ В· Modus Super Series',
+      title: 'Darts · International · Modus Super Series',
+      titleRu: 'Дартс · Международные · Modus Super Series',
       startsAt: '2026-03-17T15:20:00+03:00',
       endsAt: '2026-03-17T15:50:00+03:00',
       displayDateEn: 'Today at',
-      displayDateRu: 'РЎРµРіРѕРґРЅСЏ РІ',
+      displayDateRu: 'Сегодня в',
       participants: [
-        { id: 'walker-j-2', name: 'Walker J.', nameRu: 'РЈРѕР»РєРµСЂ Р”Р¶.', country: 'England' },
+        { id: 'walker-j-2', name: 'Walker J.', nameRu: 'Уолкер Дж.', country: 'England' },
         { id: 'drayton-jack-2', name: 'Drayton, Jack', nameRu: 'Drayton, Jack', country: 'England' }
       ]
     },
     {
       id: 'darts-modus-6',
       sportId: 'darts',
-      title: 'Darts В· International В· Modus Super Series',
-      titleRu: 'Р”Р°СЂС‚СЃ В· РњРµР¶РґСѓРЅР°СЂРѕРґРЅС‹Рµ В· Modus Super Series',
+      title: 'Darts · International · Modus Super Series',
+      titleRu: 'Дартс · Международные · Modus Super Series',
       startsAt: '2026-03-17T15:55:00+03:00',
       endsAt: '2026-03-17T16:25:00+03:00',
       displayDateEn: 'Today at',
-      displayDateRu: 'РЎРµРіРѕРґРЅСЏ РІ',
+      displayDateRu: 'Сегодня в',
       participants: [
         { id: 'drayton-jack-3', name: 'Drayton, Jack', nameRu: 'Drayton, Jack', country: 'England' },
-        { id: 'spee-a-3', name: 'Spee A.', nameRu: 'РЁРїРµРµ Рђ.', country: 'Netherlands' }
+        { id: 'spee-a-3', name: 'Spee A.', nameRu: 'Шпее А.', country: 'Netherlands' }
       ]
     },
     {
       id: 'darts-modus-7',
       sportId: 'darts',
-      title: 'Darts В· International В· Modus Super Series',
-      titleRu: 'Р”Р°СЂС‚СЃ В· РњРµР¶РґСѓРЅР°СЂРѕРґРЅС‹Рµ В· Modus Super Series',
+      title: 'Darts · International · Modus Super Series',
+      titleRu: 'Дартс · Международные · Modus Super Series',
       startsAt: '2026-03-17T16:15:00+03:00',
       endsAt: '2026-03-17T16:45:00+03:00',
       displayDateEn: 'Today at',
-      displayDateRu: 'РЎРµРіРѕРґРЅСЏ РІ',
+      displayDateRu: 'Сегодня в',
       participants: [
         { id: 'cottiss-kevin-2', name: 'Cottiss, Kevin', nameRu: 'Cottiss, Kevin', country: 'England' },
         { id: 'hunt-joe-2', name: 'Hunt, Joe', nameRu: 'Hunt, Joe', country: 'England' }
@@ -3988,63 +3988,63 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
     {
       id: 'darts-modus-8',
       sportId: 'darts',
-      title: 'Darts В· International В· Modus Super Series',
-      titleRu: 'Р”Р°СЂС‚СЃ В· РњРµР¶РґСѓРЅР°СЂРѕРґРЅС‹Рµ В· Modus Super Series',
+      title: 'Darts · International · Modus Super Series',
+      titleRu: 'Дартс · Международные · Modus Super Series',
       startsAt: '2026-03-17T16:30:00+03:00',
       endsAt: '2026-03-17T17:00:00+03:00',
       displayDateEn: 'Today at',
-      displayDateRu: 'РЎРµРіРѕРґРЅСЏ РІ',
+      displayDateRu: 'Сегодня в',
       participants: [
-        { id: 'hunt-a-2', name: 'Hunt A.', nameRu: 'РҐР°РЅС‚ Рђ.', country: 'England' },
-        { id: 'walker-j-3', name: 'Walker J.', nameRu: 'РЈРѕР»РєРµСЂ Р”Р¶.', country: 'England' }
+        { id: 'hunt-a-2', name: 'Hunt A.', nameRu: 'Хант А.', country: 'England' },
+        { id: 'walker-j-3', name: 'Walker J.', nameRu: 'Уолкер Дж.', country: 'England' }
       ]
     },
     {
       id: 'darts-premier-league-1',
       sportId: 'darts',
-      title: 'Darts В· International В· Premier League',
-      titleRu: 'Р”Р°СЂС‚СЃ В· РњРµР¶РґСѓРЅР°СЂРѕРґРЅС‹Рµ В· РџСЂРµРјСЊРµСЂ-Р›РёРіР°',
+      title: 'Darts · International · Premier League',
+      titleRu: 'Дартс · Международные · Премьер-Лига',
       startsAt: '2026-03-19T22:15:00+03:00',
       endsAt: '2026-03-19T22:45:00+03:00',
       participants: [
-        { id: 'van-vin', name: 'Van Vin J.', nameRu: 'Р’Р°РЅ Р’РёРЅ Р”Р¶.', country: 'Netherlands' },
-        { id: 'van-gerven', name: 'Van Gerven M.', nameRu: 'Р’Р°РЅ Р“РµСЂРІРµРЅ Рњ.', country: 'Netherlands' }
+        { id: 'van-vin', name: 'Van Vin J.', nameRu: 'Ван Вин Дж.', country: 'Netherlands' },
+        { id: 'van-gerven', name: 'Van Gerven M.', nameRu: 'Ван Гервен М.', country: 'Netherlands' }
       ]
     },
     {
       id: 'darts-premier-league-2',
       sportId: 'darts',
-      title: 'Darts В· International В· Premier League',
-      titleRu: 'Р”Р°СЂС‚СЃ В· РњРµР¶РґСѓРЅР°СЂРѕРґРЅС‹Рµ В· РџСЂРµРјСЊРµСЂ-Р›РёРіР°',
+      title: 'Darts · International · Premier League',
+      titleRu: 'Дартс · Международные · Премьер-Лига',
       startsAt: '2026-03-19T22:45:00+03:00',
       endsAt: '2026-03-19T23:15:00+03:00',
       participants: [
-        { id: 'bunting', name: 'Bunting S.', nameRu: 'Р‘Р°РЅС‚РёРЅРі РЎ.', country: 'England' },
-        { id: 'littler', name: 'Littler L.', nameRu: 'Р›РёС‚С‚Р»РµСЂ Р›.', country: 'England' }
+        { id: 'bunting', name: 'Bunting S.', nameRu: 'Бантинг С.', country: 'England' },
+        { id: 'littler', name: 'Littler L.', nameRu: 'Литтлер Л.', country: 'England' }
       ]
     },
     {
       id: 'darts-premier-league-3',
       sportId: 'darts',
-      title: 'Darts В· International В· Premier League',
-      titleRu: 'Р”Р°СЂС‚СЃ В· РњРµР¶РґСѓРЅР°СЂРѕРґРЅС‹Рµ В· РџСЂРµРјСЊРµСЂ-Р›РёРіР°',
+      title: 'Darts · International · Premier League',
+      titleRu: 'Дартс · Международные · Премьер-Лига',
       startsAt: '2026-03-19T23:15:00+03:00',
       endsAt: '2026-03-19T23:45:00+03:00',
       participants: [
-        { id: 'rock', name: 'Rock J.', nameRu: 'Р РѕРє Р”Р¶.', country: 'United Kingdom' },
-        { id: 'price', name: 'Price G.', nameRu: 'РџСЂР°Р№СЃ Р“.', country: 'Wales' }
+        { id: 'rock', name: 'Rock J.', nameRu: 'Рок Дж.', country: 'United Kingdom' },
+        { id: 'price', name: 'Price G.', nameRu: 'Прайс Г.', country: 'Wales' }
       ]
     },
     {
       id: 'darts-premier-league-4',
       sportId: 'darts',
-      title: 'Darts В· International В· Premier League',
-      titleRu: 'Р”Р°СЂС‚СЃ В· РњРµР¶РґСѓРЅР°СЂРѕРґРЅС‹Рµ В· РџСЂРµРјСЊРµСЂ-Р›РёРіР°',
+      title: 'Darts · International · Premier League',
+      titleRu: 'Дартс · Международные · Премьер-Лига',
       startsAt: '2026-03-19T23:45:00+03:00',
       endsAt: '2026-03-20T00:15:00+03:00',
       participants: [
-        { id: 'clayton', name: 'Clayton J.', nameRu: 'РљР»РµР№С‚РѕРЅ Р”Р¶.', country: 'Wales' },
-        { id: 'humphries', name: 'Humphries L.', nameRu: 'РҐР°РјС„СЂРёСЃ Р›.', country: 'England' }
+        { id: 'clayton', name: 'Clayton J.', nameRu: 'Клейтон Дж.', country: 'Wales' },
+        { id: 'humphries', name: 'Humphries L.', nameRu: 'Хамфрис Л.', country: 'England' }
       ]
     }
   ],
@@ -4052,61 +4052,61 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
     {
       id: 'cricket-ipl-1',
       sportId: 'cricket',
-      title: 'Cricket В· India В· Premier League',
-      titleRu: 'РљСЂРёРєРµС‚ В· РРЅРґРёСЏ В· РџСЂРµРјСЊРµСЂ-Р›РёРіР°',
+      title: 'Cricket · India · Premier League',
+      titleRu: 'Крикет · Индия · Премьер-Лига',
       startsAt: '2026-03-28T17:00:00+03:00',
       endsAt: '2026-03-28T21:00:00+03:00',
       participants: [
-        { id: 'rcb', name: 'Royal Challengers Bangalore', nameRu: 'Р РѕСЏР» Р§РµР»Р»РµРЅРґР¶РµСЂСЃ Р‘Р°РЅРіР°Р»РѕСЂ' },
-        { id: 'srh', name: 'Sunrisers Hyderabad', nameRu: 'РЎР°РЅСЂР°Р№Р·РµСЂСЃ РҐР°Р№РґР°СЂР°Р±Р°Рґ' }
+        { id: 'rcb', name: 'Royal Challengers Bangalore', nameRu: 'Роял Челленджерс Бангалор' },
+        { id: 'srh', name: 'Sunrisers Hyderabad', nameRu: 'Санрайзерс Хайдарабад' }
       ]
     },
     {
       id: 'cricket-ipl-2',
       sportId: 'cricket',
-      title: 'Cricket В· India В· Premier League',
-      titleRu: 'РљСЂРёРєРµС‚ В· РРЅРґРёСЏ В· РџСЂРµРјСЊРµСЂ-Р›РёРіР°',
+      title: 'Cricket · India · Premier League',
+      titleRu: 'Крикет · Индия · Премьер-Лига',
       startsAt: '2026-03-29T17:00:00+03:00',
       endsAt: '2026-03-29T21:00:00+03:00',
       participants: [
-        { id: 'mi', name: 'Mumbai Indians', nameRu: 'РњСѓРјР±Р°Рё РРЅРґРёР°РЅСЃ' },
-        { id: 'kkr', name: 'Kolkata Knight Riders', nameRu: 'РљРѕР»РєР°С‚Р° РќР°Р№С‚ Р Р°Р№РґРµСЂР·' }
+        { id: 'mi', name: 'Mumbai Indians', nameRu: 'Мумбаи Индианс' },
+        { id: 'kkr', name: 'Kolkata Knight Riders', nameRu: 'Колката Найт Райдерз' }
       ]
     },
     {
       id: 'cricket-ipl-3',
       sportId: 'cricket',
-      title: 'Cricket В· India В· Premier League',
-      titleRu: 'РљСЂРёРєРµС‚ В· РРЅРґРёСЏ В· РџСЂРµРјСЊРµСЂ-Р›РёРіР°',
+      title: 'Cricket · India · Premier League',
+      titleRu: 'Крикет · Индия · Премьер-Лига',
       startsAt: '2026-03-30T17:00:00+03:00',
       endsAt: '2026-03-30T21:00:00+03:00',
       participants: [
-        { id: 'rr', name: 'Rajasthan Royals', nameRu: 'Р Р°РґР¶Р°СЃС‚Р°РЅ Р РѕСЏР»СЃ' },
-        { id: 'csk', name: 'Chennai Super Kings', nameRu: 'Р§РµРЅРЅР°Рё РЎСѓРїРµСЂ РљРёРЅРіР·' }
+        { id: 'rr', name: 'Rajasthan Royals', nameRu: 'Раджастан Роялс' },
+        { id: 'csk', name: 'Chennai Super Kings', nameRu: 'Ченнаи Супер Кингз' }
       ]
     },
     {
       id: 'cricket-ipl-4',
       sportId: 'cricket',
-      title: 'Cricket В· India В· Premier League',
-      titleRu: 'РљСЂРёРєРµС‚ В· РРЅРґРёСЏ В· РџСЂРµРјСЊРµСЂ-Р›РёРіР°',
+      title: 'Cricket · India · Premier League',
+      titleRu: 'Крикет · Индия · Премьер-Лига',
       startsAt: '2026-03-31T17:00:00+03:00',
       endsAt: '2026-03-31T21:00:00+03:00',
       participants: [
-        { id: 'pbks', name: 'Punjab Kings', nameRu: 'РџРµРЅРґР¶Р°Р± РљРёРЅРіР·' },
-        { id: 'gt', name: 'Gujarat Titans', nameRu: 'Р“СѓРґР¶Р°СЂР°С‚ РўРёС‚Р°РЅСЃ' }
+        { id: 'pbks', name: 'Punjab Kings', nameRu: 'Пенджаб Кингз' },
+        { id: 'gt', name: 'Gujarat Titans', nameRu: 'Гуджарат Титанс' }
       ]
     },
     {
       id: 'cricket-ipl-5',
       sportId: 'cricket',
-      title: 'Cricket В· India В· Premier League',
-      titleRu: 'РљСЂРёРєРµС‚ В· РРЅРґРёСЏ В· РџСЂРµРјСЊРµСЂ-Р›РёРіР°',
+      title: 'Cricket · India · Premier League',
+      titleRu: 'Крикет · Индия · Премьер-Лига',
       startsAt: '2026-04-01T17:00:00+03:00',
       endsAt: '2026-04-01T21:00:00+03:00',
       participants: [
-        { id: 'lsg', name: 'Lucknow Super Giants', nameRu: 'Р›Р°РєС…РЅР°Сѓ РЎСѓРїРµСЂ Р”Р¶Р°Р№Р°РЅС‚СЃ' },
-        { id: 'dc', name: 'Delhi Capitals', nameRu: 'Р”РµР»Рё РљСЌРїРёС‚Р°Р»СЃ' }
+        { id: 'lsg', name: 'Lucknow Super Giants', nameRu: 'Лакхнау Супер Джайантс' },
+        { id: 'dc', name: 'Delhi Capitals', nameRu: 'Дели Кэпиталс' }
       ]
     }
   ],
@@ -4114,37 +4114,37 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
     {
       id: 'curling-worlds-women-1',
       sportId: 'curling',
-      title: 'Curling В· National teams В· World Championship 2026. Women. Canada',
-      titleRu: 'РљС‘СЂР»РёРЅРі В· РЎР±РѕСЂРЅС‹Рµ В· Р§Рњ-2026. Р–РµРЅС‰РёРЅС‹. РљР°РЅР°РґР°',
+      title: 'Curling · National teams · World Championship 2026. Women. Canada',
+      titleRu: 'Кёрлинг · Сборные · ЧМ-2026. Женщины. Канада',
       startsAt: '2026-03-17T18:00:00+03:00',
       endsAt: '2026-03-17T20:30:00+03:00',
       participants: [
-        { id: 'japan-women', name: 'Japan (W)', nameRu: 'РЇРїРѕРЅРёСЏ (Р¶)', country: 'Japan' },
-        { id: 'australia-women', name: 'Australia (W)', nameRu: 'РђРІСЃС‚СЂР°Р»РёСЏ (Р¶)', country: 'Australia' }
+        { id: 'japan-women', name: 'Japan (W)', nameRu: 'Япония (ж)', country: 'Japan' },
+        { id: 'australia-women', name: 'Australia (W)', nameRu: 'Австралия (ж)', country: 'Australia' }
       ]
     },
     {
       id: 'curling-worlds-women-2',
       sportId: 'curling',
-      title: 'Curling В· National teams В· World Championship 2026. Women. Canada',
-      titleRu: 'РљС‘СЂР»РёРЅРі В· РЎР±РѕСЂРЅС‹Рµ В· Р§Рњ-2026. Р–РµРЅС‰РёРЅС‹. РљР°РЅР°РґР°',
+      title: 'Curling · National teams · World Championship 2026. Women. Canada',
+      titleRu: 'Кёрлинг · Сборные · ЧМ-2026. Женщины. Канада',
       startsAt: '2026-03-17T18:00:00+03:00',
       endsAt: '2026-03-17T20:30:00+03:00',
       participants: [
-        { id: 'italy-women', name: 'Italy (W)', nameRu: 'РС‚Р°Р»РёСЏ (Р¶)', country: 'Italy' },
-        { id: 'canada-women', name: 'Canada (W)', nameRu: 'РљР°РЅР°РґР° (Р¶)', country: 'Canada' }
+        { id: 'italy-women', name: 'Italy (W)', nameRu: 'Италия (ж)', country: 'Italy' },
+        { id: 'canada-women', name: 'Canada (W)', nameRu: 'Канада (ж)', country: 'Canada' }
       ]
     },
     {
       id: 'curling-worlds-women-3',
       sportId: 'curling',
-      title: 'Curling В· National teams В· World Championship 2026. Women. Canada',
-      titleRu: 'РљС‘СЂР»РёРЅРі В· РЎР±РѕСЂРЅС‹Рµ В· Р§Рњ-2026. Р–РµРЅС‰РёРЅС‹. РљР°РЅР°РґР°',
+      title: 'Curling · National teams · World Championship 2026. Women. Canada',
+      titleRu: 'Кёрлинг · Сборные · ЧМ-2026. Женщины. Канада',
       startsAt: '2026-03-17T18:00:00+03:00',
       endsAt: '2026-03-17T20:30:00+03:00',
       participants: [
-        { id: 'sweden-women', name: 'Sweden (W)', nameRu: 'РЁРІРµС†РёСЏ (Р¶)', country: 'Sweden' },
-        { id: 'scotland-women', name: 'Scotland (W)', nameRu: 'РЁРѕС‚Р»Р°РЅРґРёСЏ (Р¶)', country: 'Scotland' }
+        { id: 'sweden-women', name: 'Sweden (W)', nameRu: 'Швеция (ж)', country: 'Sweden' },
+        { id: 'scotland-women', name: 'Scotland (W)', nameRu: 'Шотландия (ж)', country: 'Scotland' }
       ]
     }
   ],
@@ -4152,49 +4152,49 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
     {
       id: 'snooker-world-open-1',
       sportId: 'snooker',
-      title: 'Snooker В· International В· World Open. Yushan',
-      titleRu: 'РЎРЅСѓРєРµСЂ В· РњРµР¶РґСѓРЅР°СЂРѕРґРЅС‹Рµ В· World Open. Р®С€Р°РЅСЊ',
+      title: 'Snooker · International · World Open. Yushan',
+      titleRu: 'Снукер · Международные · World Open. Юшань',
       startsAt: '2026-03-17T14:30:00+03:00',
       endsAt: '2026-03-17T17:00:00+03:00',
       participants: [
-        { id: 'yao-pengcheng', name: 'Yao Pengcheng', nameRu: 'РџСЌРЅСЉС‡СЌРЅ РЇРѕ', country: 'China' },
-        { id: 'craigie', name: 'Craigie S.', nameRu: 'РљСЂРµР№РіРё РЎ.', country: 'England' }
+        { id: 'yao-pengcheng', name: 'Yao Pengcheng', nameRu: 'Пэнъчэн Яо', country: 'China' },
+        { id: 'craigie', name: 'Craigie S.', nameRu: 'Крейги С.', country: 'England' }
       ]
     },
     {
       id: 'snooker-world-open-2',
       sportId: 'snooker',
-      title: 'Snooker В· International В· World Open. Yushan',
-      titleRu: 'РЎРЅСѓРєРµСЂ В· РњРµР¶РґСѓРЅР°СЂРѕРґРЅС‹Рµ В· World Open. Р®С€Р°РЅСЊ',
+      title: 'Snooker · International · World Open. Yushan',
+      titleRu: 'Снукер · Международные · World Open. Юшань',
       startsAt: '2026-03-17T14:30:00+03:00',
       endsAt: '2026-03-17T17:00:00+03:00',
       participants: [
-        { id: 'walden', name: 'Walden R.', nameRu: 'РЈРѕР»РґРµРЅ Р .', country: 'England' },
-        { id: 'williams', name: 'Williams M.', nameRu: 'РЈРёР»СЊСЏРјСЃ Рњ.', country: 'Wales' }
+        { id: 'walden', name: 'Walden R.', nameRu: 'Уолден Р.', country: 'England' },
+        { id: 'williams', name: 'Williams M.', nameRu: 'Уильямс М.', country: 'Wales' }
       ]
     },
     {
       id: 'snooker-world-open-3',
       sportId: 'snooker',
-      title: 'Snooker В· International В· World Open. Yushan',
-      titleRu: 'РЎРЅСѓРєРµСЂ В· РњРµР¶РґСѓРЅР°СЂРѕРґРЅС‹Рµ В· World Open. Р®С€Р°РЅСЊ',
+      title: 'Snooker · International · World Open. Yushan',
+      titleRu: 'Снукер · Международные · World Open. Юшань',
       startsAt: '2026-03-17T14:30:00+03:00',
       endsAt: '2026-03-17T17:00:00+03:00',
       participants: [
-        { id: 'hill', name: 'Hill A.', nameRu: 'РҐРёР»Р» Рђ.', country: 'Ireland' },
-        { id: 'wilson', name: 'Wilson G.', nameRu: 'РЈРёР»СЃРѕРЅ Р“.', country: 'England' }
+        { id: 'hill', name: 'Hill A.', nameRu: 'Хилл А.', country: 'Ireland' },
+        { id: 'wilson', name: 'Wilson G.', nameRu: 'Уилсон Г.', country: 'England' }
       ]
     },
     {
       id: 'snooker-world-open-4',
       sportId: 'snooker',
-      title: 'Snooker В· International В· World Open. Yushan',
-      titleRu: 'РЎРЅСѓРєРµСЂ В· РњРµР¶РґСѓРЅР°СЂРѕРґРЅС‹Рµ В· World Open. Р®С€Р°РЅСЊ',
+      title: 'Snooker · International · World Open. Yushan',
+      titleRu: 'Снукер · Международные · World Open. Юшань',
       startsAt: '2026-03-17T14:30:00+03:00',
       endsAt: '2026-03-17T17:00:00+03:00',
       participants: [
-        { id: 'zhuang', name: 'Zhuang L.', nameRu: 'Р§Р¶СѓР°РЅРі Р›.', country: 'China' },
-        { id: 'zhao-xintong', name: 'Zhao Xintong', nameRu: 'Р§Р¶Р°Рѕ РЎРёРЅСЊС‚СѓРЅ', country: 'China' }
+        { id: 'zhuang', name: 'Zhuang L.', nameRu: 'Чжуанг Л.', country: 'China' },
+        { id: 'zhao-xintong', name: 'Zhao Xintong', nameRu: 'Чжао Синьтун', country: 'China' }
       ]
     }
   ],
@@ -4202,37 +4202,37 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
     {
       id: 'futsal-russia-superleague-1',
       sportId: 'futsal',
-      title: 'Futsal В· Russia В· Super League',
-      titleRu: 'Р¤СѓС‚Р·Р°Р» В· Р РѕСЃСЃРёСЏ В· РЎСѓРїРµСЂР»РёРіР°',
+      title: 'Futsal · Russia · Super League',
+      titleRu: 'Футзал · Россия · Суперлига',
       startsAt: '2026-03-19T17:00:00+03:00',
       endsAt: '2026-03-19T19:00:00+03:00',
       participants: [
-        { id: 'sinara', name: 'Sinara', nameRu: 'РЎРёРЅР°СЂР°', country: 'Russia' },
-        { id: 'fakel', name: 'Fakel', nameRu: 'Р¤Р°РєРµР»', country: 'Russia' }
+        { id: 'sinara', name: 'Sinara', nameRu: 'Синара', country: 'Russia' },
+        { id: 'fakel', name: 'Fakel', nameRu: 'Факел', country: 'Russia' }
       ]
     },
     {
       id: 'futsal-russia-superleague-2',
       sportId: 'futsal',
-      title: 'Futsal В· Russia В· Super League',
-      titleRu: 'Р¤СѓС‚Р·Р°Р» В· Р РѕСЃСЃРёСЏ В· РЎСѓРїРµСЂР»РёРіР°',
+      title: 'Futsal · Russia · Super League',
+      titleRu: 'Футзал · Россия · Суперлига',
       startsAt: '2026-03-20T16:30:00+03:00',
       endsAt: '2026-03-20T18:30:00+03:00',
       participants: [
-        { id: 'gazprom-ugra', name: 'Gazprom-Ugra', nameRu: 'Р“Р°Р·РїСЂРѕРј-Р®РіСЂР°', country: 'Russia' },
-        { id: 'norilsk-nickel', name: 'Norilsk Nickel', nameRu: 'РќРѕСЂРёР»СЊСЃРєРёР№ РќРёРєРµР»СЊ', country: 'Russia' }
+        { id: 'gazprom-ugra', name: 'Gazprom-Ugra', nameRu: 'Газпром-Югра', country: 'Russia' },
+        { id: 'norilsk-nickel', name: 'Norilsk Nickel', nameRu: 'Норильский Никель', country: 'Russia' }
       ]
     },
     {
       id: 'futsal-russia-superleague-3',
       sportId: 'futsal',
-      title: 'Futsal В· Russia В· Super League',
-      titleRu: 'Р¤СѓС‚Р·Р°Р» В· Р РѕСЃСЃРёСЏ В· РЎСѓРїРµСЂР»РёРіР°',
+      title: 'Futsal · Russia · Super League',
+      titleRu: 'Футзал · Россия · Суперлига',
       startsAt: '2026-03-20T19:00:00+03:00',
       endsAt: '2026-03-20T21:00:00+03:00',
       participants: [
-        { id: 'novaya-generatsiya', name: 'Novaya Generatsiya', nameRu: 'РќРѕРІР°СЏ Р“РµРЅРµСЂР°С†РёСЏ', country: 'Russia' },
-        { id: 'torpedo-nn', name: 'Torpedo NN', nameRu: 'РўРѕСЂРїРµРґРѕ РќРќ', country: 'Russia' }
+        { id: 'novaya-generatsiya', name: 'Novaya Generatsiya', nameRu: 'Новая Генерация', country: 'Russia' },
+        { id: 'torpedo-nn', name: 'Torpedo NN', nameRu: 'Торпедо НН', country: 'Russia' }
       ]
     }
   ],
@@ -4240,25 +4240,25 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
     {
       id: 'bandy-russia-superleague-1',
       sportId: 'field-hockey',
-      title: 'Bandy В· Russia В· Super League',
-      titleRu: 'РҐРѕРєРєРµР№ СЃ РјСЏС‡РѕРј В· Р РѕСЃСЃРёСЏ В· РЎСѓРїРµСЂР»РёРіР°',
+      title: 'Bandy · Russia · Super League',
+      titleRu: 'Хоккей с мячом · Россия · Суперлига',
       startsAt: '2026-03-20T12:00:00+03:00',
       endsAt: '2026-03-20T14:00:00+03:00',
       participants: [
-        { id: 'kuzbass', name: 'Kuzbass', nameRu: 'РљСѓР·Р±Р°СЃСЃ', country: 'Russia' },
-        { id: 'vodnik', name: 'Vodnik', nameRu: 'Р’РѕРґРЅРёРє', country: 'Russia' }
+        { id: 'kuzbass', name: 'Kuzbass', nameRu: 'Кузбасс', country: 'Russia' },
+        { id: 'vodnik', name: 'Vodnik', nameRu: 'Водник', country: 'Russia' }
       ]
     },
     {
       id: 'bandy-russia-superleague-2',
       sportId: 'field-hockey',
-      title: 'Bandy В· Russia В· Super League',
-      titleRu: 'РҐРѕРєРєРµР№ СЃ РјСЏС‡РѕРј В· Р РѕСЃСЃРёСЏ В· РЎСѓРїРµСЂР»РёРіР°',
+      title: 'Bandy · Russia · Super League',
+      titleRu: 'Хоккей с мячом · Россия · Суперлига',
       startsAt: '2026-03-21T10:00:00+03:00',
       endsAt: '2026-03-21T12:00:00+03:00',
       participants: [
-        { id: 'ska-neftyanik', name: 'SKA-Neftyanik', nameRu: 'РЎРљРђ РќРµС„С‚СЏРЅРёРє', country: 'Russia' },
-        { id: 'dynamo-moscow', name: 'Dynamo Moscow', nameRu: 'Р”РёРЅР°РјРѕ РњРѕСЃРєРІР°', country: 'Russia' }
+        { id: 'ska-neftyanik', name: 'SKA-Neftyanik', nameRu: 'СКА Нефтяник', country: 'Russia' },
+        { id: 'dynamo-moscow', name: 'Dynamo Moscow', nameRu: 'Динамо Москва', country: 'Russia' }
       ]
     }
   ]
