@@ -7,11 +7,14 @@ export interface AdminNavItem {
 
 export interface AdminPageMeta {
   title: string;
-  description: string;
+  description?: string;
   searchPlaceholder: string;
   periodLabel?: string;
+  comparePeriodLabel?: string;
   primaryActionLabel?: string;
   secondaryActionLabel?: string;
+  showNotifications?: boolean;
+  showProfile?: boolean;
 }
 
 export const adminNavItems: AdminNavItem[] = [
@@ -23,7 +26,7 @@ export const adminNavItems: AdminNavItem[] = [
   { id: 'rooms', label: 'Комнаты', section: 'community', href: '/admin/rooms' },
   { id: 'ratings', label: 'Рейтинги', section: 'community', href: '/admin/ratings' },
   { id: 'notifications', label: 'Уведомления', section: 'community', href: '/admin/notifications' },
-  { id: 'analytics', label: 'Аналитика', section: 'system' },
+  { id: 'analytics', label: 'Аналитика', section: 'system', href: '/admin/analytics' },
   { id: 'moderation', label: 'Модерация', section: 'system', href: '/admin/moderation' },
   { id: 'settings', label: 'Настройки', section: 'system', href: '/admin/settings' }
 ];
@@ -104,6 +107,18 @@ export function getAdminPageMeta(pathname: string): AdminPageMeta {
       periodLabel: 'Текущий период',
       primaryActionLabel: 'Пересчитать рейтинг',
       secondaryActionLabel: 'Создать правило'
+    };
+  }
+
+  if (pathname.startsWith('/admin/analytics')) {
+    return {
+      title: 'Аналитика',
+      searchPlaceholder: 'Поиск по метрике, событию или сегменту',
+      periodLabel: 'Последние 30 дней',
+      comparePeriodLabel: 'К прошлому периоду',
+      primaryActionLabel: 'Экспорт',
+      showNotifications: false,
+      showProfile: false
     };
   }
 

@@ -44,13 +44,15 @@ function ChevronDownIcon() {
 export function AdminTopbar() {
   const pathname = usePathname();
   const meta = getAdminPageMeta(pathname);
+  const showNotifications = meta.showNotifications ?? true;
+  const showProfile = meta.showProfile ?? true;
 
   return (
     <header className="sticky top-0 z-20 border-b border-black/[0.05] bg-[rgba(255,255,255,0.84)] px-8 py-5 backdrop-blur-xl">
       <div className="flex items-center justify-between gap-6">
         <div>
           <p className="text-[1.85rem] font-semibold tracking-tight text-slate-900">{meta.title}</p>
-          <p className="mt-1 text-sm text-slate-500">{meta.description}</p>
+          {meta.description ? <p className="mt-1 text-sm text-slate-500">{meta.description}</p> : null}
         </div>
 
         <div className="flex items-center gap-3">
@@ -76,26 +78,39 @@ export function AdminTopbar() {
             </button>
           ) : null}
 
-          <button
-            type="button"
-            className="relative flex h-12 w-12 items-center justify-center rounded-[16px] border border-black/[0.05] bg-white/92 text-slate-600 shadow-[0_10px_24px_rgba(15,23,42,0.05)]"
-            aria-label="Notifications"
-          >
-            <BellIcon />
-            <span className="absolute right-2 top-1.5 flex h-5 min-w-[1.25rem] items-center justify-center rounded-full bg-[#ff6c5c] px-1 text-[0.68rem] font-semibold text-white">3</span>
-          </button>
+          {meta.comparePeriodLabel ? (
+            <button
+              type="button"
+              className="rounded-[16px] border border-black/[0.06] bg-white px-4 py-3 text-[0.92rem] font-semibold text-slate-700 shadow-[0_10px_24px_rgba(15,23,42,0.05)]"
+            >
+              {meta.comparePeriodLabel}
+            </button>
+          ) : null}
 
-          <button
-            type="button"
-            className="flex items-center gap-3 rounded-[18px] border border-black/[0.05] bg-white/94 px-3 py-2.5 shadow-[0_12px_28px_rgba(15,23,42,0.06)]"
-          >
-            <div className="h-10 w-10 rounded-full bg-[linear-gradient(135deg,#f3d7c8_0%,#d9946e_100%)]" />
-            <div className="text-left">
-              <p className="text-[0.95rem] font-semibold text-slate-900">Администратор</p>
-              <p className="text-xs text-slate-500">Operations lead</p>
-            </div>
-            <ChevronDownIcon />
-          </button>
+          {showNotifications ? (
+            <button
+              type="button"
+              className="relative flex h-12 w-12 items-center justify-center rounded-[16px] border border-black/[0.05] bg-white/92 text-slate-600 shadow-[0_10px_24px_rgba(15,23,42,0.05)]"
+              aria-label="Notifications"
+            >
+              <BellIcon />
+              <span className="absolute right-2 top-1.5 flex h-5 min-w-[1.25rem] items-center justify-center rounded-full bg-[#ff6c5c] px-1 text-[0.68rem] font-semibold text-white">3</span>
+            </button>
+          ) : null}
+
+          {showProfile ? (
+            <button
+              type="button"
+              className="flex items-center gap-3 rounded-[18px] border border-black/[0.05] bg-white/94 px-3 py-2.5 shadow-[0_12px_28px_rgba(15,23,42,0.06)]"
+            >
+              <div className="h-10 w-10 rounded-full bg-[linear-gradient(135deg,#f3d7c8_0%,#d9946e_100%)]" />
+              <div className="text-left">
+                <p className="text-[0.95rem] font-semibold text-slate-900">Администратор</p>
+                <p className="text-xs text-slate-500">Operations lead</p>
+              </div>
+              <ChevronDownIcon />
+            </button>
+          ) : null}
 
           {meta.secondaryActionLabel ? (
             <button
