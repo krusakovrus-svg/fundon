@@ -343,7 +343,7 @@ export function ProfileScreen() {
             </div>
           </div>
           <div className="flex items-center gap-2 text-text-muted">
-            <span className="rounded-full bg-[rgba(var(--surface-muted),0.92)] px-2.5 py-1 text-[12px] font-semibold text-text-primary dark:bg-white/8 dark:text-white">
+            <span className="inline-flex h-7 min-w-7 items-center justify-center rounded-full bg-[rgba(var(--surface-muted),0.92)] px-2.5 text-[12px] font-semibold leading-none text-text-primary dark:bg-white/8 dark:text-white">
               {favorites.length}
             </span>
             <ChevronIcon />
@@ -363,7 +363,7 @@ export function ProfileScreen() {
             </div>
           </div>
           <div className="flex items-center gap-2 text-text-muted">
-            <span className="rounded-full bg-[rgba(var(--surface-muted),0.92)] px-2.5 py-1 text-[12px] font-semibold text-text-primary dark:bg-white/8 dark:text-white">
+            <span className="inline-flex h-7 min-w-7 items-center justify-center rounded-full bg-[rgba(var(--surface-muted),0.92)] px-2.5 text-[12px] font-semibold leading-none text-text-primary dark:bg-white/8 dark:text-white">
               {liveFavoriteCount}
             </span>
             <ChevronIcon />
