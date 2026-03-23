@@ -1,6 +1,6 @@
 import './globals.css';
 
-import { AppShell } from '@/components/layout/AppShell';
+import { AppFrame } from '@/components/layout/AppFrame';
 import { FavoritesProvider } from '@/components/providers/FavoritesProvider';
 import { LanguageProvider } from '@/components/providers/LanguageProvider';
 import { ThemeProvider } from '@/components/providers/ThemeProvider';
@@ -9,8 +9,8 @@ const themeBootScript = `(function(){try{var theme=localStorage.getItem('fightpu
 const languageBootScript = `(function(){try{var language=localStorage.getItem('fightpulse-language')||'ru';document.documentElement.lang=language;}catch(e){document.documentElement.lang='ru';}})();`;
 
 export const metadata = {
-  title: 'FightPulse v2',
-  description: 'Second-screen live support app'
+  title: 'FUNDON',
+  description: 'Live fan support platform'
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -22,7 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ThemeProvider>
           <LanguageProvider>
             <FavoritesProvider>
-              <AppShell>{children}</AppShell>
+              <AppFrame>{children}</AppFrame>
             </FavoritesProvider>
           </LanguageProvider>
         </ThemeProvider>
