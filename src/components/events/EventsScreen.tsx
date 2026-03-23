@@ -132,7 +132,7 @@ export function EventsScreen() {
 
   return (
     <MainPageLayout className="space-y-4">
-      <PageHeader eyebrow={t('eventsList')} title={t('eventsTitle')} description={t('eventsHubHint')} />
+      <PageHeader title={t('eventsTitle')} description={t('eventsHubHint')} />
 
       <section className="grid grid-cols-3 gap-2.5">
         <div className="app-card rounded-[1.2rem] px-3 py-3">

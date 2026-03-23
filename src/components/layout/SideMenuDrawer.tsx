@@ -41,14 +41,14 @@ function DrawerLink({ item, currentPath, onClose }: { item: DrawerItem; currentP
       href={item.href}
       onClick={onClose}
       className={cn(
-        'group flex items-center justify-between gap-3 rounded-[20px] px-3 py-3 transition duration-200',
+        'group flex items-center justify-between gap-3 rounded-[20px] px-3 py-3 transition duration-200 dark:text-white dark:hover:text-white',
         isActive
-          ? 'bg-white/70 text-text-primary shadow-[0_10px_30px_rgba(15,23,42,0.08)] dark:bg-white/8 dark:shadow-none'
-          : 'text-text-primary hover:bg-white/40 dark:hover:bg-white/5'
+          ? 'bg-white/70 text-text-primary shadow-[0_10px_30px_rgba(15,23,42,0.08)] dark:bg-white/8 dark:text-white dark:shadow-none'
+          : 'text-text-primary hover:bg-white/40 dark:text-white dark:hover:bg-white/5'
       )}
     >
       <div className="min-w-0">
-        <p className="truncate text-[14px] font-semibold leading-[1.15] tracking-tight">{item.label}</p>
+        <p className="truncate text-[14px] font-semibold leading-[1.15] tracking-tight dark:text-white">{item.label}</p>
         {item.subtitle ? <p className="mt-1 truncate text-[11px] leading-[1.2] text-text-secondary/80">{item.subtitle}</p> : null}
       </div>
       <div className="flex shrink-0 items-center gap-2">

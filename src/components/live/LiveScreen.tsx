@@ -275,9 +275,8 @@ export function LiveScreen() {
     <>
       <MainPageLayout className="space-y-4 pb-[14.5rem]">
         <section className="px-1">
-          <p className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-text-muted">{t('liveNow')}</p>
-          <h1 className="mt-1 text-[1.55rem] font-semibold tracking-tight text-text-primary">{t('liveTitle')}</h1>
-          <p className="mt-1 max-w-[24rem] text-[0.94rem] leading-relaxed text-text-secondary">{t('liveHint')}</p>
+          <h1 className="text-[1.55rem] font-semibold tracking-tight text-text-primary">{t('liveTitle')}</h1>
+          <p className="mt-2 max-w-[24rem] text-[0.94rem] leading-relaxed text-text-secondary">{t('liveHint')}</p>
         </section>
 
         <LiveEventSwitcher

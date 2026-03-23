@@ -1,5 +1,7 @@
 'use client';
 
+import type { ChangeEvent } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 
 import { MainPageLayout } from '@/components/layout/MainPageLayout';
@@ -10,6 +12,8 @@ import { SectionCard } from '@/components/ui/SectionCard';
 import { liveEvents } from '@/data/liveEvents';
 import { mockData } from '@/data/mock';
 import { isSportEventLive } from '@/data/sportEvents';
+
+const PROFILE_AVATAR_STORAGE_KEY = 'fundon.profile.avatar';
 
 function formatHistoryTimestamp(iso: string, language: 'ru' | 'en') {
   return new Intl.DateTimeFormat(language === 'ru' ? 'ru-RU' : 'en-GB', {
@@ -26,6 +30,8 @@ export function ProfileScreen() {
   const { language, t } = useLanguage();
   const profile = mockData.profile;
   const supportHistory = mockData.profileSupportHistory;
+  const avatarInputRef = useRef<HTMLInputElement>(null);
+  const [avatarImage, setAvatarImage] = useState<string | null>(null);
   const displayName = language === 'ru' ? profile.displayNameRu : profile.displayName;
   const currentLiveEvent = liveEvents.find((event) => event.id === profile.currentLiveEventId) ?? liveEvents[0];
   const selectedParticipant =
@@ -43,15 +49,79 @@ export function ProfileScreen() {
   const heroBadgeText = `${profile.points} ${t('points')}`;
   const heroStreakText = `${profile.streak} ${t('streak')}`;
   const avatarLetter = displayName.slice(0, 1).toUpperCase();
+  const avatarPickerLabel = language === 'ru' ? 'Выбрать аватар' : 'Choose avatar';
+  const avatarActions = {
+    topUp: language === 'ru' ? 'Пополнить' : 'Top up',
+    withdraw: language === 'ru' ? 'Вывести' : 'Withdraw'
+  };
+  const metricLabels = {
+    support: language === 'ru' ? 'Поддержка' : 'Support',
+    xp: language === 'ru' ? 'Очки опыта' : t('xp'),
+    streak: language === 'ru' ? 'Серия' : 'Streak'
+  };
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    const storedAvatar = window.localStorage.getItem(PROFILE_AVATAR_STORAGE_KEY);
+    if (storedAvatar) {
+      setAvatarImage(storedAvatar);
+    }
+  }, []);
+
+  const handleAvatarButtonClick = () => {
+    avatarInputRef.current?.click();
+  };
+
+  const handleAvatarChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const selectedFile = event.target.files?.[0];
+
+    if (!selectedFile || !selectedFile.type.startsWith('image/')) {
+      event.target.value = '';
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      if (typeof reader.result === 'string') {
+        setAvatarImage(reader.result);
+        window.localStorage.setItem(PROFILE_AVATAR_STORAGE_KEY, reader.result);
+      }
+    };
+    reader.readAsDataURL(selectedFile);
+    event.target.value = '';
+  };
 
   return (
     <MainPageLayout className="space-y-4">
-      <PageHeader eyebrow={t('appName')} title={t('profileTitle')} description={t('profileHint')} />
+      <PageHeader title={t('profileTitle')} description={t('profileHint')} />
 
       <SectionCard className="overflow-hidden border border-white/35 bg-white/60 px-4 py-4 shadow-[0_18px_42px_rgba(15,23,42,0.10)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
+        <input
+          ref={avatarInputRef}
+          type="file"
+          accept="image/*"
+          className="sr-only"
+          onChange={handleAvatarChange}
+        />
         <div className="flex items-center gap-4">
-          <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-[18px] bg-white/75 text-[1.3rem] font-semibold text-text-primary shadow-[0_8px_20px_rgba(15,23,42,0.08)] dark:bg-white/10 dark:text-white dark:shadow-none">
-            {avatarLetter}
+          <div className="relative flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-[18px] bg-white/75 text-[1.3rem] font-semibold text-text-primary shadow-[0_8px_20px_rgba(15,23,42,0.08)] dark:bg-white/10 dark:text-white dark:shadow-none">
+            {avatarImage ? (
+              <img src={avatarImage} alt={displayName} className="h-full w-full object-cover" />
+            ) : (
+              avatarLetter
+            )}
+            <button
+              type="button"
+              aria-label={avatarPickerLabel}
+              title={avatarPickerLabel}
+              onClick={handleAvatarButtonClick}
+              className="absolute -bottom-1 -right-1 inline-flex h-7 w-7 items-center justify-center rounded-full border border-white/85 bg-white text-base font-semibold text-text-primary shadow-[0_10px_20px_rgba(15,23,42,0.12)] transition hover:bg-white/90 dark:border-white/12 dark:bg-[#1B1D24] dark:text-white dark:shadow-none"
+            >
+              +
+            </button>
           </div>
           <div className="min-w-0 flex-1">
             <div className="flex items-start justify-between gap-3">
@@ -109,22 +179,47 @@ export function ProfileScreen() {
         </SectionCard>
       ) : null}
 
-      <div className="grid grid-cols-2 gap-3">
-        <SectionCard className="border border-white/35 bg-white/55 px-4 py-4 shadow-[0_16px_34px_rgba(15,23,42,0.08)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted">{t('balanceLabel')}</p>
-          <p className="mt-3 text-[1.5rem] font-semibold tracking-tight text-text-primary">${profile.walletBalance}</p>
+      <SectionCard className="border border-white/35 bg-white/55 px-4 py-4 shadow-[0_16px_34px_rgba(15,23,42,0.08)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
+        <div className="flex items-center justify-between gap-4">
+          <div className="min-w-0">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted">{t('balanceLabel')}</p>
+            <p className="mt-2 text-[1.65rem] font-semibold tracking-tight text-text-primary">${profile.walletBalance}</p>
+          </div>
+          <div className="flex min-w-[116px] flex-col gap-2">
+            <button
+              type="button"
+              className="inline-flex items-center justify-center rounded-[14px] border border-border-subtle bg-white px-3 py-2 text-sm font-semibold text-text-primary transition hover:bg-white/90 dark:bg-white/10 dark:text-white dark:hover:bg-white/14"
+            >
+              {avatarActions.topUp}
+            </button>
+            <button
+              type="button"
+              className="inline-flex items-center justify-center rounded-[14px] border border-border-subtle bg-surface-subtle px-3 py-2 text-sm font-semibold text-text-primary transition hover:bg-white/70 dark:hover:bg-white/10"
+            >
+              {avatarActions.withdraw}
+            </button>
+          </div>
+        </div>
+      </SectionCard>
+
+      <div className="grid grid-cols-3 gap-3">
+        <SectionCard className="flex min-h-[88px] items-center justify-center border border-white/35 bg-white/55 px-3 py-3 text-center shadow-[0_16px_34px_rgba(15,23,42,0.08)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
+          <div>
+            <p className="text-[11px] font-medium leading-tight text-text-muted">{metricLabels.support}</p>
+            <p className="mt-2 text-[1.25rem] font-semibold tracking-tight text-text-primary">${profile.totalSupport}</p>
+          </div>
         </SectionCard>
-        <SectionCard className="border border-white/35 bg-white/55 px-4 py-4 shadow-[0_16px_34px_rgba(15,23,42,0.08)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted">{t('totalSupport')}</p>
-          <p className="mt-3 text-[1.5rem] font-semibold tracking-tight text-text-primary">${profile.totalSupport}</p>
+        <SectionCard className="flex min-h-[88px] items-center justify-center border border-white/35 bg-white/55 px-3 py-3 text-center shadow-[0_16px_34px_rgba(15,23,42,0.08)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
+          <div>
+            <p className="text-[11px] font-medium leading-tight text-text-muted">{metricLabels.xp}</p>
+            <p className="mt-2 text-[1.25rem] font-semibold tracking-tight text-text-primary">{profile.xp}</p>
+          </div>
         </SectionCard>
-        <SectionCard className="border border-white/35 bg-white/55 px-4 py-4 shadow-[0_16px_34px_rgba(15,23,42,0.08)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted">{t('xp')}</p>
-          <p className="mt-3 text-[1.5rem] font-semibold tracking-tight text-text-primary">{profile.xp}</p>
-        </SectionCard>
-        <SectionCard className="border border-white/35 bg-white/55 px-4 py-4 shadow-[0_16px_34px_rgba(15,23,42,0.08)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted">{t('streak')}</p>
-          <p className="mt-3 text-[1.5rem] font-semibold tracking-tight text-text-primary">{profile.streak}</p>
+        <SectionCard className="flex min-h-[88px] items-center justify-center border border-white/35 bg-white/55 px-3 py-3 text-center shadow-[0_16px_34px_rgba(15,23,42,0.08)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
+          <div>
+            <p className="text-[11px] font-medium leading-tight text-text-muted">{metricLabels.streak}</p>
+            <p className="mt-2 text-[1.25rem] font-semibold tracking-tight text-text-primary">{profile.streak}</p>
+          </div>
         </SectionCard>
       </div>
 

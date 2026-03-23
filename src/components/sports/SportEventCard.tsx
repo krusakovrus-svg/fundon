@@ -19,7 +19,10 @@ function StarIcon({ active }: { active: boolean }) {
       stroke="#111111"
       strokeWidth="1.9"
     >
-      <path d="M12 4.6l2.3 4.66 5.15.75-3.72 3.62.88 5.12L12 16.34l-4.61 2.41.88-5.12-3.72-3.62 5.15-.75z" strokeLinejoin="round" />
+      <path
+        d="M12 4.6l2.3 4.66 5.15.75-3.72 3.62.88 5.12L12 16.34l-4.61 2.41.88-5.12-3.72-3.62 5.15-.75z"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
@@ -51,6 +54,7 @@ function ParticipantBadge({ participant }: { participant: SportEventParticipant 
 export function SportEventCard({ event }: { event: SportEventRecord }) {
   const { language, t } = useLanguage();
   const { isFavorite, toggleFavorite } = useFavorites();
+
   const active = isFavorite(event.id);
   const title = language === 'ru' ? event.titleRu : event.title;
   const dateLabel =
@@ -61,7 +65,10 @@ export function SportEventCard({ event }: { event: SportEventRecord }) {
     language === 'ru'
       ? event.displayTimeRu ?? formatSportEventTime(event.startsAt, language)
       : event.displayTimeEn ?? formatSportEventTime(event.startsAt, language);
-  const isLiveState = event.displayDateEn === 'Live';
+  const isLiveState =
+    dateLabel.toLowerCase().includes('live') ||
+    dateLabel.toLowerCase().includes('эфир') ||
+    dateLabel.toLowerCase().includes('матч');
 
   return (
     <article className="overflow-hidden rounded-[1.25rem] border border-black/5 bg-white shadow-[0_6px_18px_rgba(15,23,42,0.08)] dark:border-white/10 dark:bg-[rgba(var(--surface),0.92)] dark:shadow-[0_14px_32px_rgba(2,6,23,0.3)]">
@@ -97,25 +104,18 @@ export function SportEventCard({ event }: { event: SportEventRecord }) {
           >
             {dateLabel}
           </div>
-          <div className="mt-1.5 text-[0.98rem] font-medium leading-none text-slate-800 dark:text-text-primary">{timeLabel}</div>
+          <div className="mt-1.5 text-[0.98rem] font-medium leading-none text-slate-800 dark:text-text-primary">
+            {timeLabel}
+          </div>
         </div>
 
         <div className="space-y-2">
           {event.participants.map((participant) => (
             <div key={participant.id} className="flex items-center gap-2.5">
-              <span className="shrink-0 text-[0.82rem] font-medium leading-none text-text-secondary/85">{eventDateShort}</span>
               <ParticipantBadge participant={participant} />
               <span className="truncate text-[1rem] font-medium leading-none text-slate-900 dark:text-text-primary">
                 {language === 'ru' ? participant.nameRu : participant.name}
               </span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </article>
-  );
-}
- </span>
             </div>
           ))}
         </div>
