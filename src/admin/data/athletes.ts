@@ -1,30 +1,13 @@
 export type AdminAthleteStatus = 'active' | 'live' | 'archived';
 export type AdminAthleteType = 'athlete' | 'team';
-export type AdminAthleteSport =
-  | 'Футбол'
-  | 'Хоккей'
-  | 'Теннис'
-  | 'MMA'
-  | 'Баскетбол'
-  | 'Лёгкая атлетика'
-  | 'Киберспорт'
-  | 'Бокс';
+export type AdminAthleteSport = 'Футбол' | 'Хоккей' | 'Теннис' | 'MMA' | 'Баскетбол' | 'Лёгкая атлетика' | 'Киберспорт' | 'Бокс';
 
-export type AdminAthleteSportFilter =
-  | 'all'
-  | 'football'
-  | 'hockey'
-  | 'tennis'
-  | 'mma'
-  | 'basketball'
-  | 'athletics'
-  | 'esports'
-  | 'boxing';
+export type AdminAthleteSportFilter = 'all' | 'football' | 'hockey' | 'tennis' | 'mma' | 'basketball' | 'athletics' | 'esports' | 'boxing';
 
 export interface AdminAthletesKpi {
   id: string;
   label: string;
-  value: string;
+  value: number;
   hint: string;
   tone: 'blue' | 'green' | 'orange' | 'slate';
 }
@@ -44,24 +27,25 @@ export interface AdminManagedAthlete {
   teamOrCountry: string;
   status: AdminAthleteStatus;
   eventsLabel: string;
+  eventsCount: number;
   supportLabel: string;
-  supportValue: string;
+  supportCount: number;
   shortBio: string;
   liveEvent: string;
   supportStats: {
-    donations: string;
-    audience: string;
-    activeEvents: string;
+    totalSupport: number;
+    audience: number;
+    activeEvents: number;
   };
   activitySummary: AdminAthleteActivityItem[];
   avatarTone: string;
 }
 
 export const adminAthletesKpis: AdminAthletesKpi[] = [
-  { id: 'total', label: 'Всего спортсменов', value: '248', hint: '14 новых за месяц', tone: 'blue' },
-  { id: 'active', label: 'Активные сейчас', value: '62', hint: '18 в поддержке live', tone: 'green' },
-  { id: 'new', label: 'Новые', value: '14', hint: '5 ожидают запуска', tone: 'orange' },
-  { id: 'archived', label: 'Архивные', value: '37', hint: 'скрыты из витрины', tone: 'slate' }
+  { id: 'total', label: 'Всего спортсменов', value: 248, hint: '14 новых за месяц', tone: 'blue' },
+  { id: 'active', label: 'Активные сейчас', value: 62, hint: '18 в поддержке live', tone: 'green' },
+  { id: 'new', label: 'Новые', value: 14, hint: '5 ожидают запуска', tone: 'orange' },
+  { id: 'archived', label: 'Архив', value: 37, hint: 'Скрыты из витрины', tone: 'slate' }
 ];
 
 export const adminAthleteSportFilters = [
@@ -90,7 +74,7 @@ export const adminAthleteTypeFilters = [
 ] as const;
 
 export const adminAthleteActivityFilters = [
-  { id: 'all', label: 'Все' },
+  { id: 'all', label: 'Любая активность' },
   { id: 'active', label: 'С активными событиями' },
   { id: 'idle', label: 'Без событий' }
 ] as const;
@@ -110,19 +94,20 @@ export const adminManagedAthletes: AdminManagedAthlete[] = [
     type: 'athlete',
     teamOrCountry: 'Россия',
     status: 'live',
-    eventsLabel: 'Марафон «Городской забег»',
-    supportLabel: 'Высокая',
-    supportValue: '7.5K донатов',
-    shortBio: 'Профессиональная бегунья, двукратная чемпионка России по марафону.',
+    eventsLabel: 'Городской забег · 2 эфира',
+    eventsCount: 2,
+    supportLabel: 'Поддержка в эфире',
+    supportCount: 7500,
+    shortBio: 'Профессиональная бегунья и двукратная чемпионка России по марафону. Одна из самых вовлечённых live-карточек в блоке выносливости.',
     liveEvent: 'Марафон «Городской забег»',
     supportStats: {
-      donations: '7.5K донатов',
-      audience: '32.1K подписчиков',
-      activeEvents: '5 активных событий'
+      totalSupport: 7500,
+      audience: 32100,
+      activeEvents: 5
     },
     activitySummary: [
-      { id: 'elena-1', title: 'Прямой эфир запущен 20 мин назад', at: 'Сейчас' },
-      { id: 'elena-2', title: 'Новый пост опубликован для комнаты марафона', at: 'Вчера' },
+      { id: 'elena-1', title: 'Прямой эфир запущен 20 минут назад', at: 'Сейчас' },
+      { id: 'elena-2', title: 'Опубликован новый пост для комнаты марафона', at: 'Вчера' },
       { id: 'elena-3', title: 'Поддержка включена для городского забега', at: '2 дня назад' }
     ],
     avatarTone: 'bg-[linear-gradient(135deg,#f4d7ca_0%,#d79d8b_100%)]'
@@ -136,14 +121,15 @@ export const adminManagedAthletes: AdminManagedAthlete[] = [
     teamOrCountry: 'Россия',
     status: 'live',
     eventsLabel: 'Спартак vs Зенит',
-    supportLabel: 'Командная',
-    supportValue: '12.4K донатов',
-    shortBio: 'Ключевая команда футбольного блока FUNDON с самой высокой вовлечённостью в лайв-поддержке.',
+    eventsCount: 3,
+    supportLabel: 'Командная поддержка',
+    supportCount: 12400,
+    shortBio: 'Одна из ключевых команд футбольного блока FUNDON с самым высоким уровнем вовлечённости в live-поддержке.',
     liveEvent: 'Спартак vs Зенит',
     supportStats: {
-      donations: '12.4K донатов',
-      audience: '48.6K подписчиков',
-      activeEvents: '8 активных событий'
+      totalSupport: 12400,
+      audience: 48600,
+      activeEvents: 8
     },
     activitySummary: [
       { id: 'spartak-1', title: 'Открыта support-комната «Матч дня»', at: '12 мин назад' },
@@ -160,14 +146,15 @@ export const adminManagedAthletes: AdminManagedAthlete[] = [
     teamOrCountry: 'Team Falcons',
     status: 'active',
     eventsLabel: 'Финал конференции',
-    supportLabel: 'Стабильная',
-    supportValue: '4.2K донатов',
-    shortBio: 'Нападающий первого звена, одна из самых устойчивых карточек поддержки в хоккейном блоке.',
+    eventsCount: 1,
+    supportLabel: 'Стабильная поддержка',
+    supportCount: 4200,
+    shortBio: 'Нападающий первого звена и одна из самых устойчивых карточек поддержки в хоккейном блоке.',
     liveEvent: 'Нет активного эфира',
     supportStats: {
-      donations: '4.2K донатов',
-      audience: '18.4K подписчиков',
-      activeEvents: '3 активных события'
+      totalSupport: 4200,
+      audience: 18400,
+      activeEvents: 3
     },
     activitySummary: [
       { id: 'alexey-1', title: 'Открыт сбор на финал конференции', at: 'Сегодня' },
@@ -184,14 +171,15 @@ export const adminManagedAthletes: AdminManagedAthlete[] = [
     teamOrCountry: 'Team Nexus',
     status: 'active',
     eventsLabel: 'Nexus Arena Cup',
-    supportLabel: 'Высокая',
-    supportValue: '5.8K донатов',
-    shortBio: 'Капитан состава по киберспорту, активно растёт в рейтинге поддержки.',
+    eventsCount: 2,
+    supportLabel: 'Высокая вовлечённость',
+    supportCount: 5800,
+    shortBio: 'Капитан состава по киберспорту, активно растёт в рейтинге поддержки и возврата аудитории.',
     liveEvent: 'Нет активного эфира',
     supportStats: {
-      donations: '5.8K донатов',
-      audience: '25.9K подписчиков',
-      activeEvents: '4 активных события'
+      totalSupport: 5800,
+      audience: 25900,
+      activeEvents: 4
     },
     activitySummary: [
       { id: 'max-1', title: 'Добавлен в новый турнир CCT South America', at: 'Сегодня' },
@@ -208,14 +196,15 @@ export const adminManagedAthletes: AdminManagedAthlete[] = [
     teamOrCountry: 'Ace Club',
     status: 'archived',
     eventsLabel: 'Нет активных событий',
+    eventsCount: 0,
     supportLabel: 'Скрыта',
-    supportValue: 'Архив',
-    shortBio: 'Карточка переведена в архив после окончания текущего сезона и обновления состава турниров.',
+    supportCount: 2100,
+    shortBio: 'Карточка переведена в архив после окончания сезона и обновления турнирного календаря.',
     liveEvent: 'Сейчас вне эфира',
     supportStats: {
-      donations: '2.1K донатов',
-      audience: '9.4K подписчиков',
-      activeEvents: '0 активных событий'
+      totalSupport: 2100,
+      audience: 9400,
+      activeEvents: 0
     },
     activitySummary: [
       { id: 'irina-1', title: 'Карточка отправлена в архив', at: '5 дней назад' },
@@ -232,14 +221,15 @@ export const adminManagedAthletes: AdminManagedAthlete[] = [
     teamOrCountry: 'Германия',
     status: 'active',
     eventsLabel: 'Матч в разработке',
-    supportLabel: 'Включена',
-    supportValue: '2.9K донатов',
-    shortBio: 'Участник боксерского блока, для которого сейчас готовится отдельный live-сценарий поддержки.',
+    eventsCount: 1,
+    supportLabel: 'Готова к запуску',
+    supportCount: 2900,
+    shortBio: 'Участник боксёрского блока, для которого сейчас готовится отдельный live-сценарий поддержки.',
     liveEvent: 'Ожидает публикации события',
     supportStats: {
-      donations: '2.9K донатов',
-      audience: '12.7K подписчиков',
-      activeEvents: '2 активных события'
+      totalSupport: 2900,
+      audience: 12700,
+      activeEvents: 2
     },
     activitySummary: [
       { id: 'sergey-1', title: 'Добавлен новый соперник в карточку боя', at: 'Вчера' },
@@ -256,14 +246,15 @@ export const adminManagedAthletes: AdminManagedAthlete[] = [
     teamOrCountry: 'Франция',
     status: 'active',
     eventsLabel: 'Лига чемпионов УЕФА',
-    supportLabel: 'Командная',
-    supportValue: '6.1K донатов',
-    shortBio: 'Одна из самых стабильных женских команд в международном блоке, с высокой вовлечённостью аудитории.',
+    eventsCount: 2,
+    supportLabel: 'Командная поддержка',
+    supportCount: 6100,
+    shortBio: 'Одна из самых стабильных женских команд в международном блоке с высокой вовлечённостью аудитории.',
     liveEvent: 'Ожидает старта матча',
     supportStats: {
-      donations: '6.1K донатов',
-      audience: '21.8K подписчиков',
-      activeEvents: '3 активных события'
+      totalSupport: 6100,
+      audience: 21800,
+      activeEvents: 3
     },
     activitySummary: [
       { id: 'lyon-1', title: 'Команда добавлена в сетку Лиги чемпионов', at: 'Сегодня' },

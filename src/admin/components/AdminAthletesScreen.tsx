@@ -19,6 +19,23 @@ import {
 import { AdminConfirmDialog, type AdminConfirmDialogDetail } from '@/admin/components/AdminConfirmDialog';
 import { cn } from '@/lib/utils';
 
+function formatWithSpaces(value: number) {
+  return new Intl.NumberFormat('ru-RU').format(value).replace(/[\u00a0\u202f]/g, ' ');
+}
+
+function formatCompactCount(value: number) {
+  if (value >= 1000) {
+    return `${new Intl.NumberFormat('ru-RU', {
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 1
+    })
+      .format(value / 1000)
+      .replace(/[\u00a0\u202f]/g, ' ')} тыс.`;
+  }
+
+  return formatWithSpaces(value);
+}
+
 function ChevronDownIcon() {
   return (
     <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
@@ -116,6 +133,20 @@ function getTypeLabel(type: AdminAthleteType) {
   return type === 'team' ? 'Команда' : 'Спортсмен';
 }
 
+function getKpiBadgeTone(tone: 'blue' | 'green' | 'orange' | 'slate') {
+  switch (tone) {
+    case 'blue':
+      return 'bg-[#eef5ff] text-[#2f78d3] ring-1 ring-[#dbe7fb]';
+    case 'green':
+      return 'bg-emerald-50 text-emerald-700 ring-1 ring-emerald-200';
+    case 'orange':
+      return 'bg-amber-50 text-amber-700 ring-1 ring-amber-200';
+    case 'slate':
+    default:
+      return 'bg-slate-100 text-slate-600 ring-1 ring-slate-200';
+  }
+}
+
 function KpiCard({
   label,
   value,
@@ -123,47 +154,43 @@ function KpiCard({
   tone
 }: {
   label: string;
-  value: string;
+  value: number;
   hint: string;
   tone: 'blue' | 'green' | 'orange' | 'slate';
 }) {
-  const accent =
-    tone === 'blue'
-      ? 'bg-[#edf4ff] text-[#4f8ff6]'
-      : tone === 'green'
-        ? 'bg-emerald-50 text-emerald-600'
-        : tone === 'orange'
-          ? 'bg-amber-50 text-amber-600'
-          : 'bg-slate-100 text-slate-500';
-
   return (
-    <div className="rounded-[22px] border border-black/[0.05] bg-white/90 px-5 py-4 shadow-[0_16px_34px_rgba(15,23,42,0.05)]">
+    <article className="rounded-[22px] border border-black/[0.05] bg-white/92 px-5 py-4 shadow-[0_16px_34px_rgba(15,23,42,0.05)]">
       <div className="flex items-start justify-between gap-3">
         <div>
-          <p className="text-[0.9rem] font-medium text-slate-500">{label}</p>
-          <p className="mt-2 text-[2rem] font-semibold tracking-tight text-slate-900">{value}</p>
+          <p className="text-[0.76rem] font-semibold uppercase tracking-[0.16em] text-slate-400">{label}</p>
+          <p className="mt-2 text-[1.95rem] font-semibold tracking-tight text-slate-900">{formatWithSpaces(value)}</p>
         </div>
-        <span className={cn('inline-flex rounded-full px-2.5 py-1 text-[0.72rem] font-semibold', accent)}>{hint}</span>
+        <span className={cn('inline-flex rounded-full px-2.5 py-1 text-[0.72rem] font-semibold', getKpiBadgeTone(tone))}>{hint}</span>
       </div>
-    </div>
+    </article>
   );
 }
 
-function FilterSelect({
+function FilterField({
+  label,
   value,
   onChange,
   options
 }: {
+  label: string;
   value: string;
   onChange: (value: string) => void;
   options: readonly { id: string; label: string }[];
 }) {
   return (
-    <label className="relative min-w-[10.5rem]">
+    <label className="relative min-w-[11rem]">
+      <span className="pointer-events-none absolute left-4 top-3 text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-slate-400">
+        {label}
+      </span>
       <select
         value={value}
         onChange={(event) => onChange(event.target.value)}
-        className="h-12 w-full appearance-none rounded-[14px] border border-black/[0.05] bg-white px-4 pr-10 text-[0.9rem] font-medium text-slate-700 shadow-[0_8px_18px_rgba(15,23,42,0.04)] outline-none transition focus:border-[#dbe7fb] focus:ring-2 focus:ring-[#eef5ff]"
+        className="h-14 w-full appearance-none rounded-[16px] border border-black/[0.05] bg-white px-4 pb-3 pt-6 text-[0.9rem] font-medium text-slate-700 shadow-[0_10px_22px_rgba(15,23,42,0.04)] outline-none transition focus:border-[#dbe7fb] focus:ring-2 focus:ring-[#eef5ff]"
       >
         {options.map((option) => (
           <option key={option.id} value={option.id}>
@@ -178,11 +205,20 @@ function FilterSelect({
   );
 }
 
-function DetailMetric({ label, value }: { label: string; value: string }) {
+function DetailMetric({
+  label,
+  value,
+  note
+}: {
+  label: string;
+  value: string;
+  note: string;
+}) {
   return (
     <div className="rounded-[16px] border border-black/[0.045] bg-[linear-gradient(180deg,#ffffff_0%,#fafbfe_100%)] px-4 py-3.5">
-      <p className="text-[0.76rem] font-semibold uppercase tracking-[0.16em] text-slate-400">{label}</p>
-      <p className="mt-2 text-[1.02rem] font-semibold tracking-tight text-slate-900">{value}</p>
+      <p className="text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-slate-400">{label}</p>
+      <p className="mt-2 text-[1.04rem] font-semibold tracking-tight text-slate-900">{value}</p>
+      <p className="mt-1 text-[0.76rem] text-slate-500">{note}</p>
     </div>
   );
 }
@@ -191,14 +227,18 @@ function SideInfoRow({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex items-center justify-between gap-3 rounded-[16px] border border-black/[0.045] bg-[linear-gradient(180deg,#ffffff_0%,#fafbfe_100%)] px-4 py-3.5">
       <div className="min-w-0">
-        <p className="text-[0.78rem] font-semibold uppercase tracking-[0.16em] text-slate-400">{label}</p>
-        <p className="mt-1 truncate text-[0.94rem] font-medium text-slate-800">{value}</p>
+        <p className="text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-slate-400">{label}</p>
+        <p className="mt-1 truncate text-[0.92rem] font-medium text-slate-800">{value}</p>
       </div>
       <span className="text-slate-400">
         <ChevronRightIcon />
       </span>
     </div>
   );
+}
+
+function getSupportLabel(value: number) {
+  return `${formatCompactCount(value)} донатов`;
 }
 
 export function AdminAthletesScreen() {
@@ -226,17 +266,8 @@ export function AdminAthletesScreen() {
       const statusMatch = statusFilter === 'all' ? true : athlete.status === statusFilter;
       const typeMatch = typeFilter === 'all' ? true : athlete.type === typeFilter;
       const activityMatch =
-        activityFilter === 'all'
-          ? true
-          : activityFilter === 'active'
-            ? athlete.supportStats.activeEvents !== '0 активных событий'
-            : athlete.supportStats.activeEvents === '0 активных событий';
-      const liveMatch =
-        liveFilter === 'all'
-          ? true
-          : liveFilter === 'live'
-            ? athlete.status === 'live'
-            : athlete.status !== 'live';
+        activityFilter === 'all' ? true : activityFilter === 'active' ? athlete.supportStats.activeEvents > 0 : athlete.supportStats.activeEvents === 0;
+      const liveMatch = liveFilter === 'all' ? true : liveFilter === 'live' ? athlete.status === 'live' : athlete.status !== 'live';
 
       return sportMatch && statusMatch && typeMatch && activityMatch && liveMatch;
     });
@@ -248,10 +279,7 @@ export function AdminAthletesScreen() {
     }
   }, [filteredAthletes, selectedAthleteId]);
 
-  const selectedAthlete =
-    filteredAthletes.find((athlete) => athlete.id === selectedAthleteId) ??
-    filteredAthletes[0] ??
-    managedAthletes[0];
+  const selectedAthlete = filteredAthletes.find((athlete) => athlete.id === selectedAthleteId) ?? filteredAthletes[0] ?? managedAthletes[0];
 
   const updateAthlete = (athleteId: string, updater: (athlete: AdminManagedAthlete) => AdminManagedAthlete) => {
     setManagedAthletes((current) => current.map((athlete) => (athlete.id === athleteId ? updater(athlete) : athlete)));
@@ -285,7 +313,7 @@ export function AdminAthletesScreen() {
     if (action === 'archive') {
       openAthleteConfirmation(athlete, {
         title: 'Архивировать карточку',
-        description: 'Карточка останется в системе, но будет снята с операционного оборота и live-потока поддержки.',
+        description: 'Карточка останется в системе, но будет снята с оперативного оборота и live-потока поддержки.',
         confirmLabel: 'Архивировать',
         tone: 'danger',
         badge: 'Архив',
@@ -294,8 +322,7 @@ export function AdminAthletesScreen() {
           updateAthlete(athlete.id, (current) => ({
             ...current,
             status: 'archived',
-            supportLabel: 'Скрыта',
-            supportValue: 'Архив',
+            supportLabel: 'Скрыта из витрины',
             liveEvent: 'Сейчас вне эфира'
           }));
           setConfirmState(null);
@@ -306,16 +333,15 @@ export function AdminAthletesScreen() {
 
     openAthleteConfirmation(athlete, {
       title: 'Скрыть карточку из витрины',
-      description: 'Карточка останется доступной для команды, но будет снята с пользовательской витрины и активного live-продвижения.',
+      description: 'Карточка останется доступной команде, но будет снята с пользовательской витрины и активного live-продвижения.',
       confirmLabel: 'Скрыть',
       tone: 'primary',
       badge: 'Скрытие',
-      footnote: 'Скрытие не удаляет карточку, но отключает её от витрины и операционных рекомендаций.',
+      footnote: 'Скрытие не удаляет карточку, но отключает её от витрины и рекомендаций.',
       onConfirm: () => {
         updateAthlete(athlete.id, (current) => ({
           ...current,
           supportLabel: 'Скрыта из витрины',
-          supportValue: 'Внутренний режим',
           liveEvent: current.status === 'live' ? current.liveEvent : 'Только для admin-просмотра'
         }));
         setConfirmState(null);
@@ -325,19 +351,19 @@ export function AdminAthletesScreen() {
 
   return (
     <div className="space-y-6">
-      <section className="grid grid-cols-4 gap-4">
+      <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         {adminAthletesKpis.map((kpi) => (
           <KpiCard key={kpi.id} label={kpi.label} value={kpi.value} hint={kpi.hint} tone={kpi.tone} />
         ))}
       </section>
 
-      <section className="rounded-[24px] border border-black/[0.05] bg-white/90 p-5 shadow-[0_18px_40px_rgba(15,23,42,0.06)]">
+      <section className="rounded-[24px] border border-black/[0.05] bg-white/92 p-5 shadow-[0_18px_40px_rgba(15,23,42,0.06)]">
         <div className="flex flex-wrap items-center gap-3">
-          <FilterSelect value={sportFilter} onChange={(value) => setSportFilter(value as AdminAthleteSportFilter)} options={adminAthleteSportFilters} />
-          <FilterSelect value={statusFilter} onChange={(value) => setStatusFilter(value as (typeof adminAthleteStatusFilters)[number]['id'])} options={adminAthleteStatusFilters} />
-          <FilterSelect value={typeFilter} onChange={(value) => setTypeFilter(value as (typeof adminAthleteTypeFilters)[number]['id'])} options={adminAthleteTypeFilters} />
-          <FilterSelect value={activityFilter} onChange={(value) => setActivityFilter(value as (typeof adminAthleteActivityFilters)[number]['id'])} options={adminAthleteActivityFilters} />
-          <FilterSelect value={liveFilter} onChange={(value) => setLiveFilter(value as (typeof adminAthleteLiveFilters)[number]['id'])} options={adminAthleteLiveFilters} />
+          <FilterField label="Вид спорта" value={sportFilter} onChange={(value) => setSportFilter(value as AdminAthleteSportFilter)} options={adminAthleteSportFilters} />
+          <FilterField label="Статус" value={statusFilter} onChange={(value) => setStatusFilter(value as (typeof adminAthleteStatusFilters)[number]['id'])} options={adminAthleteStatusFilters} />
+          <FilterField label="Тип" value={typeFilter} onChange={(value) => setTypeFilter(value as (typeof adminAthleteTypeFilters)[number]['id'])} options={adminAthleteTypeFilters} />
+          <FilterField label="Активные" value={activityFilter} onChange={(value) => setActivityFilter(value as (typeof adminAthleteActivityFilters)[number]['id'])} options={adminAthleteActivityFilters} />
+          <FilterField label="Прямой эфир" value={liveFilter} onChange={(value) => setLiveFilter(value as (typeof adminAthleteLiveFilters)[number]['id'])} options={adminAthleteLiveFilters} />
 
           <div className="ml-auto inline-flex items-center gap-2 rounded-full bg-[#f5f8fd] px-3 py-1.5 text-[0.78rem] font-semibold text-slate-500">
             <SearchIcon />
@@ -353,14 +379,12 @@ export function AdminAthletesScreen() {
               <h2 className="text-[1.18rem] font-semibold tracking-tight text-slate-900">Список спортсменов и команд</h2>
               <p className="mt-1 text-sm text-slate-500">Операционный обзор карточек, прямых эфиров и доступности поддержки в системе FUNDON.</p>
             </div>
-            <div className="rounded-full bg-[#f5f8fd] px-3 py-1.5 text-[0.78rem] font-semibold text-slate-500">
-              Быстрый выбор карточки
-            </div>
+            <div className="rounded-full bg-[#f5f8fd] px-3 py-1.5 text-[0.78rem] font-semibold text-slate-500">Быстрый выбор карточки</div>
           </div>
 
           <div className="overflow-x-auto px-4 py-4">
-            <div className="min-w-[980px]">
-              <div className="grid grid-cols-[minmax(18rem,1.4fr)_8rem_11rem_8rem_10rem_10rem] gap-4 px-4 pb-3 text-[0.78rem] font-semibold uppercase tracking-[0.12em] text-slate-400">
+            <div className="min-w-[930px]">
+              <div className="grid grid-cols-[minmax(17rem,1.55fr)_minmax(8rem,0.9fr)_minmax(9rem,1fr)_7.5rem_9rem_9rem] gap-4 px-4 pb-3 text-[0.78rem] font-semibold uppercase tracking-[0.12em] text-slate-400">
                 <span>Спортсмен</span>
                 <span>Вид спорта</span>
                 <span>Команда / страна</span>
@@ -379,7 +403,7 @@ export function AdminAthletesScreen() {
                       type="button"
                       onClick={() => setSelectedAthleteId(athlete.id)}
                       className={cn(
-                        'grid w-full grid-cols-[minmax(18rem,1.4fr)_8rem_11rem_8rem_10rem_10rem] items-center gap-4 rounded-[20px] border px-4 py-4 text-left shadow-[inset_0_1px_0_rgba(255,255,255,0.92)] transition',
+                        'grid w-full grid-cols-[minmax(17rem,1.55fr)_minmax(8rem,0.9fr)_minmax(9rem,1fr)_7.5rem_9rem_9rem] items-center gap-4 rounded-[20px] border px-4 py-4 text-left shadow-[inset_0_1px_0_rgba(255,255,255,0.92)] transition',
                         active
                           ? 'border-[#dbe7fb] bg-[linear-gradient(180deg,#ffffff_0%,#f6f9ff_100%)] shadow-[0_18px_34px_rgba(79,143,246,0.12)]'
                           : 'border-black/[0.045] bg-[linear-gradient(180deg,#ffffff_0%,#fafbfe_100%)] hover:border-[#dbe7fb] hover:bg-white'
@@ -390,35 +414,35 @@ export function AdminAthletesScreen() {
                           {athlete.name.charAt(0)}
                         </div>
                         <div className="min-w-0">
-                          <div className="flex items-center gap-2">
+                          <div className="flex flex-wrap items-center gap-2">
                             <p className="truncate text-[1rem] font-semibold tracking-tight text-slate-900">{athlete.name}</p>
-                            <span className="rounded-full bg-[#f7f8fb] px-2 py-0.5 text-[0.72rem] font-semibold text-slate-500">
+                            <span className="rounded-full bg-[#f7f8fb] px-2 py-0.5 text-[0.68rem] font-semibold text-slate-500">
                               {getTypeLabel(athlete.type)}
                             </span>
                           </div>
-                          <p className="mt-1 truncate text-[0.84rem] text-slate-500">{athlete.slug}</p>
+                          <p className="mt-1 truncate text-[0.82rem] text-slate-500">{athlete.slug}</p>
                         </div>
                       </div>
 
-                      <div className="inline-flex items-center gap-2 text-[0.92rem] font-medium text-slate-700">
+                      <div className="inline-flex min-w-0 items-center gap-2 text-[0.9rem] font-medium text-slate-700">
                         <DotIcon tone={getSportDot(athlete.sport)} />
-                        <span>{athlete.sport}</span>
+                        <span className="truncate">{athlete.sport}</span>
                       </div>
 
-                      <p className="text-[0.94rem] text-slate-600">{athlete.teamOrCountry}</p>
+                      <p className="truncate text-[0.88rem] text-slate-600">{athlete.teamOrCountry}</p>
 
-                      <span className={cn('inline-flex w-fit rounded-full px-2.5 py-1 text-[0.78rem] font-semibold', getStatusTone(athlete.status))}>
+                      <span className={cn('inline-flex w-fit rounded-full px-2.5 py-1 text-[0.76rem] font-semibold', getStatusTone(athlete.status))}>
                         {getStatusLabel(athlete.status)}
                       </span>
 
                       <div>
-                        <p className="text-[0.92rem] font-semibold text-slate-800">{athlete.eventsLabel}</p>
-                        <p className="mt-1 text-[0.82rem] text-slate-500">{athlete.liveEvent}</p>
+                        <p className="text-[0.92rem] font-semibold text-slate-900">{athlete.eventsCount}</p>
+                        <p className="mt-1 truncate text-[0.8rem] text-slate-500">{athlete.eventsLabel}</p>
                       </div>
 
                       <div>
-                        <p className="text-[0.92rem] font-semibold text-slate-900">{athlete.supportValue}</p>
-                        <p className="mt-1 text-[0.82rem] text-slate-500">{athlete.supportLabel}</p>
+                        <p className="text-[0.92rem] font-semibold text-slate-900">{formatCompactCount(athlete.supportCount)}</p>
+                        <p className="mt-1 truncate text-[0.8rem] text-slate-500">{athlete.supportLabel}</p>
                       </div>
                     </button>
                   );
@@ -432,73 +456,81 @@ export function AdminAthletesScreen() {
           <aside className="sticky top-[7.9rem] self-start rounded-[24px] border border-black/[0.05] bg-white/92 shadow-[0_18px_40px_rgba(15,23,42,0.06)]">
             <div className="border-b border-black/[0.045] px-5 py-5">
               <div className="rounded-[22px] border border-black/[0.04] bg-[linear-gradient(135deg,#fbfcfe_0%,#f2f5fb_100%)] p-4">
-                <div className={cn('flex h-48 items-end rounded-[18px] px-5 pb-5 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.35)]', selectedAthlete.avatarTone)}>
-                  <div>
-                    <span className={cn('inline-flex rounded-full px-2.5 py-1 text-[0.76rem] font-semibold backdrop-blur-sm', getStatusTone(selectedAthlete.status), 'bg-white/85')}>
-                      {getStatusLabel(selectedAthlete.status)}
-                    </span>
-                    <p className="mt-3 text-[2rem] font-semibold tracking-tight text-slate-900">{selectedAthlete.name}</p>
-                    <p className="mt-1 text-[0.94rem] text-slate-700">{selectedAthlete.slug}</p>
+                <div className={cn('flex h-44 items-end rounded-[18px] px-5 pb-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.35)]', selectedAthlete.avatarTone)}>
+                  <div className="w-full">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className={cn('inline-flex rounded-full px-2.5 py-1 text-[0.74rem] font-semibold backdrop-blur-sm', getStatusTone(selectedAthlete.status), 'bg-white/90')}>
+                        {getStatusLabel(selectedAthlete.status)}
+                      </span>
+                      <span className="inline-flex rounded-full bg-white/80 px-2.5 py-1 text-[0.74rem] font-semibold text-slate-600">
+                        {getTypeLabel(selectedAthlete.type)}
+                      </span>
+                    </div>
+                    <p className="mt-3 text-[1.92rem] font-semibold tracking-tight text-slate-900">{selectedAthlete.name}</p>
+                    <p className="mt-1 text-[0.9rem] text-slate-700">{selectedAthlete.slug}</p>
                   </div>
                 </div>
               </div>
 
-              <p className="mt-4 text-[0.95rem] leading-6 text-slate-600">{selectedAthlete.shortBio}</p>
+              <p className="mt-4 text-[0.9rem] leading-6 text-slate-600">{selectedAthlete.shortBio}</p>
             </div>
 
-            <div className="space-y-4 p-5">
-              <SideInfoRow label="Вид спорта" value={selectedAthlete.sport} />
-              <SideInfoRow label="Команда / страна" value={selectedAthlete.teamOrCountry} />
-              <SideInfoRow label="Текущий эфир" value={selectedAthlete.liveEvent} />
+            <div className="space-y-5 p-5">
+              <div className="space-y-3">
+                <SideInfoRow label="Вид спорта" value={selectedAthlete.sport} />
+                <SideInfoRow label="Команда / страна" value={selectedAthlete.teamOrCountry} />
+                <SideInfoRow label="Текущий эфир" value={selectedAthlete.liveEvent} />
+              </div>
 
               <div className="grid grid-cols-3 gap-3">
-                <DetailMetric label="Поддержка" value={selectedAthlete.supportStats.donations} />
-                <DetailMetric label="Аудитория" value={selectedAthlete.supportStats.audience} />
-                <DetailMetric label="События" value={selectedAthlete.supportStats.activeEvents} />
+                <DetailMetric label="Поддержка" value={getSupportLabel(selectedAthlete.supportStats.totalSupport)} note={selectedAthlete.supportLabel} />
+                <DetailMetric label="Аудитория" value={formatCompactCount(selectedAthlete.supportStats.audience)} note="Подписчики" />
+                <DetailMetric label="События" value={formatWithSpaces(selectedAthlete.supportStats.activeEvents)} note="Активные сейчас" />
               </div>
 
               <div className="rounded-[20px] border border-black/[0.045] bg-[linear-gradient(180deg,#ffffff_0%,#fafbfe_100%)] p-4">
-                <div className="flex items-center justify-between gap-3">
-                  <div>
-                    <p className="text-[0.76rem] font-semibold uppercase tracking-[0.16em] text-slate-400">Последняя активность</p>
-                    <p className="mt-1 text-sm text-slate-500">Ключевые изменения карточки и состояния поддержки.</p>
-                  </div>
+                <div>
+                  <p className="text-[0.74rem] font-semibold uppercase tracking-[0.16em] text-slate-400">Последняя активность</p>
+                  <p className="mt-1 text-[0.82rem] text-slate-500">Ключевые изменения карточки и состояния поддержки.</p>
                 </div>
 
-                <div className="mt-4 space-y-3">
+                <div className="mt-4 space-y-2.5">
                   {selectedAthlete.activitySummary.map((item) => (
-                    <div key={item.id} className="rounded-[16px] bg-[#f8f9fc] px-3.5 py-3">
+                    <div key={item.id} className="rounded-[14px] bg-[#f8fafc] px-3.5 py-3">
                       <div className="flex items-start justify-between gap-3">
-                        <p className="text-[0.9rem] font-medium leading-5 text-slate-800">{item.title}</p>
-                        <span className="shrink-0 text-[0.8rem] text-slate-500">{item.at}</span>
+                        <p className="text-[0.86rem] font-medium leading-5 text-slate-800">{item.title}</p>
+                        <span className="shrink-0 text-[0.76rem] text-slate-500">{item.at}</span>
                       </div>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-3">
+              <div className="space-y-3 pt-1">
                 <button
                   type="button"
                   onClick={() => setSelectedAthleteId(selectedAthlete.id)}
-                  className="col-span-2 flex items-center justify-center gap-2 rounded-[16px] bg-[linear-gradient(180deg,#5d9cff_0%,#4f8ff6_100%)] px-4 py-3.5 text-[0.95rem] font-semibold text-white shadow-[0_18px_30px_rgba(79,143,246,0.22)]"
+                  className="flex w-full items-center justify-center gap-2 rounded-[16px] bg-[linear-gradient(180deg,#5d9cff_0%,#4f8ff6_100%)] px-4 py-3.5 text-[0.95rem] font-semibold text-white shadow-[0_18px_30px_rgba(79,143,246,0.22)]"
                 >
                   Редактировать
                 </button>
-                <button
-                  type="button"
-                  onClick={() => handleAthleteAction(selectedAthlete, 'archive')}
-                  className="flex items-center justify-center gap-2 rounded-[16px] border border-black/[0.06] bg-white px-4 py-3.5 text-[0.95rem] font-semibold text-slate-700"
-                >
-                  Архивировать
-                </button>
-                <button
-                  type="button"
-                  onClick={() => handleAthleteAction(selectedAthlete, 'hide')}
-                  className="flex items-center justify-center gap-2 rounded-[16px] bg-[#f7f8fb] px-4 py-3.5 text-[0.95rem] font-semibold text-slate-600"
-                >
-                  Скрыть
-                </button>
+
+                <div className="grid grid-cols-2 gap-3">
+                  <button
+                    type="button"
+                    onClick={() => handleAthleteAction(selectedAthlete, 'archive')}
+                    className="flex items-center justify-center gap-2 rounded-[16px] border border-[#eadfce] bg-[#fdf9f4] px-4 py-3.5 text-[0.92rem] font-semibold text-[#8e6d43]"
+                  >
+                    Архивировать
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleAthleteAction(selectedAthlete, 'hide')}
+                    className="flex items-center justify-center gap-2 rounded-[16px] border border-black/[0.06] bg-white px-4 py-3.5 text-[0.92rem] font-semibold text-slate-600"
+                  >
+                    Скрыть
+                  </button>
+                </div>
               </div>
             </div>
           </aside>
