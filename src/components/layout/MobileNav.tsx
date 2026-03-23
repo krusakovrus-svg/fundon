@@ -108,7 +108,7 @@ export function MobileNav() {
   return (
     <nav className="pointer-events-none fixed inset-x-0 bottom-0 z-40 flex justify-center px-4 pb-4 sm:pb-5">
       <div
-        className="pointer-events-auto w-full rounded-[30px] border border-black/[0.04] bg-[linear-gradient(180deg,rgba(255,255,255,0.82),rgba(247,249,252,0.76))] p-1.5 shadow-[0_12px_24px_rgba(15,23,42,0.07)] backdrop-blur-xl ring-1 ring-white/46 dark:border-white/[0.05] dark:bg-[linear-gradient(180deg,rgba(19,25,38,0.64),rgba(11,16,27,0.62))] dark:shadow-[0_10px_18px_rgba(2,6,23,0.14)] dark:ring-white/[0.04]"
+        className="pointer-events-auto w-full rounded-[30px] border border-black/[0.04] bg-[linear-gradient(180deg,rgba(255,255,255,0.82),rgba(247,249,252,0.76))] p-1.5 shadow-[0_12px_24px_rgba(15,23,42,0.07)] backdrop-blur-xl ring-1 ring-white/46 dark:border-white/[0.045] dark:bg-[linear-gradient(180deg,rgba(18,24,37,0.80),rgba(12,17,28,0.78))] dark:shadow-[0_8px_16px_rgba(2,6,23,0.10)] dark:ring-white/[0.035]"
         style={{ maxWidth: "calc(var(--page-max-width) - (var(--page-padding-x) * 2))" }}
       >
         <div className="grid grid-cols-5 gap-1">
@@ -128,7 +128,7 @@ export function MobileNav() {
                 className={cn(
                   "group flex h-[3.35rem] items-center justify-center rounded-[24px] transition-all duration-200",
                   isActive
-                    ? "bg-[linear-gradient(180deg,rgba(255,122,63,0.07),rgba(255,255,255,0.72))] text-[rgb(var(--text-primary))] shadow-[0_8px_16px_rgba(255,124,65,0.07)] ring-1 ring-white/40 dark:bg-[linear-gradient(180deg,rgba(255,124,65,0.07),rgba(255,255,255,0.02))] dark:text-white dark:shadow-[0_6px_12px_rgba(255,124,65,0.04)] dark:ring-white/[0.04]"
+                    ? "bg-[linear-gradient(180deg,rgba(255,122,63,0.07),rgba(255,255,255,0.72))] text-[rgb(var(--text-primary))] shadow-[0_8px_16px_rgba(255,124,65,0.07)] ring-1 ring-white/40 dark:bg-[linear-gradient(180deg,rgba(255,124,65,0.065),rgba(255,255,255,0.018))] dark:text-white dark:shadow-[0_5px_10px_rgba(255,124,65,0.035)] dark:ring-white/[0.035]"
                     : "text-[color:var(--text-secondary)] hover:bg-black/[0.03] hover:text-[color:var(--text-primary)] dark:hover:bg-white/[0.05] dark:hover:text-[color:var(--text-primary)]",
                 )}
               >
@@ -136,7 +136,7 @@ export function MobileNav() {
                   className={cn(
                     "flex h-9 w-9 items-center justify-center rounded-full transition-all duration-200",
                     isActive
-                      ? "bg-white/68 text-[rgb(var(--accent-orange))] shadow-[0_5px_12px_rgba(255,255,255,0.2)] dark:bg-white/[0.045] dark:text-[rgb(var(--accent-orange))] dark:shadow-none"
+                      ? "bg-white/68 text-[rgb(var(--accent-orange))] shadow-[0_5px_12px_rgba(255,255,255,0.2)] dark:bg-white/[0.04] dark:text-[rgb(var(--accent-orange))] dark:shadow-none"
                       : "bg-transparent text-current group-hover:bg-white/68 group-hover:shadow-[0_6px_14px_rgba(255,255,255,0.24)] dark:group-hover:bg-white/[0.05] dark:group-hover:shadow-none",
                   )}
                 >
