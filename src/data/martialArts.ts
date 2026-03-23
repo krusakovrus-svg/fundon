@@ -1,232 +1,232 @@
 import type { SportEventRecord } from '@/types';
 
+function createMartialArtsEvent({
+  id,
+  title,
+  titleRu,
+  startsAt,
+  endsAt,
+  participants
+}: Omit<SportEventRecord, 'sportId'>) {
+  return {
+    id,
+    sportId: 'martial-arts',
+    title,
+    titleRu,
+    startsAt,
+    endsAt,
+    participants
+  } satisfies SportEventRecord;
+}
+
 export const martialArtsEvents: SportEventRecord[] = [
-  {
-    id: 'martial-arts-one-friday-fights-1',
-    sportId: 'martial-arts',
-    title: 'Martial arts · Muay Thai · ONE Friday Fights',
-    titleRu: 'Единоборства · Муай-Тай · ONE Friday Fights',
-    startsAt: '2026-03-20T15:00:00+03:00',
-    endsAt: '2026-03-20T16:00:00+03:00',
+  createMartialArtsEvent({
+    id: 'martial-arts-aca-1',
+    title: 'Martial arts · MMA · ACA',
+    titleRu: 'Единоборства · MMA · ACA',
+    startsAt: '2026-03-27T20:00:00+03:00',
+    endsAt: '2026-03-27T20:45:00+03:00',
     participants: [
-      { id: 'anan-n', name: 'Anan N.', nameRu: 'Анан Н.', country: 'Algeria' },
-      { id: 'rambolek', name: 'Rambolek Chor Ajalaboon', nameRu: 'Рамболек Чор Аджалабун', country: 'Thailand' }
+      { id: 'silva-j', name: 'Silva J.', nameRu: 'Сильва Ж.', country: 'Brazil' },
+      { id: 'podlesniy-a', name: 'Podlesniy A.', nameRu: 'Подлесный А.', country: 'Ukraine' }
     ]
-  },
-  {
-    id: 'martial-arts-one-friday-fights-2',
-    sportId: 'martial-arts',
-    title: 'Martial arts · Muay Thai · ONE Friday Fights',
-    titleRu: 'Единоборства · Муай-Тай · ONE Friday Fights',
-    startsAt: '2026-03-20T17:00:00+03:00',
-    endsAt: '2026-03-20T18:00:00+03:00',
-    participants: [
-      { id: 'jaosuay', name: 'Jaosuay Sor Dechapan', nameRu: 'Джаосуай Сор Дечапан', country: 'Thailand' },
-      { id: 'pompetu', name: 'Pompetu PK Kasechai', nameRu: 'Помпету PK Касечаи', country: 'Thailand' }
-    ]
-  },
-  {
-    id: 'martial-arts-one-friday-fights-3',
-    sportId: 'martial-arts',
-    title: 'Martial arts · Muay Thai · ONE Friday Fights',
-    titleRu: 'Единоборства · Муай-Тай · ONE Friday Fights',
-    startsAt: '2026-03-20T17:30:00+03:00',
-    endsAt: '2026-03-20T18:30:00+03:00',
-    participants: [
-      { id: 'nong-o', name: 'Nong-O Hama', nameRu: 'Нонг-О Хама', country: 'Thailand' },
-      { id: 'imagazaliev', name: 'Imagazaliev A.', nameRu: 'Имагазалиев А.', country: 'Russia' }
-    ]
-  },
-  {
-    id: 'martial-arts-pfl-1',
-    sportId: 'martial-arts',
-    title: 'Martial arts · MMA · PFL',
-    titleRu: 'Единоборства · MMA · PFL',
-    startsAt: '2026-03-21T00:30:00+03:00',
-    endsAt: '2026-03-21T01:30:00+03:00',
-    participants: [
-      { id: 'van-steenis', name: 'Van Steenis K.', nameRu: 'Ван Стенис К.', country: 'Netherlands' },
-      { id: 'edwards', name: 'Edwards F.', nameRu: 'Эдвардс Ф.', country: 'England' }
-    ]
-  },
-  {
-    id: 'martial-arts-ufc-270-1',
-    sportId: 'martial-arts',
-    title: 'Martial arts · MMA · UFC Fight Night 270: Evloev vs Murphy',
-    titleRu: 'Единоборства · MMA · UFC Fight Night 270: Евлоев vs Мерфи',
-    startsAt: '2026-03-21T20:00:00+03:00',
-    endsAt: '2026-03-21T20:45:00+03:00',
-    participants: [
-      { id: 'mullins', name: 'Mullins M.', nameRu: 'Маллинс М.', country: 'England' },
-      { id: 'carolina', name: 'Carolina L.', nameRu: 'Каролина Л.', country: 'Brazil' }
-    ]
-  },
-  {
-    id: 'martial-arts-ufc-270-2',
-    sportId: 'martial-arts',
-    title: 'Martial arts · MMA · UFC Fight Night 270: Evloev vs Murphy',
-    titleRu: 'Единоборства · MMA · UFC Fight Night 270: Евлоев vs Мерфи',
-    startsAt: '2026-03-21T20:15:00+03:00',
-    endsAt: '2026-03-21T21:00:00+03:00',
-    participants: [
-      { id: 'duffy', name: 'Duffy S.', nameRu: 'Даффи Ш.', country: 'Ireland' },
-      { id: 'oliveira-r', name: 'Oliveira R.', nameRu: 'Оливейра Р.', country: 'Brazil' }
-    ]
-  },
-  {
-    id: 'martial-arts-ufc-270-3',
-    sportId: 'martial-arts',
-    title: 'Martial arts · MMA · UFC Fight Night 270: Evloev vs Murphy',
-    titleRu: 'Единоборства · MMA · UFC Fight Night 270: Евлоев vs Мерфи',
-    startsAt: '2026-03-21T20:30:00+03:00',
-    endsAt: '2026-03-21T21:15:00+03:00',
-    participants: [
-      { id: 'rock', name: 'Rock S.', nameRu: 'Рок Ш.', country: 'United Kingdom' },
-      { id: 'al-selwady', name: 'Al-Selwady A-K.', nameRu: 'Аль-Сельвади А-К.', country: 'Palestine' }
-    ]
-  },
-  {
-    id: 'martial-arts-ufc-270-4',
-    sportId: 'martial-arts',
-    title: 'Martial arts · MMA · UFC Fight Night 270: Evloev vs Murphy',
-    titleRu: 'Единоборства · MMA · UFC Fight Night 270: Евлоев vs Мерфи',
-    startsAt: '2026-03-21T20:45:00+03:00',
-    endsAt: '2026-03-21T21:30:00+03:00',
-    participants: [
-      { id: 'sutherland', name: 'Sutherland L.', nameRu: 'Сазерленд Л.', country: 'Scotland' },
-      { id: 'pericic', name: 'Pericic B.', nameRu: 'Перичич Б.', country: 'Australia' }
-    ]
-  },
-  {
-    id: 'martial-arts-ufc-270-5',
-    sportId: 'martial-arts',
-    title: 'Martial arts · MMA · UFC Fight Night 270: Evloev vs Murphy',
-    titleRu: 'Единоборства · MMA · UFC Fight Night 270: Евлоев vs Мерфи',
-    startsAt: '2026-03-21T21:00:00+03:00',
-    endsAt: '2026-03-21T21:45:00+03:00',
-    participants: [
-      { id: 'kondratavicius', name: 'Kondratavicius M.', nameRu: 'Кондратавичус М.', country: 'Lithuania' },
-      { id: 'trokoli', name: 'Trokoli A.', nameRu: 'Троколи А.', country: 'Brazil' }
-    ]
-  },
-  {
-    id: 'martial-arts-ufc-270-6',
-    sportId: 'martial-arts',
-    title: 'Martial arts · MMA · UFC Fight Night 270: Evloev vs Murphy',
-    titleRu: 'Единоборства · MMA · UFC Fight Night 270: Евлоев vs Мерфи',
-    startsAt: '2026-03-21T21:15:00+03:00',
-    endsAt: '2026-03-21T22:00:00+03:00',
-    participants: [
-      { id: 'pinto', name: 'Pinto M.', nameRu: 'Пинту М.', country: 'Portugal' },
-      { id: 'franco', name: 'Franco F.', nameRu: 'Франко Ф.', country: 'Brazil' }
-    ]
-  },
-  {
-    id: 'martial-arts-ufc-270-7',
-    sportId: 'martial-arts',
-    title: 'Martial arts · MMA · UFC Fight Night 270: Evloev vs Murphy',
-    titleRu: 'Единоборства · MMA · UFC Fight Night 270: Евлоев vs Мерфи',
-    startsAt: '2026-03-21T21:30:00+03:00',
-    endsAt: '2026-03-21T22:15:00+03:00',
-    participants: [
-      { id: 'wood', name: 'Wood N.', nameRu: 'Вуд Н.', country: 'England' },
-      { id: 'keita', name: 'Keita L.', nameRu: 'Кейта Л.', country: 'Belgium' }
-    ]
-  },
-  {
-    id: 'martial-arts-ufc-270-8',
-    sportId: 'martial-arts',
-    title: 'Martial arts · MMA · UFC Fight Night 270: Evloev vs Murphy',
-    titleRu: 'Единоборства · MMA · UFC Fight Night 270: Евлоев vs Мерфи',
-    startsAt: '2026-03-21T21:45:00+03:00',
-    endsAt: '2026-03-21T22:30:00+03:00',
-    participants: [
-      { id: 'jones', name: 'Jones M.', nameRu: 'Джонс М.', country: 'United States' },
-      { id: 'sola', name: 'Sola A.', nameRu: 'Сола А.', country: 'France' }
-    ]
-  },
-  {
-    id: 'martial-arts-ufc-270-9',
-    sportId: 'martial-arts',
-    title: 'Martial arts · MMA · UFC Fight Night 270: Evloev vs Murphy',
-    titleRu: 'Единоборства · MMA · UFC Fight Night 270: Евлоев vs Мерфи',
-    startsAt: '2026-03-21T23:00:00+03:00',
-    endsAt: '2026-03-21T23:45:00+03:00',
-    participants: [
-      { id: 'campbell', name: 'Campbell K.', nameRu: 'Кэмпбелл К.', country: 'England' },
-      { id: 'silva-danny', name: 'Danny Silva', nameRu: 'Сильва Дэнни', country: 'United States' }
-    ]
-  },
-  {
-    id: 'martial-arts-ufc-270-10',
-    sportId: 'martial-arts',
-    title: 'Martial arts · MMA · UFC Fight Night 270: Evloev vs Murphy',
-    titleRu: 'Единоборства · MMA · UFC Fight Night 270: Евлоев vs Мерфи',
-    startsAt: '2026-03-21T23:15:00+03:00',
-    endsAt: '2026-03-22T00:00:00+03:00',
-    participants: [
-      { id: 'dolidze', name: 'Dolidze R.', nameRu: 'Долидзе Р.', country: 'Georgia' },
-      { id: 'duncan', name: 'Duncan C.L.', nameRu: 'Данкан К. Л.', country: 'England' }
-    ]
-  },
-  {
-    id: 'martial-arts-ufc-270-11',
-    sportId: 'martial-arts',
-    title: 'Martial arts · MMA · UFC Fight Night 270: Evloev vs Murphy',
-    titleRu: 'Единоборства · MMA · UFC Fight Night 270: Евлоев vs Мерфи',
-    startsAt: '2026-03-21T23:30:00+03:00',
-    endsAt: '2026-03-22T00:15:00+03:00',
-    participants: [
-      { id: 'baranievski', name: 'Baranievski I.', nameRu: 'Бараньевский И.', country: 'Poland' },
-      { id: 'lane', name: 'Lane O.', nameRu: 'Лайн О.', country: 'United States' }
-    ]
-  },
-  {
-    id: 'martial-arts-ufc-270-12',
-    sportId: 'martial-arts',
-    title: 'Martial arts · MMA · UFC Fight Night 270: Evloev vs Murphy',
-    titleRu: 'Единоборства · MMA · UFC Fight Night 270: Евлоев vs Мерфи',
-    startsAt: '2026-03-21T23:59:00+03:00',
-    endsAt: '2026-03-22T00:45:00+03:00',
-    participants: [
-      { id: 'page', name: 'Page M.', nameRu: 'Пейдж М.', country: 'England' },
-      { id: 'patterson', name: 'Patterson S.', nameRu: 'Паттерсон С.', country: 'England' }
-    ]
-  },
-  {
-    id: 'martial-arts-ufc-270-13',
-    sportId: 'martial-arts',
-    title: 'Martial arts · MMA · UFC Fight Night 270: Evloev vs Murphy',
-    titleRu: 'Единоборства · MMA · UFC Fight Night 270: Евлоев vs Мерфи',
-    startsAt: '2026-03-22T00:30:00+03:00',
-    endsAt: '2026-03-22T01:15:00+03:00',
-    participants: [
-      { id: 'riley', name: 'Riley L.', nameRu: 'Райли Л.', country: 'England' },
-      { id: 'aswell', name: 'Aswell M.', nameRu: 'Асвелл М.', country: 'United States' }
-    ]
-  },
-  {
-    id: 'martial-arts-ufc-270-14',
-    sportId: 'martial-arts',
-    title: 'Martial arts · MMA · UFC Fight Night 270: Evloev vs Murphy',
-    titleRu: 'Единоборства · MMA · UFC Fight Night 270: Евлоев vs Мерфи',
-    startsAt: '2026-03-22T01:40:00+03:00',
-    endsAt: '2026-03-22T02:30:00+03:00',
-    participants: [
-      { id: 'evloev', name: 'Evloev M.', nameRu: 'Евлоев М.', country: 'Russia' },
-      { id: 'murphy', name: 'Murphy L.', nameRu: 'Мерфи Л.', country: 'England' }
-    ]
-  },
-  {
+  }),
+  createMartialArtsEvent({
     id: 'martial-arts-ufc-271-1',
-    sportId: 'martial-arts',
     title: 'Martial arts · MMA · UFC Fight Night 271: Adesanya vs Pfeifer',
     titleRu: 'Единоборства · MMA · UFC Fight Night 271: Адесанья vs Пайфер',
-    startsAt: '2026-03-29T06:10:00+03:00',
-    endsAt: '2026-03-29T07:00:00+03:00',
+    startsAt: '2026-03-29T00:00:00+03:00',
+    endsAt: '2026-03-29T00:45:00+03:00',
     participants: [
-      { id: 'adesanya', name: 'Adesanya I.', nameRu: 'Адесанья И.', country: 'Nigeria' },
-      { id: 'pfeifer', name: 'Pfeifer J.', nameRu: 'Пайфер Дж.', country: 'United States' }
+      { id: 'tainara-a', name: 'Tainara A.', nameRu: 'Тайнара А.', country: 'Brazil' },
+      { id: 'brazil-b', name: 'Brazil B.', nameRu: 'Бразил Б.', country: 'Brazil' }
     ]
-  }
+  }),
+  createMartialArtsEvent({
+    id: 'martial-arts-ufc-271-2',
+    title: 'Martial arts · MMA · UFC Fight Night 271: Adesanya vs Pfeifer',
+    titleRu: 'Единоборства · MMA · UFC Fight Night 271: Адесанья vs Пайфер',
+    startsAt: '2026-03-29T00:15:00+03:00',
+    endsAt: '2026-03-29T01:00:00+03:00',
+    participants: [
+      { id: 'oneil-k', name: "O'Neil K.", nameRu: "О'Нил К.", country: 'Australia' },
+      { id: 'fernandes-g', name: 'Fernandes G.', nameRu: 'Фернандес Г.', country: 'Brazil' }
+    ]
+  }),
+  createMartialArtsEvent({
+    id: 'martial-arts-ufc-271-3',
+    title: 'Martial arts · MMA · UFC Fight Night 271: Adesanya vs Pfeifer',
+    titleRu: 'Единоборства · MMA · UFC Fight Night 271: Адесанья vs Пайфер',
+    startsAt: '2026-03-29T00:15:00+03:00',
+    endsAt: '2026-03-29T01:00:00+03:00',
+    participants: [
+      { id: 'simon-r', name: 'Simon R.', nameRu: 'Симон Р.', country: 'United States' },
+      { id: 'yanez-a', name: 'Yanez A.', nameRu: 'Янес А.', country: 'United States' }
+    ]
+  }),
+  createMartialArtsEvent({
+    id: 'martial-arts-ufc-271-4',
+    title: 'Martial arts · MMA · UFC Fight Night 271: Adesanya vs Pfeifer',
+    titleRu: 'Единоборства · MMA · UFC Fight Night 271: Адесанья vs Пайфер',
+    startsAt: '2026-03-29T00:30:00+03:00',
+    endsAt: '2026-03-29T01:15:00+03:00',
+    participants: [
+      { id: 'stirling-n', name: 'Stirling N.', nameRu: 'Стирлинг Н.', country: 'Australia' },
+      { id: 'lopes-bruno', name: 'Bruno Lopes', nameRu: 'Лопес Бруно', country: 'Brazil' }
+    ]
+  }),
+  createMartialArtsEvent({
+    id: 'martial-arts-ufc-271-5',
+    title: 'Martial arts · MMA · UFC Fight Night 271: Adesanya vs Pfeifer',
+    titleRu: 'Единоборства · MMA · UFC Fight Night 271: Адесанья vs Пайфер',
+    startsAt: '2026-03-29T01:00:00+03:00',
+    endsAt: '2026-03-29T01:45:00+03:00',
+    participants: [
+      { id: 'tybura-m', name: 'Tybura M.', nameRu: 'Тыбура М.', country: 'Poland' },
+      { id: 'fortune-t', name: 'Fortune T.', nameRu: 'Форчун Т.', country: 'United States' }
+    ]
+  }),
+  createMartialArtsEvent({
+    id: 'martial-arts-ufc-271-6',
+    title: 'Martial arts · MMA · UFC Fight Night 271: Adesanya vs Pfeifer',
+    titleRu: 'Единоборства · MMA · UFC Fight Night 271: Адесанья vs Пайфер',
+    startsAt: '2026-03-29T01:15:00+03:00',
+    endsAt: '2026-03-29T02:00:00+03:00',
+    participants: [
+      { id: 'hooper-c', name: 'Hooper C.', nameRu: 'Хупер Ч.', country: 'United States' },
+      { id: 'gibson-ml', name: 'Gibson M.L.', nameRu: 'Гибсон Мл. Л.', country: 'Canada' }
+    ]
+  }),
+  createMartialArtsEvent({
+    id: 'martial-arts-ufc-271-7',
+    title: 'Martial arts · MMA · UFC Fight Night 271: Adesanya vs Pfeifer',
+    titleRu: 'Единоборства · MMA · UFC Fight Night 271: Адесанья vs Пайфер',
+    startsAt: '2026-03-29T01:30:00+03:00',
+    endsAt: '2026-03-29T02:15:00+03:00',
+    participants: [
+      { id: 'bahamondes-i', name: 'Bahamondes I.', nameRu: 'Бахамондес И.', country: 'Chile' },
+      { id: 'musaev-t', name: 'Musaev T.', nameRu: 'Мусаев Т.', country: 'Azerbaijan' }
+    ]
+  }),
+  createMartialArtsEvent({
+    id: 'martial-arts-ufc-271-8',
+    title: 'Martial arts · MMA · UFC Fight Night 271: Adesanya vs Pfeifer',
+    titleRu: 'Единоборства · MMA · UFC Fight Night 271: Адесанья vs Пайфер',
+    startsAt: '2026-03-29T03:00:00+03:00',
+    endsAt: '2026-03-29T03:45:00+03:00',
+    participants: [
+      { id: 'mckinney-t', name: 'McKinney T.', nameRu: 'МакКинни Т.', country: 'United States' },
+      { id: 'nelson-k', name: 'Nelson K.', nameRu: 'Нельсон К.', country: 'Canada' }
+    ]
+  }),
+  createMartialArtsEvent({
+    id: 'martial-arts-ufc-271-9',
+    title: 'Martial arts · MMA · UFC Fight Night 271: Adesanya vs Pfeifer',
+    titleRu: 'Единоборства · MMA · UFC Fight Night 271: Адесанья vs Пайфер',
+    startsAt: '2026-03-29T03:15:00+03:00',
+    endsAt: '2026-03-29T04:00:00+03:00',
+    participants: [
+      { id: 'abdul-malik-m', name: 'Abdul-Malik M.', nameRu: 'Абдул-Малик М.', country: 'United States' },
+      { id: 'belgaroui-y', name: 'Belgaroui Y.', nameRu: 'Белгаруи Ю.', country: 'Tunisia' }
+    ]
+  }),
+  createMartialArtsEvent({
+    id: 'martial-arts-ufc-271-10',
+    title: 'Martial arts · MMA · UFC Fight Night 271: Adesanya vs Pfeifer',
+    titleRu: 'Единоборства · MMA · UFC Fight Night 271: Адесанья vs Пайфер',
+    startsAt: '2026-03-29T03:35:00+03:00',
+    endsAt: '2026-03-29T04:20:00+03:00',
+    participants: [
+      { id: 'erosa-j', name: 'Erosa J.', nameRu: 'Эроса Дж.', country: 'United States' },
+      { id: 'douglas-l', name: 'Douglas L.', nameRu: 'Дуглас Л.', country: 'Brazil' }
+    ]
+  }),
+  createMartialArtsEvent({
+    id: 'martial-arts-ufc-271-11',
+    title: 'Martial arts · MMA · UFC Fight Night 271: Adesanya vs Pfeifer',
+    titleRu: 'Единоборства · MMA · UFC Fight Night 271: Адесанья vs Пайфер',
+    startsAt: '2026-03-29T04:00:00+03:00',
+    endsAt: '2026-03-29T04:45:00+03:00',
+    participants: [
+      { id: 'grasso-a', name: 'Grasso A.', nameRu: 'Грассо А.', country: 'Mexico' },
+      { id: 'barber-m', name: 'Barber M.', nameRu: 'Барбер М.', country: 'United States' }
+    ]
+  }),
+  createMartialArtsEvent({
+    id: 'martial-arts-ufc-271-12',
+    title: 'Martial arts · MMA · UFC Fight Night 271: Adesanya vs Pfeifer',
+    titleRu: 'Единоборства · MMA · UFC Fight Night 271: Адесанья vs Пайфер',
+    startsAt: '2026-03-29T04:30:00+03:00',
+    endsAt: '2026-03-29T05:15:00+03:00',
+    participants: [
+      { id: 'adesanya-i', name: 'Adesanya I.', nameRu: 'Адесанья И.', country: 'Ireland' },
+      { id: 'pfeifer-j', name: 'Pfeifer J.', nameRu: 'Пайфер Дж.', country: 'United States' }
+    ]
+  }),
+  createMartialArtsEvent({
+    id: 'martial-arts-freedom-250-1',
+    title: 'Martial arts · MMA · UFC Freedom 250: Topuria vs Gaethje',
+    titleRu: 'Единоборства · MMA · UFC Freedom 250: Топурия vs Гейджи',
+    startsAt: '2026-06-15T04:45:00+03:00',
+    endsAt: '2026-06-15T05:30:00+03:00',
+    participants: [
+      { id: 'lopes-d', name: 'Lopes D.', nameRu: 'Лопес Д.', country: 'Brazil' },
+      { id: 'garcia-jr-c', name: 'Garcia Jr. C.', nameRu: 'Гарсия Мл. С.', country: 'United States' }
+    ]
+  }),
+  createMartialArtsEvent({
+    id: 'martial-arts-freedom-250-2',
+    title: 'Martial arts · MMA · UFC Freedom 250: Topuria vs Gaethje',
+    titleRu: 'Единоборства · MMA · UFC Freedom 250: Топурия vs Гейджи',
+    startsAt: '2026-06-15T05:15:00+03:00',
+    endsAt: '2026-06-15T06:00:00+03:00',
+    participants: [
+      { id: 'nickal-b', name: 'Nickal B.', nameRu: 'Никал Б.', country: 'United States' },
+      { id: 'daukaus-k', name: 'Daukaus K.', nameRu: 'Дакас К.', country: 'United States' }
+    ]
+  }),
+  createMartialArtsEvent({
+    id: 'martial-arts-freedom-250-3',
+    title: 'Martial arts · MMA · UFC Freedom 250: Topuria vs Gaethje',
+    titleRu: 'Единоборства · MMA · UFC Freedom 250: Топурия vs Гейджи',
+    startsAt: '2026-06-15T05:45:00+03:00',
+    endsAt: '2026-06-15T06:30:00+03:00',
+    participants: [
+      { id: 'ruffy-m', name: 'Ruffy M.', nameRu: 'Руффи М.', country: 'Brazil' },
+      { id: 'chandler-m', name: 'Chandler M.', nameRu: 'Чендлер М.', country: 'United States' }
+    ]
+  }),
+  createMartialArtsEvent({
+    id: 'martial-arts-freedom-250-4',
+    title: 'Martial arts · MMA · UFC Freedom 250: Topuria vs Gaethje',
+    titleRu: 'Единоборства · MMA · UFC Freedom 250: Топурия vs Гейджи',
+    startsAt: '2026-06-15T06:15:00+03:00',
+    endsAt: '2026-06-15T07:00:00+03:00',
+    participants: [
+      { id: 'omalley-s', name: "O'Malley S.", nameRu: "О'Мэлли Ш.", country: 'United States' },
+      { id: 'zahabi-a', name: 'Zahabi A.', nameRu: 'Захаби А.', country: 'Canada' }
+    ]
+  }),
+  createMartialArtsEvent({
+    id: 'martial-arts-freedom-250-5',
+    title: 'Martial arts · MMA · UFC Freedom 250: Topuria vs Gaethje',
+    titleRu: 'Единоборства · MMA · UFC Freedom 250: Топурия vs Гейджи',
+    startsAt: '2026-06-15T06:45:00+03:00',
+    endsAt: '2026-06-15T07:30:00+03:00',
+    participants: [
+      { id: 'pereira-a', name: 'Pereira A.', nameRu: 'Перейра А.', country: 'Brazil' },
+      { id: 'gane-c', name: 'Gane C.', nameRu: 'Ган С.', country: 'France' }
+    ]
+  }),
+  createMartialArtsEvent({
+    id: 'martial-arts-freedom-250-6',
+    title: 'Martial arts · MMA · UFC Freedom 250: Topuria vs Gaethje',
+    titleRu: 'Единоборства · MMA · UFC Freedom 250: Топурия vs Гейджи',
+    startsAt: '2026-06-15T07:20:00+03:00',
+    endsAt: '2026-06-15T08:05:00+03:00',
+    participants: [
+      { id: 'topuria-i', name: 'Topuria I.', nameRu: 'Топурия И.', country: 'Georgia' },
+      { id: 'gaethje-j', name: 'Gaethje J.', nameRu: 'Гейджи Дж.', country: 'United States' }
+    ]
+  })
 ];

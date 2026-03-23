@@ -77,6 +77,22 @@ export function getCountryFlagVisual(country?: string) {
     return { type: 'emoji' as const, value: '\uD83C\uDDE8\uD83C\uDDF3' };
   }
 
+  if (country === 'Ukraine') {
+    return { type: 'emoji' as const, value: '\uD83C\uDDFA\uD83C\uDDE6' };
+  }
+
+  if (country === 'Chile') {
+    return { type: 'emoji' as const, value: '\uD83C\uDDE8\uD83C\uDDF1' };
+  }
+
+  if (country === 'Azerbaijan') {
+    return { type: 'emoji' as const, value: '\uD83C\uDDE6\uD83C\uDDFF' };
+  }
+
+  if (country === 'Tunisia') {
+    return { type: 'emoji' as const, value: '\uD83C\uDDF9\uD83C\uDDF3' };
+  }
+
   if (country === 'Venezuela') {
     return { type: 'emoji' as const, value: '\uD83C\uDDFB\uD83C\uDDEA' };
   }
