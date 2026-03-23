@@ -30,7 +30,7 @@ function GroupIcon() {
 
 function ChevronIcon() {
   return (
-    <svg viewBox="0 0 20 20" className="h-[0.95rem] w-[0.95rem]" fill="none" stroke="currentColor" strokeWidth="1.8">
+    <svg viewBox="0 0 20 20" className="h-[0.92rem] w-[0.92rem]" fill="none" stroke="currentColor" strokeWidth="1.7">
       <path d="m7 4 6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
@@ -56,9 +56,12 @@ function getRoomCopy(roomId: string) {
 }
 
 export function RoomsScreen() {
-  const { language, t } = useLanguage();
+  const { language } = useLanguage();
   const isRussian = language === 'ru';
 
+  const headerDescription = isRussian
+    ? 'Комнаты позже добавят совместную поддержку и энергию эфира.'
+    : 'Rooms will later add shared support and live-room energy.';
   const introTitle = isRussian ? 'Комнаты в следующей волне' : 'Rooms in the next wave';
   const introBody = isRussian
     ? 'Комнаты объединят совместную поддержку, приватные сценарии просмотра и быстрый доступ к live-событиям.'
@@ -67,31 +70,49 @@ export function RoomsScreen() {
     ? ['Совместная поддержка', 'Приватные сценарии', 'Рейтинг участников']
     : ['Shared support', 'Private watch flow', 'Member ranking'];
   const summaryItems = [
-    { label: isRussian ? 'Подготовлено' : 'Prepared', value: mockData.rooms.length.toString() },
-    { label: isRussian ? 'Эфиров сейчас' : 'Live now', value: liveEvents.length.toString() },
-    { label: isRussian ? 'Следующий этап' : 'Next stage', value: isRussian ? 'Rooms' : 'Rooms' }
+    {
+      label: isRussian ? 'Подготовлено' : 'Prepared',
+      value: mockData.rooms.length.toString(),
+      note: isRussian ? 'к релизу' : 'for release'
+    },
+    {
+      label: isRussian ? 'Эфиров сейчас' : 'Live now',
+      value: liveEvents.length.toString(),
+      note: isRussian ? 'в ленте' : 'in feed'
+    },
+    {
+      label: isRussian ? 'Следующий этап' : 'Next stage',
+      value: isRussian ? 'Комнаты' : 'Rooms',
+      note: isRussian ? 'после live' : 'after live'
+    }
   ];
+  const activeRoomsDescription = isRussian
+    ? 'Комнаты, которые уже готовы к следующему mobile-релизу.'
+    : 'Rooms already prepared for the next mobile release.';
+  const openLiveLabel = isRussian ? 'Перейти к активному эфиру' : 'Open active live event';
 
   return (
-    <MainPageLayout className="space-y-4">
-      <PageHeader title={t('roomsTitle')} description={t('roomsHint')} />
+    <MainPageLayout className="space-y-3.5">
+      <PageHeader title={isRussian ? 'Комнаты' : 'Rooms'} description={headerDescription} />
 
-      <SectionCard className="space-y-4 border border-black/[0.045] bg-white/[0.88] px-4 py-4 shadow-[0_18px_36px_rgba(15,23,42,0.07)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
+      <SectionCard className="space-y-3.5 border border-black/[0.045] bg-white/[0.88] px-4 py-4 shadow-[0_18px_36px_rgba(15,23,42,0.07)] backdrop-blur-xl dark:border-white/[0.06] dark:bg-[linear-gradient(180deg,rgba(20,27,41,0.90),rgba(13,18,30,0.84))] dark:shadow-[0_18px_30px_rgba(2,6,23,0.20)]">
         <div className="flex items-start justify-between gap-3">
           <div className="flex min-w-0 gap-3">
-            <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-[1.05rem] bg-[rgba(var(--accent-orange),0.08)] text-[rgb(var(--accent-orange))]">
+            <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-[1rem] bg-[rgba(var(--accent-orange),0.08)] text-[rgb(var(--accent-orange))] dark:bg-[rgba(var(--accent-orange),0.12)]">
               <SparkIcon />
             </span>
 
             <div className="min-w-0">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted">{t('comingSoon')}</p>
-              <h2 className="mt-2 text-[1.08rem] font-semibold text-text-primary">{introTitle}</h2>
-              <p className="mt-2 text-sm leading-6 text-text-secondary">{introBody}</p>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted dark:text-white/[0.42]">
+                {isRussian ? 'Скоро' : 'Coming soon'}
+              </p>
+              <h2 className="mt-1.5 text-[1.04rem] font-semibold text-text-primary dark:text-white">{introTitle}</h2>
+              <p className="mt-1.5 text-[0.92rem] leading-6 text-text-secondary dark:text-white/[0.62]">{introBody}</p>
             </div>
           </div>
 
-          <span className="rounded-full border border-[rgba(var(--accent-orange),0.16)] bg-[rgba(var(--accent-orange),0.08)] px-3 py-1.5 text-[0.72rem] font-semibold text-text-primary">
-            {t('comingSoon')}
+          <span className="rounded-full border border-[rgba(var(--accent-orange),0.14)] bg-[rgba(var(--accent-orange),0.06)] px-3 py-1.5 text-[0.7rem] font-semibold text-text-secondary dark:border-[rgba(var(--accent-orange),0.12)] dark:bg-[rgba(var(--accent-orange),0.08)] dark:text-white/[0.68]">
+            {isRussian ? 'Скоро' : 'Soon'}
           </span>
         </div>
 
@@ -99,7 +120,7 @@ export function RoomsScreen() {
           {featurePills.map((item) => (
             <span
               key={item}
-              className="inline-flex items-center rounded-full border border-black/[0.045] bg-[rgba(247,249,252,0.82)] px-3 py-1.5 text-[0.78rem] font-medium text-text-secondary dark:border-white/8 dark:bg-white/[0.04]"
+              className="inline-flex items-center rounded-full border border-black/[0.045] bg-[rgba(247,249,252,0.78)] px-3 py-1.5 text-[0.76rem] font-medium text-text-secondary shadow-[inset_0_1px_0_rgba(255,255,255,0.68)] dark:border-white/[0.05] dark:bg-[linear-gradient(180deg,rgba(34,42,56,0.92),rgba(22,30,43,0.90))] dark:text-white/[0.62] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]"
             >
               {item}
             </span>
@@ -108,60 +129,66 @@ export function RoomsScreen() {
 
         <div className="grid grid-cols-3 gap-2.5">
           {summaryItems.map((item) => (
-            <div key={item.label} className="rounded-[1.1rem] border border-black/[0.045] bg-[rgba(247,249,252,0.78)] px-3 py-3 dark:border-white/8 dark:bg-white/5">
-              <p className="text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-text-muted">{item.label}</p>
-              <p className="mt-2 text-[1.02rem] font-semibold tracking-tight text-text-primary">{item.value}</p>
+            <div
+              key={item.label}
+              className="rounded-[1.08rem] border border-black/[0.045] bg-[rgba(247,249,252,0.8)] px-3 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] dark:border-white/[0.05] dark:bg-[linear-gradient(180deg,rgba(34,42,56,0.94),rgba(22,30,43,0.92))] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]"
+            >
+              <p className="text-[0.58rem] font-semibold uppercase tracking-[0.16em] text-text-muted dark:text-white/[0.42]">
+                {item.label}
+              </p>
+              <p className="mt-1.5 text-[1.02rem] font-semibold tracking-tight text-text-primary dark:text-white">{item.value}</p>
+              <p className="mt-1.5 text-[0.7rem] leading-snug text-text-secondary dark:text-white/[0.56]">{item.note}</p>
             </div>
           ))}
         </div>
       </SectionCard>
 
-      <SectionCard className="space-y-4 border border-black/[0.045] bg-white/[0.84] px-4 py-4 shadow-[0_18px_36px_rgba(15,23,42,0.07)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
-        <div className="flex items-center justify-between gap-3">
+      <SectionCard className="space-y-3.5 border border-black/[0.045] bg-white/[0.84] px-4 py-4 shadow-[0_18px_36px_rgba(15,23,42,0.07)] backdrop-blur-xl dark:border-white/[0.06] dark:bg-[linear-gradient(180deg,rgba(20,27,41,0.90),rgba(13,18,30,0.84))] dark:shadow-[0_18px_30px_rgba(2,6,23,0.20)]">
+        <div className="flex items-start justify-between gap-3">
           <div>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted">{t('recentRooms')}</p>
-            <p className="mt-1 text-sm text-text-secondary">
-              {isRussian ? 'Комнаты, которые уже готовы к следующему mobile-релизу.' : 'Rooms prepared for the next mobile release.'}
+            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted dark:text-white/[0.42]">
+              {isRussian ? 'Активные комнаты' : 'Active rooms'}
             </p>
+            <p className="mt-1 text-[0.9rem] leading-6 text-text-secondary dark:text-white/[0.58]">{activeRoomsDescription}</p>
           </div>
-          <span className="inline-flex min-w-[1.65rem] items-center justify-center rounded-full bg-[rgba(247,249,252,0.9)] px-2 py-1 text-[0.68rem] font-semibold text-text-secondary dark:bg-white/[0.04]">
+          <span className="inline-flex min-w-[1.45rem] items-center justify-center rounded-full bg-black/[0.03] px-2 py-1 text-[0.66rem] font-semibold text-text-muted dark:bg-white/[0.05] dark:text-white/[0.42]">
             {mockData.rooms.length}
           </span>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-2.5">
           {mockData.rooms.map((room) => {
             const correctedCopy = getRoomCopy(room.id);
             const roomName = isRussian ? correctedCopy?.nameRu ?? room.nameRu : room.name;
             const roomEvent = isRussian ? correctedCopy?.eventTitleRu ?? room.eventTitleRu : room.eventTitle;
-            const roomStatus = isRussian ? correctedCopy?.statusRu ?? t('comingSoon') : correctedCopy?.statusEn ?? t('comingSoon');
+            const roomStatus = isRussian ? correctedCopy?.statusRu ?? 'Скоро' : correctedCopy?.statusEn ?? 'Soon';
 
             return (
               <div
                 key={room.id}
-                className="rounded-[1.2rem] border border-black/[0.045] bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(247,249,252,0.92))] px-4 py-4 shadow-[0_12px_26px_rgba(15,23,42,0.05)] dark:border-white/8 dark:bg-white/[0.05] dark:shadow-none"
+                className="rounded-[1.18rem] border border-black/[0.045] bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(247,249,252,0.92))] px-4 py-3.75 shadow-[0_12px_26px_rgba(15,23,42,0.05)] dark:border-white/[0.06] dark:bg-[linear-gradient(180deg,rgba(27,35,49,0.94),rgba(18,25,38,0.90))] dark:shadow-[0_14px_24px_rgba(2,6,23,0.14)]"
               >
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex min-w-0 gap-3">
-                    <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-[1.05rem] bg-[rgba(var(--accent-blue),0.08)] text-[rgb(var(--accent-blue))]">
+                    <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-[1rem] bg-[rgba(var(--accent-blue),0.08)] text-[rgb(var(--accent-blue))] dark:bg-[rgba(var(--accent-blue),0.12)]">
                       <GroupIcon />
                     </span>
 
                     <div className="min-w-0">
                       <div className="flex flex-wrap items-center gap-2">
-                        <p className="truncate text-[1rem] font-semibold text-text-primary">{roomName}</p>
-                        <span className="rounded-full border border-black/[0.045] bg-[rgba(247,249,252,0.86)] px-2.5 py-1 text-[0.68rem] font-semibold text-text-secondary dark:border-white/8 dark:bg-white/6">
+                        <p className="truncate text-[0.99rem] font-semibold text-text-primary dark:text-white/[0.94]">{roomName}</p>
+                        <span className="rounded-full border border-black/[0.04] bg-[rgba(247,249,252,0.84)] px-2.5 py-1 text-[0.67rem] font-semibold text-text-secondary dark:border-white/[0.05] dark:bg-[linear-gradient(180deg,rgba(34,42,56,0.94),rgba(22,30,43,0.92))] dark:text-white/[0.62]">
                           {roomStatus}
                         </span>
                       </div>
-                      <p className="mt-1 text-sm text-text-secondary">{roomEvent}</p>
-                      <p className="mt-2 text-[12px] text-text-muted">
-                        {room.members} {t('roomMembers')}
+                      <p className="mt-1 text-[0.88rem] text-text-secondary dark:text-white/[0.56]">{roomEvent}</p>
+                      <p className="mt-2 text-[12px] text-text-muted dark:text-white/[0.44]">
+                        {room.members} {isRussian ? 'участников' : 'members'}
                       </p>
                     </div>
                   </div>
 
-                  <span className="mt-0.5 shrink-0 text-text-muted">
+                  <span className="mt-1 shrink-0 text-slate-300/75 dark:text-white/[0.18]">
                     <ChevronIcon />
                   </span>
                 </div>
@@ -172,9 +199,9 @@ export function RoomsScreen() {
 
         <Link
           href="/live"
-          className="inline-flex min-h-[3rem] w-full items-center justify-center rounded-[1.1rem] border border-black/[0.05] bg-white px-4 py-3 text-[0.92rem] font-semibold text-text-primary shadow-[0_12px_22px_rgba(15,23,42,0.07)] transition hover:bg-white/96 dark:border-white/8 dark:bg-white/8 dark:text-white dark:hover:bg-white/12"
+          className="inline-flex min-h-[3rem] w-full items-center justify-center rounded-[1.08rem] border border-black/[0.05] bg-white px-4 py-3 text-[0.92rem] font-semibold text-text-primary shadow-[0_12px_22px_rgba(15,23,42,0.07)] transition hover:bg-white/96 dark:border-white/[0.06] dark:bg-[linear-gradient(180deg,rgba(34,42,56,0.94),rgba(22,30,43,0.92))] dark:text-white dark:shadow-[0_10px_18px_rgba(2,6,23,0.12)] dark:hover:bg-[linear-gradient(180deg,rgba(39,48,63,0.94),rgba(25,34,47,0.92))]"
         >
-          {isRussian ? 'Перейти к активному эфиру' : 'Open active live event'}
+          {openLiveLabel}
         </Link>
       </SectionCard>
     </MainPageLayout>
