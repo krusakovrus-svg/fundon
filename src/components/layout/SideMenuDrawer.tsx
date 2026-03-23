@@ -37,6 +37,7 @@ function getSportIdFromPath(path: string) {
 
 function DrawerLink({ item, currentPath, onClose }: { item: DrawerItem; currentPath: string; onClose: () => void }) {
   const isActive = item.matches(currentPath);
+  const showBadge = item.badge !== undefined && item.badge !== 0 && item.badge !== '0';
 
   return (
     <Link
@@ -45,21 +46,28 @@ function DrawerLink({ item, currentPath, onClose }: { item: DrawerItem; currentP
       className={cn(
         'group flex items-center justify-between gap-3 rounded-[20px] px-3 py-3 transition duration-200 dark:text-white dark:hover:text-white',
         isActive
-          ? 'bg-white/70 text-text-primary shadow-[0_10px_30px_rgba(15,23,42,0.08)] dark:bg-white/8 dark:text-white dark:shadow-none'
-          : 'text-text-primary hover:bg-white/40 dark:text-white dark:hover:bg-white/5'
+          ? 'bg-white/70 text-text-primary shadow-[0_10px_30px_rgba(15,23,42,0.08)] dark:border dark:border-white/[0.05] dark:bg-[linear-gradient(180deg,rgba(255,255,255,0.055),rgba(255,255,255,0.028))] dark:text-white dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]'
+          : 'text-text-primary hover:bg-white/40 dark:text-white/[0.92] dark:hover:bg-white/[0.035]'
       )}
     >
       <div className="min-w-0">
-        <p className="truncate text-[14px] font-semibold leading-[1.15] tracking-tight dark:text-white">{item.label}</p>
-        {item.subtitle ? <p className="mt-1 truncate text-[11px] leading-[1.2] text-text-secondary/80">{item.subtitle}</p> : null}
+        <p className="truncate text-[14px] font-semibold leading-[1.15] tracking-tight dark:text-white/[0.94]">{item.label}</p>
+        {item.subtitle ? (
+          <p className="mt-1 truncate text-[11px] leading-[1.2] text-text-secondary/80 dark:text-white/[0.42]">{item.subtitle}</p>
+        ) : null}
       </div>
       <div className="flex shrink-0 items-center gap-2">
-        {item.badge !== undefined ? (
-          <span className="inline-flex min-w-[1.6rem] items-center justify-center rounded-full border border-border/15 bg-white/55 px-1.5 py-0.5 text-[10px] font-medium text-text-secondary dark:bg-white/8 dark:text-text-secondary">
+        {showBadge ? (
+          <span className="inline-flex min-w-[1.6rem] items-center justify-center rounded-full border border-border/15 bg-white/55 px-1.5 py-0.5 text-[10px] font-medium text-text-secondary dark:border-white/[0.06] dark:bg-white/[0.045] dark:text-white/[0.62]">
             {item.badge}
           </span>
         ) : null}
-        <span className={cn('h-1.5 w-1.5 rounded-full transition', isActive ? 'bg-accent-orange' : 'bg-transparent group-hover:bg-border/40')} />
+        <span
+          className={cn(
+            'h-1.5 w-1.5 rounded-full transition',
+            isActive ? 'bg-accent-orange/90' : 'bg-transparent group-hover:bg-border/40 dark:group-hover:bg-white/[0.16]'
+          )}
+        />
       </div>
     </Link>
   );
@@ -208,10 +216,10 @@ export function SideMenuDrawer({ isOpen, currentPath, onClose }: SideMenuDrawerP
       )}
       aria-hidden={!isOpen}
     >
-      <div className="app-card flex h-full min-h-0 flex-col overflow-hidden rounded-[2rem] px-4 py-4">
-        <div className="rounded-[1.5rem] border border-white/40 bg-white/55 px-3.5 py-3 shadow-[0_14px_34px_rgba(15,23,42,0.08)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
+      <div className="app-card flex h-full min-h-0 flex-col overflow-hidden rounded-[2rem] px-4 py-4 dark:border-white/[0.05] dark:bg-[linear-gradient(180deg,rgba(15,20,29,0.96),rgba(9,13,21,0.96))] dark:shadow-[0_22px_54px_rgba(0,0,0,0.42)]">
+        <div className="rounded-[1.5rem] border border-white/40 bg-white/55 px-3.5 py-3 shadow-[0_14px_34px_rgba(15,23,42,0.08)] backdrop-blur-xl dark:border-white/[0.05] dark:bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02))] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">
           <div className="flex items-center gap-3">
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-[14px] bg-white/75 text-[15px] font-semibold text-text-primary shadow-[0_6px_18px_rgba(15,23,42,0.08)] dark:bg-white/10 dark:text-white dark:shadow-none">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-[14px] bg-white/75 text-[15px] font-semibold text-text-primary shadow-[0_6px_18px_rgba(15,23,42,0.08)] dark:bg-white/[0.06] dark:text-white dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">
               {avatarImage ? (
                 <img src={avatarImage} alt={displayName} className="h-full w-full object-cover" />
               ) : (
@@ -219,13 +227,13 @@ export function SideMenuDrawer({ isOpen, currentPath, onClose }: SideMenuDrawerP
               )}
             </div>
             <div className="min-w-0 flex-1">
-              <p className="truncate text-[15px] font-semibold leading-tight text-text-primary">{displayName}</p>
-              <div className="mt-1.5 flex flex-wrap gap-1.5 text-[10px] text-text-secondary">
-                <span className="inline-flex items-center rounded-full bg-white/70 px-2 py-0.5 font-medium dark:bg-white/8">#{mockData.profile.currentRank}</span>
-                <span className="inline-flex items-center rounded-full bg-white/70 px-2 py-0.5 font-medium dark:bg-white/8">
+              <p className="truncate text-[15px] font-semibold leading-tight text-text-primary dark:text-white/[0.94]">{displayName}</p>
+              <div className="mt-1.5 flex flex-wrap gap-1.5 text-[10px] text-text-secondary dark:text-white/[0.52]">
+                <span className="inline-flex items-center rounded-full bg-white/70 px-2 py-0.5 font-medium dark:border dark:border-white/[0.04] dark:bg-white/[0.045]">#{mockData.profile.currentRank}</span>
+                <span className="inline-flex items-center rounded-full bg-white/70 px-2 py-0.5 font-medium dark:border dark:border-white/[0.04] dark:bg-white/[0.045]">
                   {mockData.profile.points} {t('points')}
                 </span>
-                <span className="inline-flex items-center rounded-full bg-white/70 px-2 py-0.5 font-medium dark:bg-white/8">${mockData.profile.walletBalance}</span>
+                <span className="inline-flex items-center rounded-full bg-white/70 px-2 py-0.5 font-medium dark:border dark:border-white/[0.04] dark:bg-white/[0.045]">${mockData.profile.walletBalance}</span>
               </div>
             </div>
           </div>
@@ -238,25 +246,25 @@ export function SideMenuDrawer({ isOpen, currentPath, onClose }: SideMenuDrawerP
             ))}
           </div>
 
-          <div className="mt-3 space-y-1 border-t border-border/6 pt-3">
+          <div className="mt-3 space-y-1 border-t border-border/6 pt-3 dark:border-white/[0.04]">
             {secondaryItems.map((item) => (
               <DrawerLink key={item.href} item={item} currentPath={currentPath} onClose={onClose} />
             ))}
           </div>
 
-          <div className="mt-3 space-y-2 border-t border-border/6 pt-3">
-            <div className="flex items-center justify-between gap-3 rounded-[16px] px-1.5 py-1.5 transition hover:bg-surface-subtle/50">
+          <div className="mt-3 space-y-2 border-t border-border/6 pt-3 dark:border-white/[0.04]">
+            <div className="flex items-center justify-between gap-3 rounded-[16px] px-1.5 py-1.5 transition hover:bg-surface-subtle/50 dark:hover:bg-white/[0.03]">
               <div className="min-w-0">
-                <p className="text-[11px] font-medium leading-none text-text-secondary">{t('language')}</p>
+                <p className="text-[11px] font-medium leading-none text-text-secondary dark:text-white/[0.48]">{t('language')}</p>
               </div>
               <div className="w-[86px] shrink-0">
                 <LanguageSwitcher className={compactSwitcherClass} />
               </div>
             </div>
 
-            <div className="flex items-center justify-between gap-3 rounded-[16px] px-1.5 py-1.5 transition hover:bg-surface-subtle/50">
+            <div className="flex items-center justify-between gap-3 rounded-[16px] px-1.5 py-1.5 transition hover:bg-surface-subtle/50 dark:hover:bg-white/[0.03]">
               <div className="min-w-0">
-                <p className="text-[11px] font-medium leading-none text-text-secondary">{t('theme')}</p>
+                <p className="text-[11px] font-medium leading-none text-text-secondary dark:text-white/[0.48]">{t('theme')}</p>
               </div>
               <div className="w-[86px] shrink-0">
                 <ThemeSwitcher className={compactSwitcherClass} />
