@@ -509,7 +509,8 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
         { id: 'montevideo-city-torque', name: 'Montevideo City Torque', nameRu: 'Монтевидео Сити Торке' }
       ]
     }
-  ],  hockey: [
+  ],
+  hockey: [
     {
       id: 'hockey-nhl-1',
       sportId: 'hockey',
@@ -3613,6 +3614,7 @@ export function formatSportEventTime(startsAt: string, language: Language) {
     hourCycle: 'h23'
   }).format(new Date(startsAt));
 }
+
 
 
 
