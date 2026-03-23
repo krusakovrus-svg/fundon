@@ -90,7 +90,15 @@ export function SportEventCard({ event }: { event: SportEventRecord }) {
           type="button"
           aria-label={active ? t('favoritesRemoveLabel') : t('favoritesAddLabel')}
           aria-pressed={active}
-          onClick={() => toggleFavorite(event.id)}
+          onPointerDown={(clickEvent) => {
+            clickEvent.preventDefault();
+            clickEvent.stopPropagation();
+          }}
+          onClick={(clickEvent) => {
+            clickEvent.preventDefault();
+            clickEvent.stopPropagation();
+            toggleFavorite(event.id);
+          }}
           className={cn(
             'relative z-20 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border transition',
             active
