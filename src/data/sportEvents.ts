@@ -2210,36 +2210,21 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
   ],
   formula1: [
     {
-      id: 'formula1-japan-gp-results',
-      sportId: 'formula1',
-      title: 'Formula 1 В· Grand Prix В· Japan. Race',
-      titleRu: 'Р¤РѕСЂРјСѓР»Р° 1 В· Р“СЂР°РЅ-РїСЂРё В· РЇРїРѕРЅРёСЏ. Р“РѕРЅРєР°',
-      startsAt: '2026-03-29T08:00:00+03:00',
-      endsAt: '2026-03-29T10:00:00+03:00',
-      participants: [
-        {
-          id: 'japan-gp-race-results',
-          name: 'Japanese Grand Prix 2026. Race. Results',
-          nameRu: 'Р“СЂР°РЅ-РїСЂРё РЇРїРѕРЅРёРё 2026. Р“РѕРЅРєР°. РС‚РѕРіРё'
-        }
-      ]
-    },
-    {
       id: 'formula1-japan-gp-winning-team-driver',
       sportId: 'formula1',
-      title: 'Formula 1 В· Grand Prix В· Japan. Race',
-      titleRu: 'Р¤РѕСЂРјСѓР»Р° 1 В· Р“СЂР°РЅ-РїСЂРё В· РЇРїРѕРЅРёСЏ. Р“РѕРЅРєР°',
+      title: 'Formula 1 · Grand Prix · Japan. Race',
+      titleRu: 'Формула 1 · Гран-при · Япония. Гонка',
       startsAt: '2026-03-29T08:00:00+03:00',
       endsAt: '2026-03-29T10:00:00+03:00',
       participants: [
         {
           id: 'japan-gp-race-winning-team-driver',
           name: 'Japanese Grand Prix 2026. Race. Which team driver wins',
-          nameRu: 'Р“СЂР°РЅ-РїСЂРё РЇРїРѕРЅРёРё 2026. Р“РѕРЅРєР°. РџРёР»РѕС‚ РєР°РєРѕР№ РєРѕРјР°РЅРґС‹ РїРѕР±РµРґРёС‚'
+          nameRu: 'Гран-при Японии 2026. Гонка. Пилот какой команды победит'
         }
       ]
     }
-  ],
+    ],
   'australian-football': [
     {
       id: 'afl-1',
@@ -3194,4 +3179,5 @@ export function formatSportEventTime(startsAt: string, language: Language) {
     hourCycle: 'h23'
   }).format(new Date(startsAt));
 }
+
 
