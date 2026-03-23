@@ -6,7 +6,6 @@ import { MainPageLayout } from '@/components/layout/MainPageLayout';
 import { useLanguage } from '@/components/providers/LanguageProvider';
 import { SportEventCard } from '@/components/sports/SportEventCard';
 import { PageHeader } from '@/components/ui/PageHeader';
-import { SegmentedControl } from '@/components/ui/SegmentedControl';
 import { getAllSportEvents, isSportEventActive, isSportEventLive } from '@/data/sportEvents';
 import { sportOptions } from '@/data/sports';
 import { cn } from '@/lib/utils';
@@ -18,6 +17,11 @@ interface EventGroup {
   key: string;
   title: string;
   events: SportEventRecord[];
+}
+
+interface FilterOption {
+  value: TimeFilter;
+  label: string;
 }
 
 function startOfDay(date: Date) {
@@ -120,7 +124,7 @@ export function EventsScreen() {
     { value: 'live' as const, label: t('eventsFilterLive') },
     { value: 'today' as const, label: t('eventsFilterToday') },
     { value: 'tomorrow' as const, label: t('eventsFilterTomorrow') }
-  ];
+  ] satisfies FilterOption[];
 
   const sportFilters = [
     { id: 'all', label: t('eventsAllSports') },
@@ -131,55 +135,91 @@ export function EventsScreen() {
   ];
 
   return (
-    <MainPageLayout className="space-y-4">
+    <MainPageLayout className="space-y-[1.125rem]">
       <PageHeader title={t('eventsTitle')} description={t('eventsHubHint')} />
 
-      <section className="grid grid-cols-3 gap-2.5">
-        <div className="app-card rounded-[1.2rem] px-3 py-3">
-          <p className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-text-muted">{t('eventsLiveNow')}</p>
-          <p className="mt-2 text-[1.5rem] font-semibold tracking-tight text-text-primary">{summary.live}</p>
-        </div>
-        <div className="app-card rounded-[1.2rem] px-3 py-3">
-          <p className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-text-muted">{t('eventsToday')}</p>
-          <p className="mt-2 text-[1.5rem] font-semibold tracking-tight text-text-primary">{summary.today}</p>
-        </div>
-        <div className="app-card rounded-[1.2rem] px-3 py-3">
-          <p className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-text-muted">{t('eventsTomorrow')}</p>
-          <p className="mt-2 text-[1.5rem] font-semibold tracking-tight text-text-primary">{summary.tomorrow}</p>
+      <section className="app-card rounded-[1.45rem] px-3 py-3.5">
+        <div className="grid grid-cols-3 gap-2">
+          {[
+            { label: t('eventsLiveNow'), value: summary.live, tone: 'text-accent-blue' },
+            { label: t('eventsToday'), value: summary.today, tone: 'text-text-primary' },
+            { label: t('eventsTomorrow'), value: summary.tomorrow, tone: 'text-text-primary' }
+          ].map((item) => (
+            <div
+              key={item.label}
+              className="rounded-[1rem] border border-black/5 bg-white/70 px-3 py-2.5 shadow-[0_8px_18px_rgba(15,23,42,0.04)] dark:border-white/8 dark:bg-white/[0.04] dark:shadow-none"
+            >
+              <p className="text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-text-muted">{item.label}</p>
+              <div className={cn('mt-2 text-[1.35rem] font-semibold leading-none tracking-tight', item.tone)}>
+                {item.value}
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
       <section className="space-y-3">
-        <SegmentedControl value={timeFilter} options={timeFilterOptions} onChange={setTimeFilter} className="w-full overflow-x-auto" />
-
-        <div className="-mx-1 overflow-x-auto px-1">
-          <div className="flex min-w-max gap-2">
-            {sportFilters.map((sport) => {
-              const active = sportFilter === sport.id;
+        <div className="app-card rounded-[1.35rem] p-1.5">
+          <div className="grid grid-cols-4 gap-1">
+            {timeFilterOptions.map((option) => {
+              const active = option.value === timeFilter;
 
               return (
                 <button
-                  key={sport.id}
+                  key={option.value}
                   type="button"
-                  onClick={() => setSportFilter(sport.id)}
+                  onClick={() => setTimeFilter(option.value)}
                   className={cn(
-                    'rounded-full border px-3 py-2 text-sm font-medium transition',
+                    'rounded-[1rem] px-3 py-2.5 text-[0.86rem] font-semibold tracking-tight transition',
                     active
-                      ? 'border-accent-orange/30 bg-accent-orange/12 text-text-primary'
-                      : 'border-border bg-surface-muted text-text-secondary hover:text-text-primary'
+                      ? 'bg-white text-text-primary shadow-[0_10px_20px_rgba(15,23,42,0.08)] dark:bg-white/[0.1] dark:shadow-none'
+                      : 'text-text-secondary hover:text-text-primary'
                   )}
                 >
-                  {sport.label}
+                  {option.label}
                 </button>
               );
             })}
+          </div>
+        </div>
+
+        <div className="space-y-2">
+          <div className="flex items-center justify-between px-1">
+            <p className="text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-text-muted">
+              {t('eventsAllSports')}
+            </p>
+            <span className="text-[0.72rem] font-medium text-text-muted">{sportFilter === 'all' ? sportOptions.length : 1}</span>
+          </div>
+
+          <div className="-mx-1 overflow-x-auto px-1">
+            <div className="flex min-w-max gap-2">
+              {sportFilters.map((sport) => {
+                const active = sportFilter === sport.id;
+
+                return (
+                  <button
+                    key={sport.id}
+                    type="button"
+                    onClick={() => setSportFilter(sport.id)}
+                    className={cn(
+                      'rounded-full border px-3 py-1.5 text-[0.84rem] font-medium transition',
+                      active
+                        ? 'border-accent-orange/20 bg-accent-orange/10 text-text-primary shadow-[0_6px_16px_rgba(255,124,65,0.08)] dark:shadow-none'
+                        : 'border-black/6 bg-white/55 text-text-secondary hover:text-text-primary dark:border-white/8 dark:bg-white/[0.03]'
+                    )}
+                  >
+                    {sport.label}
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
 
       <div className="space-y-4">
         {groups.length === 0 ? (
-          <div className="rounded-[1.35rem] border border-white/35 bg-white/55 px-4 py-6 text-center shadow-[0_16px_34px_rgba(15,23,42,0.08)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
+          <div className="rounded-[1.35rem] border border-black/5 bg-white/68 px-4 py-6 text-center shadow-[0_16px_34px_rgba(15,23,42,0.06)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
             <p className="text-[1rem] font-semibold text-text-primary">{t('eventsNoResults')}</p>
             <p className="mt-2 text-[0.92rem] leading-relaxed text-text-secondary">{t('eventsNoResultsHint')}</p>
           </div>
@@ -187,9 +227,12 @@ export function EventsScreen() {
 
         {groups.map((group) => (
           <section key={group.key} className="space-y-2.5">
-            <div className="flex items-center justify-between gap-3 px-1">
-              <h2 className="text-[0.95rem] font-semibold tracking-tight text-text-primary">{group.title}</h2>
-              <span className="text-[0.78rem] font-medium text-text-muted">{group.events.length}</span>
+            <div className="flex items-center gap-3 px-1">
+              <h2 className="shrink-0 text-[0.96rem] font-semibold tracking-tight text-text-primary">{group.title}</h2>
+              <div className="h-px flex-1 bg-black/6 dark:bg-white/8" />
+              <span className="inline-flex min-w-[1.7rem] items-center justify-center rounded-full border border-black/5 bg-white/65 px-2 py-1 text-[0.72rem] font-semibold text-text-secondary dark:border-white/8 dark:bg-white/[0.04]">
+                {group.events.length}
+              </span>
             </div>
 
             <div className="space-y-2.5">
