@@ -22,7 +22,7 @@ export const adminNavItems: AdminNavItem[] = [
   { id: 'donations', label: 'Донаты', section: 'main', href: '/admin/donations' },
   { id: 'rooms', label: 'Комнаты', section: 'community', href: '/admin/rooms' },
   { id: 'ratings', label: 'Рейтинги', section: 'community', href: '/admin/ratings' },
-  { id: 'notifications', label: 'Уведомления', section: 'community' },
+  { id: 'notifications', label: 'Уведомления', section: 'community', href: '/admin/notifications' },
   { id: 'analytics', label: 'Аналитика', section: 'system' },
   { id: 'moderation', label: 'Модерация', section: 'system' },
   { id: 'settings', label: 'Настройки', section: 'system' }
@@ -83,6 +83,16 @@ export function getAdminPageMeta(pathname: string): AdminPageMeta {
       searchPlaceholder: 'Поиск по комнате, событию, модератору и заметкам',
       periodLabel: 'За месяц',
       primaryActionLabel: 'Создать комнату'
+    };
+  }
+
+  if (pathname.startsWith('/admin/notifications')) {
+    return {
+      title: 'Уведомления',
+      description: 'Управление push, email и событийными уведомлениями для разных сегментов FUNDON',
+      searchPlaceholder: 'Поиск по уведомлению, событию, шаблону и сегменту',
+      periodLabel: 'Последние 30 дней',
+      primaryActionLabel: 'Создать уведомление'
     };
   }
 
