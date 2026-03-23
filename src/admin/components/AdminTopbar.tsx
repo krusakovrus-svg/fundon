@@ -46,17 +46,24 @@ export function AdminTopbar() {
   const meta = getAdminPageMeta(pathname);
   const showNotifications = meta.showNotifications ?? true;
   const showProfile = meta.showProfile ?? true;
+  const isSettingsPage = pathname.startsWith('/admin/settings');
+
+  const handlePrimaryAction = () => {
+    if (isSettingsPage) {
+      window.dispatchEvent(new Event('fundon-admin-settings-save'));
+    }
+  };
 
   return (
     <header className="sticky top-0 z-20 border-b border-black/[0.05] bg-[rgba(255,255,255,0.84)] px-8 py-5 backdrop-blur-xl">
-      <div className="flex items-center justify-between gap-6">
+      <div className="flex flex-wrap items-start justify-between gap-5 xl:flex-nowrap xl:items-center">
         <div>
           <p className="text-[1.85rem] font-semibold tracking-tight text-slate-900">{meta.title}</p>
           {meta.description ? <p className="mt-1 text-sm text-slate-500">{meta.description}</p> : null}
         </div>
 
-        <div className="flex items-center gap-4">
-          <label className="flex min-w-[20rem] items-center gap-3 rounded-[16px] border border-black/[0.05] bg-white/92 px-4 py-3 shadow-[0_10px_24px_rgba(15,23,42,0.05)]">
+        <div className="flex flex-wrap items-center justify-end gap-3">
+          <label className="flex min-w-[17rem] flex-1 items-center gap-3 rounded-[16px] border border-black/[0.05] bg-white/92 px-4 py-3 shadow-[0_10px_24px_rgba(15,23,42,0.05)] sm:min-w-[19rem] xl:min-w-[20rem] xl:flex-none">
             <span className="text-slate-400">
               <SearchIcon />
             </span>
@@ -90,11 +97,11 @@ export function AdminTopbar() {
           {showNotifications ? (
             <button
               type="button"
-              className="relative flex h-11 w-11 items-center justify-center rounded-[15px] border border-black/[0.05] bg-white/92 text-slate-500 shadow-[0_8px_20px_rgba(15,23,42,0.05)]"
-              aria-label="Notifications"
+              className="relative flex h-10 w-10 items-center justify-center rounded-[14px] border border-black/[0.05] bg-white/92 text-slate-500 shadow-[0_8px_20px_rgba(15,23,42,0.05)]"
+              aria-label="Уведомления"
             >
               <BellIcon />
-              <span className="absolute right-1.5 top-1.5 flex h-[1.05rem] min-w-[1.05rem] items-center justify-center rounded-full border border-[#f4d4c1] bg-[#fff6f0] px-1 text-[0.62rem] font-semibold text-[#cd7b47]">
+              <span className="absolute right-1.5 top-1.5 flex h-[0.95rem] min-w-[0.95rem] items-center justify-center rounded-full border border-[#f4d8ca] bg-[#fff8f3] px-1 text-[0.58rem] font-semibold text-[#cc8454]">
                 3
               </span>
             </button>
@@ -103,7 +110,7 @@ export function AdminTopbar() {
           {showProfile ? (
             <button
               type="button"
-              className="flex items-center gap-3 rounded-[18px] border border-black/[0.05] bg-white/94 px-3 py-2.5 shadow-[0_12px_28px_rgba(15,23,42,0.06)]"
+              className="flex items-center gap-2.5 rounded-[18px] border border-black/[0.05] bg-white/94 px-3.5 py-2.5 shadow-[0_12px_28px_rgba(15,23,42,0.06)]"
             >
               <div className="h-10 w-10 rounded-full bg-[linear-gradient(135deg,#f3d7c8_0%,#d9946e_100%)]" />
               <div className="text-left">
@@ -126,7 +133,8 @@ export function AdminTopbar() {
           {meta.primaryActionLabel ? (
             <button
               type="button"
-              className="rounded-[16px] bg-[linear-gradient(180deg,#5d9cff_0%,#4f8ff6_100%)] px-5 py-3 text-[0.95rem] font-semibold text-white shadow-[0_18px_30px_rgba(79,143,246,0.22)]"
+              onClick={handlePrimaryAction}
+              className="rounded-[16px] bg-[linear-gradient(180deg,#5d9cff_0%,#4f8ff6_100%)] px-4.5 py-3 text-[0.95rem] font-semibold text-white shadow-[0_16px_26px_rgba(79,143,246,0.2)]"
             >
               {meta.primaryActionLabel}
             </button>
