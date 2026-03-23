@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { SectionCard } from '@/components/ui/SectionCard';
 import { useLanguage } from '@/components/providers/LanguageProvider';
-import { getLocalizedMomentLabel } from '@/lib/arena';
+import { formatReactionCount, getLocalizedMomentLabel } from '@/lib/arena';
 import type { LiveMoment } from '@/types';
 
 export function CurrentMomentCard({ moment }: { moment: LiveMoment }) {
@@ -31,7 +31,7 @@ export function CurrentMomentCard({ moment }: { moment: LiveMoment }) {
         </div>
 
         <p className="text-sm text-text-secondary">
-          +{moment.reactionCount.toLocaleString('en-US')} {t('reactionsLabel')}
+          +{formatReactionCount(moment.reactionCount, language)} {t('reactionsLabel')}
         </p>
       </motion.div>
     </SectionCard>

@@ -1,9 +1,12 @@
 'use client';
 
+import Link from 'next/link';
+
 import { MainPageLayout } from '@/components/layout/MainPageLayout';
 import { useLanguage } from '@/components/providers/LanguageProvider';
 import { PageHeader } from '@/components/ui/PageHeader';
 import { SectionCard } from '@/components/ui/SectionCard';
+import { liveEvents } from '@/data/liveEvents';
 import { mockData } from '@/data/mock';
 
 function SparkIcon() {
@@ -37,11 +40,15 @@ function getRoomCopy(roomId: string) {
   const corrected = {
     room_1: {
       nameRu: 'Главное событие',
-      eventTitleRu: 'Евлоев vs Мерфи'
+      eventTitleRu: 'Евлоев vs Мерфи',
+      statusRu: 'Готова к запуску',
+      statusEn: 'Ready to launch'
     },
     room_2: {
       nameRu: 'Ночной просмотр',
-      eventTitleRu: 'Евлоев vs Мерфи'
+      eventTitleRu: 'Евлоев vs Мерфи',
+      statusRu: 'Скоро откроется',
+      statusEn: 'Coming soon'
     }
   } as const;
 
@@ -51,19 +58,25 @@ function getRoomCopy(roomId: string) {
 export function RoomsScreen() {
   const { language, t } = useLanguage();
   const isRussian = language === 'ru';
-  const introTitle = isRussian ? 'Комнаты скоро откроются' : 'Rooms are on the way';
+
+  const introTitle = isRussian ? 'Комнаты в следующей волне' : 'Rooms in the next wave';
   const introBody = isRussian
-    ? 'Здесь появятся совместная поддержка, рейтинг участников и энергия события в одном общем пространстве.'
-    : 'This is where shared support, member ranking, and event energy will come together in one space.';
+    ? 'Комнаты объединят совместную поддержку, приватные сценарии просмотра и быстрый доступ к live-событиям.'
+    : 'Rooms will combine shared support, private watch flows, and quick access to live events.';
   const featurePills = isRussian
-    ? ['Совместная поддержка', 'Рейтинг участников', 'Энергия события']
-    : ['Shared support', 'Member ranking', 'Event energy'];
+    ? ['Совместная поддержка', 'Приватные сценарии', 'Рейтинг участников']
+    : ['Shared support', 'Private watch flow', 'Member ranking'];
+  const summaryItems = [
+    { label: isRussian ? 'Подготовлено' : 'Prepared', value: mockData.rooms.length.toString() },
+    { label: isRussian ? 'Эфиров сейчас' : 'Live now', value: liveEvents.length.toString() },
+    { label: isRussian ? 'Следующий этап' : 'Next stage', value: isRussian ? 'Rooms' : 'Rooms' }
+  ];
 
   return (
-    <MainPageLayout className="space-y-[1.125rem]">
-      <PageHeader title={t('roomsTitle')} />
+    <MainPageLayout className="space-y-4">
+      <PageHeader title={t('roomsTitle')} description={t('roomsHint')} />
 
-      <SectionCard className="border border-black/[0.045] bg-white/[0.84] px-4 py-4 shadow-[0_16px_34px_rgba(15,23,42,0.06)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
+      <SectionCard className="space-y-4 border border-black/[0.045] bg-white/[0.88] px-4 py-4 shadow-[0_18px_36px_rgba(15,23,42,0.07)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
         <div className="flex items-start justify-between gap-3">
           <div className="flex min-w-0 gap-3">
             <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-[1.05rem] bg-[rgba(var(--accent-orange),0.08)] text-[rgb(var(--accent-orange))]">
@@ -72,17 +85,17 @@ export function RoomsScreen() {
 
             <div className="min-w-0">
               <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted">{t('comingSoon')}</p>
-              <h2 className="mt-2 text-[1.02rem] font-semibold text-text-primary">{introTitle}</h2>
+              <h2 className="mt-2 text-[1.08rem] font-semibold text-text-primary">{introTitle}</h2>
               <p className="mt-2 text-sm leading-6 text-text-secondary">{introBody}</p>
             </div>
           </div>
 
-          <span className="inline-flex shrink-0 items-center rounded-full bg-[rgba(247,249,252,0.9)] px-2.5 py-1 text-[0.68rem] font-semibold text-text-secondary dark:bg-white/[0.04]">
+          <span className="rounded-full border border-[rgba(var(--accent-orange),0.16)] bg-[rgba(var(--accent-orange),0.08)] px-3 py-1.5 text-[0.72rem] font-semibold text-text-primary">
             {t('comingSoon')}
           </span>
         </div>
 
-        <div className="mt-4 flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2">
           {featurePills.map((item) => (
             <span
               key={item}
@@ -92,16 +105,23 @@ export function RoomsScreen() {
             </span>
           ))}
         </div>
+
+        <div className="grid grid-cols-3 gap-2.5">
+          {summaryItems.map((item) => (
+            <div key={item.label} className="rounded-[1.1rem] border border-black/[0.045] bg-[rgba(247,249,252,0.78)] px-3 py-3 dark:border-white/8 dark:bg-white/5">
+              <p className="text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-text-muted">{item.label}</p>
+              <p className="mt-2 text-[1.02rem] font-semibold tracking-tight text-text-primary">{item.value}</p>
+            </div>
+          ))}
+        </div>
       </SectionCard>
 
-      <SectionCard className="border border-black/[0.045] bg-white/[0.82] px-4 py-4 shadow-[0_16px_34px_rgba(15,23,42,0.06)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
+      <SectionCard className="space-y-4 border border-black/[0.045] bg-white/[0.84] px-4 py-4 shadow-[0_18px_36px_rgba(15,23,42,0.07)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
         <div className="flex items-center justify-between gap-3">
           <div>
             <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted">{t('recentRooms')}</p>
             <p className="mt-1 text-sm text-text-secondary">
-              {isRussian
-                ? 'Предпросмотр комнат, которые уже готовы к следующему этапу.'
-                : 'A preview of rooms ready for the next product step.'}
+              {isRussian ? 'Комнаты, которые уже готовы к следующему mobile-релизу.' : 'Rooms prepared for the next mobile release.'}
             </p>
           </div>
           <span className="inline-flex min-w-[1.65rem] items-center justify-center rounded-full bg-[rgba(247,249,252,0.9)] px-2 py-1 text-[0.68rem] font-semibold text-text-secondary dark:bg-white/[0.04]">
@@ -109,11 +129,12 @@ export function RoomsScreen() {
           </span>
         </div>
 
-        <div className="mt-4 space-y-3">
+        <div className="space-y-3">
           {mockData.rooms.map((room) => {
             const correctedCopy = getRoomCopy(room.id);
             const roomName = isRussian ? correctedCopy?.nameRu ?? room.nameRu : room.name;
             const roomEvent = isRussian ? correctedCopy?.eventTitleRu ?? room.eventTitleRu : room.eventTitle;
+            const roomStatus = isRussian ? correctedCopy?.statusRu ?? t('comingSoon') : correctedCopy?.statusEn ?? t('comingSoon');
 
             return (
               <div
@@ -127,7 +148,12 @@ export function RoomsScreen() {
                     </span>
 
                     <div className="min-w-0">
-                      <p className="truncate text-[1rem] font-semibold text-text-primary">{roomName}</p>
+                      <div className="flex flex-wrap items-center gap-2">
+                        <p className="truncate text-[1rem] font-semibold text-text-primary">{roomName}</p>
+                        <span className="rounded-full border border-black/[0.045] bg-[rgba(247,249,252,0.86)] px-2.5 py-1 text-[0.68rem] font-semibold text-text-secondary dark:border-white/8 dark:bg-white/6">
+                          {roomStatus}
+                        </span>
+                      </div>
                       <p className="mt-1 text-sm text-text-secondary">{roomEvent}</p>
                       <p className="mt-2 text-[12px] text-text-muted">
                         {room.members} {t('roomMembers')}
@@ -143,6 +169,13 @@ export function RoomsScreen() {
             );
           })}
         </div>
+
+        <Link
+          href="/live"
+          className="inline-flex min-h-[3rem] w-full items-center justify-center rounded-[1.1rem] border border-black/[0.05] bg-white px-4 py-3 text-[0.92rem] font-semibold text-text-primary shadow-[0_12px_22px_rgba(15,23,42,0.07)] transition hover:bg-white/96 dark:border-white/8 dark:bg-white/8 dark:text-white dark:hover:bg-white/12"
+        >
+          {isRussian ? 'Перейти к активному эфиру' : 'Open active live event'}
+        </Link>
       </SectionCard>
     </MainPageLayout>
   );

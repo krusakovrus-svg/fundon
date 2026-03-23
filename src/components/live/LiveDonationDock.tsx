@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 
 import { useLanguage } from '@/components/providers/LanguageProvider';
+import { formatCurrency } from '@/lib/format';
 import { cn } from '@/lib/utils';
 import type { SupportAmount } from '@/types';
 
@@ -39,7 +40,7 @@ export function LiveDonationDock({
           <p className="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-text-muted">{t('supportAmounts')}</p>
           <div className="text-right">
             <p className="text-[0.6rem] font-semibold uppercase tracking-[0.16em] text-text-muted">{selectedAmountLabel}</p>
-            <span className="mt-1 block text-[0.92rem] font-semibold tracking-tight text-text-primary">${selectedAmount}</span>
+            <span className="mt-1 block text-[0.92rem] font-semibold tracking-tight text-text-primary">{formatCurrency(selectedAmount, language)}</span>
           </div>
         </div>
 
@@ -59,7 +60,7 @@ export function LiveDonationDock({
                     : 'border-black/[0.04] bg-white/[0.72] text-text-secondary dark:border-white/[0.08] dark:bg-white/[0.05]'
                 )}
               >
-                ${amount}
+                {formatCurrency(amount, language)}
               </button>
             );
           })}
@@ -73,7 +74,7 @@ export function LiveDonationDock({
             className="rounded-[1.2rem] bg-accent-blue px-3 py-3.5 text-center text-white shadow-[0_14px_30px_rgba(74,144,226,0.24)]"
           >
             <span className="block text-[0.95rem] font-semibold tracking-tight">{leftLabel}</span>
-            <span className="mt-1 block text-[0.72rem] font-medium text-white/80">{supportActionLabel} ${selectedAmount}</span>
+            <span className="mt-1 block text-[0.72rem] font-medium text-white/80">{supportActionLabel} {formatCurrency(selectedAmount, language)}</span>
           </motion.button>
           <motion.button
             type="button"
@@ -82,7 +83,7 @@ export function LiveDonationDock({
             className="rounded-[1.2rem] bg-accent-orange px-3 py-3.5 text-center text-white shadow-[0_14px_30px_rgba(255,124,65,0.24)]"
           >
             <span className="block text-[0.95rem] font-semibold tracking-tight">{rightLabel}</span>
-            <span className="mt-1 block text-[0.72rem] font-medium text-white/80">{supportActionLabel} ${selectedAmount}</span>
+            <span className="mt-1 block text-[0.72rem] font-medium text-white/80">{supportActionLabel} {formatCurrency(selectedAmount, language)}</span>
           </motion.button>
         </div>
       </div>

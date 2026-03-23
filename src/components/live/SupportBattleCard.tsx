@@ -45,7 +45,7 @@ export function SupportBattleCard({
         </div>
         <div className="shrink-0 text-right">
           <p className="text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-text-muted">{amountLabel}</p>
-          <p className="mt-1 text-[1.1rem] font-semibold tracking-tight text-text-primary">{formatCurrency(selectedAmount)}</p>
+          <p className="mt-1 text-[1.1rem] font-semibold tracking-tight text-text-primary">{formatCurrency(selectedAmount, language)}</p>
         </div>
       </div>
 
@@ -57,13 +57,13 @@ export function SupportBattleCard({
           className="w-full rounded-[1.25rem] border border-black/[0.04] bg-white/[0.8] px-4 py-4 text-left shadow-[inset_0_1px_0_rgba(255,255,255,0.85)] transition hover:border-accent-blue/22 hover:bg-white dark:border-white/[0.08] dark:bg-white/[0.05]"
         >
           <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-text-muted">{left.shortName}</p>
-          <p className="mt-2 text-[1.82rem] font-semibold tracking-tight text-text-primary">{formatCurrency(left.total)}</p>
+          <p className="mt-2 text-[1.82rem] font-semibold tracking-tight text-text-primary">{formatCurrency(left.total, language)}</p>
           <div className="mt-3 flex items-center justify-between text-sm text-text-secondary/85">
             <span>{leftPercent}%</span>
             <span>{left.supporters} {supportersLabel}</span>
           </div>
           <div className="mt-4 inline-flex items-center rounded-full bg-accent-blue/10 px-3 py-1.5 text-[0.76rem] font-semibold text-accent-blue">
-            {supportActionLabel} {formatCurrency(selectedAmount)}
+            {supportActionLabel} {formatCurrency(selectedAmount, language)}
           </div>
         </motion.button>
 
@@ -74,13 +74,13 @@ export function SupportBattleCard({
           className="w-full rounded-[1.25rem] border border-black/[0.04] bg-white/[0.8] px-4 py-4 text-left shadow-[inset_0_1px_0_rgba(255,255,255,0.85)] transition hover:border-accent-orange/22 hover:bg-white dark:border-white/[0.08] dark:bg-white/[0.05]"
         >
           <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-text-muted">{right.shortName}</p>
-          <p className="mt-2 text-[1.82rem] font-semibold tracking-tight text-text-primary">{formatCurrency(right.total)}</p>
+          <p className="mt-2 text-[1.82rem] font-semibold tracking-tight text-text-primary">{formatCurrency(right.total, language)}</p>
           <div className="mt-3 flex items-center justify-between text-sm text-text-secondary/85">
             <span>{rightPercent}%</span>
             <span>{right.supporters} {supportersLabel}</span>
           </div>
           <div className="mt-4 inline-flex items-center rounded-full bg-accent-orange/10 px-3 py-1.5 text-[0.76rem] font-semibold text-accent-orange">
-            {supportActionLabel} {formatCurrency(selectedAmount)}
+            {supportActionLabel} {formatCurrency(selectedAmount, language)}
           </div>
         </motion.button>
       </div>

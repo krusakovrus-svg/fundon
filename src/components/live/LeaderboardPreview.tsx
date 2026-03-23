@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { SectionCard } from '@/components/ui/SectionCard';
 import { useLanguage } from '@/components/providers/LanguageProvider';
+import { formatCount } from '@/lib/format';
 import type { LeaderboardEntry, UserProfile } from '@/types';
 
 interface LeaderboardPreviewProps {
@@ -36,7 +37,7 @@ export function LeaderboardPreview({ entries, profile }: LeaderboardPreviewProps
               </p>
               <p className="mt-1 text-xs text-text-secondary">{t('streak')}: {entry.streak}</p>
             </div>
-            <p className="text-lg font-semibold text-text-primary">{entry.points}</p>
+            <p className="text-lg font-semibold text-text-primary">{formatCount(entry.points, language)}</p>
           </div>
         ))}
 
@@ -47,7 +48,7 @@ export function LeaderboardPreview({ entries, profile }: LeaderboardPreviewProps
             <p className="mt-1 text-xs text-text-secondary">{t('rankLabel')}: #{profile.currentRank}</p>
           </div>
           <div className="text-right">
-            <p className="text-lg font-semibold text-text-primary">{profile.points}</p>
+            <p className="text-lg font-semibold text-text-primary">{formatCount(profile.points, language)}</p>
             <p className="mt-1 text-[0.72rem] text-text-secondary">{pointsLabel}</p>
           </div>
         </div>

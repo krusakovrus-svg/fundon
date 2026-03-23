@@ -7,6 +7,7 @@ import { useLanguage } from '@/components/providers/LanguageProvider';
 import { liveEvents } from '@/data/liveEvents';
 import { mockData } from '@/data/mock';
 import { getHeatState } from '@/lib/arena';
+import { formatCurrency } from '@/lib/format';
 import type { LeaderboardEntry, LiveActivityItem, LiveMoment, SupportAmount, UserProfile } from '@/types';
 import { LeaderboardPreview } from './LeaderboardPreview';
 import { LiveActivityFeed } from './LiveActivityFeed';
@@ -28,8 +29,8 @@ function createSupportActivity(params: {
   return {
     id: `activity_support_${Date.now()}`,
     type: amount >= 100 ? 'big_support' : 'support',
-    label: `${userLabel} supported ${participant} for $${amount.toLocaleString('en-US')}`,
-    labelRu: `${userLabelRu} поддержал ${participantRu} на $${amount.toLocaleString('en-US')}`,
+    label: `${userLabel} supported ${participant} for ${formatCurrency(amount, 'en')}`,
+    labelRu: `${userLabelRu} поддержал ${participantRu} на ${formatCurrency(amount, 'ru')}`,
     amount,
     createdAt: new Date().toISOString()
   };

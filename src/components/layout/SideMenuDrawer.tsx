@@ -11,6 +11,7 @@ import { ThemeSwitcher } from '@/components/ui/ThemeSwitcher';
 import { mockData } from '@/data/mock';
 import { isSportEventLive } from '@/data/sportEvents';
 import { getSportById } from '@/data/sports';
+import { formatCurrency } from '@/lib/format';
 import { getStoredProfileAvatar, PROFILE_AVATAR_UPDATED_EVENT } from '@/lib/profileAvatar';
 import { getStoredProfileName, PROFILE_NAME_UPDATED_EVENT } from '@/lib/profileName';
 import { getStoredSportPath } from '@/lib/sportsHome';
@@ -33,14 +34,6 @@ interface DrawerItem {
 function getSportIdFromPath(path: string) {
   if (!path.startsWith('/sports/')) return 'martial-arts';
   return path.replace('/sports/', '') || 'martial-arts';
-}
-
-function formatWalletBalance(value: number) {
-  return new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    maximumFractionDigits: 0
-  }).format(value);
 }
 
 function DrawerLink({ item, currentPath, onClose }: { item: DrawerItem; currentPath: string; onClose: () => void }) {
@@ -154,6 +147,7 @@ export function SideMenuDrawer({ isOpen, currentPath, onClose }: SideMenuDrawerP
   const liveFavoriteCount = favorites.filter((event) => isSportEventLive(event)).length;
   const displayName = storedProfileName?.trim() || t('you');
   const avatarLetter = displayName.slice(0, 1).toUpperCase();
+  const walletBalanceLabel = formatCurrency(mockData.profile.walletBalance, language);
   const compactSwitcherClass =
     'w-full justify-between rounded-[13px] bg-transparent p-[2px] [&_button]:min-h-[28px] [&_button]:rounded-[10px] [&_button]:px-2 [&_button]:py-1 [&_button]:text-[11px] [&_button]:leading-none';
 
@@ -161,7 +155,7 @@ export function SideMenuDrawer({ isOpen, currentPath, onClose }: SideMenuDrawerP
     () => [
       {
         href: '/home',
-        label: language === 'ru' ? 'Дом' : 'Home',
+        label: language === 'ru' ? 'Главная' : 'Home',
         subtitle: currentSportLabel,
         matches: (path) => path === '/home' || path === '/'
       },
@@ -174,6 +168,12 @@ export function SideMenuDrawer({ isOpen, currentPath, onClose }: SideMenuDrawerP
         href: '/events',
         label: t('navEvents'),
         matches: (path) => path.startsWith('/events')
+      },
+      {
+        href: '/sports',
+        label: language === 'ru' ? 'Виды спорта' : 'Sports',
+        subtitle: currentSportLabel || undefined,
+        matches: (path) => path.startsWith('/sports')
       }
     ],
     [currentSportLabel, language, t]
@@ -213,6 +213,11 @@ export function SideMenuDrawer({ isOpen, currentPath, onClose }: SideMenuDrawerP
         href: '/rooms',
         label: t('navRooms'),
         matches: (path) => path.startsWith('/rooms')
+      },
+      {
+        href: '/settings',
+        label: t('settings'),
+        matches: (path) => path.startsWith('/settings')
       }
     ],
     [t]
@@ -250,7 +255,7 @@ export function SideMenuDrawer({ isOpen, currentPath, onClose }: SideMenuDrawerP
                   {mockData.profile.points} {t('points')}
                 </span>
                 <span className="inline-flex items-center rounded-full border border-black/[0.035] bg-white/86 px-2 py-0.5 font-medium dark:border dark:border-white/[0.04] dark:bg-white/[0.045]">
-                  {formatWalletBalance(mockData.profile.walletBalance)}
+                  {walletBalanceLabel}
                 </span>
               </div>
             </div>

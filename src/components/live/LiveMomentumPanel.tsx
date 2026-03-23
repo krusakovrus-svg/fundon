@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 import { SectionCard } from '@/components/ui/SectionCard';
 import { useLanguage } from '@/components/providers/LanguageProvider';
+import { formatCount } from '@/lib/format';
 import { getLocalizedMomentLabel } from '@/lib/arena';
 import type { LiveMoment } from '@/types';
 
@@ -58,7 +59,7 @@ export function LiveMomentumPanel({ moment, message, fanPulseValue, fanHeatLabel
 
       <div className="flex items-center justify-between gap-3 rounded-[1rem] border border-white/38 bg-white/58 px-3 py-2.5 dark:border-white/[0.07] dark:bg-white/[0.05]">
         <span className="text-[0.78rem] uppercase tracking-[0.14em] text-text-secondary/80">{t('reactionsLabel')}</span>
-        <span className="text-[0.9rem] font-semibold text-text-primary">{moment.reactionCount}</span>
+        <span className="text-[0.9rem] font-semibold text-text-primary">{formatCount(moment.reactionCount, language)}</span>
       </div>
     </SectionCard>
   );

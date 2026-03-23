@@ -11,6 +11,7 @@ import { PageHeader } from '@/components/ui/PageHeader';
 import { SectionCard } from '@/components/ui/SectionCard';
 import { mockData } from '@/data/mock';
 import { isSportEventLive } from '@/data/sportEvents';
+import { formatCurrency } from '@/lib/format';
 import { getStoredProfileAvatar, setStoredProfileAvatar } from '@/lib/profileAvatar';
 import { getStoredProfileName, setStoredProfileName } from '@/lib/profileName';
 
@@ -63,10 +64,6 @@ function HeartIcon() {
       <path d="M12 20.4 4.9 13.8A4.8 4.8 0 0 1 12 7.4a4.8 4.8 0 0 1 7.1 6.4L12 20.4Z" />
     </svg>
   );
-}
-
-function formatMoney(value: number) {
-  return `$${value.toLocaleString('en-US')}`;
 }
 
 function formatTimestamp(iso: string, language: 'ru' | 'en') {
@@ -226,6 +223,7 @@ export function ProfileScreen() {
     <MainPageLayout className="space-y-4">
       <PageHeader
         title={t('profileTitle')}
+        description={t('profileHint')}
         actions={
           <Link
             href="/notifications"
@@ -330,7 +328,7 @@ export function ProfileScreen() {
         <div className="rounded-[1.2rem] border border-black/[0.04] bg-[rgba(247,249,252,0.74)] px-4 py-4 dark:bg-white/6">
           <div>
             <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted">{t('balanceLabel')}</p>
-            <h3 className="mt-3 text-center text-[2.35rem] font-semibold tracking-tight text-text-primary">{formatMoney(profile.walletBalance)}</h3>
+            <h3 className="mt-3 text-center text-[2.35rem] font-semibold tracking-tight text-text-primary">{formatCurrency(profile.walletBalance, language)}</h3>
           </div>
 
           <div className="mt-4 flex flex-col gap-2.5">
@@ -354,7 +352,7 @@ export function ProfileScreen() {
         <div className="grid grid-cols-3 gap-2">
           <div className="rounded-[1.05rem] border border-black/[0.04] bg-[rgba(247,249,252,0.82)] px-3 py-3 text-center dark:bg-white/6">
             <p className="text-[11px] font-medium text-text-muted">{labels.support}</p>
-            <p className="mt-2 text-[1.22rem] font-semibold tracking-tight text-text-primary">{formatMoney(profile.totalSupport)}</p>
+            <p className="mt-2 text-[1.22rem] font-semibold tracking-tight text-text-primary">{formatCurrency(profile.totalSupport, language)}</p>
           </div>
           <div className="rounded-[1.05rem] border border-black/[0.04] bg-[rgba(247,249,252,0.82)] px-3 py-3 text-center dark:bg-white/6">
             <p className="text-[11px] font-medium text-text-muted">{labels.xp}</p>
@@ -388,12 +386,12 @@ export function ProfileScreen() {
                 <div key={item.id} className="flex items-start justify-between gap-3 px-3.5 py-3.5">
                   <div className="min-w-0">
                     <p className="truncate text-[12px] font-medium text-text-muted">{eventTitle}</p>
-                    <p className="mt-1.5 truncate text-[0.95rem] font-semibold text-text-primary">
+                  <p className="mt-1.5 truncate text-[0.95rem] font-semibold text-text-primary">
                       {labels.activityAction}: {participant}
                     </p>
                   </div>
                   <div className="shrink-0 text-right">
-                    <p className="text-[0.95rem] font-semibold text-text-primary">{formatMoney(item.amount)}</p>
+                    <p className="text-[0.95rem] font-semibold text-text-primary">{formatCurrency(item.amount, language)}</p>
                     <p className="mt-1 text-[12px] text-text-muted">{formatTimestamp(item.createdAt, language)}</p>
                   </div>
                 </div>

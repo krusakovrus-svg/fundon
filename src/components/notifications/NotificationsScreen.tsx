@@ -49,23 +49,24 @@ export function NotificationsScreen() {
   );
 
   const isRussian = language === 'ru';
-  const infoTitle = isRussian ? 'Live-обновления в одном месте' : 'Live updates in one place';
-  const infoBody = isRussian
-    ? 'Здесь появляются старты избранных событий, важные обновления по матчам и заметная активность поддержки.'
-    : 'This is where favorite event starts, key live updates, and important support activity appear.';
+  const summaryItems = [
+    { label: isRussian ? 'В эфире' : 'Live', value: liveFavorites.length.toString() },
+    { label: isRussian ? 'Избранное' : 'Favorites', value: favorites.length.toString() },
+    { label: isRussian ? 'Сигналы' : 'Signals', value: liveFavorites.length > 0 ? 'On' : 'Stand by' }
+  ];
   const infoPills = isRussian
     ? ['Старт эфира', 'Избранные события', 'Активность поддержки']
     : ['Live starts', 'Favorite events', 'Support activity'];
-  const emptyTitle = isRussian ? 'Пока нет live-уведомлений' : 'No live notifications yet';
+  const emptyTitle = isRussian ? 'Пока нет активных уведомлений' : 'No active alerts yet';
   const emptyBody = isRussian
-    ? 'Добавьте события в избранное, и мы покажем здесь их старт и важные live-обновления.'
-    : 'Add events to favorites and their starts and key live updates will appear here.';
+    ? 'Добавьте события в избранное, и здесь появятся старт эфира и важные обновления.'
+    : 'Add events to favorites and live starts with important updates will appear here.';
 
   return (
-    <MainPageLayout className="space-y-[1.125rem]">
-      <PageHeader title={t('notificationsTitle')} />
+    <MainPageLayout className="space-y-4">
+      <PageHeader title={t('notificationsTitle')} description={t('notificationsHint')} />
 
-      <SectionCard className="border border-black/[0.045] bg-white/[0.84] px-4 py-4 shadow-[0_16px_34px_rgba(15,23,42,0.06)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
+      <SectionCard className="space-y-4 border border-black/[0.045] bg-white/[0.86] px-4 py-4 shadow-[0_18px_36px_rgba(15,23,42,0.07)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
         <div className="flex items-start justify-between gap-3">
           <div className="flex min-w-0 gap-3">
             <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-[1.05rem] bg-[rgba(var(--accent-blue),0.08)] text-[rgb(var(--accent-blue))]">
@@ -74,8 +75,14 @@ export function NotificationsScreen() {
 
             <div className="min-w-0">
               <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted">{t('notificationsTitle')}</p>
-              <h2 className="mt-2 text-[1.02rem] font-semibold text-text-primary">{infoTitle}</h2>
-              <p className="mt-2 text-sm leading-6 text-text-secondary">{infoBody}</p>
+              <h2 className="mt-2 text-[1.04rem] font-semibold text-text-primary">
+                {isRussian ? 'Центр сигналов эфира' : 'Live alerts hub'}
+              </h2>
+              <p className="mt-2 text-sm leading-6 text-text-secondary">
+                {isRussian
+                  ? 'Следите за стартом эфиров, избранными матчами и заметными всплесками поддержки в одном потоке.'
+                  : 'Follow live starts, favorite matches, and support spikes in one stream.'}
+              </p>
             </div>
           </div>
 
@@ -84,7 +91,7 @@ export function NotificationsScreen() {
           </span>
         </div>
 
-        <div className="mt-4 flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2">
           {infoPills.map((item) => (
             <span
               key={item}
@@ -94,10 +101,19 @@ export function NotificationsScreen() {
             </span>
           ))}
         </div>
+
+        <div className="grid grid-cols-3 gap-2.5">
+          {summaryItems.map((item) => (
+            <div key={item.label} className="rounded-[1.1rem] border border-black/[0.045] bg-[rgba(247,249,252,0.78)] px-3 py-3 dark:border-white/8 dark:bg-white/5">
+              <p className="text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-text-muted">{item.label}</p>
+              <p className="mt-2 text-[1.02rem] font-semibold tracking-tight text-text-primary">{item.value}</p>
+            </div>
+          ))}
+        </div>
       </SectionCard>
 
       {liveFavorites.length === 0 ? (
-        <SectionCard className="border border-black/[0.045] bg-white/[0.82] px-4 py-5 text-center shadow-[0_16px_34px_rgba(15,23,42,0.06)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
+        <SectionCard className="border border-black/[0.045] bg-white/[0.82] px-4 py-5 text-center shadow-[0_18px_36px_rgba(15,23,42,0.07)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
           <div className="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-[1.15rem] bg-[rgba(var(--accent-orange),0.08)] text-[rgb(var(--accent-orange))]">
             <SparkIcon />
           </div>
@@ -107,9 +123,7 @@ export function NotificationsScreen() {
       ) : (
         <section className="space-y-2.5">
           <div className="flex items-center gap-3 px-1">
-            <h2 className="shrink-0 text-[0.96rem] font-semibold tracking-tight text-text-primary">
-              {isRussian ? 'Live сейчас' : 'Live now'}
-            </h2>
+            <h2 className="shrink-0 text-[0.96rem] font-semibold tracking-tight text-text-primary">{isRussian ? 'Сейчас в эфире' : 'Live now'}</h2>
             <div className="h-px flex-1 bg-black/[0.055] dark:bg-white/8" />
             <span className="inline-flex min-w-[1.55rem] items-center justify-center rounded-full bg-[rgba(247,249,252,0.88)] px-2 py-1 text-[0.68rem] font-semibold text-text-secondary dark:bg-white/[0.04]">
               {liveFavorites.length}

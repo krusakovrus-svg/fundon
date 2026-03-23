@@ -1,7 +1,12 @@
-import type { LiveActivityItem, LiveMoment } from '@/types';
+import { formatCount, formatCurrency as formatRubles } from '@/lib/format';
+import type { LiveActivityItem, LiveMoment, Language } from '@/types';
 
-export function formatCurrency(value: number) {
-  return `$${value.toLocaleString('en-US')}`;
+export function formatCurrency(value: number, language: Language = 'ru') {
+  return formatRubles(value, language);
+}
+
+export function formatReactionCount(value: number, language: Language = 'ru') {
+  return formatCount(value, language);
 }
 
 export function calculateSupportSplit(leftTotal: number, rightTotal: number) {
@@ -33,5 +38,11 @@ export function getLocalizedMomentLabel(moment: LiveMoment, language: 'ru' | 'en
 }
 
 export function getLocalizedActivityLabel(activity: LiveActivityItem, language: 'ru' | 'en') {
-  return language === 'ru' ? activity.labelRu : activity.label;
+  const label = language === 'ru' ? activity.labelRu : activity.label;
+
+  if (!activity.amount) {
+    return label;
+  }
+
+  return label.replace(/\$\s?[\d,\s]+/g, formatRubles(activity.amount, language));
 }

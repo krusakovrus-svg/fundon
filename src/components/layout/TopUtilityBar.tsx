@@ -5,6 +5,7 @@ import { usePathname, useRouter } from 'next/navigation';
 
 import { useLanguage } from '@/components/providers/LanguageProvider';
 import { mockData } from '@/data/mock';
+import { formatCurrency } from '@/lib/format';
 import { cn } from '@/lib/utils';
 
 function SearchIcon() {
@@ -73,9 +74,10 @@ export function TopUtilityBar({ isMenuOpen, onToggleMenu }: TopUtilityBarProps) 
   const isSportDetailPage = pathname?.startsWith('/sports/');
   const isFavoritesPage = pathname?.startsWith('/favorites');
   const isNotificationsPage = pathname?.startsWith('/notifications');
-  const menuLabel = language === 'ru' ? 'Меню' : 'Menu';
+  const menuLabel = language === 'ru' ? 'Открыть меню' : 'Open menu';
   const homeTitle = language === 'ru' ? 'Главная' : 'Home';
   const sportsTitle = language === 'ru' ? 'Спорт' : 'Sports';
+  const balanceLabel = formatCurrency(balance, language);
 
   const handleBack = () => {
     if (typeof window !== 'undefined' && window.history.length > 1) {
@@ -115,9 +117,9 @@ export function TopUtilityBar({ isMenuOpen, onToggleMenu }: TopUtilityBarProps) 
               <BellIcon />
             </Link>
 
-            <button type="button" aria-label={t('balanceLabel')} className="app-topbar-balance app-card min-w-[5.7rem] px-3">
-              <span className="inline-flex items-center justify-center gap-1.5 text-[1rem] font-semibold tracking-tight text-text-primary">
-                <span>${balance}</span>
+            <button type="button" aria-label={t('balanceLabel')} className="app-topbar-balance app-card min-w-[6.7rem] px-3">
+              <span className="inline-flex items-center justify-center gap-1.5 text-[0.98rem] font-semibold tracking-tight text-text-primary">
+                <span>{balanceLabel}</span>
                 <span className="text-accent-green">+</span>
               </span>
             </button>
@@ -151,8 +153,8 @@ export function TopUtilityBar({ isMenuOpen, onToggleMenu }: TopUtilityBarProps) 
         )}
 
         <button type="button" aria-label={t('balanceLabel')} className="app-topbar-balance app-card">
-          <span className="inline-flex items-center justify-center gap-1.5 text-[1.05rem] font-semibold tracking-tight text-text-primary">
-            <span>${balance}</span>
+          <span className="inline-flex items-center justify-center gap-1.5 text-[1rem] font-semibold tracking-tight text-text-primary">
+            <span>{balanceLabel}</span>
             <span className="text-accent-green">+</span>
           </span>
         </button>

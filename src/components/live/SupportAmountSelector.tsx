@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { SectionCard } from '@/components/ui/SectionCard';
 import { useLanguage } from '@/components/providers/LanguageProvider';
+import { formatCurrency } from '@/lib/format';
 import { cn } from '@/lib/utils';
 import type { SupportAmount } from '@/types';
 
@@ -13,7 +14,7 @@ interface SupportAmountSelectorProps {
 }
 
 export function SupportAmountSelector({ amounts, selectedAmount, onSelect }: SupportAmountSelectorProps) {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
 
   return (
     <SectionCard className="space-y-3">
@@ -35,7 +36,7 @@ export function SupportAmountSelector({ amounts, selectedAmount, onSelect }: Sup
                   : 'border-border bg-surface-muted text-text-secondary'
               )}
             >
-              ${amount}
+              {formatCurrency(amount, language)}
             </motion.button>
           );
         })}

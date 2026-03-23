@@ -8,6 +8,7 @@ import { MainPageLayout } from '@/components/layout/MainPageLayout';
 import { useLanguage } from '@/components/providers/LanguageProvider';
 import { liveEvents } from '@/data/liveEvents';
 import { formatSportEventDate, formatSportEventTime, getAllSportEvents } from '@/data/sportEvents';
+import { getSportById } from '@/data/sports';
 import { getParticipantVisual } from '@/lib/participantVisuals';
 import { getStoredSportPath } from '@/lib/sportsHome';
 import type { SportEventParticipant, SportEventRecord } from '@/types';
@@ -106,7 +107,7 @@ function SectionHeader({ title, count }: { title: string; count: number }) {
 
 function HomeEventCard({ event, language }: { event: SportEventRecord; language: 'ru' | 'en' }) {
   const isLive = isStaticLiveEvent(event);
-  const title = event.title;
+  const title = language === 'ru' ? event.titleRu : event.title;
   const participants = event.participants.slice(0, 2);
   const rawDateLabel =
     language === 'ru'
@@ -132,7 +133,9 @@ function HomeEventCard({ event, language }: { event: SportEventRecord; language:
             {participants.map((participant) => (
               <div key={participant.id} className="flex items-center gap-2.5">
                 <ParticipantBadge participant={participant} />
-                <span className="truncate text-[0.98rem] font-semibold tracking-tight text-text-primary">{participant.name}</span>
+                <span className="truncate text-[0.98rem] font-semibold tracking-tight text-text-primary">
+                  {language === 'ru' ? participant.nameRu : participant.name}
+                </span>
               </div>
             ))}
           </div>
@@ -141,7 +144,7 @@ function HomeEventCard({ event, language }: { event: SportEventRecord; language:
         <div className="flex shrink-0 flex-col items-end gap-3 pl-2">
           {isLive ? (
             <span className="inline-flex items-center rounded-full border border-accent-orange/18 bg-accent-orange/10 px-2.5 py-1 text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-accent-orange">
-              LIVE
+              {language === 'ru' ? 'В эфире' : 'Live'}
             </span>
           ) : (
             <div className="text-right">
@@ -172,21 +175,22 @@ export function HomeScreen() {
   const [query, setQuery] = useState('');
   const [preferredSportId, setPreferredSportId] = useState<string | null>(null);
   const isRussian = language === 'ru';
+  const preferredSport = preferredSportId ? getSportById(preferredSportId) : null;
 
   const labels = {
-    support: isRussian ? 'Поддержать' : 'Support',
-    liveSection: 'Live',
+    support: isRussian ? 'Открыть эфир' : 'Open live',
+    liveSection: isRussian ? 'В эфире' : 'Live',
     todaySection: isRussian ? 'Сегодня' : 'Today',
-    openAllEvents: isRussian ? 'Открыть все события' : 'Open all events',
-    searchPlaceholder: isRussian ? 'Поиск по событиям, командам и турнирам' : 'Search events, teams, and tournaments',
-    noLive: isRussian ? 'Сейчас в этой ленте нет live-событий.' : 'There are no live events in this feed right now.',
+    openAllEvents: isRussian ? 'Смотреть всё расписание' : 'See full schedule',
+    searchPlaceholder: isRussian ? 'Событие, команда или турнир' : 'Event, team, or tournament',
+    noLive: isRussian ? 'Сейчас в этой ленте нет прямых эфиров.' : 'There are no live events in this feed right now.',
     noToday: isRussian ? 'Сегодня в этой ленте пока нет ближайших событий.' : 'There are no nearby events in this feed for today yet.',
     featuredTitle: isRussian ? 'Вечер боя в Лондоне' : liveEvents[0].title,
     featuredHeadline: isRussian ? 'Евлоев vs Мерфи' : liveEvents[0].headline,
     featuredCategory: isRussian ? 'Единоборства' : liveEvents[0].categoryLabel,
     featuredStage: isRussian ? 'Раунд 3/5' : liveEvents[0].stageLabel ?? '',
     featuredVenue: isRussian ? 'O2 Arena, Лондон' : liveEvents[0].venue,
-    featuredStatus: isRussian ? 'Главное live-событие' : 'Featured live event'
+    featuredStatus: isRussian ? 'Главный эфир дня' : 'Featured live event'
   };
 
   useEffect(() => {
@@ -212,6 +216,24 @@ export function HomeScreen() {
     return { live, today };
   }, [normalizedQuery, preferredSportId]);
 
+  const quickStats = [
+    {
+      label: labels.liveSection,
+      value: feed.live.length.toString(),
+      note: isRussian ? 'активных эфира' : 'live streams'
+    },
+    {
+      label: labels.todaySection,
+      value: feed.today.length.toString(),
+      note: isRussian ? 'событий в ленте' : 'events in feed'
+    },
+    {
+      label: isRussian ? 'Мой спорт' : 'My sport',
+      value: preferredSport ? (isRussian ? preferredSport.labelRu : preferredSport.label) : isRussian ? 'Все' : 'All',
+      note: isRussian ? 'лента по умолчанию' : 'default feed'
+    }
+  ];
+
   return (
     <MainPageLayout className="space-y-4 pt-2">
       <section className="app-card app-section-card overflow-hidden px-4 py-4">
@@ -222,7 +244,7 @@ export function HomeScreen() {
             <div className="min-w-0">
               <div className="flex items-center gap-2.5">
                 <span className="inline-flex rounded-full border border-accent-orange/18 bg-accent-orange/10 px-2.5 py-1 text-[0.64rem] font-semibold uppercase tracking-[0.18em] text-accent-orange">
-                  LIVE
+                  {isRussian ? 'В эфире' : 'Live'}
                 </span>
                 <span className="truncate text-[0.72rem] font-medium uppercase tracking-[0.14em] text-text-muted">
                   {labels.featuredStatus}
@@ -268,6 +290,16 @@ export function HomeScreen() {
           placeholder={labels.searchPlaceholder}
           className="w-full bg-transparent text-[0.95rem] text-text-primary outline-none placeholder:text-text-secondary"
         />
+      </section>
+
+      <section className="grid grid-cols-3 gap-2.5">
+        {quickStats.map((item) => (
+          <div key={item.label} className="app-card rounded-[1.2rem] px-3 py-3.5">
+            <p className="text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-text-muted">{item.label}</p>
+            <p className="mt-2 text-[1.08rem] font-semibold tracking-tight text-text-primary">{item.value}</p>
+            <p className="mt-1 text-[0.72rem] leading-5 text-text-secondary">{item.note}</p>
+          </div>
+        ))}
       </section>
 
       <div className="space-y-4">

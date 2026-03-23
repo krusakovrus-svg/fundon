@@ -16,7 +16,7 @@ interface SegmentedControlProps<T extends string> {
 
 export function SegmentedControl<T extends string>({ value, options, onChange, className }: SegmentedControlProps<T>) {
   return (
-    <div className={cn('inline-flex rounded-2xl border border-border bg-surface-muted p-1', className)}>
+    <div className={cn('inline-flex rounded-[1.15rem] border border-black/[0.08] bg-[rgba(245,247,251,0.9)] p-1 dark:border-white/8 dark:bg-white/6', className)}>
       {options.map((option) => {
         const active = option.value === value;
         return (
@@ -25,8 +25,10 @@ export function SegmentedControl<T extends string>({ value, options, onChange, c
             type="button"
             onClick={() => onChange(option.value)}
             className={cn(
-              'rounded-xl px-3 py-2 text-sm font-medium transition',
-              active ? 'bg-surface text-text-primary shadow-card' : 'text-text-secondary hover:text-text-primary'
+              'rounded-[0.95rem] px-3 py-2 text-sm font-semibold transition',
+              active
+                ? 'bg-white text-text-primary shadow-[0_10px_20px_rgba(15,23,42,0.08)] dark:bg-white/12 dark:shadow-none'
+                : 'text-text-secondary hover:text-text-primary dark:hover:text-white'
             )}
           >
             {option.label}
