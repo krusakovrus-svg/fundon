@@ -1,14 +1,14 @@
 'use client';
 
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import { MainPageLayout } from '@/components/layout/MainPageLayout';
 import { useLanguage } from '@/components/providers/LanguageProvider';
-import { SegmentedControl } from '@/components/ui/SegmentedControl';
 import { PageHeader } from '@/components/ui/PageHeader';
 import { SectionCard } from '@/components/ui/SectionCard';
 import { liveEvents } from '@/data/liveEvents';
 import { mockData } from '@/data/mock';
+import { cn } from '@/lib/utils';
 import type { LeaderboardEntry } from '@/types';
 
 type LeaderboardScope = 'global' | 'live' | 'today';
@@ -73,7 +73,17 @@ function sortEntries(entries: LeaderboardEntry[]) {
 }
 
 function getEntryLabel(entry: LeaderboardEntry, language: 'ru' | 'en') {
-  return language === 'ru' && entry.nameRu && !entry.nameRu.includes('Р ') ? entry.nameRu : entry.name;
+  return language === 'ru' && entry.nameRu ? entry.nameRu : entry.name;
+}
+
+function getInitials(label: string) {
+  return label
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0]?.toUpperCase() ?? '')
+    .join('')
+    .slice(0, 2);
 }
 
 export function LeaderboardScreen() {
@@ -81,6 +91,7 @@ export function LeaderboardScreen() {
   const [scope, setScope] = useState<LeaderboardScope>('global');
   const [activeLiveEventId, setActiveLiveEventId] = useState<string>('all');
 
+  const isRussian = language === 'ru';
   const globalEntries = sortEntries([...mockData.leaderboard, ...globalExtraEntries]);
   const allLiveEntries = sortEntries(
     liveEvents.flatMap((event) => [...event.leaderboard, ...(liveExtraEntries[event.id] ?? [])])
@@ -103,125 +114,206 @@ export function LeaderboardScreen() {
   const topThreeThreshold = podium[2]?.points ?? podium[podium.length - 1]?.points ?? activeUserStats.points;
   const pointsToTopThree = Math.max(topThreeThreshold - activeUserStats.points, 0);
   const pointsToNextPlace = Math.max(activeUserStats.nextTargetPoints - activeUserStats.points, 0);
-
-  const scopeDescription =
-    scope === 'global'
-      ? language === 'ru'
-        ? 'Следите за лидерами поддержки и своим прогрессом во всей системе.'
-        : 'Track support leaders and your current climb across the whole app.'
+  const currentUserLabel = t('you');
+  const leaderboardContextLabel =
+    scope === 'live' && selectedLiveEvent
+      ? isRussian
+        ? selectedLiveEvent.headlineRu
+        : selectedLiveEvent.headline
       : scope === 'today'
-        ? language === 'ru'
-          ? 'Сегодняшняя таблица показывает, кто быстрее всех набирает очки за live-поддержку.'
-          : 'Today shows who is climbing fastest through live support.'
-        : language === 'ru'
-          ? 'Live-таблица показывает лидеров поддержки прямо в текущих эфирах.'
-          : 'The live table shows support leaders across the current live events.';
+        ? (isRussian ? 'Только за сегодня' : 'Today only')
+        : (isRussian ? 'Все участники' : 'All supporters');
 
-  const scopeOptions = [
-    { value: 'global' as const, label: language === 'ru' ? 'Общий' : 'Overall' },
-    { value: 'live' as const, label: t('liveNow') },
-    { value: 'today' as const, label: language === 'ru' ? 'За сегодня' : 'Today' }
+  const summaryItems = [
+    { label: t('currentRank'), value: `#${activeUserStats.rank}`, emphasis: 'text-text-primary' },
+    { label: t('points'), value: activeUserStats.points.toString(), emphasis: 'text-text-primary' },
+    {
+      label: isRussian ? 'До топ-3' : 'To top 3',
+      value: pointsToTopThree.toString(),
+      emphasis: pointsToTopThree === 0 ? 'text-[rgb(var(--accent-green))]' : 'text-text-primary'
+    }
   ];
 
-  const currentUserLabel = t('you');
-  const fastestRiseLabel =
-    scope === 'global'
-      ? getEntryLabel(globalEntries[3], language)
+  const scopeOptions = [
+    { value: 'global' as const, label: isRussian ? 'Общий' : 'Overall' },
+    { value: 'live' as const, label: isRussian ? 'Сейчас в эфире' : 'Live now' },
+    { value: 'today' as const, label: isRussian ? 'За сегодня' : 'Today' }
+  ];
+
+  const fastestRiseEntry =
+    scope === 'global' ? globalEntries[3] : scope === 'today' ? sortEntries(todayEntries)[0] : activeEntries[0];
+  const fastestRiseLabel = fastestRiseEntry ? getEntryLabel(fastestRiseEntry, language) : currentUserLabel;
+
+  const insightCopy =
+    scope === 'live'
+      ? isRussian
+        ? 'Live-таблица двигается быстрее всего вокруг текущих эфиров и резких всплесков поддержки.'
+        : 'The live table moves fastest around the current events and support surges.'
       : scope === 'today'
-        ? getEntryLabel(todayEntries[0], language)
-        : getEntryLabel(activeEntries[0], language);
+        ? isRussian
+          ? 'Сегодняшний рейтинг показывает, кто быстрее всех набирает очки поддержки за текущий день.'
+          : 'Today shows who is gaining support points fastest right now.'
+        : isRussian
+          ? 'Общий рейтинг собирает самых стабильных фанатов по всей системе поддержки.'
+          : 'The overall table highlights the most consistent supporters across the app.';
 
   return (
-    <MainPageLayout className="space-y-4">
-      <PageHeader eyebrow={t('leaderboardPreview')} title={t('leaderboardTitle')} description={scopeDescription} />
+    <MainPageLayout className="space-y-[1.125rem]">
+      <PageHeader title={t('leaderboardTitle')} />
 
-      <div className="grid grid-cols-3 gap-3">
-        <SectionCard className="px-3 py-4">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-text-muted">{t('currentRank')}</p>
-          <p className="mt-3 text-[1.45rem] font-semibold tracking-tight text-text-primary">#{activeUserStats.rank}</p>
-        </SectionCard>
-        <SectionCard className="px-3 py-4">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-text-muted">{t('points')}</p>
-          <p className="mt-3 text-[1.45rem] font-semibold tracking-tight text-text-primary">{activeUserStats.points}</p>
-        </SectionCard>
-        <SectionCard className="px-3 py-4">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-text-muted">
-            {language === 'ru' ? 'До топ-3' : 'To top 3'}
-          </p>
-          <p className="mt-3 text-[1.45rem] font-semibold tracking-tight text-text-primary">{pointsToTopThree}</p>
-        </SectionCard>
-      </div>
+      <section className="app-card rounded-[1.45rem] px-2.5 py-2.5">
+        <div className="grid grid-cols-3 gap-2">
+          {summaryItems.map((item) => (
+            <div
+              key={item.label}
+              className={cn(
+                'rounded-[1rem] border border-black/[0.045] bg-[rgba(247,249,252,0.84)] px-3 py-2.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.92)] dark:border-white/8 dark:bg-white/[0.04] dark:shadow-none',
+                item.value === '0' && 'bg-[rgba(247,249,252,0.68)]'
+              )}
+            >
+              <p className="text-[0.6rem] font-semibold uppercase tracking-[0.16em] text-text-muted">{item.label}</p>
+              <p className={cn('mt-1.5 text-[1.08rem] font-semibold leading-none tracking-tight', item.emphasis)}>
+                {item.value}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
 
-      <SectionCard className="px-4 py-4">
-        <div className="flex flex-col gap-3">
-          <SegmentedControl value={scope} options={scopeOptions} onChange={setScope} className="w-full" />
+      <section className="space-y-3">
+        <div className="app-card rounded-[1.35rem] p-1.5">
+          <div className="grid grid-cols-3 gap-1">
+            {scopeOptions.map((option) => {
+              const active = option.value === scope;
 
-          {scope === 'live' ? (
-            <div className="overflow-x-auto">
+              return (
+                <button
+                  key={option.value}
+                  type="button"
+                  onClick={() => setScope(option.value)}
+                  className={cn(
+                    'rounded-[1rem] px-3 py-2.5 text-[0.84rem] font-semibold tracking-tight transition',
+                    active
+                      ? 'bg-white text-text-primary shadow-[0_10px_20px_rgba(15,23,42,0.07)] ring-1 ring-black/[0.03] dark:bg-white/[0.1] dark:ring-0 dark:shadow-none'
+                      : 'text-text-secondary hover:bg-black/[0.025] hover:text-text-primary dark:hover:bg-white/[0.04]'
+                  )}
+                >
+                  {option.label}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {scope === 'live' ? (
+          <div className="space-y-2">
+            <p className="px-1 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-text-muted">
+              {isRussian ? 'Эфиры' : 'Live events'}
+            </p>
+
+            <div className="-mx-1 overflow-x-auto px-1">
               <div className="flex min-w-max gap-2">
                 <button
                   type="button"
                   onClick={() => setActiveLiveEventId('all')}
-                  className={`app-pill ${activeLiveEventId === 'all' ? 'border-accent text-text-primary' : ''}`}
+                  className={cn(
+                    'rounded-full border px-3 py-1.5 text-[0.82rem] font-medium transition',
+                    activeLiveEventId === 'all'
+                      ? 'border-black/[0.04] bg-white text-text-primary shadow-[0_8px_20px_rgba(15,23,42,0.05)] dark:border-white/10 dark:bg-white/[0.08] dark:shadow-none'
+                      : 'border-black/[0.045] bg-[rgba(247,249,252,0.76)] text-text-secondary hover:border-black/[0.06] hover:text-text-primary dark:border-white/8 dark:bg-white/[0.03]'
+                  )}
                 >
-                  {language === 'ru' ? 'Все live' : 'All live'}
+                  {isRussian ? 'Все live' : 'All live'}
                 </button>
                 {liveEvents.map((event) => (
                   <button
                     key={event.id}
                     type="button"
                     onClick={() => setActiveLiveEventId(event.id)}
-                    className={`app-pill ${activeLiveEventId === event.id ? 'border-accent text-text-primary' : ''}`}
+                    className={cn(
+                      'rounded-full border px-3 py-1.5 text-[0.82rem] font-medium transition',
+                      activeLiveEventId === event.id
+                        ? 'border-black/[0.04] bg-white text-text-primary shadow-[0_8px_20px_rgba(15,23,42,0.05)] dark:border-white/10 dark:bg-white/[0.08] dark:shadow-none'
+                        : 'border-black/[0.045] bg-[rgba(247,249,252,0.76)] text-text-secondary hover:border-black/[0.06] hover:text-text-primary dark:border-white/8 dark:bg-white/[0.03]'
+                    )}
                   >
-                    {language === 'ru' ? event.headlineRu : event.headline}
+                    {isRussian ? event.headlineRu : event.headline}
                   </button>
                 ))}
               </div>
             </div>
-          ) : null}
-        </div>
-      </SectionCard>
+          </div>
+        ) : null}
+      </section>
 
-      <SectionCard className="px-4 py-4">
+      <SectionCard className="border border-black/[0.045] bg-white/[0.86] px-4 py-4 shadow-[0_16px_34px_rgba(15,23,42,0.06)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
         <div className="flex items-center justify-between gap-3">
-          <h3 className="text-base font-semibold text-text-primary">{t('topThree')}</h3>
-          <span className="text-xs text-text-muted">{activeEntries.length}</span>
+          <div>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted">{t('topThree')}</p>
+            <p className="mt-1 text-sm text-text-secondary">{leaderboardContextLabel}</p>
+          </div>
+          <span className="inline-flex min-w-[1.65rem] items-center justify-center rounded-full bg-[rgba(247,249,252,0.9)] px-2 py-1 text-[0.68rem] font-semibold text-text-secondary dark:bg-white/[0.04]">
+            {activeEntries.length}
+          </span>
         </div>
 
         <div className="mt-4 space-y-3">
           {podium[0] ? (
-            <div className="rounded-[22px] border border-accent/30 bg-accent/10 px-4 py-4">
+            <div className="rounded-[1.35rem] border border-black/[0.045] bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(246,248,252,0.92))] px-4 py-4 dark:border-white/8 dark:bg-white/[0.07]">
               <div className="flex items-start justify-between gap-3">
                 <div className="min-w-0">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-accent">#1</p>
-                  <p className="mt-2 truncate text-xl font-semibold text-text-primary">
-                    {getEntryLabel(podium[0], language)}
-                  </p>
-                  <p className="mt-2 text-sm text-text-secondary">
-                    {t('streak')}: {podium[0].streak}
-                  </p>
+                  <span className="inline-flex items-center rounded-full bg-[rgba(var(--accent-orange),0.10)] px-2.5 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-text-primary">
+                    #1
+                  </span>
+                  <div className="mt-3 flex items-center gap-3">
+                    <div className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-black/[0.045] bg-white text-sm font-semibold text-text-primary dark:border-white/10 dark:bg-white/10 dark:text-white">
+                      {getInitials(getEntryLabel(podium[0], language))}
+                    </div>
+                    <div className="min-w-0">
+                      <p className="truncate text-[1.12rem] font-semibold text-text-primary">
+                        {getEntryLabel(podium[0], language)}
+                      </p>
+                      <p className="mt-1 text-sm text-text-secondary">
+                        {t('streak')}: {podium[0].streak}
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                <p className="shrink-0 text-[1.8rem] font-semibold tracking-tight text-text-primary">
-                  {podium[0].points}
-                </p>
+
+                <div className="shrink-0 text-right">
+                  <p className="text-[1.8rem] font-semibold tracking-tight text-text-primary">{podium[0].points}</p>
+                  <p className="mt-1 text-[11px] font-medium text-text-muted">{t('points')}</p>
+                </div>
               </div>
             </div>
           ) : null}
 
           <div className="grid grid-cols-2 gap-3">
             {podium.slice(1).map((entry, index) => (
-              <div key={entry.id} className="rounded-[20px] border border-border-subtle bg-surface-subtle px-4 py-4">
+              <div
+                key={entry.id}
+                className="rounded-[1.2rem] border border-black/[0.04] bg-[rgba(247,249,252,0.82)] px-3.5 py-3.5 dark:border-white/8 dark:bg-white/[0.05]"
+              >
                 <div className="flex items-start justify-between gap-3">
                   <div className="min-w-0">
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-text-muted">#{index + 2}</p>
-                    <p className="mt-2 truncate text-base font-semibold text-text-primary">
-                      {getEntryLabel(entry, language)}
-                    </p>
-                    <p className="mt-2 text-sm text-text-secondary">
-                      {t('streak')}: {entry.streak}
-                    </p>
+                    <span className="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-text-muted">
+                      #{index + 2}
+                    </span>
+                    <div className="mt-2 flex items-center gap-2.5">
+                      <div className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-black/[0.045] bg-white text-[0.78rem] font-semibold text-text-primary dark:border-white/10 dark:bg-white/10 dark:text-white">
+                        {getInitials(getEntryLabel(entry, language))}
+                      </div>
+                      <div className="min-w-0">
+                        <p className="truncate text-[0.98rem] font-semibold text-text-primary">
+                          {getEntryLabel(entry, language)}
+                        </p>
+                        <p className="mt-0.5 text-[12px] text-text-secondary">
+                          {t('streak')}: {entry.streak}
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                  <p className="shrink-0 text-lg font-semibold tracking-tight text-text-primary">{entry.points}</p>
+                  <p className="shrink-0 text-[1.05rem] font-semibold tracking-tight text-text-primary">{entry.points}</p>
                 </div>
               </div>
             ))}
@@ -229,80 +321,108 @@ export function LeaderboardScreen() {
         </div>
       </SectionCard>
 
-      <SectionCard className="px-4 py-4">
+      <SectionCard className="border border-black/[0.045] bg-white/[0.84] px-4 py-4 shadow-[0_16px_34px_rgba(15,23,42,0.06)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
         <div className="flex items-center justify-between gap-3">
-          <h3 className="text-base font-semibold text-text-primary">{t('leaderboardTitle')}</h3>
-          <span className="text-xs text-text-muted">
-            {scope === 'live' && selectedLiveEvent ? (language === 'ru' ? selectedLiveEvent.categoryLabelRu : selectedLiveEvent.categoryLabel) : t('allEvents')}
+          <div>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted">{t('leaderboardTitle')}</p>
+            <p className="mt-1 text-sm text-text-secondary">{leaderboardContextLabel}</p>
+          </div>
+          <span className="inline-flex min-w-[1.65rem] items-center justify-center rounded-full bg-[rgba(247,249,252,0.9)] px-2 py-1 text-[0.68rem] font-semibold text-text-secondary dark:bg-white/[0.04]">
+            {activeEntries.length}
           </span>
         </div>
-        <div className="mt-4 space-y-3">
-          {listEntries.map((entry, index) => (
-            <div key={entry.id} className="app-subtle-card flex items-center justify-between gap-3">
-              <div className="min-w-0">
-                <p className="text-sm font-semibold text-text-primary">
-                  #{index + 4} {getEntryLabel(entry, language)}
-                </p>
-                <p className="mt-1 text-xs text-text-secondary">
-                  {t('streak')}: {entry.streak}
-                </p>
-              </div>
-              <p className="text-xl font-semibold tracking-tight text-text-primary">{entry.points}</p>
+
+        <div className="mt-4 overflow-hidden rounded-[1.2rem] border border-black/[0.045] bg-[rgba(247,249,252,0.72)] dark:border-white/8 dark:bg-white/[0.04]">
+          {listEntries.length ? (
+            listEntries.map((entry, index) => {
+              const rank = index + 4;
+
+              return (
+                <div
+                  key={entry.id}
+                  className={cn(
+                    'flex items-center justify-between gap-3 px-3.5 py-3.5',
+                    index !== listEntries.length - 1 && 'border-b border-black/[0.045] dark:border-white/8'
+                  )}
+                >
+                  <div className="flex min-w-0 items-center gap-3">
+                    <div className="inline-flex h-8 min-w-8 items-center justify-center rounded-full bg-white text-[0.72rem] font-semibold text-text-secondary shadow-[inset_0_0_0_1px_rgba(15,23,42,0.05)] dark:bg-white/[0.08] dark:text-text-secondary dark:shadow-none">
+                      #{rank}
+                    </div>
+                    <div className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-black/[0.045] bg-white text-[0.78rem] font-semibold text-text-primary dark:border-white/10 dark:bg-white/10 dark:text-white">
+                      {getInitials(getEntryLabel(entry, language))}
+                    </div>
+                    <div className="min-w-0">
+                      <p className="truncate text-[0.96rem] font-semibold text-text-primary">
+                        {getEntryLabel(entry, language)}
+                      </p>
+                      <p className="mt-0.5 text-[12px] text-text-secondary">
+                        {t('streak')}: {entry.streak}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="shrink-0 text-right">
+                    <p className="text-[1.02rem] font-semibold tracking-tight text-text-primary">{entry.points}</p>
+                    <p className="mt-0.5 text-[11px] text-text-muted">{t('points')}</p>
+                  </div>
+                </div>
+              );
+            })
+          ) : (
+            <div className="px-4 py-4 text-sm text-text-secondary">
+              {isRussian ? 'Пока нет дополнительных позиций в этой таблице.' : 'No additional ranking rows yet.'}
             </div>
-          ))}
+          )}
         </div>
       </SectionCard>
 
-      <SectionCard className="border border-white/35 bg-white/55 px-4 py-4 shadow-[0_18px_42px_rgba(15,23,42,0.10)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
+      <SectionCard className="border border-black/[0.045] bg-white/[0.82] px-4 py-4 shadow-[0_16px_34px_rgba(15,23,42,0.06)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
         <div className="flex items-start justify-between gap-3">
           <div>
             <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted">
-              {language === 'ru' ? 'Моя позиция' : 'My position'}
+              {isRussian ? 'Моя позиция' : 'My position'}
             </p>
-            <h3 className="mt-2 text-lg font-semibold text-text-primary">{currentUserLabel}</h3>
+            <h3 className="mt-2 text-[1.02rem] font-semibold text-text-primary">{currentUserLabel}</h3>
           </div>
-          <span className="app-pill">#{activeUserStats.rank}</span>
+          <span className="inline-flex items-center rounded-full border border-black/[0.045] bg-[rgba(247,249,252,0.86)] px-3 py-1.5 text-[0.75rem] font-semibold text-text-primary dark:border-white/8 dark:bg-white/[0.05] dark:text-white">
+            #{activeUserStats.rank}
+          </span>
         </div>
 
         <div className="mt-4 grid grid-cols-2 gap-3">
-          <div className="rounded-[18px] border border-border-subtle bg-surface-subtle px-3 py-3">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-text-muted">{t('points')}</p>
-            <p className="mt-2 text-base font-semibold text-text-primary">{activeUserStats.points}</p>
+          <div className="rounded-[1.1rem] border border-black/[0.04] bg-[rgba(247,249,252,0.82)] px-3.5 py-3.5 dark:border-white/8 dark:bg-white/[0.04]">
+            <p className="text-[11px] font-medium text-text-muted">{t('points')}</p>
+            <p className="mt-2 text-[1.3rem] font-semibold tracking-tight text-text-primary">{activeUserStats.points}</p>
           </div>
-          <div className="rounded-[18px] border border-border-subtle bg-surface-subtle px-3 py-3">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-text-muted">
-              {language === 'ru' ? 'До следующего места' : 'To next place'}
-            </p>
-            <p className="mt-2 text-base font-semibold text-text-primary">{pointsToNextPlace}</p>
+          <div className="rounded-[1.1rem] border border-black/[0.04] bg-[rgba(247,249,252,0.82)] px-3.5 py-3.5 dark:border-white/8 dark:bg-white/[0.04]">
+            <p className="text-[11px] font-medium text-text-muted">{isRussian ? 'До следующего места' : 'To next place'}</p>
+            <p className="mt-2 text-[1.3rem] font-semibold tracking-tight text-text-primary">{pointsToNextPlace}</p>
           </div>
         </div>
 
-        <p className="mt-4 text-sm text-text-secondary">
-          {language === 'ru'
+        <p className="mt-4 text-sm leading-6 text-text-secondary">
+          {isRussian
             ? `До #${activeUserStats.nextRank} осталось ${pointsToNextPlace} очков.`
             : `${pointsToNextPlace} points left to reach #${activeUserStats.nextRank}.`}
         </p>
       </SectionCard>
 
-      <SectionCard className="px-4 py-4">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted">
-          {language === 'ru' ? 'Самый быстрый рост' : 'Fastest rise'}
-        </p>
-        <div className="mt-3 flex items-center justify-between gap-3">
+      <SectionCard className="border border-black/[0.045] bg-white/[0.78] px-4 py-4 shadow-[0_16px_34px_rgba(15,23,42,0.06)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
+        <div className="flex items-start justify-between gap-3">
           <div>
-            <p className="text-lg font-semibold text-text-primary">{fastestRiseLabel}</p>
-            <p className="mt-1 text-sm text-text-secondary">
-              {scope === 'live'
-                ? language === 'ru'
-                  ? 'Live-таблицы сейчас двигаются быстрее всего вокруг текущих эфиров.'
-                  : 'The live tables are moving fastest around current events.'
-                : language === 'ru'
-                  ? 'Эта поддержка быстрее всех набирает очки в текущем окне.'
-                  : 'This support run is climbing fastest in the current window.'}
+            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted">
+              {isRussian ? 'Самый быстрый рост' : 'Fastest rise'}
             </p>
+            <p className="mt-2 text-[1.02rem] font-semibold text-text-primary">{fastestRiseLabel}</p>
+            <p className="mt-2 text-sm leading-6 text-text-secondary">{insightCopy}</p>
           </div>
           <span className="app-pill">
-            {scope === 'live' ? t('liveNow') : scope === 'today' ? (language === 'ru' ? 'Сегодня' : 'Today') : t('leaderboardTitle')}
+            {scope === 'live'
+              ? t('liveNow')
+              : scope === 'today'
+                ? (isRussian ? 'Сегодня' : 'Today')
+                : t('leaderboardTitle')}
           </span>
         </div>
       </SectionCard>
