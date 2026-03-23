@@ -19,6 +19,10 @@ const forbiddenMarkers = ['FightPulse v2', 'This page could not be found'];
 const maxAttempts = 6;
 const retryDelayMs = 5000;
 
+function stripScripts(html) {
+  return html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '');
+}
+
 function sleep(ms) {
   return new Promise((resolve) => {
     setTimeout(resolve, ms);
@@ -45,8 +49,9 @@ async function checkRoute(path) {
   }
 
   const body = await response.text();
-  const missingMarkers = requiredMarkers.filter((marker) => !body.includes(marker));
-  const presentForbiddenMarkers = forbiddenMarkers.filter((marker) => body.includes(marker));
+  const visibleHtml = stripScripts(body);
+  const missingMarkers = requiredMarkers.filter((marker) => !visibleHtml.includes(marker));
+  const presentForbiddenMarkers = forbiddenMarkers.filter((marker) => visibleHtml.includes(marker));
 
   if (!response.ok) {
     return {
