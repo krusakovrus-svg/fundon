@@ -24,6 +24,25 @@ interface FilterOption {
   label: string;
 }
 
+function formatEventCount(count: number, language: 'ru' | 'en') {
+  if (language === 'ru') {
+    const mod10 = count % 10;
+    const mod100 = count % 100;
+
+    if (mod10 === 1 && mod100 !== 11) {
+      return `${count} событие`;
+    }
+
+    if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) {
+      return `${count} события`;
+    }
+
+    return `${count} событий`;
+  }
+
+  return `${count} event${count === 1 ? '' : 's'}`;
+}
+
 function startOfDay(date: Date) {
   return new Date(date.getFullYear(), date.getMonth(), date.getDate());
 }
@@ -138,24 +157,25 @@ export function EventsScreen() {
     <MainPageLayout className="space-y-[1.125rem]">
       <PageHeader title={t('eventsTitle')} />
 
-      <section className="app-card rounded-[1.45rem] px-2.5 py-2.5">
-        <div className="grid grid-cols-3 gap-2">
+      <section className="app-card rounded-[1.45rem] px-2 py-2">
+        <div className="grid grid-cols-3 gap-1.5">
           {[
-            { label: t('eventsLiveNow'), value: summary.live, tone: 'text-accent-blue' },
-            { label: t('eventsToday'), value: summary.today, tone: 'text-text-primary' },
-            { label: t('eventsTomorrow'), value: summary.tomorrow, tone: 'text-text-primary' }
+            { label: t('eventsLiveNow'), value: summary.live, tone: 'text-accent-blue', surface: 'bg-[rgba(241,247,255,0.82)] dark:bg-[rgba(64,107,161,0.12)]' },
+            { label: t('eventsToday'), value: summary.today, tone: 'text-text-primary', surface: 'bg-[rgba(248,250,252,0.82)] dark:bg-white/[0.035]' },
+            { label: t('eventsTomorrow'), value: summary.tomorrow, tone: 'text-text-primary', surface: 'bg-[rgba(248,250,252,0.82)] dark:bg-white/[0.035]' }
           ].map((item) => (
             <div
               key={item.label}
               className={cn(
-                'rounded-[1rem] border border-black/[0.045] bg-[rgba(247,249,252,0.86)] px-3 py-2.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.9)] dark:border-white/8 dark:bg-white/[0.04] dark:shadow-none',
-                item.value === 0 && 'bg-[rgba(247,249,252,0.62)]'
+                'rounded-[0.95rem] border border-black/[0.035] px-3 py-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.92)] dark:border-white/[0.055] dark:shadow-none',
+                item.surface,
+                item.value === 0 && 'border-black/[0.025] bg-[rgba(249,250,252,0.56)] dark:border-white/[0.04] dark:bg-white/[0.02]'
               )}
             >
-              <p className="text-[0.6rem] font-semibold uppercase tracking-[0.17em] text-text-muted">{item.label}</p>
+              <p className="text-[0.57rem] font-semibold uppercase tracking-[0.16em] text-text-muted">{item.label}</p>
               <div
                 className={cn(
-                  'mt-1.5 text-[1.12rem] font-semibold leading-none tracking-tight',
+                  'mt-1.5 text-[1rem] font-semibold leading-none tracking-tight',
                   item.tone,
                   item.value === 0 && 'text-text-muted'
                 )}
@@ -168,7 +188,7 @@ export function EventsScreen() {
       </section>
 
       <section className="space-y-3">
-        <div className="app-card rounded-[1.35rem] p-1.5">
+        <div className="app-card rounded-[1.32rem] p-1.5">
           <div className="grid grid-cols-4 gap-1">
             {timeFilterOptions.map((option) => {
               const active = option.value === timeFilter;
@@ -179,10 +199,10 @@ export function EventsScreen() {
                   type="button"
                   onClick={() => setTimeFilter(option.value)}
                   className={cn(
-                    'rounded-[1rem] px-3 py-2.5 text-[0.84rem] font-semibold tracking-tight transition',
+                    'rounded-[0.95rem] px-3 py-2.5 text-[0.83rem] font-semibold tracking-tight transition',
                     active
-                      ? 'bg-white text-text-primary shadow-[0_10px_20px_rgba(15,23,42,0.07)] ring-1 ring-black/[0.03] dark:bg-white/[0.1] dark:shadow-none dark:ring-0'
-                      : 'text-text-secondary hover:bg-black/[0.025] hover:text-text-primary dark:hover:bg-white/[0.04]'
+                      ? 'bg-white text-text-primary shadow-[0_10px_22px_rgba(15,23,42,0.06)] ring-1 ring-black/[0.035] dark:bg-white/[0.095] dark:shadow-none dark:ring-white/[0.05]'
+                      : 'text-text-secondary hover:bg-black/[0.02] hover:text-text-primary dark:hover:bg-white/[0.035]'
                   )}
                 >
                   {option.label}
@@ -192,9 +212,7 @@ export function EventsScreen() {
           </div>
         </div>
 
-        <div className="space-y-2">
-          <p className="px-1 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-text-muted">{t('eventsAllSports')}</p>
-
+        <div>
           <div className="-mx-1 overflow-x-auto px-1">
             <div className="flex min-w-max gap-2">
               {sportFilters.map((sport) => {
@@ -206,10 +224,10 @@ export function EventsScreen() {
                     type="button"
                     onClick={() => setSportFilter(sport.id)}
                     className={cn(
-                      'rounded-full border px-3 py-1.5 text-[0.82rem] font-medium transition',
+                      'rounded-full border px-3 py-1.5 text-[0.8rem] font-medium transition',
                       active
-                        ? 'border-black/[0.04] bg-white text-text-primary shadow-[0_8px_20px_rgba(15,23,42,0.05)] dark:border-white/10 dark:bg-white/[0.08] dark:shadow-none'
-                        : 'border-black/[0.045] bg-[rgba(247,249,252,0.76)] text-text-secondary hover:border-black/[0.06] hover:text-text-primary dark:border-white/8 dark:bg-white/[0.03]'
+                        ? 'border-black/[0.045] bg-[rgba(247,249,252,0.94)] text-text-primary shadow-[0_8px_18px_rgba(15,23,42,0.045)] dark:border-white/[0.08] dark:bg-white/[0.06] dark:shadow-none'
+                        : 'border-black/[0.04] bg-[rgba(248,250,252,0.62)] text-text-secondary hover:border-black/[0.06] hover:text-text-primary dark:border-white/[0.06] dark:bg-white/[0.025]'
                     )}
                   >
                     {sport.label}
@@ -232,11 +250,13 @@ export function EventsScreen() {
         {groups.map((group) => (
           <section key={group.key} className="space-y-2.5">
             <div className="flex items-center gap-3 px-1">
-              <h2 className="shrink-0 text-[0.96rem] font-semibold tracking-tight text-text-primary">{group.title}</h2>
-              <div className="h-px flex-1 bg-black/[0.055] dark:bg-white/8" />
-              <span className="inline-flex min-w-[1.55rem] items-center justify-center rounded-full bg-[rgba(247,249,252,0.88)] px-2 py-1 text-[0.68rem] font-semibold text-text-secondary dark:border-white/8 dark:bg-white/[0.04]">
-                {group.events.length}
-              </span>
+              <div className="flex shrink-0 items-baseline gap-2">
+                <h2 className="text-[0.96rem] font-semibold tracking-tight text-text-primary">{group.title}</h2>
+                <span className="text-[0.72rem] font-medium text-text-muted">
+                  {formatEventCount(group.events.length, language)}
+                </span>
+              </div>
+              <div className="h-px flex-1 bg-black/[0.05] dark:bg-white/[0.07]" />
             </div>
 
             <div className="space-y-2.5">
