@@ -54,7 +54,7 @@ export const adminAnalyticsKpis: AdminAnalyticsKpi[] = [
     id: 'dau',
     label: 'DAU',
     value: '15 280',
-    trend: '+6.4% к прошлому периоду',
+    trend: '+6,4% к прошлому периоду',
     trendTone: 'positive',
     points: [58, 54, 52, 57, 61, 58, 55, 60, 53, 54, 52, 55, 63, 59, 66, 57]
   },
@@ -62,7 +62,7 @@ export const adminAnalyticsKpis: AdminAnalyticsKpi[] = [
     id: 'mau',
     label: 'MAU',
     value: '58 640',
-    trend: '+4.1% по месяцу',
+    trend: '+4,1% за месяц',
     trendTone: 'positive',
     points: [64, 67, 65, 63, 66, 69, 66, 64, 67, 65, 63, 71, 66, 69, 67, 72]
   },
@@ -70,23 +70,23 @@ export const adminAnalyticsKpis: AdminAnalyticsKpi[] = [
     id: 'new-users',
     label: 'Новые пользователи',
     value: '4 320',
-    trend: '+14% за счёт live-событий',
+    trend: '+14% за счёт эфиров',
     trendTone: 'positive',
     points: [28, 29, 30, 34, 33, 37, 32, 33, 35, 34, 31, 33, 30, 34, 34, 36]
   },
   {
     id: 'retention',
     label: 'Удержание',
-    value: '58.5%',
-    trend: '-1.8 п.п. у новой аудитории',
+    value: '58,5%',
+    trend: '-1,8 п.п. у новой аудитории',
     trendTone: 'negative',
     points: [63, 62, 64, 65, 63, 61, 60, 62, 61, 60, 62, 67, 64, 69, 66, 71]
   },
   {
     id: 'donation-conversion',
     label: 'Конверсия в донат',
-    value: '6.8%',
-    trend: '+0.9 п.п. в live-комнатах',
+    value: '6,8%',
+    trend: '+0,9 п.п. в комнатах эфира',
     trendTone: 'positive',
     points: [31, 31, 34, 37, 37, 36, 36, 33, 31, 35, 32, 33, 35, 35, 38, 38]
   },
@@ -94,7 +94,7 @@ export const adminAnalyticsKpis: AdminAnalyticsKpi[] = [
     id: 'average-check',
     label: 'Средний чек',
     value: '870 ₽',
-    trend: '+5.7% на вечерних эфирах',
+    trend: '+5,7% в вечернем эфире',
     trendTone: 'positive',
     points: [41, 42, 43, 45, 47, 50, 49, 46, 44, 47, 50, 48, 46, 51, 50, 54]
   },
@@ -102,7 +102,7 @@ export const adminAnalyticsKpis: AdminAnalyticsKpi[] = [
     id: 'support-volume',
     label: 'Общий объём поддержки',
     value: '12,4 млн ₽',
-    trend: '+9.2% к предыдущим 30 дням',
+    trend: '+9,2% к предыдущим 30 дням',
     trendTone: 'positive',
     points: [56, 57, 57, 56, 55, 55, 59, 59, 59, 57, 57, 54, 56, 56, 58, 61]
   }
@@ -144,7 +144,7 @@ export const adminAnalyticsPopularitySports: AdminAnalyticsRankingRow[] = [
     id: 'sport-2',
     rank: 2,
     label: 'Бокс',
-    meta: '24% от активной аудитории',
+    meta: '24% активной аудитории',
     value: '2,9 млн ₽',
     delta: '+7%',
     tone: 'green'
@@ -166,7 +166,7 @@ export const adminAnalyticsPopularityEntities: AdminAnalyticsRankingRow[] = [
     rank: 1,
     label: 'Алексей Орлов',
     meta: 'Лидер по повторным донатам',
-    value: '812 тыс ₽',
+    value: '812 тыс. ₽',
     delta: '+14%',
     tone: 'blue'
   },
@@ -174,7 +174,7 @@ export const adminAnalyticsPopularityEntities: AdminAnalyticsRankingRow[] = [
     id: 'entity-2',
     rank: 2,
     label: 'Night Clash 24',
-    meta: 'Лучшее событие по вовлечённости',
+    meta: 'Лидер по вовлечённости комнаты',
     value: '74 мин',
     delta: '+9%',
     tone: 'green'
@@ -194,7 +194,7 @@ export const adminAnalyticsNotificationMetrics: AdminAnalyticsMetricRow[] = [
   {
     id: 'notify-1',
     label: 'Отправлено',
-    hint: 'Push, email и событийнные триггеры',
+    hint: 'Push, email и событийные триггеры',
     value: '152 300',
     delta: '+8% за месяц',
     tone: 'blue'
@@ -204,23 +204,23 @@ export const adminAnalyticsNotificationMetrics: AdminAnalyticsMetricRow[] = [
     label: 'Доставлено',
     hint: 'Стабильность доставки по активной базе',
     value: '94%',
-    delta: '-0.4 п.п.',
+    delta: '-0,4 п.п.',
     tone: 'green'
   },
   {
     id: 'notify-3',
     label: 'Открыто',
-    hint: 'Лучший слот: 19:00-22:00',
+    hint: 'Лучший слот: 19:00–22:00',
     value: '28%',
-    delta: '+2.1 п.п.',
+    delta: '+2,1 п.п.',
     tone: 'orange'
   },
   {
     id: 'notify-4',
     label: 'Возврат в продукт',
     hint: 'Переходы из уведомлений в событие',
-    value: '7.4%',
-    delta: '+0.6 п.п.',
+    value: '7,4%',
+    delta: '+0,6 п.п.',
     tone: 'slate'
   }
 ];
@@ -228,34 +228,34 @@ export const adminAnalyticsNotificationMetrics: AdminAnalyticsMetricRow[] = [
 export const adminAnalyticsFunnelMetrics: AdminAnalyticsMetricRow[] = [
   {
     id: 'funnel-1',
-    label: 'Просмотр карточки',
-    hint: 'Доля пользователей, дошедших до события',
+    label: 'Просмотр события',
+    hint: 'Доля аудитории, дошедшей до карточки эфира',
     value: '64%',
-    delta: '+3.8 п.п.',
+    delta: '+3,8 п.п.',
     tone: 'blue'
   },
   {
     id: 'funnel-2',
     label: 'Вход в комнату',
-    hint: 'Переход из события в live-комнату',
+    hint: 'Переход из события в комнату эфира',
     value: '41%',
-    delta: '+2.2 п.п.',
+    delta: '+2,2 п.п.',
     tone: 'green'
   },
   {
     id: 'funnel-3',
-    label: 'Переход к поддержке',
-    hint: 'Открытие экрана доната',
-    value: '13.6%',
-    delta: '+1.1 п.п.',
+    label: 'Переход к оплате',
+    hint: 'Открытие экрана доната внутри сценария',
+    value: '13,6%',
+    delta: '+1,1 п.п.',
     tone: 'orange'
   },
   {
     id: 'funnel-4',
     label: 'Завершённый донат',
-    hint: 'Итоговая конверсия внутри live-flow',
-    value: '6.8%',
-    delta: '+0.9 п.п.',
+    hint: 'Итоговая конверсия в поддержке эфира',
+    value: '6,8%',
+    delta: '+0,9 п.п.',
     tone: 'slate'
   }
 ];
@@ -263,18 +263,18 @@ export const adminAnalyticsFunnelMetrics: AdminAnalyticsMetricRow[] = [
 export const adminAnalyticsEngagementMetrics: AdminAnalyticsMetricRow[] = [
   {
     id: 'engage-1',
-    label: 'Участие в комнатах',
-    hint: 'Среднее число сессий в live-комнатах',
+    label: 'Сессии в комнатах',
+    hint: 'Среднее число заходов в комнаты эфира',
     value: '3,4',
     delta: '+9%',
     tone: 'blue'
   },
   {
     id: 'engage-2',
-    label: 'Добавления в избранное',
-    hint: 'События и спортсмены на пользователя',
+    label: 'Избранное',
+    hint: 'События и спортсмены в персональных списках',
     value: '18%',
-    delta: '+1.2 п.п.',
+    delta: '+1,2 п.п.',
     tone: 'green'
   },
   {
@@ -282,7 +282,7 @@ export const adminAnalyticsEngagementMetrics: AdminAnalyticsMetricRow[] = [
     label: 'Повторные сессии',
     hint: 'Возврат в продукт в течение 7 дней',
     value: '43%',
-    delta: '-1.3 п.п.',
+    delta: '-1,3 п.п.',
     tone: 'orange'
   },
   {
@@ -290,7 +290,7 @@ export const adminAnalyticsEngagementMetrics: AdminAnalyticsMetricRow[] = [
     label: 'Глубина просмотра',
     hint: 'Среднее число экранов за сессию',
     value: '5,2',
-    delta: '+0.4',
+    delta: '+0,4',
     tone: 'slate'
   }
 ];
@@ -300,52 +300,66 @@ export const adminAnalyticsSegments: AdminAnalyticsSegment[] = [
     id: 'segment-1',
     label: 'Новые пользователи',
     value: '8 540',
-    note: 'Высокий отклик на вечерние эфиры',
+    note: 'Лучше всего заходят в вечерний эфир',
     delta: '+14%'
   },
   {
     id: 'segment-2',
     label: 'Активные донатеры',
     value: '2 110',
-    note: 'Лучшая частота возврата в live-комнаты',
+    note: 'Чаще других возвращаются в комнаты эфира',
     delta: '+6%'
   },
   {
     id: 'segment-3',
     label: 'Спящие',
     value: '5 780',
-    note: 'Падает возврат после первого события',
+    note: 'Теряются после первого просмотренного события',
     delta: '-4%'
   },
   {
     id: 'segment-4',
-    label: 'High-value',
+    label: 'Премиум-сегмент',
     value: '940',
-    note: 'Формируют 38% объёма поддержки',
+    note: 'Формирует 38% объёма поддержки',
     delta: '+9%'
+  },
+  {
+    id: 'segment-5',
+    label: 'Зрители без доната',
+    value: '12 300',
+    note: 'Нужен мягкий перевод из просмотра в поддержку',
+    delta: '+5%'
+  },
+  {
+    id: 'segment-6',
+    label: 'Лидеры комнат',
+    value: '680',
+    note: 'Держат пик вовлечённости в эфире',
+    delta: '+8%'
   }
 ];
 
 export const adminAnalyticsAnomalies: AdminAnalyticsAnomaly[] = [
   {
     id: 'anomaly-1',
-    title: 'Рост ошибок платежей',
-    description: 'Скачок отклонений пришёлся на 21:00-22:00 и затронул Android flow.',
-    impact: '+25% к прошлой неделе',
+    title: 'Ошибки оплаты в Android',
+    description: '21:00–22:00: отклонения выросли на 25%.',
+    impact: 'Риск: теряем часть вечерней выручки, нужен быстрый чек checkout.',
     severity: 'high'
   },
   {
     id: 'anomaly-2',
-    title: 'Просадка удержания новых пользователей',
-    description: 'После первого просмотра события часть аудитории не возвращается в течение 48 часов.',
-    impact: '-1.8 п.п. к прошлому периоду',
+    title: 'Просадка удержания новичков',
+    description: 'Новый поток реже возвращается в первые 48 часов.',
+    impact: 'Риск: слабее окупаются кампании привлечения в эфир.',
     severity: 'medium'
   },
   {
     id: 'anomaly-3',
-    title: 'Утренние push-кампании теряют открываемость',
-    description: 'Утренний слот уступает вечернему по переходам в live более чем вдвое.',
-    impact: '-4 п.п. open rate',
+    title: 'Утренние push-кампании слабеют',
+    description: 'Open rate утра на 4 п.п. ниже вечернего слота.',
+    impact: 'Риск: меньше возвратов в эфир до дневного окна.',
     severity: 'low'
   }
 ];
@@ -353,23 +367,23 @@ export const adminAnalyticsAnomalies: AdminAnalyticsAnomaly[] = [
 export const adminAnalyticsInsights: AdminAnalyticsInsight[] = [
   {
     id: 'insight-1',
-    title: 'Рост аудитории',
+    title: 'Новый трафик',
     value: '+14%',
-    note: 'Новый трафик хорошо заходит в live-события, но хуже возвращается после первого визита.'
+    note: 'Эфиры дают рост, но возврат после первого визита проседает.'
   },
   {
     id: 'insight-2',
-    title: 'Донатный путь',
-    value: '6.8%',
-    note: 'Комнаты поддержки усиливают конверсию, особенно в вечернем слоте.'
+    title: 'Путь к донату',
+    value: '6,8%',
+    note: 'Лучше всего работает связка событие → комната эфира → донат.'
   },
   {
     id: 'insight-3',
     title: 'Коммуникации',
     value: '28%',
-    note: 'Push-цепочки под вечерние эфиры дают лучший возврат в продукт и донат.'
+    note: 'Вечерние push-цепочки приводят самый качественный возврат.'
   }
 ];
 
 export const adminAnalyticsRecommendation =
-  'Фокус периода: удержать приток новых пользователей через возврат в первые 48 часов и снизить платёжные ошибки в пиковый вечерний слот.';
+  'Главный фокус: вернуть новичков в первые 48 часов и снять пик ошибок оплаты перед вечерним эфиром.';
