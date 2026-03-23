@@ -54,7 +54,9 @@ function DrawerLink({ item, currentPath, onClose }: { item: DrawerItem; currentP
       </div>
       <div className="flex shrink-0 items-center gap-2">
         {item.badge !== undefined ? (
-          <span className="inline-flex min-w-[1.6rem] items-center justify-center rounded-full border border-border/15 bg-white/55 px-1.5 py-0.5 text-[10px] font-medium text-text-secondary dark:bg-white/8 dark:text-text-secondary">{item.badge}</span>
+          <span className="inline-flex min-w-[1.6rem] items-center justify-center rounded-full border border-border/15 bg-white/55 px-1.5 py-0.5 text-[10px] font-medium text-text-secondary dark:bg-white/8 dark:text-text-secondary">
+            {item.badge}
+          </span>
         ) : null}
         <span className={cn('h-1.5 w-1.5 rounded-full transition', isActive ? 'bg-accent-orange' : 'bg-transparent group-hover:bg-border/40')} />
       </div>
@@ -98,8 +100,8 @@ export function SideMenuDrawer({ isOpen, currentPath, onClose }: SideMenuDrawerP
     };
   }, []);
 
-  const homePath = currentPath.startsWith('/sports/') ? currentPath : storedHomePath;
-  const currentSport = getSportById(getSportIdFromPath(homePath));
+  const preferredSportPath = storedHomePath;
+  const currentSport = getSportById(getSportIdFromPath(preferredSportPath));
   const currentSportLabel = currentSport ? (language === 'ru' ? currentSport.labelRu : currentSport.label) : '';
   const favoriteCount = favorites.length;
   const liveFavoriteCount = favorites.filter((event) => isSportEventLive(event)).length;
@@ -111,10 +113,10 @@ export function SideMenuDrawer({ isOpen, currentPath, onClose }: SideMenuDrawerP
   const primaryItems = useMemo<DrawerItem[]>(
     () => [
       {
-        href: homePath,
+        href: '/home',
         label: language === 'ru' ? 'Дом' : 'Home',
         subtitle: currentSportLabel,
-        matches: (path) => path.startsWith('/sports/') && path !== '/sports'
+        matches: (path) => path === '/home' || path === '/'
       },
       {
         href: '/live',
@@ -139,7 +141,7 @@ export function SideMenuDrawer({ isOpen, currentPath, onClose }: SideMenuDrawerP
         matches: (path) => path.startsWith('/notifications')
       }
     ],
-    [currentSportLabel, favoriteCount, homePath, language, liveFavoriteCount, t]
+    [currentSportLabel, favoriteCount, language, liveFavoriteCount, t]
   );
 
   const secondaryItems = useMemo<DrawerItem[]>(
@@ -192,7 +194,9 @@ export function SideMenuDrawer({ isOpen, currentPath, onClose }: SideMenuDrawerP
               <p className="truncate text-[15px] font-semibold leading-tight text-text-primary">{displayName}</p>
               <div className="mt-1.5 flex flex-wrap gap-1.5 text-[10px] text-text-secondary">
                 <span className="inline-flex items-center rounded-full bg-white/70 px-2 py-0.5 font-medium dark:bg-white/8">#{mockData.profile.currentRank}</span>
-                <span className="inline-flex items-center rounded-full bg-white/70 px-2 py-0.5 font-medium dark:bg-white/8">{mockData.profile.points} {t('points')}</span>
+                <span className="inline-flex items-center rounded-full bg-white/70 px-2 py-0.5 font-medium dark:bg-white/8">
+                  {mockData.profile.points} {t('points')}
+                </span>
                 <span className="inline-flex items-center rounded-full bg-white/70 px-2 py-0.5 font-medium dark:bg-white/8">${mockData.profile.walletBalance}</span>
               </div>
             </div>

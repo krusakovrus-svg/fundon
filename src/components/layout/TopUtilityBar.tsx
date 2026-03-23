@@ -103,6 +103,7 @@ export function TopUtilityBar({ isMenuOpen, onToggleMenu }: TopUtilityBarProps) 
   const router = useRouter();
   const { language, t } = useLanguage();
   const balance = mockData.profile.walletBalance;
+  const isHomePage = pathname === '/home';
   const isSportsPage = pathname?.startsWith('/sports');
   const isFavoritesPage = pathname?.startsWith('/favorites');
   const isNotificationsPage = pathname?.startsWith('/notifications');
@@ -116,6 +117,47 @@ export function TopUtilityBar({ isMenuOpen, onToggleMenu }: TopUtilityBarProps) 
 
     router.push('/live');
   };
+
+  if (isHomePage) {
+    return (
+      <div className="app-topbar-wrap">
+        <div className="relative flex items-center gap-3">
+          <button
+            type="button"
+            aria-label={menuLabel}
+            aria-expanded={isMenuOpen}
+            onClick={onToggleMenu}
+            className="app-topbar-icon app-card shrink-0"
+          >
+            <MenuIcon />
+          </button>
+
+          <div className="min-w-0 flex-1 px-1 text-center">
+            <p className="truncate text-[1.02rem] font-semibold tracking-tight text-text-primary">
+              {language === 'ru' ? 'Главная' : 'Home'}
+            </p>
+          </div>
+
+          <div className="flex shrink-0 items-center gap-1.5">
+            <button type="button" aria-label={t('balanceLabel')} className="app-topbar-balance app-card min-w-[5.5rem] px-3">
+              <span className="inline-flex items-center justify-center gap-1.5 text-[1rem] font-semibold tracking-tight text-text-primary">
+                <span>${balance}</span>
+                <span className="text-accent-green">+</span>
+              </span>
+            </button>
+
+            <Link
+              href="/notifications"
+              aria-label={t('notificationsLabel')}
+              className={cn('app-topbar-icon app-card', isNotificationsPage && 'text-accent')}
+            >
+              <BellIcon />
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="app-topbar-wrap">

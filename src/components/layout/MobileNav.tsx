@@ -2,11 +2,10 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { cn } from "@/lib/utils";
-import { DEFAULT_SPORT_PATH, getStoredSportPath } from "@/lib/sportsHome";
 
 function HomeIcon() {
   return (
@@ -75,16 +74,11 @@ const staticNavItems: StaticNavItem[] = [
 export function MobileNav() {
   const pathname = usePathname();
   const { language } = useLanguage();
-  const [homeHref, setHomeHref] = useState(DEFAULT_SPORT_PATH);
-
-  useEffect(() => {
-    setHomeHref(getStoredSportPath());
-  }, [pathname]);
 
   const navItems = useMemo(
     () => [
       {
-        href: homeHref,
+        href: "/home",
         key: "home" as const,
         icon: HomeIcon,
         label: language === "ru" ? "Дом" : "Home",
@@ -96,7 +90,7 @@ export function MobileNav() {
         label: item.getLabel(language),
       })),
     ],
-    [homeHref, language]
+    [language]
   );
 
   return (
@@ -109,7 +103,7 @@ export function MobileNav() {
           {navItems.map(({ href, icon: Icon, key, label }) => {
             const isActive =
               key === "home"
-                ? pathname.startsWith("/sports/") && pathname !== "/sports"
+                ? pathname === "/home" || pathname === "/"
                 : key === "search"
                   ? pathname === "/sports"
                   : pathname === href || pathname.startsWith(`${href}/`);
@@ -122,7 +116,9 @@ export function MobileNav() {
                 className={cn(
                   "group flex h-14 items-center justify-center rounded-[22px] transition-all duration-200",
                   isActive
-                    ? "bg-[color:var(--nav-active-surface)] text-[color:var(--nav-active-text)] shadow-[0_10px_24px_rgba(255,87,34,0.18)] dark:shadow-[0_14px_30px_rgba(255,94,58,0.2)]"
+                    ? key === "home"
+                      ? "bg-[color:var(--nav-active-surface)] text-[color:var(--nav-active-text)] shadow-[0_12px_28px_rgba(255,87,34,0.22)] ring-1 ring-white/55 dark:shadow-[0_14px_30px_rgba(255,94,58,0.24)] dark:ring-white/10"
+                      : "bg-[color:var(--nav-active-surface)] text-[color:var(--nav-active-text)] shadow-[0_10px_24px_rgba(255,87,34,0.18)] dark:shadow-[0_14px_30px_rgba(255,94,58,0.2)]"
                     : "text-[color:var(--text-secondary)] hover:bg-black/[0.04] hover:text-[color:var(--text-primary)] dark:hover:bg-white/[0.06] dark:hover:text-[color:var(--text-primary)]",
                 )}
               >
