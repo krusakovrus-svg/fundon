@@ -87,23 +87,24 @@ function getInitials(label: string) {
 }
 
 export function LeaderboardScreen() {
-  const { language, t } = useLanguage();
+  const { language } = useLanguage();
   const [scope, setScope] = useState<LeaderboardScope>('global');
   const [activeLiveEventId, setActiveLiveEventId] = useState<string>('all');
 
   const isRussian = language === 'ru';
-  const globalEntries = sortEntries([...mockData.leaderboard, ...globalExtraEntries]);
-  const allLiveEntries = sortEntries(
-    liveEvents.flatMap((event) => [...event.leaderboard, ...(liveExtraEntries[event.id] ?? [])])
+  const leaderboardTitle = isRussian ? 'Рейтинги' : 'Leaderboard';
+  const overallEntries = useMemo(() => sortEntries([...mockData.leaderboard, ...globalExtraEntries]), []);
+  const dailyEntries = useMemo(() => sortEntries(todayEntries), []);
+  const allLiveEntries = useMemo(
+    () => sortEntries(liveEvents.flatMap((event) => [...event.leaderboard, ...(liveExtraEntries[event.id] ?? [])])),
+    []
   );
   const selectedLiveEvent = liveEvents.find((event) => event.id === activeLiveEventId) ?? null;
   const selectedLiveEntries = selectedLiveEvent
     ? sortEntries([...selectedLiveEvent.leaderboard, ...(liveExtraEntries[selectedLiveEvent.id] ?? [])])
     : allLiveEntries;
 
-  const activeEntries =
-    scope === 'global' ? globalEntries : scope === 'today' ? sortEntries(todayEntries) : selectedLiveEntries;
-
+  const activeEntries = scope === 'global' ? overallEntries : scope === 'today' ? dailyEntries : selectedLiveEntries;
   const activeUserStats =
     scope === 'live' && activeLiveEventId !== 'all'
       ? userLiveEventStats[activeLiveEventId] ?? userScopeStats.live
@@ -114,23 +115,72 @@ export function LeaderboardScreen() {
   const topThreeThreshold = podium[2]?.points ?? podium[podium.length - 1]?.points ?? activeUserStats.points;
   const pointsToTopThree = Math.max(topThreeThreshold - activeUserStats.points, 0);
   const pointsToNextPlace = Math.max(activeUserStats.nextTargetPoints - activeUserStats.points, 0);
-  const currentUserLabel = t('you');
+  const currentUserLabel = isRussian ? 'Вы' : 'You';
+  const pointsLabel = isRussian ? 'Очки' : 'Points';
+  const streakLabel = isRussian ? 'Серия поддержки' : 'Support streak';
+  const currentRankLabel = isRussian ? 'Текущее место' : 'Current rank';
+  const topThreeLabel = isRussian ? 'До топ-3' : 'To top 3';
+  const nextPlaceLabel = isRussian ? 'До следующего места' : 'To next place';
+  const myPositionLabel = isRussian ? 'Моя позиция' : 'My position';
+  const fastestRiseLabel = isRussian ? 'Самый быстрый рост' : 'Fastest rise';
+
   const leaderboardContextLabel =
     scope === 'live' && selectedLiveEvent
       ? isRussian
         ? selectedLiveEvent.headlineRu
         : selectedLiveEvent.headline
       : scope === 'today'
-        ? (isRussian ? 'Только за сегодня' : 'Today only')
-        : (isRussian ? 'Все участники' : 'All supporters');
+        ? isRussian
+          ? 'Только за сегодня'
+          : 'Today only'
+        : isRussian
+          ? 'Все участники'
+          : 'All supporters';
 
   const summaryItems = [
-    { label: t('currentRank'), value: `#${activeUserStats.rank}`, emphasis: 'text-text-primary' },
-    { label: t('points'), value: activeUserStats.points.toString(), emphasis: 'text-text-primary' },
     {
-      label: isRussian ? 'До топ-3' : 'To top 3',
+      label: currentRankLabel,
+      value: `#${activeUserStats.rank}`,
+      note:
+        scope === 'live'
+          ? isRussian
+            ? 'в live-таблице'
+            : 'in live ranking'
+          : scope === 'today'
+            ? isRussian
+              ? 'за сегодня'
+              : 'for today'
+            : isRussian
+              ? 'в общем списке'
+              : 'overall'
+    },
+    {
+      label: pointsLabel,
+      value: activeUserStats.points.toString(),
+      note:
+        scope === 'today'
+          ? isRussian
+            ? 'набрано за день'
+            : 'gained today'
+          : scope === 'live'
+            ? isRussian
+              ? 'в текущем эфире'
+              : 'in current live'
+            : isRussian
+              ? 'всего очков'
+              : 'total points'
+    },
+    {
+      label: topThreeLabel,
       value: pointsToTopThree.toString(),
-      emphasis: pointsToTopThree === 0 ? 'text-[rgb(var(--accent-green))]' : 'text-text-primary'
+      note:
+        pointsToTopThree === 0
+          ? isRussian
+            ? 'вы уже внутри'
+            : 'already there'
+          : isRussian
+            ? 'до прорыва'
+            : 'to breakthrough'
     }
   ];
 
@@ -141,47 +191,55 @@ export function LeaderboardScreen() {
   ];
 
   const fastestRiseEntry =
-    scope === 'global' ? globalEntries[3] : scope === 'today' ? sortEntries(todayEntries)[0] : activeEntries[0];
-  const fastestRiseLabel = fastestRiseEntry ? getEntryLabel(fastestRiseEntry, language) : currentUserLabel;
-
+    scope === 'global' ? overallEntries[3] : scope === 'today' ? dailyEntries[0] : activeEntries[0];
+  const fastestRiseName = fastestRiseEntry ? getEntryLabel(fastestRiseEntry, language) : currentUserLabel;
+  const fastestRiseStreak = fastestRiseEntry?.streak ?? activeUserStats.rank;
   const insightCopy =
     scope === 'live'
       ? isRussian
-        ? 'Live-таблица двигается быстрее всего вокруг текущих эфиров и резких всплесков поддержки.'
-        : 'The live table moves fastest around the current events and support surges.'
+        ? 'Live-таблица быстрее всего реагирует на всплески поддержки вокруг текущих эфиров.'
+        : 'The live table reacts fastest to support spikes around current events.'
       : scope === 'today'
         ? isRussian
-          ? 'Сегодняшний рейтинг показывает, кто быстрее всех набирает очки поддержки за текущий день.'
-          : 'Today shows who is gaining support points fastest right now.'
+          ? 'Сегодня в таблице лучше всего видно, кто быстрее остальных набирает очки поддержки.'
+          : 'Today shows who is gaining support points the fastest.'
         : isRussian
           ? 'Общий рейтинг собирает самых стабильных фанатов по всей системе поддержки.'
           : 'The overall table highlights the most consistent supporters across the app.';
 
-  return (
-    <MainPageLayout className="space-y-[1.125rem]">
-      <PageHeader title={t('leaderboardTitle')} />
+  const topCardClass =
+    'app-card rounded-[1.42rem] px-2.5 py-2.5 dark:border-white/[0.06] dark:bg-[linear-gradient(180deg,rgba(18,24,37,0.86),rgba(11,16,27,0.82))] dark:shadow-[0_18px_30px_rgba(2,6,23,0.20)]';
+  const cardClass =
+    'border border-black/[0.045] bg-white/[0.86] px-4 py-4 shadow-[0_16px_34px_rgba(15,23,42,0.06)] backdrop-blur-xl dark:border-white/[0.06] dark:bg-[linear-gradient(180deg,rgba(20,27,41,0.90),rgba(13,18,30,0.84))] dark:shadow-[0_18px_30px_rgba(2,6,23,0.20)]';
+  const tileClass =
+    'rounded-[1.08rem] border border-black/[0.045] bg-[rgba(247,249,252,0.82)] px-3 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.78)] dark:border-white/[0.05] dark:bg-[linear-gradient(180deg,rgba(34,42,56,0.94),rgba(22,30,43,0.92))] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]';
+  const badgeClass =
+    'inline-flex min-w-[1.55rem] items-center justify-center rounded-full bg-black/[0.03] px-2 py-1 text-[0.66rem] font-semibold text-text-muted dark:bg-white/[0.05] dark:text-white/[0.42]';
+  const avatarClass =
+    'inline-flex items-center justify-center rounded-full border border-black/[0.045] bg-white text-[0.78rem] font-semibold text-text-primary shadow-[inset_0_0_0_1px_rgba(15,23,42,0.04)] dark:border-white/[0.06] dark:bg-[linear-gradient(180deg,rgba(39,48,63,0.96),rgba(27,35,49,0.92))] dark:text-white dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]';
 
-      <section className="app-card rounded-[1.45rem] px-2.5 py-2.5">
+  return (
+    <MainPageLayout className="space-y-3.5">
+      <PageHeader title={leaderboardTitle} />
+
+      <section className={topCardClass}>
         <div className="grid grid-cols-3 gap-2">
           {summaryItems.map((item) => (
-            <div
-              key={item.label}
-              className={cn(
-                'rounded-[1rem] border border-black/[0.045] bg-[rgba(247,249,252,0.84)] px-3 py-2.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.92)] dark:border-white/8 dark:bg-white/[0.04] dark:shadow-none',
-                item.value === '0' && 'bg-[rgba(247,249,252,0.68)]'
-              )}
-            >
-              <p className="text-[0.6rem] font-semibold uppercase tracking-[0.16em] text-text-muted">{item.label}</p>
-              <p className={cn('mt-1.5 text-[1.08rem] font-semibold leading-none tracking-tight', item.emphasis)}>
+            <div key={item.label} className={tileClass}>
+              <p className="text-[0.58rem] font-semibold uppercase tracking-[0.16em] text-text-muted dark:text-white/[0.42]">
+                {item.label}
+              </p>
+              <p className="mt-1.5 text-[1.08rem] font-semibold leading-none tracking-tight text-text-primary dark:text-white">
                 {item.value}
               </p>
+              <p className="mt-1.5 text-[0.7rem] leading-snug text-text-secondary dark:text-white/[0.56]">{item.note}</p>
             </div>
           ))}
         </div>
       </section>
 
       <section className="space-y-3">
-        <div className="app-card rounded-[1.35rem] p-1.5">
+        <div className="app-card rounded-[1.3rem] p-1.5 dark:border-white/[0.06] dark:bg-[linear-gradient(180deg,rgba(18,24,37,0.84),rgba(11,16,27,0.80))] dark:shadow-[0_16px_28px_rgba(2,6,23,0.18)]">
           <div className="grid grid-cols-3 gap-1">
             {scopeOptions.map((option) => {
               const active = option.value === scope;
@@ -192,10 +250,10 @@ export function LeaderboardScreen() {
                   type="button"
                   onClick={() => setScope(option.value)}
                   className={cn(
-                    'rounded-[1rem] px-3 py-2.5 text-[0.84rem] font-semibold tracking-tight transition',
+                    'rounded-[0.98rem] px-3 py-2.5 text-[0.82rem] font-semibold tracking-tight transition-all',
                     active
-                      ? 'bg-white text-text-primary shadow-[0_10px_20px_rgba(15,23,42,0.07)] ring-1 ring-black/[0.03] dark:bg-white/[0.1] dark:ring-0 dark:shadow-none'
-                      : 'text-text-secondary hover:bg-black/[0.025] hover:text-text-primary dark:hover:bg-white/[0.04]'
+                      ? 'bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(249,250,252,0.92))] text-text-primary shadow-[0_10px_20px_rgba(15,23,42,0.07)] ring-1 ring-black/[0.03] dark:bg-[linear-gradient(180deg,rgba(255,255,255,0.07),rgba(255,124,65,0.06))] dark:text-white dark:ring-white/[0.05] dark:shadow-[0_8px_18px_rgba(255,124,65,0.05)]'
+                      : 'text-text-secondary hover:bg-black/[0.025] hover:text-text-primary dark:text-white/[0.58] dark:hover:bg-white/[0.04] dark:hover:text-white/[0.92]'
                   )}
                 >
                   {option.label}
@@ -207,7 +265,7 @@ export function LeaderboardScreen() {
 
         {scope === 'live' ? (
           <div className="space-y-2">
-            <p className="px-1 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-text-muted">
+            <p className="px-1 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-text-muted dark:text-white/[0.42]">
               {isRussian ? 'Эфиры' : 'Live events'}
             </p>
 
@@ -217,10 +275,10 @@ export function LeaderboardScreen() {
                   type="button"
                   onClick={() => setActiveLiveEventId('all')}
                   className={cn(
-                    'rounded-full border px-3 py-1.5 text-[0.82rem] font-medium transition',
+                    'rounded-full border px-3 py-1.5 text-[0.8rem] font-medium transition',
                     activeLiveEventId === 'all'
-                      ? 'border-black/[0.04] bg-white text-text-primary shadow-[0_8px_20px_rgba(15,23,42,0.05)] dark:border-white/10 dark:bg-white/[0.08] dark:shadow-none'
-                      : 'border-black/[0.045] bg-[rgba(247,249,252,0.76)] text-text-secondary hover:border-black/[0.06] hover:text-text-primary dark:border-white/8 dark:bg-white/[0.03]'
+                      ? 'border-black/[0.04] bg-white text-text-primary shadow-[0_8px_18px_rgba(15,23,42,0.05)] dark:border-white/[0.08] dark:bg-[linear-gradient(180deg,rgba(255,255,255,0.07),rgba(255,124,65,0.05))] dark:text-white dark:shadow-[0_8px_16px_rgba(255,124,65,0.04)]'
+                      : 'border-black/[0.045] bg-[rgba(247,249,252,0.76)] text-text-secondary hover:border-black/[0.06] hover:text-text-primary dark:border-white/[0.05] dark:bg-[linear-gradient(180deg,rgba(34,42,56,0.92),rgba(22,30,43,0.90))] dark:text-white/[0.62]'
                   )}
                 >
                   {isRussian ? 'Все live' : 'All live'}
@@ -231,10 +289,10 @@ export function LeaderboardScreen() {
                     type="button"
                     onClick={() => setActiveLiveEventId(event.id)}
                     className={cn(
-                      'rounded-full border px-3 py-1.5 text-[0.82rem] font-medium transition',
+                      'rounded-full border px-3 py-1.5 text-[0.8rem] font-medium transition',
                       activeLiveEventId === event.id
-                        ? 'border-black/[0.04] bg-white text-text-primary shadow-[0_8px_20px_rgba(15,23,42,0.05)] dark:border-white/10 dark:bg-white/[0.08] dark:shadow-none'
-                        : 'border-black/[0.045] bg-[rgba(247,249,252,0.76)] text-text-secondary hover:border-black/[0.06] hover:text-text-primary dark:border-white/8 dark:bg-white/[0.03]'
+                        ? 'border-black/[0.04] bg-white text-text-primary shadow-[0_8px_18px_rgba(15,23,42,0.05)] dark:border-white/[0.08] dark:bg-[linear-gradient(180deg,rgba(255,255,255,0.07),rgba(255,124,65,0.05))] dark:text-white dark:shadow-[0_8px_16px_rgba(255,124,65,0.04)]'
+                        : 'border-black/[0.045] bg-[rgba(247,249,252,0.76)] text-text-secondary hover:border-black/[0.06] hover:text-text-primary dark:border-white/[0.05] dark:bg-[linear-gradient(180deg,rgba(34,42,56,0.92),rgba(22,30,43,0.90))] dark:text-white/[0.62]'
                     )}
                   >
                     {isRussian ? event.headlineRu : event.headline}
@@ -246,43 +304,41 @@ export function LeaderboardScreen() {
         ) : null}
       </section>
 
-      <SectionCard className="border border-black/[0.045] bg-white/[0.86] px-4 py-4 shadow-[0_16px_34px_rgba(15,23,42,0.06)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
+      <SectionCard className={cardClass}>
         <div className="flex items-center justify-between gap-3">
           <div>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted">{t('topThree')}</p>
-            <p className="mt-1 text-sm text-text-secondary">{leaderboardContextLabel}</p>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted dark:text-white/[0.42]">
+              {isRussian ? 'Топ 3' : 'Top 3'}
+            </p>
+            <p className="mt-1 text-sm text-text-secondary dark:text-white/[0.58]">{leaderboardContextLabel}</p>
           </div>
-          <span className="inline-flex min-w-[1.65rem] items-center justify-center rounded-full bg-[rgba(247,249,252,0.9)] px-2 py-1 text-[0.68rem] font-semibold text-text-secondary dark:bg-white/[0.04]">
-            {activeEntries.length}
-          </span>
+          <span className={badgeClass}>{activeEntries.length}</span>
         </div>
 
         <div className="mt-4 space-y-3">
           {podium[0] ? (
-            <div className="rounded-[1.35rem] border border-black/[0.045] bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(246,248,252,0.92))] px-4 py-4 dark:border-white/8 dark:bg-white/[0.07]">
+            <div className="rounded-[1.35rem] border border-black/[0.045] bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(247,249,252,0.92))] px-4 py-4 shadow-[0_12px_24px_rgba(15,23,42,0.04)] dark:border-white/[0.06] dark:bg-[linear-gradient(180deg,rgba(29,37,51,0.96),rgba(20,27,41,0.92))] dark:shadow-[0_14px_24px_rgba(2,6,23,0.16)]">
               <div className="flex items-start justify-between gap-3">
                 <div className="min-w-0">
-                  <span className="inline-flex items-center rounded-full bg-[rgba(var(--accent-orange),0.10)] px-2.5 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-text-primary">
+                  <span className="inline-flex items-center rounded-full bg-[rgba(var(--accent-orange),0.10)] px-2.5 py-1 text-[0.64rem] font-semibold uppercase tracking-[0.12em] text-[rgb(var(--accent-orange))] dark:bg-[rgba(var(--accent-orange),0.12)]">
                     #1
                   </span>
                   <div className="mt-3 flex items-center gap-3">
-                    <div className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-black/[0.045] bg-white text-sm font-semibold text-text-primary dark:border-white/10 dark:bg-white/10 dark:text-white">
-                      {getInitials(getEntryLabel(podium[0], language))}
-                    </div>
+                    <div className={cn(avatarClass, 'h-12 w-12 text-sm')}>{getInitials(getEntryLabel(podium[0], language))}</div>
                     <div className="min-w-0">
-                      <p className="truncate text-[1.12rem] font-semibold text-text-primary">
+                      <p className="truncate text-[1.1rem] font-semibold text-text-primary dark:text-white">
                         {getEntryLabel(podium[0], language)}
                       </p>
-                      <p className="mt-1 text-sm text-text-secondary">
-                        {t('streak')}: {podium[0].streak}
+                      <p className="mt-1 text-[0.84rem] text-text-secondary dark:text-white/[0.56]">
+                        {streakLabel} {podium[0].streak}
                       </p>
                     </div>
                   </div>
                 </div>
 
                 <div className="shrink-0 text-right">
-                  <p className="text-[1.8rem] font-semibold tracking-tight text-text-primary">{podium[0].points}</p>
-                  <p className="mt-1 text-[11px] font-medium text-text-muted">{t('points')}</p>
+                  <p className="text-[1.74rem] font-semibold tracking-tight text-text-primary dark:text-white">{podium[0].points}</p>
+                  <p className="mt-1 text-[11px] font-medium text-text-muted dark:text-white/[0.42]">{pointsLabel}</p>
                 </div>
               </div>
             </div>
@@ -290,30 +346,25 @@ export function LeaderboardScreen() {
 
           <div className="grid grid-cols-2 gap-3">
             {podium.slice(1).map((entry, index) => (
-              <div
-                key={entry.id}
-                className="rounded-[1.2rem] border border-black/[0.04] bg-[rgba(247,249,252,0.82)] px-3.5 py-3.5 dark:border-white/8 dark:bg-white/[0.05]"
-              >
+              <div key={entry.id} className={tileClass}>
                 <div className="flex items-start justify-between gap-3">
                   <div className="min-w-0">
-                    <span className="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-text-muted">
+                    <span className="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-text-muted dark:text-white/[0.42]">
                       #{index + 2}
                     </span>
                     <div className="mt-2 flex items-center gap-2.5">
-                      <div className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-black/[0.045] bg-white text-[0.78rem] font-semibold text-text-primary dark:border-white/10 dark:bg-white/10 dark:text-white">
-                        {getInitials(getEntryLabel(entry, language))}
-                      </div>
+                      <div className={cn(avatarClass, 'h-10 w-10')}>{getInitials(getEntryLabel(entry, language))}</div>
                       <div className="min-w-0">
-                        <p className="truncate text-[0.98rem] font-semibold text-text-primary">
+                        <p className="truncate text-[0.98rem] font-semibold text-text-primary dark:text-white/[0.94]">
                           {getEntryLabel(entry, language)}
                         </p>
-                        <p className="mt-0.5 text-[12px] text-text-secondary">
-                          {t('streak')}: {entry.streak}
+                        <p className="mt-0.5 text-[12px] text-text-secondary dark:text-white/[0.54]">
+                          {streakLabel} {entry.streak}
                         </p>
                       </div>
                     </div>
                   </div>
-                  <p className="shrink-0 text-[1.05rem] font-semibold tracking-tight text-text-primary">{entry.points}</p>
+                  <p className="shrink-0 text-[1.02rem] font-semibold tracking-tight text-text-primary dark:text-white">{entry.points}</p>
                 </div>
               </div>
             ))}
@@ -321,18 +372,18 @@ export function LeaderboardScreen() {
         </div>
       </SectionCard>
 
-      <SectionCard className="border border-black/[0.045] bg-white/[0.84] px-4 py-4 shadow-[0_16px_34px_rgba(15,23,42,0.06)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
+      <SectionCard className={cardClass}>
         <div className="flex items-center justify-between gap-3">
           <div>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted">{t('leaderboardTitle')}</p>
-            <p className="mt-1 text-sm text-text-secondary">{leaderboardContextLabel}</p>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted dark:text-white/[0.42]">
+              {leaderboardTitle}
+            </p>
+            <p className="mt-1 text-sm text-text-secondary dark:text-white/[0.58]">{leaderboardContextLabel}</p>
           </div>
-          <span className="inline-flex min-w-[1.65rem] items-center justify-center rounded-full bg-[rgba(247,249,252,0.9)] px-2 py-1 text-[0.68rem] font-semibold text-text-secondary dark:bg-white/[0.04]">
-            {activeEntries.length}
-          </span>
+          <span className={badgeClass}>{activeEntries.length}</span>
         </div>
 
-        <div className="mt-4 overflow-hidden rounded-[1.2rem] border border-black/[0.045] bg-[rgba(247,249,252,0.72)] dark:border-white/8 dark:bg-white/[0.04]">
+        <div className="mt-4 overflow-hidden rounded-[1.2rem] border border-black/[0.045] bg-[rgba(247,249,252,0.72)] dark:border-white/[0.06] dark:bg-[linear-gradient(180deg,rgba(24,31,45,0.92),rgba(18,24,36,0.88))]">
           {listEntries.length ? (
             listEntries.map((entry, index) => {
               const rank = index + 4;
@@ -341,89 +392,95 @@ export function LeaderboardScreen() {
                 <div
                   key={entry.id}
                   className={cn(
-                    'flex items-center justify-between gap-3 px-3.5 py-3.5',
-                    index !== listEntries.length - 1 && 'border-b border-black/[0.045] dark:border-white/8'
+                    'flex items-center justify-between gap-3 px-3.5 py-3.25',
+                    index !== listEntries.length - 1 && 'border-b border-black/[0.035] dark:border-white/[0.05]'
                   )}
                 >
                   <div className="flex min-w-0 items-center gap-3">
-                    <div className="inline-flex h-8 min-w-8 items-center justify-center rounded-full bg-white text-[0.72rem] font-semibold text-text-secondary shadow-[inset_0_0_0_1px_rgba(15,23,42,0.05)] dark:bg-white/[0.08] dark:text-text-secondary dark:shadow-none">
+                    <div className="inline-flex h-8 min-w-8 items-center justify-center rounded-full bg-white/84 text-[0.72rem] font-semibold text-text-secondary shadow-[inset_0_0_0_1px_rgba(15,23,42,0.05)] dark:bg-white/[0.05] dark:text-white/[0.58] dark:shadow-none">
                       #{rank}
                     </div>
-                    <div className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-black/[0.045] bg-white text-[0.78rem] font-semibold text-text-primary dark:border-white/10 dark:bg-white/10 dark:text-white">
-                      {getInitials(getEntryLabel(entry, language))}
-                    </div>
+                    <div className={cn(avatarClass, 'h-10 w-10')}>{getInitials(getEntryLabel(entry, language))}</div>
                     <div className="min-w-0">
-                      <p className="truncate text-[0.96rem] font-semibold text-text-primary">
+                      <p className="truncate text-[0.95rem] font-semibold text-text-primary dark:text-white/[0.94]">
                         {getEntryLabel(entry, language)}
                       </p>
-                      <p className="mt-0.5 text-[12px] text-text-secondary">
-                        {t('streak')}: {entry.streak}
+                      <p className="mt-0.5 text-[12px] text-text-secondary dark:text-white/[0.52]">
+                        {streakLabel} {entry.streak}
                       </p>
                     </div>
                   </div>
 
                   <div className="shrink-0 text-right">
-                    <p className="text-[1.02rem] font-semibold tracking-tight text-text-primary">{entry.points}</p>
-                    <p className="mt-0.5 text-[11px] text-text-muted">{t('points')}</p>
+                    <p className="text-[1.01rem] font-semibold tracking-tight text-text-primary dark:text-white">{entry.points}</p>
+                    <p className="mt-0.5 text-[11px] text-text-muted dark:text-white/[0.42]">{pointsLabel}</p>
                   </div>
                 </div>
               );
             })
           ) : (
-            <div className="px-4 py-4 text-sm text-text-secondary">
+            <div className="px-4 py-4 text-sm text-text-secondary dark:text-white/[0.56]">
               {isRussian ? 'Пока нет дополнительных позиций в этой таблице.' : 'No additional ranking rows yet.'}
             </div>
           )}
         </div>
       </SectionCard>
 
-      <SectionCard className="border border-black/[0.045] bg-white/[0.82] px-4 py-4 shadow-[0_16px_34px_rgba(15,23,42,0.06)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
+      <SectionCard className={cardClass}>
         <div className="flex items-start justify-between gap-3">
           <div>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted">
-              {isRussian ? 'Моя позиция' : 'My position'}
+            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted dark:text-white/[0.42]">
+              {myPositionLabel}
             </p>
-            <h3 className="mt-2 text-[1.02rem] font-semibold text-text-primary">{currentUserLabel}</h3>
+            <h3 className="mt-1.5 text-[1.02rem] font-semibold text-text-primary dark:text-white">{currentUserLabel}</h3>
           </div>
-          <span className="inline-flex items-center rounded-full border border-black/[0.045] bg-[rgba(247,249,252,0.86)] px-3 py-1.5 text-[0.75rem] font-semibold text-text-primary dark:border-white/8 dark:bg-white/[0.05] dark:text-white">
+          <span className="inline-flex items-center rounded-full border border-black/[0.045] bg-[rgba(247,249,252,0.88)] px-3 py-1.5 text-[0.75rem] font-semibold text-text-primary dark:border-white/[0.06] dark:bg-[linear-gradient(180deg,rgba(34,42,56,0.94),rgba(22,30,43,0.92))] dark:text-white">
             #{activeUserStats.rank}
           </span>
         </div>
 
         <div className="mt-4 grid grid-cols-2 gap-3">
-          <div className="rounded-[1.1rem] border border-black/[0.04] bg-[rgba(247,249,252,0.82)] px-3.5 py-3.5 dark:border-white/8 dark:bg-white/[0.04]">
-            <p className="text-[11px] font-medium text-text-muted">{t('points')}</p>
-            <p className="mt-2 text-[1.3rem] font-semibold tracking-tight text-text-primary">{activeUserStats.points}</p>
+          <div className={tileClass}>
+            <p className="text-[11px] font-medium text-text-muted dark:text-white/[0.42]">{pointsLabel}</p>
+            <p className="mt-2 text-[1.34rem] font-semibold tracking-tight text-text-primary dark:text-white">{activeUserStats.points}</p>
           </div>
-          <div className="rounded-[1.1rem] border border-black/[0.04] bg-[rgba(247,249,252,0.82)] px-3.5 py-3.5 dark:border-white/8 dark:bg-white/[0.04]">
-            <p className="text-[11px] font-medium text-text-muted">{isRussian ? 'До следующего места' : 'To next place'}</p>
-            <p className="mt-2 text-[1.3rem] font-semibold tracking-tight text-text-primary">{pointsToNextPlace}</p>
+          <div className={tileClass}>
+            <p className="text-[11px] font-medium text-text-muted dark:text-white/[0.42]">{nextPlaceLabel}</p>
+            <p className="mt-2 text-[1.34rem] font-semibold tracking-tight text-text-primary dark:text-white">{pointsToNextPlace}</p>
           </div>
         </div>
 
-        <p className="mt-4 text-sm leading-6 text-text-secondary">
-          {isRussian
-            ? `До #${activeUserStats.nextRank} осталось ${pointsToNextPlace} очков.`
-            : `${pointsToNextPlace} points left to reach #${activeUserStats.nextRank}.`}
-        </p>
+        <div className="mt-4 rounded-[1.08rem] border border-black/[0.04] bg-[rgba(247,249,252,0.74)] px-3.5 py-3 dark:border-white/[0.05] dark:bg-[linear-gradient(180deg,rgba(31,39,53,0.94),rgba(21,28,40,0.90))]">
+          <p className="text-[0.94rem] font-medium text-text-primary dark:text-white/[0.9]">
+            {isRussian
+              ? `До #${activeUserStats.nextRank} осталось ${pointsToNextPlace} очков`
+              : `${pointsToNextPlace} points left to reach #${activeUserStats.nextRank}`}
+          </p>
+          <p className="mt-1.5 text-[0.82rem] leading-relaxed text-text-secondary dark:text-white/[0.58]">
+            {isRussian
+              ? 'Ещё один сильный рывок по поддержке поднимет вас выше в таблице.'
+              : 'One more strong support push can move you up the table.'}
+          </p>
+        </div>
       </SectionCard>
 
-      <SectionCard className="border border-black/[0.045] bg-white/[0.78] px-4 py-4 shadow-[0_16px_34px_rgba(15,23,42,0.06)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
+      <SectionCard className={cardClass}>
         <div className="flex items-start justify-between gap-3">
           <div>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted">
-              {isRussian ? 'Самый быстрый рост' : 'Fastest rise'}
+            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted dark:text-white/[0.42]">
+              {fastestRiseLabel}
             </p>
-            <p className="mt-2 text-[1.02rem] font-semibold text-text-primary">{fastestRiseLabel}</p>
-            <p className="mt-2 text-sm leading-6 text-text-secondary">{insightCopy}</p>
+            <p className="mt-1.5 text-[1.02rem] font-semibold text-text-primary dark:text-white">{fastestRiseName}</p>
+            <p className="mt-2 text-sm leading-6 text-text-secondary dark:text-white/[0.58]">{insightCopy}</p>
           </div>
-          <span className="app-pill">
-            {scope === 'live'
-              ? t('liveNow')
-              : scope === 'today'
-                ? (isRussian ? 'Сегодня' : 'Today')
-                : t('leaderboardTitle')}
-          </span>
+          <div className="shrink-0 text-right">
+            <span className="app-pill">
+              {scope === 'live' ? (isRussian ? 'В эфире' : 'Live') : scope === 'today' ? (isRussian ? 'Сегодня' : 'Today') : leaderboardTitle}
+            </span>
+            <p className="mt-2 text-[0.78rem] text-text-secondary dark:text-white/[0.56]">
+              {streakLabel} {fastestRiseStreak}
+            </p>
+          </div>
         </div>
       </SectionCard>
     </MainPageLayout>
