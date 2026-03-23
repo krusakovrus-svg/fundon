@@ -12,6 +12,7 @@ import { SectionCard } from '@/components/ui/SectionCard';
 import { mockData } from '@/data/mock';
 import { isSportEventLive } from '@/data/sportEvents';
 import { getStoredProfileAvatar, setStoredProfileAvatar } from '@/lib/profileAvatar';
+import { getStoredProfileName, setStoredProfileName } from '@/lib/profileName';
 
 function BellIcon() {
   return (
@@ -43,6 +44,15 @@ function StarIcon() {
   return (
     <svg viewBox="0 0 24 24" className="h-[0.95rem] w-[0.95rem]" fill="currentColor">
       <path d="m12 2.8 2.7 5.5 6.1.9-4.4 4.3 1 6.1L12 16.8l-5.4 2.8 1-6.1L3.2 9.2l6.1-.9L12 2.8Z" />
+    </svg>
+  );
+}
+
+function PencilIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-[0.9rem] w-[0.9rem]" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <path d="m4 20 4.2-1 9.1-9.1a1.8 1.8 0 0 0 0-2.6l-.6-.6a1.8 1.8 0 0 0-2.6 0L5 15.8 4 20Z" />
+      <path d="m12.8 7.9 3.3 3.3" />
     </svg>
   );
 }
@@ -103,8 +113,12 @@ export function ProfileScreen() {
   const supportHistory = mockData.profileSupportHistory;
   const avatarInputRef = useRef<HTMLInputElement>(null);
   const [avatarImage, setAvatarImage] = useState<string | null>(null);
+  const [storedProfileName, setStoredProfileNameState] = useState<string | null>(null);
+  const [isEditingName, setIsEditingName] = useState(false);
+  const [nameDraft, setNameDraft] = useState('');
   const isRussian = language === 'ru';
-  const displayName = isRussian ? getRussianProfileName(profile.displayNameRu) : profile.displayName;
+  const defaultDisplayName = isRussian ? getRussianProfileName(profile.displayNameRu) : profile.displayName;
+  const displayName = storedProfileName?.trim() || defaultDisplayName;
   const liveFavoriteCount = favorites.filter((event) => isSportEventLive(event)).length;
   const thirdPlacePoints = mockData.leaderboard[mockData.leaderboard.length - 1]?.points ?? profile.points;
   const pointsToTopThree = Math.max(thirdPlacePoints - profile.points, 0);
@@ -129,12 +143,32 @@ export function ProfileScreen() {
     goToNotifications: isRussian ? 'Открыть уведомления' : 'Open notifications'
   };
 
+  const editNameLabel = isRussian ? 'Изменить имя' : 'Edit name';
+  const namePlaceholder = isRussian ? 'Введите имя пользователя' : 'Enter your display name';
+  const saveNameLabel = isRussian ? 'Сохранить' : 'Save';
+  const cancelNameLabel = isRussian ? 'Отмена' : 'Cancel';
+
   useEffect(() => {
     const storedAvatar = getStoredProfileAvatar();
     if (storedAvatar) {
       setAvatarImage(storedAvatar);
     }
-  }, []);
+
+    const storedName = getStoredProfileName();
+    if (storedName) {
+      setStoredProfileNameState(storedName);
+      setNameDraft(storedName);
+      return;
+    }
+
+    setNameDraft(defaultDisplayName);
+  }, [defaultDisplayName]);
+
+  useEffect(() => {
+    if (!isEditingName) {
+      setNameDraft(displayName);
+    }
+  }, [displayName, isEditingName]);
 
   const handleAvatarButtonClick = () => {
     avatarInputRef.current?.click();
@@ -156,6 +190,27 @@ export function ProfileScreen() {
     };
     reader.readAsDataURL(selectedFile);
     event.target.value = '';
+  };
+
+  const handleStartNameEdit = () => {
+    setNameDraft(displayName);
+    setIsEditingName(true);
+  };
+
+  const handleCancelNameEdit = () => {
+    setNameDraft(displayName);
+    setIsEditingName(false);
+  };
+
+  const handleSaveName = () => {
+    const normalizedName = nameDraft.trim();
+    if (!normalizedName) {
+      return;
+    }
+
+    setStoredProfileName(normalizedName);
+    setStoredProfileNameState(normalizedName);
+    setIsEditingName(false);
   };
 
   return (
@@ -201,12 +256,48 @@ export function ProfileScreen() {
               <div className="min-w-0">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted">{t('you')}</p>
                 <h2 className="mt-1.5 truncate text-[1.7rem] font-semibold tracking-tight text-text-primary">{displayName}</h2>
+                <button
+                  type="button"
+                  onClick={handleStartNameEdit}
+                  className="mt-2 inline-flex items-center gap-1.5 rounded-full border border-border-subtle bg-white/72 px-3 py-1.5 text-[12px] font-medium text-text-secondary transition hover:bg-white/92 hover:text-text-primary dark:bg-white/8 dark:text-text-secondary dark:hover:bg-white/12 dark:hover:text-white"
+                >
+                  <PencilIcon />
+                  {editNameLabel}
+                </button>
               </div>
               <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-[rgba(var(--accent-orange),0.18)] bg-[rgba(var(--accent-orange),0.10)] px-3 py-1.5 text-[11px] font-semibold text-text-primary">
                 <StarIcon />
                 {labels.activeSupporter}
               </span>
             </div>
+
+            {isEditingName ? (
+              <div className="mt-3 rounded-[1.15rem] border border-border-subtle bg-[rgba(var(--surface-muted),0.66)] p-3 dark:bg-white/6">
+                <input
+                  value={nameDraft}
+                  onChange={(event) => setNameDraft(event.target.value)}
+                  placeholder={namePlaceholder}
+                  maxLength={32}
+                  className="w-full rounded-[0.95rem] border border-border-subtle bg-white/84 px-3.5 py-2.5 text-[0.95rem] text-text-primary outline-none transition placeholder:text-text-secondary focus:border-[rgba(var(--accent-orange),0.35)] dark:bg-white/8 dark:text-white"
+                />
+                <div className="mt-3 flex gap-2">
+                  <button
+                    type="button"
+                    onClick={handleSaveName}
+                    className="inline-flex min-h-[2.6rem] flex-1 items-center justify-center rounded-[0.95rem] bg-[linear-gradient(180deg,rgba(255,136,83,1),rgba(255,108,54,1))] px-3 py-2 text-[0.9rem] font-semibold text-white shadow-[0_14px_24px_rgba(255,116,55,0.18)] transition hover:brightness-105"
+                  >
+                    {saveNameLabel}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleCancelNameEdit}
+                    className="inline-flex min-h-[2.6rem] flex-1 items-center justify-center rounded-[0.95rem] border border-border-subtle bg-white/72 px-3 py-2 text-[0.9rem] font-semibold text-text-primary transition hover:bg-white dark:bg-white/8 dark:text-white dark:hover:bg-white/12"
+                  >
+                    {cancelNameLabel}
+                  </button>
+                </div>
+              </div>
+            ) : null}
 
             <div className="mt-4 grid grid-cols-3 gap-0 overflow-hidden rounded-[1.15rem] border border-border-subtle bg-[rgba(var(--surface-muted),0.78)] dark:bg-white/6">
               <div className="px-3 py-3 text-center">

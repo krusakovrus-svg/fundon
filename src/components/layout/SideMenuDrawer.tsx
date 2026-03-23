@@ -12,6 +12,7 @@ import { mockData } from '@/data/mock';
 import { isSportEventLive } from '@/data/sportEvents';
 import { getSportById } from '@/data/sports';
 import { getStoredProfileAvatar, PROFILE_AVATAR_UPDATED_EVENT } from '@/lib/profileAvatar';
+import { getStoredProfileName, PROFILE_NAME_UPDATED_EVENT } from '@/lib/profileName';
 import { getStoredSportPath } from '@/lib/sportsHome';
 import { cn } from '@/lib/utils';
 
@@ -69,6 +70,7 @@ export function SideMenuDrawer({ isOpen, currentPath, onClose }: SideMenuDrawerP
   const { language, t } = useLanguage();
   const [storedHomePath, setStoredHomePath] = useState('/sports/martial-arts');
   const [avatarImage, setAvatarImage] = useState<string | null>(null);
+  const [storedProfileName, setStoredProfileName] = useState<string | null>(null);
 
   useEffect(() => {
     setStoredHomePath(getStoredSportPath());
@@ -100,12 +102,38 @@ export function SideMenuDrawer({ isOpen, currentPath, onClose }: SideMenuDrawerP
     };
   }, []);
 
+  useEffect(() => {
+    const syncProfileName = () => {
+      setStoredProfileName(getStoredProfileName());
+    };
+
+    syncProfileName();
+
+    const handleStorage = (event: StorageEvent) => {
+      if (event.key === null || event.key === 'fundon.profile.name') {
+        syncProfileName();
+      }
+    };
+
+    const handleProfileNameUpdated = () => {
+      syncProfileName();
+    };
+
+    window.addEventListener('storage', handleStorage);
+    window.addEventListener(PROFILE_NAME_UPDATED_EVENT, handleProfileNameUpdated);
+
+    return () => {
+      window.removeEventListener('storage', handleStorage);
+      window.removeEventListener(PROFILE_NAME_UPDATED_EVENT, handleProfileNameUpdated);
+    };
+  }, []);
+
   const preferredSportPath = storedHomePath;
   const currentSport = getSportById(getSportIdFromPath(preferredSportPath));
   const currentSportLabel = currentSport ? (language === 'ru' ? currentSport.labelRu : currentSport.label) : '';
   const favoriteCount = favorites.length;
   const liveFavoriteCount = favorites.filter((event) => isSportEventLive(event)).length;
-  const displayName = t('you');
+  const displayName = storedProfileName?.trim() || t('you');
   const avatarLetter = displayName.slice(0, 1).toUpperCase();
   const compactSwitcherClass =
     'w-full justify-between rounded-[13px] bg-transparent p-[2px] [&_button]:min-h-[28px] [&_button]:rounded-[10px] [&_button]:px-2 [&_button]:py-1 [&_button]:text-[11px] [&_button]:leading-none';
