@@ -155,13 +155,13 @@ export function ProfileScreen() {
   const notificationsSubtitle =
     liveFavoriteCount > 0 ? labels.liveNow : isRussian ? 'Пока нет live-уведомлений' : 'No live alerts yet';
 
-  const balanceHint = isRussian ? 'Р”РѕСЃС‚СѓРїРЅРѕ РґР»СЏ РїРѕРґРґРµСЂР¶РєРё Рё РІС‹РІРѕРґР°' : 'Available for support and withdrawals';
+  const balanceHint = isRussian ? 'Доступно для поддержки и вывода' : 'Available for support and withdrawals';
   const sectionCardClass =
-    'border border-black/[0.045] bg-white/[0.84] shadow-[0_16px_34px_rgba(15,23,42,0.06)] backdrop-blur-xl dark:border-white/[0.07] dark:bg-[linear-gradient(180deg,rgba(20,27,41,0.86),rgba(13,18,30,0.80))] dark:shadow-[0_16px_28px_rgba(2,6,23,0.18)]';
+    'border border-black/[0.045] bg-white/[0.84] shadow-[0_16px_34px_rgba(15,23,42,0.06)] backdrop-blur-xl dark:border-white/[0.06] dark:bg-[linear-gradient(180deg,rgba(18,24,37,0.88),rgba(11,16,27,0.82))] dark:shadow-[0_18px_30px_rgba(2,6,23,0.20)]';
   const innerPanelClass =
-    'rounded-[1.15rem] border border-black/[0.04] bg-[rgba(247,249,252,0.82)] dark:border-white/[0.06] dark:bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.045))]';
+    'rounded-[1.15rem] border border-black/[0.04] bg-[rgba(247,249,252,0.82)] shadow-[inset_0_1px_0_rgba(255,255,255,0.72)] dark:border-white/[0.05] dark:bg-[linear-gradient(180deg,rgba(34,42,56,0.94),rgba(22,30,43,0.92))] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]';
   const statTileClass =
-    'rounded-[1.05rem] border border-black/[0.04] bg-[rgba(247,249,252,0.88)] px-3 py-3 text-center dark:border-white/[0.06] dark:bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.05))]';
+    'rounded-[1.05rem] border border-black/[0.04] bg-[rgba(247,249,252,0.88)] px-3 py-3 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] dark:border-white/[0.05] dark:bg-[linear-gradient(180deg,rgba(31,39,53,0.94),rgba(21,28,40,0.90))] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]';
 
   useEffect(() => {
     const storedAvatar = getStoredProfileAvatar();
@@ -336,9 +336,9 @@ export function ProfileScreen() {
       <SectionCard className={cn(sectionCardClass, 'bg-white/[0.88] px-4 py-4')}>
         <div className={cn(innerPanelClass, 'rounded-[1.2rem] px-4 py-4')}>
           <div>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted">{t('balanceLabel')}</p>
-            <h3 className="mt-3 text-center text-[2.35rem] font-semibold tracking-tight text-text-primary">{formatCurrency(profile.walletBalance, language)}</h3>
-            <p className="mt-1.5 text-center text-[0.82rem] text-text-secondary/82">{balanceHint}</p>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted dark:text-white/[0.42]">{t('balanceLabel')}</p>
+            <h3 className="mt-3 text-center text-[2.35rem] font-semibold tracking-tight text-text-primary dark:text-white">{formatCurrency(profile.walletBalance, language)}</h3>
+            <p className="mt-1.5 text-center text-[0.82rem] text-text-secondary/82 dark:text-white/[0.58]">{balanceHint}</p>
           </div>
 
           <div className="mt-4 grid grid-cols-[1.35fr_1fr] gap-2.5">
@@ -350,7 +350,7 @@ export function ProfileScreen() {
             </button>
             <button
               type="button"
-              className="inline-flex w-full items-center justify-center rounded-[1.05rem] border border-black/[0.05] bg-white/78 px-4 py-3 text-sm font-semibold text-text-primary transition hover:bg-white dark:border-white/[0.08] dark:bg-white/[0.06] dark:text-white dark:hover:bg-white/[0.09]"
+              className="inline-flex w-full items-center justify-center rounded-[1.05rem] border border-black/[0.05] bg-white/78 px-4 py-3 text-sm font-semibold text-text-primary transition hover:bg-white dark:border-white/[0.07] dark:bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.035))] dark:text-white/[0.92] dark:hover:bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.045))]"
             >
               {labels.withdraw}
             </button>
