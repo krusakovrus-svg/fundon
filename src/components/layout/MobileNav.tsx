@@ -117,7 +117,7 @@ export function MobileNav() {
                   "group flex h-14 items-center justify-center rounded-[22px] transition-all duration-200",
                   isActive
                     ? key === "home"
-                      ? "bg-[color:var(--nav-active-surface)] text-[color:var(--nav-active-text)] shadow-[0_12px_28px_rgba(255,87,34,0.22)] ring-1 ring-white/55 dark:shadow-[0_14px_30px_rgba(255,94,58,0.24)] dark:ring-white/10"
+                      ? "scale-[1.01] bg-[color:var(--nav-active-surface)] text-[color:var(--nav-active-text)] shadow-[0_12px_28px_rgba(255,87,34,0.22)] ring-1 ring-white/55 dark:shadow-[0_14px_30px_rgba(255,94,58,0.24)] dark:ring-white/10"
                       : "bg-[color:var(--nav-active-surface)] text-[color:var(--nav-active-text)] shadow-[0_10px_24px_rgba(255,87,34,0.18)] dark:shadow-[0_14px_30px_rgba(255,94,58,0.2)]"
                     : "text-[color:var(--text-secondary)] hover:bg-black/[0.04] hover:text-[color:var(--text-primary)] dark:hover:bg-white/[0.06] dark:hover:text-[color:var(--text-primary)]",
                 )}
