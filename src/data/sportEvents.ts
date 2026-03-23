@@ -495,20 +495,552 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
         { id: 'gozide-gebzespor', name: 'Gozide Gebzespor', nameRu: 'Гёзиде Гебзеспор' }
       ]
     },
-    {
-      id: 'football-uruguay-primera-1',
-      sportId: 'football',
-      title: 'Football · Primera Division · Uruguay',
-      titleRu: 'Футбол · Примера дивизион · Уругвай',
+      {
+        id: 'football-uruguay-primera-1',
+        sportId: 'football',
+        title: 'Football · Primera Division · Uruguay',
+        titleRu: 'Футбол · Примера дивизион · Уругвай',
       startsAt: '2026-03-24T20:00:00+03:00',
       endsAt: '2026-03-24T22:00:00+03:00',
       displayDateEn: 'Tomorrow at',
       displayDateRu: 'Завтра в',
-      participants: [
-        { id: 'deportivo-maldonado', name: 'Deportivo Maldonado', nameRu: 'Депортиво Мальдонадо' },
-        { id: 'montevideo-city-torque', name: 'Montevideo City Torque', nameRu: 'Монтевидео Сити Торке' }
-      ]
-    }
+        participants: [
+          { id: 'deportivo-maldonado', name: 'Deportivo Maldonado', nameRu: 'Депортиво Мальдонадо' },
+          { id: 'montevideo-city-torque', name: 'Montevideo City Torque', nameRu: 'Монтевидео Сити Торке' }
+        ]
+      },
+      {
+        id: 'football-uefa-wcl-women-1',
+        sportId: 'football',
+        title: 'Football · UEFA Champions League. Women · International. Clubs',
+        titleRu: 'Футбол · Лига чемпионов УЕФА. Женщины · Международные. Клубы',
+        startsAt: '2026-03-24T20:45:00+03:00',
+        endsAt: '2026-03-24T22:45:00+03:00',
+        displayDateEn: 'Tomorrow at',
+        displayDateRu: 'Завтра в',
+        participants: [
+          { id: 'wolfsburg-w', name: 'Wolfsburg (w)', nameRu: 'Вольфсбург (ж)' },
+          { id: 'lyon-w', name: 'Lyon (w)', nameRu: 'Лион (ж)' }
+        ]
+      },
+      {
+        id: 'football-netherlands-eerste-divisie-1',
+        sportId: 'football',
+        title: 'Football · Eerste divisie · Netherlands',
+        titleRu: 'Футбол · Эрсте дивизион · Нидерланды',
+        startsAt: '2026-03-24T22:00:00+03:00',
+        endsAt: '2026-03-25T00:00:00+03:00',
+        displayDateEn: 'Tomorrow at',
+        displayDateRu: 'Завтра в',
+        participants: [
+          { id: 'emmen', name: 'Emmen', nameRu: 'Эммен' },
+          { id: 'cambuur', name: 'Cambuur', nameRu: 'Камбюр' }
+        ]
+      },
+      {
+        id: 'football-england-southern-premier-6',
+        sportId: 'football',
+        title: 'Football · Amateur. Southern Premier League. Premier Division · England',
+        titleRu: 'Футбол · Любители. Южная Премьер-Лига. Премьер Дивизион · Англия',
+        startsAt: '2026-03-24T22:45:00+03:00',
+        endsAt: '2026-03-25T00:45:00+03:00',
+        displayDateEn: 'Tomorrow at',
+        displayDateRu: 'Завтра в',
+        participants: [
+          { id: 'alvechurch', name: 'Alvechurch', nameRu: 'Алвечёрч' },
+          { id: 'ives-town', name: 'Ives Town', nameRu: 'Ивес Таун' }
+        ]
+      },
+      {
+        id: 'football-england-south-national-1',
+        sportId: 'football',
+        title: 'Football · Amateur. South National League · England',
+        titleRu: 'Футбол · Любители. Южная Национальная лига · Англия',
+        startsAt: '2026-03-24T22:45:00+03:00',
+        endsAt: '2026-03-25T00:45:00+03:00',
+        displayDateEn: 'Tomorrow at',
+        displayDateRu: 'Завтра в',
+        participants: [
+          { id: 'bath-city', name: 'Bath City', nameRu: 'Бат Сити' },
+          { id: 'hemel-hempstead-town', name: 'Hemel Hempstead Town', nameRu: 'Хемел Хемпстед Таун' }
+        ]
+      },
+      {
+        id: 'football-qatar-cup-of-stars-1',
+        sportId: 'football',
+        title: 'Football · Cup of Stars · Qatar',
+        titleRu: 'Футбол · Кубок Звёзд · Катар',
+        startsAt: '2026-03-24T18:15:00+03:00',
+        endsAt: '2026-03-24T20:15:00+03:00',
+        displayDateEn: 'Tomorrow at',
+        displayDateRu: 'Завтра в',
+        participants: [
+          { id: 'al-rayyan', name: 'Al Rayyan', nameRu: 'Аль Райян' },
+          { id: 'al-shahania', name: 'Al Shahania', nameRu: 'Аль Шахания' }
+        ]
+      },
+      {
+        id: 'football-england-national-league-1',
+        sportId: 'football',
+        title: 'Football · National League · England',
+        titleRu: 'Футбол · Национальная лига · Англия',
+        startsAt: '2026-03-24T22:45:00+03:00',
+        endsAt: '2026-03-25T00:45:00+03:00',
+        displayDateEn: 'Tomorrow at',
+        displayDateRu: 'Завтра в',
+        participants: [
+          { id: 'boston-united', name: 'Boston United', nameRu: 'Бостон Юнайтед' },
+          { id: 'altrincham', name: 'Altrincham', nameRu: 'Олтрингем' }
+        ]
+      },
+      {
+        id: 'football-england-national-league-2',
+        sportId: 'football',
+        title: 'Football · National League · England',
+        titleRu: 'Футбол · Национальная лига · Англия',
+        startsAt: '2026-03-24T22:45:00+03:00',
+        endsAt: '2026-03-25T00:45:00+03:00',
+        displayDateEn: 'Tomorrow at',
+        displayDateRu: 'Завтра в',
+        participants: [
+          { id: 'brackley-town', name: 'Brackley Town', nameRu: 'Брэкли Таун' },
+          { id: 'braintree-town', name: 'Braintree Town', nameRu: 'Брейнтри Таун' }
+        ]
+      },
+      {
+        id: 'football-england-national-league-3',
+        sportId: 'football',
+        title: 'Football · National League · England',
+        titleRu: 'Футбол · Национальная лига · Англия',
+        startsAt: '2026-03-24T22:45:00+03:00',
+        endsAt: '2026-03-25T00:45:00+03:00',
+        displayDateEn: 'Tomorrow at',
+        displayDateRu: 'Завтра в',
+        participants: [
+          { id: 'halifax-town', name: 'Halifax Town', nameRu: 'Галифакс Таун' },
+          { id: 'carlisle-united', name: 'Carlisle United', nameRu: 'Карлайл Юнайтед' }
+        ]
+      },
+      {
+        id: 'football-england-northern-premier-1',
+        sportId: 'football',
+        title: 'Football · Amateur. Northern Premier League · England',
+        titleRu: 'Футбол · Любители. Северная Премьер-Лига · Англия',
+        startsAt: '2026-03-24T22:45:00+03:00',
+        endsAt: '2026-03-25T00:45:00+03:00',
+        displayDateEn: 'Tomorrow at',
+        displayDateRu: 'Завтра в',
+        participants: [
+          { id: 'gainsborough-trinity', name: 'Gainsborough Trinity', nameRu: 'Гейнсборо Тринити' },
+          { id: 'bamber-bridge', name: 'Bamber Bridge', nameRu: 'Бамбер Бридж' }
+        ]
+      },
+      {
+        id: 'football-england-national-league-4',
+        sportId: 'football',
+        title: 'Football · National League · England',
+        titleRu: 'Футбол · Национальная лига · Англия',
+        startsAt: '2026-03-24T22:45:00+03:00',
+        endsAt: '2026-03-25T00:45:00+03:00',
+        displayDateEn: 'Tomorrow at',
+        displayDateRu: 'Завтра в',
+        participants: [
+          { id: 'gateshead', name: 'Gateshead', nameRu: 'Гейтсхед' },
+          { id: 'york-city', name: 'York City', nameRu: 'Йорк Сити' }
+        ]
+      },
+      {
+        id: 'football-england-northern-national-1',
+        sportId: 'football',
+        title: 'Football · Amateur. Northern National League · England',
+        titleRu: 'Футбол · Любители. Северная Национальная лига · Англия',
+        startsAt: '2026-03-24T22:45:00+03:00',
+        endsAt: '2026-03-25T00:45:00+03:00',
+        displayDateEn: 'Tomorrow at',
+        displayDateRu: 'Завтра в',
+        participants: [
+          { id: 'darlington', name: 'Darlington', nameRu: 'Дарлингтон' },
+          { id: 'kidderminster-harriers', name: 'Kidderminster Harriers', nameRu: 'Киддерминстер Харриерс' }
+        ]
+      },
+      {
+        id: 'football-england-league-1-1',
+        sportId: 'football',
+        title: 'Football · League 1 · England',
+        titleRu: 'Футбол · Лига 1 · Англия',
+        startsAt: '2026-03-24T22:45:00+03:00',
+        endsAt: '2026-03-25T00:45:00+03:00',
+        displayDateEn: 'Tomorrow at',
+        displayDateRu: 'Завтра в',
+        participants: [
+          { id: 'doncaster-rovers', name: 'Doncaster Rovers', nameRu: 'Донкастер Роверс' },
+          { id: 'port-vale', name: 'Port Vale', nameRu: 'Порт Вейл' }
+        ]
+      },
+      {
+        id: 'football-england-national-league-5',
+        sportId: 'football',
+        title: 'Football · National League · England',
+        titleRu: 'Футбол · Национальная лига · Англия',
+        startsAt: '2026-03-24T22:45:00+03:00',
+        endsAt: '2026-03-25T00:45:00+03:00',
+        displayDateEn: 'Tomorrow at',
+        displayDateRu: 'Завтра в',
+        participants: [
+          { id: 'eastleigh', name: 'Eastleigh', nameRu: 'Истли' },
+          { id: 'sutton-united', name: 'Sutton United', nameRu: 'Саттон Юнайтед' }
+        ]
+      },
+      {
+        id: 'football-england-southern-premier-7',
+        sportId: 'football',
+        title: 'Football · Amateur. Southern Premier League. Premier Division · England',
+        titleRu: 'Футбол · Любители. Южная Премьер-Лига. Премьер Дивизион · Англия',
+        startsAt: '2026-03-24T22:45:00+03:00',
+        endsAt: '2026-03-25T00:45:00+03:00',
+        displayDateEn: 'Tomorrow at',
+        displayDateRu: 'Завтра в',
+        participants: [
+          { id: 'yate-town', name: 'Yate Town', nameRu: 'Йейт Таун' },
+          { id: 'poole-town', name: 'Poole Town', nameRu: 'Пул Таун' }
+        ]
+      },
+      {
+        id: 'football-england-southern-premier-8',
+        sportId: 'football',
+        title: 'Football · Amateur. Southern Premier League. Premier Division · England',
+        titleRu: 'Футбол · Любители. Южная Премьер-Лига. Премьер Дивизион · Англия',
+        startsAt: '2026-03-24T22:45:00+03:00',
+        endsAt: '2026-03-25T00:45:00+03:00',
+        displayDateEn: 'Tomorrow at',
+        displayDateRu: 'Завтра в',
+        participants: [
+          { id: 'kettering-town', name: 'Kettering Town', nameRu: 'Кеттеринг Таун' },
+          { id: 'banbury-united', name: 'Banbury United', nameRu: 'Банбери Юнайтед' }
+        ]
+      },
+      {
+        id: 'football-england-northern-premier-2',
+        sportId: 'football',
+        title: 'Football · Amateur. Northern Premier League · England',
+        titleRu: 'Футбол · Любители. Северная Премьер-Лига · Англия',
+        startsAt: '2026-03-24T22:45:00+03:00',
+        endsAt: '2026-03-25T00:45:00+03:00',
+        displayDateEn: 'Tomorrow at',
+        displayDateRu: 'Завтра в',
+        participants: [
+          { id: 'cleethorpes-town', name: 'Cleethorpes Town', nameRu: 'Клитхорпс Таун' },
+          { id: 'guiseley', name: 'Guiseley', nameRu: 'Гайзли' }
+        ]
+      },
+      {
+        id: 'football-england-northern-national-2',
+        sportId: 'football',
+        title: 'Football · Amateur. Northern National League · England',
+        titleRu: 'Футбол · Любители. Северная Национальная лига · Англия',
+        startsAt: '2026-03-24T22:45:00+03:00',
+        endsAt: '2026-03-25T00:45:00+03:00',
+        displayDateEn: 'Tomorrow at',
+        displayDateRu: 'Завтра в',
+        participants: [
+          { id: 'leamington', name: 'Leamington', nameRu: 'Лемингтон' },
+          { id: 'kings-lynn-town', name: 'Kings Lynn Town', nameRu: 'Кингс Линн Таун' }
+        ]
+      },
+      {
+        id: 'football-england-league-2-1',
+        sportId: 'football',
+        title: 'Football · League 2 · England',
+        titleRu: 'Футбол · Лига 2 · Англия',
+        startsAt: '2026-03-24T22:45:00+03:00',
+        endsAt: '2026-03-25T00:45:00+03:00',
+        displayDateEn: 'Tomorrow at',
+        displayDateRu: 'Завтра в',
+        participants: [
+          { id: 'oldham-athletic', name: 'Oldham Athletic', nameRu: 'Олдем Атлетик' },
+          { id: 'notts-county', name: 'Notts County', nameRu: 'Ноттс Каунти' }
+        ]
+      },
+      {
+        id: 'football-england-national-league-6',
+        sportId: 'football',
+        title: 'Football · National League · England',
+        titleRu: 'Футбол · Национальная лига · Англия',
+        startsAt: '2026-03-24T22:45:00+03:00',
+        endsAt: '2026-03-25T00:45:00+03:00',
+        displayDateEn: 'Tomorrow at',
+        displayDateRu: 'Завтра в',
+        participants: [
+          { id: 'aldershot-town', name: 'Aldershot Town', nameRu: 'Олдершот Таун' },
+          { id: 'boreham-wood', name: 'Boreham Wood', nameRu: 'Борэм Вуд' }
+        ]
+      },
+      {
+        id: 'football-england-northern-national-3',
+        sportId: 'football',
+        title: 'Football · Amateur. Northern National League · England',
+        titleRu: 'Футбол · Любители. Северная Национальная лига · Англия',
+        startsAt: '2026-03-24T22:45:00+03:00',
+        endsAt: '2026-03-25T00:45:00+03:00',
+        displayDateEn: 'Tomorrow at',
+        displayDateRu: 'Завтра в',
+        participants: [
+          { id: 'alfreton-town', name: 'Alfreton Town', nameRu: 'Олфретон Таун' },
+          { id: 'macclesfield', name: 'Macclesfield', nameRu: 'Маклсфилд' }
+        ]
+      },
+      {
+        id: 'football-england-southern-premier-9',
+        sportId: 'football',
+        title: 'Football · Amateur. Southern Premier League. Premier Division · England',
+        titleRu: 'Футбол · Любители. Южная Премьер-Лига. Премьер Дивизион · Англия',
+        startsAt: '2026-03-24T22:45:00+03:00',
+        endsAt: '2026-03-25T00:45:00+03:00',
+        displayDateEn: 'Tomorrow at',
+        displayDateRu: 'Завтра в',
+        participants: [
+          { id: 'plymouth-parkway', name: 'Plymouth Parkway', nameRu: 'Плимут Парквей' },
+          { id: 'farnham-town', name: 'Farnham Town', nameRu: 'Фарнхам Таун' }
+        ]
+      },
+      {
+        id: 'football-england-southern-premier-10',
+        sportId: 'football',
+        title: 'Football · Amateur. Southern Premier League. Premier Division · England',
+        titleRu: 'Футбол · Любители. Южная Премьер-Лига. Премьер Дивизион · Англия',
+        startsAt: '2026-03-24T22:45:00+03:00',
+        endsAt: '2026-03-25T00:45:00+03:00',
+        displayDateEn: 'Tomorrow at',
+        displayDateRu: 'Завтра в',
+        participants: [
+          { id: 'real-bedford', name: 'Real Bedford', nameRu: 'Реал Бедфорд' },
+          { id: 'harborough-town', name: 'Harborough Town', nameRu: 'Харборо Таун' }
+        ]
+      },
+      {
+        id: 'football-scotland-championship-1',
+        sportId: 'football',
+        title: 'Football · Championship · Scotland',
+        titleRu: 'Футбол · Чемпионшип · Шотландия',
+        startsAt: '2026-03-24T22:45:00+03:00',
+        endsAt: '2026-03-25T00:45:00+03:00',
+        displayDateEn: 'Tomorrow at',
+        displayDateRu: 'Завтра в',
+        participants: [
+          { id: 'raith-rovers', name: 'Raith Rovers', nameRu: 'Рэйт Роверс' },
+          { id: 'partick-thistle', name: 'Partick Thistle', nameRu: 'Партик Тисл' }
+        ]
+      },
+      {
+        id: 'football-scotland-league-2-1',
+        sportId: 'football',
+        title: 'Football · League 2 · Scotland',
+        titleRu: 'Футбол · 2-я лига · Шотландия',
+        startsAt: '2026-03-24T22:45:00+03:00',
+        endsAt: '2026-03-25T00:45:00+03:00',
+        displayDateEn: 'Tomorrow at',
+        displayDateRu: 'Завтра в',
+        participants: [
+          { id: 'stranraer', name: 'Stranraer', nameRu: 'Странраер' },
+          { id: 'clyde', name: 'Clyde', nameRu: 'Клайд' }
+        ]
+      },
+      {
+        id: 'football-england-southern-premier-11',
+        sportId: 'football',
+        title: 'Football · Amateur. Southern Premier League. Premier Division · England',
+        titleRu: 'Футбол · Любители. Южная Премьер-Лига. Премьер Дивизион · Англия',
+        startsAt: '2026-03-24T22:45:00+03:00',
+        endsAt: '2026-03-25T00:45:00+03:00',
+        displayDateEn: 'Tomorrow at',
+        displayDateRu: 'Завтра в',
+        participants: [
+          { id: 'stratford-town', name: 'Stratford Town', nameRu: 'Стратфорд Таун' },
+          { id: 'stamford', name: 'Stamford', nameRu: 'Стэмфорд' }
+        ]
+      },
+      {
+        id: 'football-england-southern-premier-12',
+        sportId: 'football',
+        title: 'Football · Amateur. Southern Premier League. Premier Division · England',
+        titleRu: 'Футбол · Любители. Южная Премьер-Лига. Премьер Дивизион · Англия',
+        startsAt: '2026-03-24T22:45:00+03:00',
+        endsAt: '2026-03-25T00:45:00+03:00',
+        displayDateEn: 'Tomorrow at',
+        displayDateRu: 'Завтра в',
+        participants: [
+          { id: 'tiverton-town', name: 'Tiverton Town', nameRu: 'Тивертон Таун' },
+          { id: 'gloucester-city', name: 'Gloucester City', nameRu: 'Глостер Сити' }
+        ]
+      },
+      {
+        id: 'football-england-south-national-2',
+        sportId: 'football',
+        title: 'Football · Amateur. South National League · England',
+        titleRu: 'Футбол · Любители. Южная Национальная лига · Англия',
+        startsAt: '2026-03-24T22:45:00+03:00',
+        endsAt: '2026-03-25T00:45:00+03:00',
+        displayDateEn: 'Tomorrow at',
+        displayDateRu: 'Завтра в',
+        participants: [
+          { id: 'torquay-united', name: 'Torquay United', nameRu: 'Торки Юнайтед' },
+          { id: 'dorking-wanderers', name: 'Dorking Wanderers', nameRu: 'Доркинг Уондерерс' }
+        ]
+      },
+      {
+        id: 'football-england-south-national-3',
+        sportId: 'football',
+        title: 'Football · Amateur. South National League · England',
+        titleRu: 'Футбол · Любители. Южная Национальная лига · Англия',
+        startsAt: '2026-03-24T22:45:00+03:00',
+        endsAt: '2026-03-25T00:45:00+03:00',
+        displayDateEn: 'Tomorrow at',
+        displayDateRu: 'Завтра в',
+        participants: [
+          { id: 'weston-super-mare', name: 'Weston-super-Mare', nameRu: 'Уэстон Сьюпер Мэр' },
+          { id: 'worthing', name: 'Worthing', nameRu: 'Уортинг' }
+        ]
+      },
+      {
+        id: 'football-england-northern-national-4',
+        sportId: 'football',
+        title: 'Football · Amateur. Northern National League · England',
+        titleRu: 'Футбол · Любители. Северная Национальная лига · Англия',
+        startsAt: '2026-03-24T22:45:00+03:00',
+        endsAt: '2026-03-25T00:45:00+03:00',
+        displayDateEn: 'Tomorrow at',
+        displayDateRu: 'Завтра в',
+        participants: [
+          { id: 'fylde', name: 'Fylde', nameRu: 'Файлд' },
+          { id: 'marine', name: 'Marine', nameRu: 'Марин' }
+        ]
+      },
+      {
+        id: 'football-england-southern-premier-13',
+        sportId: 'football',
+        title: 'Football · Amateur. Southern Premier League. Premier Division · England',
+        titleRu: 'Футбол · Любители. Южная Премьер-Лига. Премьер Дивизион · Англия',
+        startsAt: '2026-03-24T22:45:00+03:00',
+        endsAt: '2026-03-25T00:45:00+03:00',
+        displayDateEn: 'Tomorrow at',
+        displayDateRu: 'Завтра в',
+        participants: [
+          { id: 'hanwell-town', name: 'Hanwell Town', nameRu: 'Ханвелл Таун' },
+          { id: 'evesham-united', name: 'Evesham United', nameRu: 'Ившем Юнайтед' }
+        ]
+      },
+      {
+        id: 'football-england-northern-national-5',
+        sportId: 'football',
+        title: 'Football · Amateur. Northern National League · England',
+        titleRu: 'Футбол · Любители. Северная Национальная лига · Англия',
+        startsAt: '2026-03-24T22:45:00+03:00',
+        endsAt: '2026-03-25T00:45:00+03:00',
+        displayDateEn: 'Tomorrow at',
+        displayDateRu: 'Завтра в',
+        participants: [
+          { id: 'hereford', name: 'Hereford', nameRu: 'Херефорд' },
+          { id: 'spennymoor-town', name: 'Spennymoor Town', nameRu: 'Спеннимур Таун' }
+        ]
+      },
+      {
+        id: 'football-england-south-national-4',
+        sportId: 'football',
+        title: 'Football · Amateur. South National League · England',
+        titleRu: 'Футбол · Любители. Южная Национальная лига · Англия',
+        startsAt: '2026-03-24T22:45:00+03:00',
+        endsAt: '2026-03-25T00:45:00+03:00',
+        displayDateEn: 'Tomorrow at',
+        displayDateRu: 'Завтра в',
+        participants: [
+          { id: 'chesham-united', name: 'Chesham United', nameRu: 'Чешем Юнайтед' },
+          { id: 'hornchurch', name: 'Hornchurch', nameRu: 'Хорнчерч' }
+        ]
+      },
+      {
+        id: 'football-scotland-league-2-2',
+        sportId: 'football',
+        title: 'Football · League 2 · Scotland',
+        titleRu: 'Футбол · 2-я лига · Шотландия',
+        startsAt: '2026-03-24T22:45:00+03:00',
+        endsAt: '2026-03-25T00:45:00+03:00',
+        displayDateEn: 'Tomorrow at',
+        displayDateRu: 'Завтра в',
+        participants: [
+          { id: 'elgin-city', name: 'Elgin City', nameRu: 'Элгин Сити' },
+          { id: 'forfar-athletic', name: 'Forfar Athletic', nameRu: 'Форфар Атлетик' }
+        ]
+      },
+      {
+        id: 'football-england-south-national-5',
+        sportId: 'football',
+        title: 'Football · Amateur. South National League · England',
+        titleRu: 'Футбол · Любители. Южная Национальная лига · Англия',
+        startsAt: '2026-03-24T22:45:00+03:00',
+        endsAt: '2026-03-25T00:45:00+03:00',
+        displayDateEn: 'Tomorrow at',
+        displayDateRu: 'Завтра в',
+        participants: [
+          { id: 'enfield-town', name: 'Enfield Town', nameRu: 'Энфилд Таун' },
+          { id: 'dover-athletic', name: 'Dover Athletic', nameRu: 'Дувр Атлетик' }
+        ]
+      },
+      {
+        id: 'football-england-northern-premier-3',
+        sportId: 'football',
+        title: 'Football · Amateur. Northern Premier League · England',
+        titleRu: 'Футбол · Любители. Северная Премьер-Лига · Англия',
+        startsAt: '2026-03-24T22:45:00+03:00',
+        endsAt: '2026-03-25T00:45:00+03:00',
+        displayDateEn: 'Tomorrow at',
+        displayDateRu: 'Завтра в',
+        participants: [
+          { id: 'fc-united-of-manchester', name: 'FC United of Manchester', nameRu: 'Юнайтед оф Манчестер' },
+          { id: 'stockton-town', name: 'Stockton Town', nameRu: 'Стоктон Таун' }
+        ]
+      },
+      {
+        id: 'football-uefa-wcl-women-2',
+        sportId: 'football',
+        title: 'Football · UEFA Champions League. Women · International. Clubs',
+        titleRu: 'Футбол · Лига чемпионов УЕФА. Женщины · Международные. Клубы',
+        startsAt: '2026-03-24T23:00:00+03:00',
+        endsAt: '2026-03-25T01:00:00+03:00',
+        displayDateEn: 'Tomorrow at',
+        displayDateRu: 'Завтра в',
+        participants: [
+          { id: 'arsenal-london-w', name: 'Arsenal London (w)', nameRu: 'Арсенал Лондон (ж)' },
+          { id: 'chelsea-w', name: 'Chelsea (w)', nameRu: 'Челси (ж)' }
+        ]
+      },
+      {
+        id: 'football-uruguay-primera-2',
+        sportId: 'football',
+        title: 'Football · Primera Division · Uruguay',
+        titleRu: 'Футбол · Примера дивизион · Уругвай',
+        startsAt: '2026-03-24T23:00:00+03:00',
+        endsAt: '2026-03-25T01:00:00+03:00',
+        displayDateEn: 'Tomorrow at',
+        displayDateRu: 'Завтра в',
+        participants: [
+          { id: 'liverpool-montevideo', name: 'Liverpool Montevideo', nameRu: 'Ливерпуль Монтевидео' },
+          { id: 'central-espanol', name: 'Central Espanol', nameRu: 'Сентраль Эспаньол' }
+        ]
+      },
+      {
+        id: 'football-colombia-primera-a-3',
+        sportId: 'football',
+        title: 'Football · Primera A · Colombia',
+        titleRu: 'Футбол · Примера A · Колумбия',
+        startsAt: '2026-03-24T23:30:00+03:00',
+        endsAt: '2026-03-25T01:30:00+03:00',
+        displayDateEn: 'Tomorrow at',
+        displayDateRu: 'Завтра в',
+        participants: [
+          { id: 'deportivo-pereira', name: 'Deportivo Pereira', nameRu: 'Депортиво Перейра' },
+          { id: 'cucuta-deportivo', name: 'Cucuta Deportivo', nameRu: 'Кукута Депортиво' }
+        ]
+      }
   ],
   hockey: [
     {
