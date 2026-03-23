@@ -72,7 +72,7 @@ export function getAdminPageMeta(pathname: string): AdminPageMeta {
   if (pathname.startsWith('/admin/events')) {
     return {
       title: 'События',
-      description: 'Управление upcoming, live и draft-событиями FUNDON',
+      description: 'Управление ближайшими, эфирными и черновыми событиями FUNDON',
       searchPlaceholder: 'Поиск по событиям, турнирам и участникам',
       periodLabel: 'Последние 7 дней',
       primaryActionLabel: 'Создать событие'

@@ -108,7 +108,7 @@ export function AdminTopbar() {
               <div className="h-10 w-10 rounded-full bg-[linear-gradient(135deg,#f3d7c8_0%,#d9946e_100%)]" />
               <div className="text-left">
                 <p className="text-[0.95rem] font-semibold text-slate-900">Администратор</p>
-                <p className="text-xs text-slate-500">Operations lead</p>
+                <p className="text-xs text-slate-500">Операционный менеджер</p>
               </div>
               <ChevronDownIcon />
             </button>
