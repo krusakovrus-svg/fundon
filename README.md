@@ -43,5 +43,28 @@ npm.cmd run typecheck
 Remove-Item -Recurse -Force .next -ErrorAction SilentlyContinue; npm.cmd run build
 ```
 
+## Browser review for assistants
+Install Chromium for Playwright once:
+```powershell
+cd C:\Users\RichComputer\Desktop\FunDon
+npm.cmd run browser:install
+```
+
+Run a full browser review of the admin panel:
+```powershell
+npm.cmd run admin:review
+```
+
+Check another environment:
+```powershell
+$env:BASE_URL='http://127.0.0.1:3000'
+npm.cmd run admin:review
+```
+
+Outputs:
+- smoke test results in terminal
+- screenshots in `artifacts/admin-screenshots`
+- HTML report in `playwright-report`
+
 ## Documentation
 See [documents/README.md](./documents/README.md) for the current product, architecture, deployment, UI, and documentation rules.

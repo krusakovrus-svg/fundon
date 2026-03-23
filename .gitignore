@@ -8,6 +8,9 @@ dist
 coverage
 .turbo
 .vercel
+artifacts
+playwright-report
+test-results
 *.tsbuildinfo
 
 # Environment

@@ -1,0 +1,13 @@
+[
+  { "path": "/admin", "slug": "dashboard", "label": "Дашборд" },
+  { "path": "/admin/events", "slug": "events", "label": "События" },
+  { "path": "/admin/users", "slug": "users", "label": "Пользователи" },
+  { "path": "/admin/ratings", "slug": "ratings", "label": "Рейтинги" },
+  { "path": "/admin/donations", "slug": "donations", "label": "Донаты" },
+  { "path": "/admin/athletes", "slug": "athletes", "label": "Спортсмены" },
+  { "path": "/admin/rooms", "slug": "rooms", "label": "Комнаты" },
+  { "path": "/admin/notifications", "slug": "notifications", "label": "Уведомления" },
+  { "path": "/admin/moderation", "slug": "moderation", "label": "Модерация" },
+  { "path": "/admin/settings", "slug": "settings", "label": "Настройки" },
+  { "path": "/admin/analytics", "slug": "analytics", "label": "Аналитика" }
+]
