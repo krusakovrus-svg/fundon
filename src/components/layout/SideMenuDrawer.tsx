@@ -11,6 +11,7 @@ import { ThemeSwitcher } from '@/components/ui/ThemeSwitcher';
 import { mockData } from '@/data/mock';
 import { isSportEventLive } from '@/data/sportEvents';
 import { getSportById } from '@/data/sports';
+import { getStoredProfileAvatar, PROFILE_AVATAR_UPDATED_EVENT } from '@/lib/profileAvatar';
 import { getStoredSportPath } from '@/lib/sportsHome';
 import { cn } from '@/lib/utils';
 
@@ -65,9 +66,36 @@ export function SideMenuDrawer({ isOpen, currentPath, onClose }: SideMenuDrawerP
   const { favorites } = useFavorites();
   const { language, t } = useLanguage();
   const [storedHomePath, setStoredHomePath] = useState('/sports/martial-arts');
+  const [avatarImage, setAvatarImage] = useState<string | null>(null);
 
   useEffect(() => {
     setStoredHomePath(getStoredSportPath());
+  }, []);
+
+  useEffect(() => {
+    const syncAvatar = () => {
+      setAvatarImage(getStoredProfileAvatar());
+    };
+
+    syncAvatar();
+
+    const handleStorage = (event: StorageEvent) => {
+      if (event.key === null || event.key === 'fundon.profile.avatar') {
+        syncAvatar();
+      }
+    };
+
+    const handleAvatarUpdated = () => {
+      syncAvatar();
+    };
+
+    window.addEventListener('storage', handleStorage);
+    window.addEventListener(PROFILE_AVATAR_UPDATED_EVENT, handleAvatarUpdated);
+
+    return () => {
+      window.removeEventListener('storage', handleStorage);
+      window.removeEventListener(PROFILE_AVATAR_UPDATED_EVENT, handleAvatarUpdated);
+    };
   }, []);
 
   const homePath = currentPath.startsWith('/sports/') ? currentPath : storedHomePath;
@@ -153,8 +181,12 @@ export function SideMenuDrawer({ isOpen, currentPath, onClose }: SideMenuDrawerP
       <div className="app-card flex h-full min-h-0 flex-col overflow-hidden rounded-[2rem] px-4 py-4">
         <div className="rounded-[1.5rem] border border-white/40 bg-white/55 px-3.5 py-3 shadow-[0_14px_34px_rgba(15,23,42,0.08)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
           <div className="flex items-center gap-3">
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[14px] bg-white/75 text-[15px] font-semibold text-text-primary shadow-[0_6px_18px_rgba(15,23,42,0.08)] dark:bg-white/10 dark:text-white dark:shadow-none">
-              {avatarLetter}
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-[14px] bg-white/75 text-[15px] font-semibold text-text-primary shadow-[0_6px_18px_rgba(15,23,42,0.08)] dark:bg-white/10 dark:text-white dark:shadow-none">
+              {avatarImage ? (
+                <img src={avatarImage} alt={displayName} className="h-full w-full object-cover" />
+              ) : (
+                avatarLetter
+              )}
             </div>
             <div className="min-w-0 flex-1">
               <p className="truncate text-[15px] font-semibold leading-tight text-text-primary">{displayName}</p>

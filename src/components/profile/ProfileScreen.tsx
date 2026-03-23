@@ -12,8 +12,7 @@ import { SectionCard } from '@/components/ui/SectionCard';
 import { liveEvents } from '@/data/liveEvents';
 import { mockData } from '@/data/mock';
 import { isSportEventLive } from '@/data/sportEvents';
-
-const PROFILE_AVATAR_STORAGE_KEY = 'fundon.profile.avatar';
+import { getStoredProfileAvatar, setStoredProfileAvatar } from '@/lib/profileAvatar';
 
 function formatHistoryTimestamp(iso: string, language: 'ru' | 'en') {
   return new Intl.DateTimeFormat(language === 'ru' ? 'ru-RU' : 'en-GB', {
@@ -61,11 +60,7 @@ export function ProfileScreen() {
   };
 
   useEffect(() => {
-    if (typeof window === 'undefined') {
-      return;
-    }
-
-    const storedAvatar = window.localStorage.getItem(PROFILE_AVATAR_STORAGE_KEY);
+    const storedAvatar = getStoredProfileAvatar();
     if (storedAvatar) {
       setAvatarImage(storedAvatar);
     }
@@ -87,7 +82,7 @@ export function ProfileScreen() {
     reader.onload = () => {
       if (typeof reader.result === 'string') {
         setAvatarImage(reader.result);
-        window.localStorage.setItem(PROFILE_AVATAR_STORAGE_KEY, reader.result);
+        setStoredProfileAvatar(reader.result);
       }
     };
     reader.readAsDataURL(selectedFile);
