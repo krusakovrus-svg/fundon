@@ -175,7 +175,7 @@ export function SideMenuDrawer({ isOpen, currentPath, onClose }: SideMenuDrawerP
       }}
       transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
       className={cn(
-        'pointer-events-none absolute inset-y-0 left-0 w-[74%] max-w-[288px] pr-3 pt-4 pb-28',
+        'pointer-events-none absolute left-0 top-0 h-dvh w-[74%] max-w-[288px] py-2 pr-3',
         isOpen && 'pointer-events-auto'
       )}
       aria-hidden={!isOpen}
