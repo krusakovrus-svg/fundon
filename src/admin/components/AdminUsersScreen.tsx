@@ -11,6 +11,7 @@ import {
   type AdminUserRole,
   type AdminUserStatus
 } from '@/admin/data/users';
+import { AdminConfirmDialog, type AdminConfirmDialogDetail } from '@/admin/components/AdminConfirmDialog';
 import { cn } from '@/lib/utils';
 
 function ChevronDownIcon() {
@@ -199,9 +200,20 @@ function SideMenuRow({
 }
 
 export function AdminUsersScreen() {
+  const [managedUsers, setManagedUsers] = useState(adminManagedUsers);
   const [statusFilter, setStatusFilter] = useState<(typeof adminUserStatusFilters)[number]['id']>('all');
   const [roleFilter, setRoleFilter] = useState<(typeof adminUserRoleFilters)[number]['id']>('all');
   const [selectedUserId, setSelectedUserId] = useState(adminManagedUsers[0]?.id ?? '');
+  const [confirmState, setConfirmState] = useState<{
+    title: string;
+    description: string;
+    confirmLabel: string;
+    tone: 'primary' | 'danger';
+    badge: string;
+    footnote: string;
+    details: AdminConfirmDialogDetail[];
+    onConfirm: () => void;
+  } | null>(null);
 
   const cycleRoleFilter = () => {
     const currentIndex = adminUserRoleFilters.findIndex((filter) => filter.id === roleFilter);
@@ -210,13 +222,13 @@ export function AdminUsersScreen() {
   };
 
   const filteredUsers = useMemo(() => {
-    return adminManagedUsers.filter((user) => {
+    return managedUsers.filter((user) => {
       const matchesStatus = statusFilter === 'all' ? true : user.status === statusFilter;
       const matchesRole = roleFilter === 'all' ? true : user.role === roleFilter;
 
       return matchesStatus && matchesRole;
     });
-  }, [roleFilter, statusFilter]);
+  }, [managedUsers, roleFilter, statusFilter]);
 
   useEffect(() => {
     if (!filteredUsers.some((user) => user.id === selectedUserId)) {
@@ -224,7 +236,77 @@ export function AdminUsersScreen() {
     }
   }, [filteredUsers, selectedUserId]);
 
-  const selectedUser = filteredUsers.find((user) => user.id === selectedUserId) ?? filteredUsers[0] ?? adminManagedUsers[0];
+  const selectedUser = filteredUsers.find((user) => user.id === selectedUserId) ?? filteredUsers[0] ?? managedUsers[0];
+
+  const updateUser = (userId: string, updater: (user: AdminManagedUser) => AdminManagedUser) => {
+    setManagedUsers((current) => current.map((user) => (user.id === userId ? updater(user) : user)));
+  };
+
+  const openUserConfirmation = (
+    user: AdminManagedUser,
+    config: {
+      title: string;
+      description: string;
+      confirmLabel: string;
+      tone: 'primary' | 'danger';
+      badge: string;
+      footnote: string;
+      onConfirm: () => void;
+    }
+  ) => {
+    setSelectedUserId(user.id);
+    setConfirmState({
+      ...config,
+      details: [
+        { label: 'Пользователь', value: user.name },
+        { label: 'Текущий статус', value: getStatusLabel(user.status) },
+        { label: 'Баланс', value: user.balance },
+        { label: 'Последняя активность', value: user.lastSeen }
+      ]
+    });
+  };
+
+  const handleModerationAction = (user: AdminManagedUser, action: 'limit' | 'block') => {
+    if (action === 'limit') {
+      openUserConfirmation(user, {
+        title: 'Ограничить пользователя',
+        description: 'Пользователь сохранит доступ к профилю, но не сможет активно участвовать в room и донатных сценариях до снятия ограничения.',
+        confirmLabel: 'Ограничить',
+        tone: 'primary',
+        badge: 'Ограничение',
+        footnote: 'Ограничение попадёт в audit trail и будет видно в moderation flow.',
+        onConfirm: () => {
+          updateUser(user.id, (current) => ({
+            ...current,
+            status: 'limited',
+            notifications: 'Только системные уведомления',
+            activeRooms: current.activeRooms.slice(0, 1)
+          }));
+          setConfirmState(null);
+        }
+      });
+      return;
+    }
+
+    openUserConfirmation(user, {
+      title: 'Заблокировать пользователя',
+      description: 'Аккаунт будет заблокирован, доступ к room и операциям поддержки будет закрыт до ручного пересмотра.',
+      confirmLabel: 'Заблокировать',
+      tone: 'danger',
+      badge: 'Критичное действие',
+      footnote: 'Блокировка пользователя логируется как критичное действие и требует подтверждения.',
+      onConfirm: () => {
+        updateUser(user.id, (current) => ({
+          ...current,
+          status: 'blocked',
+          balance: current.balance,
+          activeRooms: [],
+          notifications: 'Отключены'
+        }));
+        setConfirmState(null);
+      }
+    });
+  };
 
   const currentRoleLabel = adminUserRoleFilters.find((filter) => filter.id === roleFilter)?.label ?? 'Все роли';
 
@@ -382,6 +464,7 @@ export function AdminUsersScreen() {
                 value={selectedUser.activeRooms.length ? selectedUser.activeRooms.join(' · ') : 'Нет активных комнат'}
               />
               <SideMenuRow icon={<BellIcon />} label="Уведомления" value={selectedUser.notifications} />
+              <SideMenuRow icon={<HistoryIcon />} label="Последний визит" value={`${selectedUser.lastSeen} · регистрация ${selectedUser.registeredAt}`} />
               <SideMenuRow icon={<HistoryIcon />} label="История донатов" value={`${selectedUser.donationHistory.length} последних действий`} />
 
               <div className="rounded-[20px] border border-black/[0.045] bg-[linear-gradient(180deg,#ffffff_0%,#fafbfe_100%)] p-4">
@@ -411,6 +494,7 @@ export function AdminUsersScreen() {
               <div className="grid grid-cols-2 gap-3">
                 <button
                   type="button"
+                  onClick={() => setSelectedUserId(selectedUser.id)}
                   className="flex items-center justify-center gap-2 rounded-[16px] border border-black/[0.06] bg-white px-4 py-3.5 text-[0.95rem] font-semibold text-slate-700"
                 >
                   <UserIcon />
@@ -418,6 +502,7 @@ export function AdminUsersScreen() {
                 </button>
                 <button
                   type="button"
+                  onClick={() => setSelectedUserId(selectedUser.id)}
                   className="flex items-center justify-center gap-2 rounded-[16px] border border-black/[0.06] bg-white px-4 py-3.5 text-[0.95rem] font-semibold text-slate-700"
                 >
                   <WalletIcon />
@@ -425,12 +510,14 @@ export function AdminUsersScreen() {
                 </button>
                 <button
                   type="button"
+                  onClick={() => handleModerationAction(selectedUser, 'limit')}
                   className="flex items-center justify-center gap-2 rounded-[16px] border border-[#e4e8ef] bg-[#f8f9fc] px-4 py-3.5 text-[0.95rem] font-semibold text-slate-600"
                 >
                   Ограничить
                 </button>
                 <button
                   type="button"
+                  onClick={() => handleModerationAction(selectedUser, 'block')}
                   className="flex items-center justify-center gap-2 rounded-[16px] bg-[#fff1ef] px-4 py-3.5 text-[0.95rem] font-semibold text-[#d25346] ring-1 ring-[#ffd7d1]"
                 >
                   Заблокировать
@@ -448,6 +535,19 @@ export function AdminUsersScreen() {
           </aside>
         ) : null}
       </section>
+
+      <AdminConfirmDialog
+        open={Boolean(confirmState)}
+        title={confirmState?.title ?? ''}
+        description={confirmState?.description ?? ''}
+        confirmLabel={confirmState?.confirmLabel ?? ''}
+        tone={confirmState?.tone ?? 'primary'}
+        badge={confirmState?.badge}
+        details={confirmState?.details}
+        footnote={confirmState?.footnote}
+        onClose={() => setConfirmState(null)}
+        onConfirm={() => confirmState?.onConfirm()}
+      />
     </div>
   );
 }

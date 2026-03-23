@@ -16,6 +16,7 @@ import {
   type AdminAthleteType,
   type AdminManagedAthlete
 } from '@/admin/data/athletes';
+import { AdminConfirmDialog, type AdminConfirmDialogDetail } from '@/admin/components/AdminConfirmDialog';
 import { cn } from '@/lib/utils';
 
 function ChevronDownIcon() {
@@ -201,15 +202,26 @@ function SideInfoRow({ label, value }: { label: string; value: string }) {
 }
 
 export function AdminAthletesScreen() {
+  const [managedAthletes, setManagedAthletes] = useState(adminManagedAthletes);
   const [sportFilter, setSportFilter] = useState<AdminAthleteSportFilter>('all');
   const [statusFilter, setStatusFilter] = useState<(typeof adminAthleteStatusFilters)[number]['id']>('all');
   const [typeFilter, setTypeFilter] = useState<(typeof adminAthleteTypeFilters)[number]['id']>('all');
   const [activityFilter, setActivityFilter] = useState<(typeof adminAthleteActivityFilters)[number]['id']>('all');
   const [liveFilter, setLiveFilter] = useState<(typeof adminAthleteLiveFilters)[number]['id']>('all');
   const [selectedAthleteId, setSelectedAthleteId] = useState(adminManagedAthletes[0]?.id ?? '');
+  const [confirmState, setConfirmState] = useState<{
+    title: string;
+    description: string;
+    confirmLabel: string;
+    tone: 'primary' | 'danger';
+    badge: string;
+    footnote: string;
+    details: AdminConfirmDialogDetail[];
+    onConfirm: () => void;
+  } | null>(null);
 
   const filteredAthletes = useMemo(() => {
-    return adminManagedAthletes.filter((athlete) => {
+    return managedAthletes.filter((athlete) => {
       const sportMatch = sportFilter === 'all' ? true : mapSportToFilter(athlete.sport) === sportFilter;
       const statusMatch = statusFilter === 'all' ? true : athlete.status === statusFilter;
       const typeMatch = typeFilter === 'all' ? true : athlete.type === typeFilter;
@@ -228,7 +240,7 @@ export function AdminAthletesScreen() {
 
       return sportMatch && statusMatch && typeMatch && activityMatch && liveMatch;
     });
-  }, [activityFilter, liveFilter, sportFilter, statusFilter, typeFilter]);
+  }, [activityFilter, liveFilter, managedAthletes, sportFilter, statusFilter, typeFilter]);
 
   useEffect(() => {
     if (!filteredAthletes.some((athlete) => athlete.id === selectedAthleteId)) {
@@ -239,7 +251,77 @@ export function AdminAthletesScreen() {
   const selectedAthlete =
     filteredAthletes.find((athlete) => athlete.id === selectedAthleteId) ??
     filteredAthletes[0] ??
-    adminManagedAthletes[0];
+    managedAthletes[0];
+
+  const updateAthlete = (athleteId: string, updater: (athlete: AdminManagedAthlete) => AdminManagedAthlete) => {
+    setManagedAthletes((current) => current.map((athlete) => (athlete.id === athleteId ? updater(athlete) : athlete)));
+  };
+
+  const openAthleteConfirmation = (
+    athlete: AdminManagedAthlete,
+    config: {
+      title: string;
+      description: string;
+      confirmLabel: string;
+      tone: 'primary' | 'danger';
+      badge: string;
+      footnote: string;
+      onConfirm: () => void;
+    }
+  ) => {
+    setSelectedAthleteId(athlete.id);
+    setConfirmState({
+      ...config,
+      details: [
+        { label: 'Карточка', value: athlete.name },
+        { label: 'Тип', value: getTypeLabel(athlete.type) },
+        { label: 'Статус', value: getStatusLabel(athlete.status) },
+        { label: 'Текущий эфир', value: athlete.liveEvent }
+      ]
+    });
+  };
+
+  const handleAthleteAction = (athlete: AdminManagedAthlete, action: 'archive' | 'hide') => {
+    if (action === 'archive') {
+      openAthleteConfirmation(athlete, {
+        title: 'Архивировать карточку',
+        description: 'Карточка останется в системе, но будет снята с операционного оборота и live-потока поддержки.',
+        confirmLabel: 'Архивировать',
+        tone: 'danger',
+        badge: 'Архив',
+        footnote: 'Архивирование скрывает карточку из активного пула и фиксируется в audit trail.',
+        onConfirm: () => {
+          updateAthlete(athlete.id, (current) => ({
+            ...current,
+            status: 'archived',
+            supportLabel: 'Скрыта',
+            supportValue: 'Архив',
+            liveEvent: 'Сейчас вне эфира'
+          }));
+          setConfirmState(null);
+        }
+      });
+      return;
+    }
+
+    openAthleteConfirmation(athlete, {
+      title: 'Скрыть карточку из витрины',
+      description: 'Карточка останется доступной для команды, но будет снята с пользовательской витрины и активного live-продвижения.',
+      confirmLabel: 'Скрыть',
+      tone: 'primary',
+      badge: 'Скрытие',
+      footnote: 'Скрытие не удаляет карточку, но отключает её от витрины и операционных рекомендаций.',
+      onConfirm: () => {
+        updateAthlete(athlete.id, (current) => ({
+          ...current,
+          supportLabel: 'Скрыта из витрины',
+          supportValue: 'Внутренний режим',
+          liveEvent: current.status === 'live' ? current.liveEvent : 'Только для admin-просмотра'
+        }));
+        setConfirmState(null);
+      }
+    });
+  };
 
   return (
     <div className="space-y-6">
@@ -398,18 +480,21 @@ export function AdminAthletesScreen() {
               <div className="grid grid-cols-2 gap-3">
                 <button
                   type="button"
+                  onClick={() => setSelectedAthleteId(selectedAthlete.id)}
                   className="col-span-2 flex items-center justify-center gap-2 rounded-[16px] bg-[linear-gradient(180deg,#5d9cff_0%,#4f8ff6_100%)] px-4 py-3.5 text-[0.95rem] font-semibold text-white shadow-[0_18px_30px_rgba(79,143,246,0.22)]"
                 >
                   Редактировать
                 </button>
                 <button
                   type="button"
+                  onClick={() => handleAthleteAction(selectedAthlete, 'archive')}
                   className="flex items-center justify-center gap-2 rounded-[16px] border border-black/[0.06] bg-white px-4 py-3.5 text-[0.95rem] font-semibold text-slate-700"
                 >
                   Архивировать
                 </button>
                 <button
                   type="button"
+                  onClick={() => handleAthleteAction(selectedAthlete, 'hide')}
                   className="flex items-center justify-center gap-2 rounded-[16px] bg-[#f7f8fb] px-4 py-3.5 text-[0.95rem] font-semibold text-slate-600"
                 >
                   Скрыть
@@ -419,6 +504,19 @@ export function AdminAthletesScreen() {
           </aside>
         ) : null}
       </section>
+
+      <AdminConfirmDialog
+        open={Boolean(confirmState)}
+        title={confirmState?.title ?? ''}
+        description={confirmState?.description ?? ''}
+        confirmLabel={confirmState?.confirmLabel ?? ''}
+        tone={confirmState?.tone ?? 'primary'}
+        badge={confirmState?.badge}
+        details={confirmState?.details}
+        footnote={confirmState?.footnote}
+        onClose={() => setConfirmState(null)}
+        onConfirm={() => confirmState?.onConfirm()}
+      />
     </div>
   );
 }

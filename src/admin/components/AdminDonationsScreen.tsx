@@ -10,6 +10,7 @@ import {
   type AdminDonationStatus,
   type AdminManagedDonation
 } from '@/admin/data/donations';
+import { AdminConfirmDialog, type AdminConfirmDialogDetail } from '@/admin/components/AdminConfirmDialog';
 import { cn } from '@/lib/utils';
 
 function ChevronDownIcon() {
@@ -158,18 +159,30 @@ function DetailField({
 }
 
 export function AdminDonationsScreen() {
+  const [managedDonations, setManagedDonations] = useState(adminManagedDonations);
   const [statusIndex, setStatusIndex] = useState(0);
   const [methodIndex, setMethodIndex] = useState(0);
   const [userQuery, setUserQuery] = useState('');
   const [selectedDonationId, setSelectedDonationId] = useState(adminManagedDonations[0]?.id ?? '');
   const [disputeNote, setDisputeNote] = useState(adminManagedDonations[0]?.disputeNote ?? '');
   const [internalComment, setInternalComment] = useState(adminManagedDonations[0]?.internalComment ?? '');
+  const [notesSaved, setNotesSaved] = useState(false);
+  const [confirmState, setConfirmState] = useState<{
+    title: string;
+    description: string;
+    confirmLabel: string;
+    tone: 'primary' | 'danger';
+    badge: string;
+    footnote: string;
+    details: AdminConfirmDialogDetail[];
+    onConfirm: () => void;
+  } | null>(null);
 
   const selectedStatus = adminDonationStatusFilters[statusIndex];
   const selectedMethod = adminDonationMethodFilters[methodIndex];
 
   const filteredDonations = useMemo(() => {
-    return adminManagedDonations.filter((donation) => {
+    return managedDonations.filter((donation) => {
       const statusMatch = selectedStatus.id === 'all' ? true : donation.status === selectedStatus.id;
       const methodMatch = selectedMethod.id === 'all' ? true : donation.method === selectedMethod.label;
       const queryMatch =
@@ -179,7 +192,7 @@ export function AdminDonationsScreen() {
 
       return statusMatch && methodMatch && queryMatch;
     });
-  }, [selectedMethod.id, selectedMethod.label, selectedStatus.id, userQuery]);
+  }, [managedDonations, selectedMethod.id, selectedMethod.label, selectedStatus.id, userQuery]);
 
   useEffect(() => {
     if (!filteredDonations.some((donation) => donation.id === selectedDonationId)) {
@@ -188,14 +201,78 @@ export function AdminDonationsScreen() {
   }, [filteredDonations, selectedDonationId]);
 
   const selectedDonation =
-    filteredDonations.find((donation) => donation.id === selectedDonationId) ?? filteredDonations[0] ?? adminManagedDonations[0];
+    filteredDonations.find((donation) => donation.id === selectedDonationId) ?? filteredDonations[0] ?? managedDonations[0];
 
   useEffect(() => {
     if (selectedDonation) {
       setDisputeNote(selectedDonation.disputeNote);
       setInternalComment(selectedDonation.internalComment);
+      setNotesSaved(false);
     }
   }, [selectedDonation]);
+
+  const updateDonation = (donationId: string, updater: (donation: AdminManagedDonation) => AdminManagedDonation) => {
+    setManagedDonations((current) => current.map((donation) => (donation.id === donationId ? updater(donation) : donation)));
+  };
+
+  const openDonationConfirmation = (
+    donation: AdminManagedDonation,
+    config: {
+      title: string;
+      description: string;
+      confirmLabel: string;
+      tone: 'primary' | 'danger';
+      badge: string;
+      footnote: string;
+      onConfirm: () => void;
+    }
+  ) => {
+    setSelectedDonationId(donation.id);
+    setConfirmState({
+      ...config,
+      details: [
+        { label: 'Транзакция', value: donation.id },
+        { label: 'Сумма', value: donation.amount },
+        { label: 'Статус', value: getStatusLabel(donation.status) },
+        { label: 'Пользователь', value: donation.user }
+      ]
+    });
+  };
+
+  const handleRefund = (donation: AdminManagedDonation) => {
+    openDonationConfirmation(donation, {
+      title: 'Оформить возврат',
+      description: 'Транзакция будет переведена в статус возврата, а действие попадёт в обязательный audit trail для finance-команды.',
+      confirmLabel: 'Подтвердить возврат',
+      tone: 'danger',
+      badge: 'Refund approval',
+      footnote: 'Возвраты относятся к критичным действиям и должны подтверждаться явно.',
+      onConfirm: () => {
+        updateDonation(donation.id, (current) => ({
+          ...current,
+          status: 'refund',
+          internalComment,
+          disputeNote,
+          statusHistory: [{ id: `${current.id}-refund-approved`, label: 'Возврат подтверждён вручную', at: 'Сейчас' }, ...current.statusHistory]
+        }));
+        setConfirmState(null);
+      }
+    });
+  };
+
+  const handleSaveNotes = () => {
+    if (!selectedDonation) {
+      return;
+    }
+
+    updateDonation(selectedDonation.id, (current) => ({
+      ...current,
+      disputeNote,
+      internalComment,
+      statusHistory: [{ id: `${current.id}-notes-updated`, label: 'Обновлены внутренние заметки', at: 'Сейчас' }, ...current.statusHistory]
+    }));
+    setNotesSaved(true);
+  };
 
   return (
     <div className="space-y-6">
@@ -385,12 +462,14 @@ export function AdminDonationsScreen() {
               <div className="grid grid-cols-2 gap-3">
                 <button
                   type="button"
+                  onClick={() => setSelectedDonationId(selectedDonation.id)}
                   className="rounded-[16px] border border-black/[0.06] bg-white px-4 py-3.5 text-[0.95rem] font-semibold text-slate-700"
                 >
                   Открыть
                 </button>
                 <button
                   type="button"
+                  onClick={() => handleRefund(selectedDonation)}
                   className="rounded-[16px] bg-[#eef5ff] px-4 py-3.5 text-[0.95rem] font-semibold text-[#2f78d3] ring-1 ring-[#dbe7fb]"
                 >
                   Оформить возврат
@@ -399,14 +478,28 @@ export function AdminDonationsScreen() {
 
               <button
                 type="button"
+                onClick={handleSaveNotes}
                 className="flex w-full items-center justify-center rounded-[16px] bg-[linear-gradient(180deg,#5d9cff_0%,#4f8ff6_100%)] px-4 py-3.5 text-[0.95rem] font-semibold text-white shadow-[0_18px_30px_rgba(79,143,246,0.22)]"
               >
-                Сохранить
+                {notesSaved ? 'Сохранено' : 'Сохранить'}
               </button>
             </div>
           </aside>
         ) : null}
       </section>
+
+      <AdminConfirmDialog
+        open={Boolean(confirmState)}
+        title={confirmState?.title ?? ''}
+        description={confirmState?.description ?? ''}
+        confirmLabel={confirmState?.confirmLabel ?? ''}
+        tone={confirmState?.tone ?? 'primary'}
+        badge={confirmState?.badge}
+        details={confirmState?.details}
+        footnote={confirmState?.footnote}
+        onClose={() => setConfirmState(null)}
+        onConfirm={() => confirmState?.onConfirm()}
+      />
     </div>
   );
 }

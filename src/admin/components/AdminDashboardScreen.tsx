@@ -1,3 +1,8 @@
+'use client';
+
+import { useState } from 'react';
+
+import { AdminConfirmDialog, type AdminConfirmDialogDetail } from '@/admin/components/AdminConfirmDialog';
 import {
   adminAlerts,
   adminAnalyticsBars,
@@ -84,6 +89,45 @@ function AlertDot({ kind }: { kind: 'critical' | 'warning' | 'info' }) {
 }
 
 export function AdminDashboardScreen() {
+  const [liveEvents, setLiveEvents] = useState(adminLiveEvents);
+  const [confirmState, setConfirmState] = useState<{
+    title: string;
+    description: string;
+    confirmLabel: string;
+    tone: 'primary' | 'danger';
+    badge: string;
+    footnote: string;
+    details: AdminConfirmDialogDetail[];
+    onConfirm: () => void;
+  } | null>(null);
+
+  const handleFinishLiveEvent = (eventId: string) => {
+    const liveEvent = liveEvents.find((item) => item.id === eventId);
+
+    if (!liveEvent) {
+      return;
+    }
+
+    setConfirmState({
+      title: 'Завершить live-событие',
+      description: 'Событие будет снято с dashboard live-контроля и переведено в завершённое состояние.',
+      confirmLabel: 'Завершить',
+      tone: 'danger',
+      badge: 'Критичное действие',
+      footnote: 'Завершение live из dashboard логируется так же, как и на экране событий.',
+      details: [
+        { label: 'Событие', value: liveEvent.title },
+        { label: 'Статус', value: liveEvent.status },
+        { label: 'Поддержка', value: liveEvent.supportVolume },
+        { label: 'Аудитория', value: liveEvent.participants }
+      ],
+      onConfirm: () => {
+        setLiveEvents((current) => current.filter((item) => item.id !== eventId));
+        setConfirmState(null);
+      }
+    });
+  };
+
   return (
     <div className="space-y-6">
       <section className="grid grid-cols-5 gap-4">
@@ -121,7 +165,7 @@ export function AdminDashboardScreen() {
         <div className="space-y-6">
           <SectionCard title="Live-события" subtitle="Оперативное управление текущими трансляциями">
             <div className="space-y-4">
-              {adminLiveEvents.map((event) => (
+              {liveEvents.map((event) => (
                 <div
                   key={event.id}
                   className="flex items-center justify-between gap-4 rounded-[18px] border border-black/[0.045] bg-[linear-gradient(180deg,#ffffff_0%,#fafbfe_100%)] px-4 py-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.95)]"
@@ -147,6 +191,7 @@ export function AdminDashboardScreen() {
                     </button>
                     <button
                       type="button"
+                      onClick={() => handleFinishLiveEvent(event.id)}
                       className="rounded-[14px] border border-black/[0.06] bg-white px-4 py-2.5 text-[0.9rem] font-semibold text-slate-700"
                     >
                       Завершить
@@ -285,6 +330,19 @@ export function AdminDashboardScreen() {
           </SectionCard>
         </div>
       </section>
+
+      <AdminConfirmDialog
+        open={Boolean(confirmState)}
+        title={confirmState?.title ?? ''}
+        description={confirmState?.description ?? ''}
+        confirmLabel={confirmState?.confirmLabel ?? ''}
+        tone={confirmState?.tone ?? 'primary'}
+        badge={confirmState?.badge}
+        details={confirmState?.details}
+        footnote={confirmState?.footnote}
+        onClose={() => setConfirmState(null)}
+        onConfirm={() => confirmState?.onConfirm()}
+      />
     </div>
   );
 }

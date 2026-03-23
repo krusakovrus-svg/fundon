@@ -16,6 +16,7 @@ import {
   type AdminModerationStatus,
   type AdminModerationUserScope
 } from '@/admin/data/moderation';
+import { AdminConfirmDialog, type AdminConfirmDialogDetail } from '@/admin/components/AdminConfirmDialog';
 import { cn } from '@/lib/utils';
 
 function ChevronDownIcon() {
@@ -231,15 +232,21 @@ function mapCaseToEventFilterLabel(eventFilter: string) {
 
 function RowActionButton({
   label,
+  onClick,
   children
 }: {
   label: string;
+  onClick?: () => void;
   children: ReactNode;
 }) {
   return (
     <button
       type="button"
       aria-label={label}
+      onClick={(event) => {
+        event.stopPropagation();
+        onClick?.();
+      }}
       className="rounded-[12px] border border-black/[0.05] bg-white/70 p-2 text-slate-400 transition hover:border-black/[0.08] hover:text-slate-700"
     >
       {children}
@@ -279,6 +286,7 @@ function MetricCard({ label, value }: { label: string; value: string }) {
 }
 
 export function AdminModerationScreen() {
+  const [managedCases, setManagedCases] = useState(adminModerationCases);
   const [caseFilter, setCaseFilter] = useState<(typeof adminModerationCaseFilters)[number]['id']>('all');
   const [typeFilter, setTypeFilter] = useState<'all' | AdminModerationCaseType>('all');
   const [priorityFilter, setPriorityFilter] = useState<'all' | AdminModerationPriority>('all');
@@ -287,9 +295,19 @@ export function AdminModerationScreen() {
   const [eventFilter, setEventFilter] = useState<(typeof adminModerationEventFilters)[number]['id']>('all');
   const [query, setQuery] = useState('');
   const [selectedCaseId, setSelectedCaseId] = useState(adminModerationCases[0]?.id ?? '');
+  const [confirmState, setConfirmState] = useState<{
+    title: string;
+    description: string;
+    confirmLabel: string;
+    tone: 'primary' | 'danger';
+    badge: string;
+    footnote: string;
+    details: AdminConfirmDialogDetail[];
+    onConfirm: () => void;
+  } | null>(null);
 
   const filteredCases = useMemo(() => {
-    return adminModerationCases.filter((item) => {
+    return managedCases.filter((item) => {
       const caseMatch = caseFilter === 'all' ? true : item.type === caseFilter;
       const typeMatch = typeFilter === 'all' ? true : item.type === typeFilter;
       const priorityMatch = priorityFilter === 'all' ? true : item.priority === priorityFilter;
@@ -313,7 +331,7 @@ export function AdminModerationScreen() {
 
       return caseMatch && typeMatch && priorityMatch && statusMatch && userMatch && eventMatch && queryMatch;
     });
-  }, [caseFilter, eventFilter, priorityFilter, query, statusFilter, typeFilter, userFilter]);
+  }, [caseFilter, eventFilter, managedCases, priorityFilter, query, statusFilter, typeFilter, userFilter]);
 
   useEffect(() => {
     if (!filteredCases.some((item) => item.id === selectedCaseId)) {
@@ -321,7 +339,116 @@ export function AdminModerationScreen() {
     }
   }, [filteredCases, selectedCaseId]);
 
-  const selectedCase = filteredCases.find((item) => item.id === selectedCaseId) ?? filteredCases[0] ?? adminModerationCases[0];
+  const selectedCase = filteredCases.find((item) => item.id === selectedCaseId) ?? filteredCases[0] ?? managedCases[0];
+
+  const updateCase = (caseId: string, updater: (item: (typeof managedCases)[number]) => (typeof managedCases)[number]) => {
+    setManagedCases((current) => current.map((item) => (item.id === caseId ? updater(item) : item)));
+  };
+
+  const openCaseConfirmation = (
+    item: (typeof managedCases)[number],
+    config: {
+      title: string;
+      description: string;
+      confirmLabel: string;
+      tone: 'primary' | 'danger';
+      badge: string;
+      footnote: string;
+      onConfirm: () => void;
+    }
+  ) => {
+    setSelectedCaseId(item.id);
+    setConfirmState({
+      ...config,
+      details: [
+        { label: 'Кейс', value: item.id },
+        { label: 'Тип', value: item.typeLabel },
+        { label: 'Статус', value: getStatusLabel(item.status) },
+        { label: 'Пользователь', value: item.user }
+      ]
+    });
+  };
+
+  const handleCaseAction = (item: (typeof managedCases)[number], action: 'open' | 'restrict' | 'close' | 'block') => {
+    if (action === 'open') {
+      openCaseConfirmation(item, {
+        title: 'Открыть кейс в работу',
+        description: 'Кейс будет переведён в рабочий статус и появится в активном moderation pipeline.',
+        confirmLabel: 'Открыть кейс',
+        tone: 'primary',
+        badge: 'Moderation flow',
+        footnote: 'Открытие кейса фиксируется в журнале действий и назначает ручную обработку.',
+        onConfirm: () => {
+          updateCase(item.id, (current) => ({
+            ...current,
+            status: current.status === 'closed' ? 'open' : current.status === 'new' ? 'open' : current.status,
+            history: [{ id: `${current.id}-open-now`, actor: 'Admin', action: 'Кейс переведён в active processing', at: 'Сейчас' }, ...current.history]
+          }));
+          setConfirmState(null);
+        }
+      });
+      return;
+    }
+
+    if (action === 'restrict') {
+      openCaseConfirmation(item, {
+        title: 'Ограничить пользователя',
+        description: 'На пользователя будет наложено ограничение до завершения проверки. Доступ к критичным сценариям поддержки будет урезан.',
+        confirmLabel: 'Ограничить',
+        tone: 'primary',
+        badge: 'Ограничение',
+        footnote: 'Временные ограничения видны в user profile и moderation queue.',
+        onConfirm: () => {
+          updateCase(item.id, (current) => ({
+            ...current,
+            status: current.status === 'closed' ? 'closed' : 'in-progress',
+            restrictionState: 'Временное ограничение включено до завершения проверки',
+            history: [{ id: `${current.id}-restrict-now`, actor: 'Admin', action: 'На пользователя наложено временное ограничение', at: 'Сейчас' }, ...current.history]
+          }));
+          setConfirmState(null);
+        }
+      });
+      return;
+    }
+
+    if (action === 'close') {
+      openCaseConfirmation(item, {
+        title: 'Закрыть кейс',
+        description: 'Кейс будет снят с активной очереди модерации и сохранён в журнале с итоговым статусом.',
+        confirmLabel: 'Закрыть кейс',
+        tone: 'primary',
+        badge: 'Закрытие кейса',
+        footnote: 'Закрытие кейса завершает active flow, но сохраняет все заметки и историю.',
+        onConfirm: () => {
+          updateCase(item.id, (current) => ({
+            ...current,
+            status: 'closed',
+            history: [{ id: `${current.id}-close-now`, actor: 'Admin', action: 'Кейс закрыт после ручной проверки', at: 'Сейчас' }, ...current.history]
+          }));
+          setConfirmState(null);
+        }
+      });
+      return;
+    }
+
+    openCaseConfirmation(item, {
+      title: 'Заблокировать пользователя',
+      description: 'Пользователь будет заблокирован, а связанный кейс останется в журнале как критический инцидент.',
+      confirmLabel: 'Заблокировать',
+      tone: 'danger',
+      badge: 'Критичное действие',
+      footnote: 'Блокировка требует явного подтверждения и записывается в audit trail.',
+      onConfirm: () => {
+        updateCase(item.id, (current) => ({
+          ...current,
+          status: 'closed',
+          restrictionState: 'Пользователь заблокирован до отдельного пересмотра',
+          history: [{ id: `${current.id}-block-now`, actor: 'Admin', action: 'Пользователь заблокирован по итогам кейса', at: 'Сейчас' }, ...current.history]
+        }));
+        setConfirmState(null);
+      }
+    });
+  };
 
   return (
     <div className="space-y-6">
@@ -443,13 +570,16 @@ export function AdminModerationScreen() {
                       </div>
 
                       <div className="flex items-center justify-end gap-2">
-                        <RowActionButton label={`Открыть ${item.id}`}>
+                        <RowActionButton
+                          label={`Открыть ${item.id}`}
+                          onClick={() => handleCaseAction(item, 'open')}
+                        >
                           <EyeIcon />
                         </RowActionButton>
-                        <RowActionButton label={`Ограничить ${item.id}`}>
+                        <RowActionButton label={`Ограничить ${item.id}`} onClick={() => handleCaseAction(item, 'restrict')}>
                           <ShieldIcon />
                         </RowActionButton>
-                        <RowActionButton label={`Закрыть ${item.id}`}>
+                        <RowActionButton label={`Закрыть ${item.id}`} onClick={() => handleCaseAction(item, 'close')}>
                           <SlashIcon />
                         </RowActionButton>
                       </div>
@@ -560,24 +690,28 @@ export function AdminModerationScreen() {
               <div className="grid grid-cols-2 gap-3">
                 <button
                   type="button"
+                  onClick={() => handleCaseAction(selectedCase, 'open')}
                   className="col-span-2 flex items-center justify-center rounded-[16px] bg-[linear-gradient(180deg,#5d9cff_0%,#4f8ff6_100%)] px-4 py-3.5 text-[0.95rem] font-semibold text-white shadow-[0_18px_30px_rgba(79,143,246,0.22)]"
                 >
                   Открыть
                 </button>
                 <button
                   type="button"
+                  onClick={() => handleCaseAction(selectedCase, 'restrict')}
                   className="flex items-center justify-center rounded-[16px] border border-black/[0.06] bg-white px-4 py-3.5 text-[0.95rem] font-semibold text-slate-700"
                 >
                   Ограничить
                 </button>
                 <button
                   type="button"
+                  onClick={() => handleCaseAction(selectedCase, 'close')}
                   className="flex items-center justify-center rounded-[16px] bg-[#f7f8fb] px-4 py-3.5 text-[0.95rem] font-semibold text-slate-600"
                 >
                   Закрыть
                 </button>
                 <button
                   type="button"
+                  onClick={() => handleCaseAction(selectedCase, 'block')}
                   className="col-span-2 flex items-center justify-center rounded-[16px] bg-[#fff1ef] px-4 py-3.5 text-[0.95rem] font-semibold text-[#d25346] ring-1 ring-[#ffd7d1]"
                 >
                   Заблокировать
@@ -587,6 +721,19 @@ export function AdminModerationScreen() {
           </aside>
         ) : null}
       </section>
+
+      <AdminConfirmDialog
+        open={Boolean(confirmState)}
+        title={confirmState?.title ?? ''}
+        description={confirmState?.description ?? ''}
+        confirmLabel={confirmState?.confirmLabel ?? ''}
+        tone={confirmState?.tone ?? 'primary'}
+        badge={confirmState?.badge}
+        details={confirmState?.details}
+        footnote={confirmState?.footnote}
+        onClose={() => setConfirmState(null)}
+        onConfirm={() => confirmState?.onConfirm()}
+      />
     </div>
   );
 }

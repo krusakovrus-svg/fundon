@@ -3,6 +3,7 @@
 import { useState, type ReactNode } from 'react';
 
 import {
+  adminAdminUsers,
   adminAuditEntries,
   adminFeatureFlags,
   adminNotificationChannels,
@@ -15,6 +16,7 @@ import {
   adminSettingsTabs,
   type AdminSettingsTabId
 } from '@/admin/data/settings';
+import { AdminConfirmDialog, type AdminConfirmDialogDetail } from '@/admin/components/AdminConfirmDialog';
 import { cn } from '@/lib/utils';
 
 function ChevronDownIcon() {
@@ -285,8 +287,127 @@ function TabButton({
   );
 }
 
+function PermissionChip({ children }: { children: ReactNode }) {
+  return <span className="rounded-full bg-[#f5f8fd] px-2.5 py-1 text-[0.74rem] font-semibold text-slate-600">{children}</span>;
+}
+
+function RoleCard({
+  title,
+  summary,
+  members,
+  ownership,
+  permissions,
+  approvalPolicy
+}: {
+  title: string;
+  summary: string;
+  members: string;
+  ownership: string;
+  permissions: string[];
+  approvalPolicy: string;
+}) {
+  return (
+    <div className="rounded-[20px] border border-black/[0.045] bg-[linear-gradient(180deg,#ffffff_0%,#fafbfe_100%)] p-4">
+      <div className="flex items-start justify-between gap-3">
+        <div>
+          <p className="text-[0.98rem] font-semibold text-slate-900">{title}</p>
+          <p className="mt-1 text-[0.84rem] leading-6 text-slate-500">{summary}</p>
+        </div>
+        <span className="rounded-full bg-[#eef5ff] px-2.5 py-1 text-[0.74rem] font-semibold text-[#2f78d3]">{members}</span>
+      </div>
+
+      <div className="mt-4 rounded-[16px] bg-[#f8f9fc] px-3.5 py-3">
+        <p className="text-[0.74rem] font-semibold uppercase tracking-[0.16em] text-slate-400">Контур ответственности</p>
+        <p className="mt-2 text-[0.9rem] text-slate-700">{ownership}</p>
+      </div>
+
+      <div className="mt-4 flex flex-wrap gap-2">
+        {permissions.map((permission) => (
+          <PermissionChip key={permission}>{permission}</PermissionChip>
+        ))}
+      </div>
+
+      <p className="mt-4 text-[0.82rem] leading-6 text-slate-500">{approvalPolicy}</p>
+    </div>
+  );
+}
+
+function AdminAccessRow({
+  name,
+  roleName,
+  scope,
+  lastActive,
+  status
+}: {
+  name: string;
+  roleName: string;
+  scope: string;
+  lastActive: string;
+  status: 'active' | 'invited';
+}) {
+  return (
+    <div className="flex items-center justify-between gap-4 rounded-[16px] border border-black/[0.045] bg-[linear-gradient(180deg,#ffffff_0%,#fafbfe_100%)] px-4 py-3.5">
+      <div className="min-w-0">
+        <p className="text-[0.94rem] font-semibold text-slate-900">{name}</p>
+        <p className="mt-1 text-[0.82rem] text-slate-500">{roleName} · {scope}</p>
+      </div>
+      <div className="text-right">
+        <span className={cn('inline-flex rounded-full px-2.5 py-1 text-[0.72rem] font-semibold', status === 'active' ? 'bg-emerald-50 text-emerald-700 ring-1 ring-emerald-200' : 'bg-amber-50 text-amber-700 ring-1 ring-amber-200')}>
+          {status === 'active' ? 'Активен' : 'Приглашён'}
+        </span>
+        <p className="mt-1 text-[0.8rem] text-slate-400">{lastActive}</p>
+      </div>
+    </div>
+  );
+}
+
+function getAuditTone(category: 'events' | 'refunds' | 'users' | 'settings' | 'notifications' | 'roles') {
+  switch (category) {
+    case 'events':
+      return 'bg-[#eef5ff] text-[#2f78d3]';
+    case 'refunds':
+      return 'bg-amber-50 text-amber-700';
+    case 'users':
+      return 'bg-rose-50 text-rose-700';
+    case 'settings':
+      return 'bg-violet-50 text-violet-700';
+    case 'notifications':
+      return 'bg-emerald-50 text-emerald-700';
+    case 'roles':
+      return 'bg-slate-100 text-slate-600';
+  }
+}
+
+function getAuditLabel(category: 'events' | 'refunds' | 'users' | 'settings' | 'notifications' | 'roles') {
+  switch (category) {
+    case 'events':
+      return 'События';
+    case 'refunds':
+      return 'Возвраты';
+    case 'users':
+      return 'Пользователи';
+    case 'settings':
+      return 'Настройки';
+    case 'notifications':
+      return 'Уведомления';
+    case 'roles':
+      return 'Роли';
+  }
+}
+
 export function AdminSettingsScreen() {
   const [activeTab, setActiveTab] = useState<AdminSettingsTabId>('general');
+  const [auditEntries, setAuditEntries] = useState(adminAuditEntries);
+  const [confirmState, setConfirmState] = useState<{
+    title: string;
+    description: string;
+    confirmLabel: string;
+    tone: 'primary' | 'danger';
+    badge: string;
+    footnote: string;
+    details: AdminConfirmDialogDetail[];
+    onConfirm: () => void;
+  } | null>(null);
 
   const [platformName, setPlatformName] = useState('FUNDON');
   const [domain, setDomain] = useState<(typeof adminPlatformDomains)[number]>('fundon.app');
@@ -315,6 +436,70 @@ export function AdminSettingsScreen() {
     'flag-2': false,
     'flag-3': true
   });
+
+  const openSaveConfirmation = () => {
+    const meta =
+      activeTab === 'roles'
+        ? {
+            title: 'Сохранить изменения ролей и прав',
+            description: 'Новые правила доступа и состав ролей будут применены ко всему admin-контуру FUNDON.',
+            confirmLabel: 'Сохранить роли',
+            category: 'roles' as const,
+            badge: 'Подтверждение ролей'
+          }
+        : activeTab === 'payments'
+          ? {
+              title: 'Сохранить платёжные политики',
+              description: 'Изменения затронут refund-flow, ручную проверку и ограничения риска.',
+              confirmLabel: 'Сохранить платежи',
+              category: 'settings' as const,
+              badge: 'Критичные настройки'
+            }
+          : activeTab === 'security'
+            ? {
+                title: 'Сохранить настройки безопасности',
+                description: 'Изменения затронут access policies, device verification и risk escalation.',
+                confirmLabel: 'Сохранить безопасность',
+                category: 'settings' as const,
+                badge: 'Security policy'
+              }
+            : {
+                title: 'Сохранить изменения настроек',
+                description: 'Текущие значения будут зафиксированы как актуальная конфигурация production-контура.',
+                confirmLabel: 'Сохранить изменения',
+                category: 'settings' as const,
+                badge: 'Настройки'
+              };
+
+    setConfirmState({
+      title: meta.title,
+      description: meta.description,
+      confirmLabel: meta.confirmLabel,
+      tone: 'primary',
+      badge: meta.badge,
+      footnote: 'Критичные настройки и роли попадают в обязательный audit trail FUNDON.',
+      details: [
+        { label: 'Раздел', value: adminSettingsTabs.find((tab) => tab.id === activeTab)?.label ?? 'Настройки' },
+        { label: 'Домен', value: domain },
+        { label: 'Support email', value: supportEmail },
+        { label: 'Платформа', value: platformName }
+      ],
+      onConfirm: () => {
+        setAuditEntries((current) => [
+          {
+            id: `audit-local-${Date.now()}`,
+            title: meta.title,
+            actor: 'Ольга Романова',
+            at: 'Сейчас',
+            description: `${platformName} · ${domain} · ${supportEmail} · текущий контур ${adminSettingsTabs.find((tab) => tab.id === activeTab)?.label?.toLowerCase() ?? 'настроек'}.`,
+            category: meta.category
+          },
+          ...current
+        ]);
+        setConfirmState(null);
+      }
+    });
+  };
 
   const renderContent = () => {
     switch (activeTab) {
@@ -363,10 +548,18 @@ export function AdminSettingsScreen() {
       case 'roles':
         return (
           <div className="grid gap-6 xl:grid-cols-2">
-            <SettingsCard title="Роли и права" subtitle="Управление ролями, областями ответственности и составом команд.">
+            <SettingsCard title="Роли и права" subtitle="MVP-роли FUNDON с понятными зонами ответственности и базовыми правами доступа.">
               <div className="space-y-3">
                 {adminRoles.map((role) => (
-                  <InfoRow key={role.id} icon={<ShieldIcon />} label={role.name} value={`${role.summary} · ${role.members}`} />
+                  <RoleCard
+                    key={role.id}
+                    title={role.name}
+                    summary={role.summary}
+                    members={role.members}
+                    ownership={role.ownership}
+                    permissions={role.permissions}
+                    approvalPolicy={role.approvalPolicy}
+                  />
                 ))}
               </div>
               <div className="grid grid-cols-3 gap-3">
@@ -382,22 +575,22 @@ export function AdminSettingsScreen() {
               </div>
             </SettingsCard>
 
-            <SettingsCard title="Политики доступа" subtitle="Кто и как получает доступ к операциям FUNDON.">
-              <ToggleRow
-                title="Обязательный approval для критичных действий"
-                description="Пересчёт рейтингов, возвраты и массовые рассылки требуют подтверждения второго администратора."
-                checked={true}
-                onChange={() => {}}
-              />
-              <ToggleRow
-                title="Временный доступ по инциденту"
-                description="Включает ограниченный elevated access для кейсов модерации и платёжных разборов."
-                checked={true}
-                onChange={() => {}}
-              />
+            <SettingsCard title="Команда admin-доступа" subtitle="Кто сейчас работает в контуре FUNDON и по каким доменам отвечает.">
+              <div className="space-y-3">
+                {adminAdminUsers.map((adminUser) => (
+                  <AdminAccessRow
+                    key={adminUser.id}
+                    name={adminUser.name}
+                    roleName={adminUser.roleName}
+                    scope={adminUser.scope}
+                    lastActive={adminUser.lastActive}
+                    status={adminUser.status}
+                  />
+                ))}
+              </div>
               <div className="grid grid-cols-2 gap-3">
-                <MetricPill label="SSO groups" value="8 групп" />
-                <MetricPill label="Custom policies" value="14 правил" />
+                <MetricPill label="Double approval" value="Возвраты, live finish, role changes" />
+                <MetricPill label="Базовый доступ" value="7 обязательных operational scopes" />
               </div>
             </SettingsCard>
           </div>
@@ -563,7 +756,7 @@ export function AdminSettingsScreen() {
       case 'flags':
         return (
           <div className="grid gap-6 xl:grid-cols-2">
-            <SettingsCard title="Feature Flags" subtitle="Контролируемый rollout новых product-функций.">
+            <SettingsCard title="Флаги функций" subtitle="Контролируемый rollout новых product-функций.">
               <div className="space-y-3">
                 {adminFeatureFlags.map((flag) => (
                   <ToggleRow
@@ -606,13 +799,16 @@ export function AdminSettingsScreen() {
       case 'audit':
         return (
           <div className="grid gap-6 xl:grid-cols-2">
-            <SettingsCard title="Audit Log" subtitle="История административных изменений и access events.">
+            <SettingsCard title="Журнал действий" subtitle="Минимальный audit trail по событиям, возвратам, блокировкам, настройкам и ролям.">
               <div className="space-y-3">
-                {adminAuditEntries.map((entry) => (
+                {auditEntries.map((entry) => (
                   <div key={entry.id} className="rounded-[16px] border border-black/[0.045] bg-[linear-gradient(180deg,#ffffff_0%,#fafbfe_100%)] px-4 py-3.5">
                     <div className="flex items-start justify-between gap-3">
                       <div className="min-w-0">
-                        <p className="text-[0.94rem] font-semibold text-slate-900">{entry.title}</p>
+                        <div className="flex flex-wrap items-center gap-2">
+                          <p className="text-[0.94rem] font-semibold text-slate-900">{entry.title}</p>
+                          <span className={cn('rounded-full px-2.5 py-1 text-[0.72rem] font-semibold', getAuditTone(entry.category))}>{getAuditLabel(entry.category)}</span>
+                        </div>
                         <p className="mt-1 text-[0.84rem] leading-5 text-slate-600">{entry.description}</p>
                       </div>
                       <span className="shrink-0 text-[0.8rem] text-slate-400">{entry.at}</span>
@@ -623,12 +819,12 @@ export function AdminSettingsScreen() {
               </div>
             </SettingsCard>
 
-            <SettingsCard title="Хранение логов" subtitle="Retention, экспорт и доступ к системным журналам.">
+            <SettingsCard title="Правила аудита" subtitle="Какие категории логируются в MVP и как долго хранятся.">
               <div className="grid grid-cols-2 gap-3">
                 <MetricPill label="Retention" value="180 дней" />
                 <MetricPill label="Экспорт" value="CSV / JSON" />
               </div>
-              <InfoRow icon={<HistoryIcon />} label="Последняя выгрузка" value="Сегодня, 09:40 · security audit" />
+              <InfoRow icon={<HistoryIcon />} label="Обязательные категории" value="events, refunds, users, settings, notifications, roles" />
               <InfoRow icon={<ShieldIcon />} label="Immutable storage" value="Включено для critical changes" quiet />
             </SettingsCard>
           </div>
@@ -648,7 +844,41 @@ export function AdminSettingsScreen() {
         </div>
       </section>
 
+      <section className="rounded-[24px] border border-[#dbe7fb] bg-[linear-gradient(180deg,#ffffff_0%,#f6f9ff_100%)] px-6 py-5 shadow-[0_18px_40px_rgba(79,143,246,0.10)]">
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <p className="text-[1.02rem] font-semibold text-slate-900">Критичные изменения подтверждаются отдельно</p>
+            <p className="mt-1 text-[0.9rem] text-slate-500">Изменения ролей, платёжных политик, безопасности и общих настроек попадают в обязательный журнал действий.</p>
+          </div>
+          <div className="flex items-center gap-3">
+            <span className="rounded-full bg-white px-3 py-1.5 text-[0.76rem] font-semibold text-slate-500 shadow-[0_10px_18px_rgba(15,23,42,0.05)]">
+              {auditEntries.length} записей в audit trail
+            </span>
+            <button
+              type="button"
+              onClick={openSaveConfirmation}
+              className="rounded-[16px] bg-[linear-gradient(180deg,#5d9cff_0%,#4f8ff6_100%)] px-5 py-3 text-[0.92rem] font-semibold text-white shadow-[0_18px_30px_rgba(79,143,246,0.22)]"
+            >
+              Сохранить критичные изменения
+            </button>
+          </div>
+        </div>
+      </section>
+
       {renderContent()}
+
+      <AdminConfirmDialog
+        open={Boolean(confirmState)}
+        title={confirmState?.title ?? ''}
+        description={confirmState?.description ?? ''}
+        confirmLabel={confirmState?.confirmLabel ?? ''}
+        tone={confirmState?.tone ?? 'primary'}
+        badge={confirmState?.badge}
+        details={confirmState?.details}
+        footnote={confirmState?.footnote}
+        onClose={() => setConfirmState(null)}
+        onConfirm={() => confirmState?.onConfirm()}
+      />
     </div>
   );
 }

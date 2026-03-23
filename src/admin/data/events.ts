@@ -47,11 +47,11 @@ export const adminEventKpis: AdminEventsKpi[] = [
 
 export const adminStatusFilters = [
   { id: 'all', label: 'Все' },
-  { id: 'live', label: 'Live' },
+  { id: 'live', label: 'В эфире' },
   { id: 'today', label: 'Сегодня' },
-  { id: 'upcoming', label: 'Upcoming' },
-  { id: 'finished', label: 'Finished' },
-  { id: 'drafts', label: 'Drafts' }
+  { id: 'upcoming', label: 'Скоро' },
+  { id: 'finished', label: 'Завершено' },
+  { id: 'drafts', label: 'Черновики' }
 ] as const;
 
 export const adminSportFilters: Array<{ id: AdminEventSportFilter; label: string }> = [

@@ -13,6 +13,7 @@ import {
   type AdminManagedEvent,
   type AdminSupportState
 } from '@/admin/data/events';
+import { AdminConfirmDialog, type AdminConfirmDialogDetail } from '@/admin/components/AdminConfirmDialog';
 import { cn } from '@/lib/utils';
 
 function CalendarIcon() {
@@ -73,15 +74,15 @@ function getStatusTone(status: AdminEventStatus) {
 function getStatusLabel(status: AdminEventStatus) {
   switch (status) {
     case 'live':
-      return 'Live';
+      return 'В эфире';
     case 'today':
       return 'Сегодня';
     case 'upcoming':
-      return 'Upcoming';
+      return 'Скоро';
     case 'finished':
-      return 'Finished';
+      return 'Завершено';
     case 'draft':
-      return 'Draft';
+      return 'Черновик';
   }
 }
 
@@ -133,20 +134,42 @@ function getSportDot(sport: AdminEventSport) {
   }
 }
 
-function getRowActions(event: AdminManagedEvent) {
+type EventActionId = 'open' | 'edit' | 'finish' | 'publish' | 'archive' | 'launch-live';
+
+function getRowActions(event: AdminManagedEvent): Array<{
+  id: EventActionId;
+  label: string;
+  tone: 'primary' | 'default' | 'danger';
+}> {
   if (event.status === 'live') {
-    return ['Открыть', 'Редактировать', 'Завершить'] as const;
+    return [
+      { id: 'open', label: 'Открыть', tone: 'primary' },
+      { id: 'edit', label: 'Редактировать', tone: 'default' },
+      { id: 'finish', label: 'Завершить', tone: 'danger' }
+    ];
   }
 
   if (event.status === 'draft') {
-    return ['Открыть', 'Редактировать', 'Опубликовать'] as const;
+    return [
+      { id: 'open', label: 'Открыть', tone: 'primary' },
+      { id: 'edit', label: 'Редактировать', tone: 'default' },
+      { id: 'publish', label: 'Опубликовать', tone: 'default' }
+    ];
   }
 
   if (event.status === 'finished') {
-    return ['Открыть', 'Редактировать', 'Архив'] as const;
+    return [
+      { id: 'open', label: 'Открыть', tone: 'primary' },
+      { id: 'edit', label: 'Редактировать', tone: 'default' },
+      { id: 'archive', label: 'Архив', tone: 'default' }
+    ];
   }
 
-  return ['Открыть', 'Редактировать', 'Запустить live'] as const;
+  return [
+    { id: 'open', label: 'Открыть', tone: 'primary' },
+    { id: 'edit', label: 'Редактировать', tone: 'default' },
+    { id: 'launch-live', label: 'Запустить live', tone: 'default' }
+  ];
 }
 
 function KpiCard({
@@ -205,12 +228,23 @@ function DetailRow({ label, value }: { label: string; value: string }) {
 }
 
 export function AdminEventsScreen() {
+  const [managedEvents, setManagedEvents] = useState(adminManagedEvents);
   const [statusFilter, setStatusFilter] = useState<(typeof adminStatusFilters)[number]['id']>('all');
   const [sportFilter, setSportFilter] = useState<AdminEventSportFilter>('all');
   const [selectedEventId, setSelectedEventId] = useState(adminManagedEvents[0]?.id ?? '');
+  const [confirmState, setConfirmState] = useState<{
+    title: string;
+    description: string;
+    confirmLabel: string;
+    tone: 'primary' | 'danger';
+    badge: string;
+    details: AdminConfirmDialogDetail[];
+    footnote: string;
+    onConfirm: () => void;
+  } | null>(null);
 
   const filteredEvents = useMemo(() => {
-    return adminManagedEvents.filter((event) => {
+    return managedEvents.filter((event) => {
       const statusMatch =
         statusFilter === 'all'
           ? true
@@ -222,7 +256,7 @@ export function AdminEventsScreen() {
 
       return statusMatch && sportMatch;
     });
-  }, [sportFilter, statusFilter]);
+  }, [managedEvents, sportFilter, statusFilter]);
 
   useEffect(() => {
     if (!filteredEvents.some((event) => event.id === selectedEventId)) {
@@ -230,7 +264,155 @@ export function AdminEventsScreen() {
     }
   }, [filteredEvents, selectedEventId]);
 
-  const selectedEvent = filteredEvents.find((event) => event.id === selectedEventId) ?? filteredEvents[0] ?? adminManagedEvents[0];
+  const selectedEvent = filteredEvents.find((event) => event.id === selectedEventId) ?? filteredEvents[0] ?? managedEvents[0];
+
+  const updateEvent = (eventId: string, updater: (event: AdminManagedEvent) => AdminManagedEvent) => {
+    setManagedEvents((current) => current.map((event) => (event.id === eventId ? updater(event) : event)));
+  };
+
+  const openEventConfirmation = (
+    event: AdminManagedEvent,
+    config: {
+      title: string;
+      description: string;
+      confirmLabel: string;
+      tone: 'primary' | 'danger';
+      badge: string;
+      footnote: string;
+      onConfirm: () => void;
+    }
+  ) => {
+    setSelectedEventId(event.id);
+    setConfirmState({
+      ...config,
+      details: [
+        { label: 'Событие', value: event.title },
+        { label: 'Статус', value: getStatusLabel(event.status) },
+        { label: 'Поддержка', value: getSupportLabel(event.support) },
+        { label: 'Комната', value: event.room }
+      ]
+    });
+  };
+
+  const handleEventAction = (event: AdminManagedEvent, actionId: EventActionId) => {
+    if (actionId === 'open' || actionId === 'edit') {
+      setSelectedEventId(event.id);
+      return;
+    }
+
+    if (actionId === 'launch-live') {
+      openEventConfirmation(event, {
+        title: 'Запустить событие в live',
+        description: 'Событие перейдёт в live-режим, room станет активной, а поддержка откроется для пользователей.',
+        confirmLabel: 'Запустить live',
+        tone: 'primary',
+        badge: 'Подтверждение live',
+        footnote: 'Действие будет записано в audit trail как запуск live-события.',
+        onConfirm: () => {
+          updateEvent(event.id, (current) => ({
+            ...current,
+            status: 'live',
+            support: 'enabled',
+            activity: 'Live запущен',
+            donations: current.donations === '—' ? '₽0' : current.donations,
+            audience: 'Комната активна · идёт эфир',
+            notifications: 'Push и room-оповещения активированы'
+          }));
+          setConfirmState(null);
+        }
+      });
+      return;
+    }
+
+    if (actionId === 'finish') {
+      openEventConfirmation(event, {
+        title: 'Завершить событие',
+        description: 'Событие будет закрыто для live-поддержки, а комната перейдёт в post-live режим.',
+        confirmLabel: 'Завершить',
+        tone: 'danger',
+        badge: 'Критичное действие',
+        footnote: 'Завершение live-события обязательно логируется и влияет на room и payment flow.',
+        onConfirm: () => {
+          updateEvent(event.id, (current) => ({
+            ...current,
+            status: 'finished',
+            support: 'disabled',
+            activity: 'Эфир завершён',
+            audience: 'Итоговая статистика сохранена',
+            notifications: 'Итоговое уведомление отправлено'
+          }));
+          setConfirmState(null);
+        }
+      });
+      return;
+    }
+
+    if (actionId === 'publish') {
+      openEventConfirmation(event, {
+        title: 'Опубликовать событие',
+        description: 'Черновик станет доступен в операционном контуре, room и уведомления будут подготовлены к запуску.',
+        confirmLabel: 'Опубликовать',
+        tone: 'primary',
+        badge: 'Публикация',
+        footnote: 'Публикация создаст audit trail запись и переведёт событие в ближайший operational pipeline.',
+        onConfirm: () => {
+          updateEvent(event.id, (current) => ({
+            ...current,
+            status: 'upcoming',
+            room: current.room === '—' ? 'Новая room подготовлена' : current.room,
+            audience: 'Событие появилось в планировании',
+            notifications: 'Подготовлены push и room-оповещения'
+          }));
+          setConfirmState(null);
+        }
+      });
+      return;
+    }
+
+    if (actionId === 'archive') {
+      openEventConfirmation(event, {
+        title: 'Отправить событие в архив',
+        description: 'Карточка останется в журнале, но будет снята с операционного обзора и активной поддержки.',
+        confirmLabel: 'Архивировать',
+        tone: 'danger',
+        badge: 'Архив',
+        footnote: 'Архивирование влияет на доступность карточки и логируется как административное действие.',
+        onConfirm: () => {
+          updateEvent(event.id, (current) => ({
+            ...current,
+            support: 'disabled',
+            room: 'Архив',
+            audience: 'Скрыто из оперативного списка',
+            notifications: 'Архивировано'
+          }));
+          setConfirmState(null);
+        }
+      });
+    }
+  };
+
+  const handleToggleSupport = (event: AdminManagedEvent) => {
+    const enable = event.support === 'disabled';
+
+    openEventConfirmation(event, {
+      title: enable ? 'Включить поддержку' : 'Отключить поддержку',
+      description: enable
+        ? 'Поддержка станет доступна пользователям, а связанная room будет готова к приёму донатов.'
+        : 'Поддержка будет выключена для новых донатов, но история события и room останутся доступными.',
+      confirmLabel: enable ? 'Включить' : 'Отключить',
+      tone: enable ? 'primary' : 'danger',
+      badge: enable ? 'Поддержка' : 'Критичное действие',
+      footnote: 'Изменение состояния поддержки записывается в audit trail и влияет на live-донаты.',
+      onConfirm: () => {
+        updateEvent(event.id, (current) => ({
+          ...current,
+          support: enable ? 'enabled' : 'disabled',
+          notifications: enable ? 'Поддержка и room-оповещения активированы' : 'Поддержка отключена, room работает в режиме чтения'
+        }));
+        setConfirmState(null);
+      }
+    });
+  };
 
   return (
     <div className="space-y-6">
@@ -327,10 +509,17 @@ export function AdminEventsScreen() {
                   const active = event.id === selectedEvent?.id;
 
                   return (
-                    <button
+                    <div
                       key={event.id}
-                      type="button"
                       onClick={() => setSelectedEventId(event.id)}
+                      role="button"
+                      tabIndex={0}
+                      onKeyDown={(keyboardEvent) => {
+                        if (keyboardEvent.key === 'Enter' || keyboardEvent.key === ' ') {
+                          keyboardEvent.preventDefault();
+                          setSelectedEventId(event.id);
+                        }
+                      }}
                       className={cn(
                         'grid w-full grid-cols-[minmax(18rem,1.6fr)_8rem_minmax(15rem,1.3fr)_9rem_8rem_8rem_10rem_9rem_14rem] items-center gap-4 rounded-[20px] border px-4 py-4 text-left shadow-[inset_0_1px_0_rgba(255,255,255,0.92)] transition',
                         active
@@ -374,23 +563,36 @@ export function AdminEventsScreen() {
                       </div>
 
                       <div className="flex items-center justify-end gap-2">
-                        {getRowActions(event).map((action, index) => (
+                        {getRowActions(event).map((action) => (
                           <span
-                            key={action}
+                            key={action.id}
+                            role="button"
+                            tabIndex={0}
+                            onClick={(mouseEvent) => {
+                              mouseEvent.stopPropagation();
+                              handleEventAction(event, action.id);
+                            }}
+                            onKeyDown={(keyboardEvent) => {
+                              if (keyboardEvent.key === 'Enter' || keyboardEvent.key === ' ') {
+                                keyboardEvent.preventDefault();
+                                keyboardEvent.stopPropagation();
+                                handleEventAction(event, action.id);
+                              }
+                            }}
                             className={cn(
-                              'inline-flex rounded-[12px] px-3 py-2 text-[0.82rem] font-semibold',
-                              index === 0
+                              'inline-flex cursor-pointer rounded-[12px] px-3 py-2 text-[0.82rem] font-semibold',
+                              action.tone === 'primary'
                                 ? 'bg-[#eef5ff] text-[#2f78d3] ring-1 ring-[#dbe7fb]'
-                                : index === 2 && action === 'Завершить'
+                                : action.tone === 'danger'
                                   ? 'bg-[#fff1ef] text-[#d25346] ring-1 ring-[#ffd7d1]'
                                   : 'bg-white text-slate-600 ring-1 ring-black/[0.06]'
                             )}
                           >
-                            {action}
+                            {action.label}
                           </span>
                         ))}
                       </div>
-                    </button>
+                    </div>
                   );
                 })}
               </div>
@@ -457,18 +659,21 @@ export function AdminEventsScreen() {
               <div className="space-y-3">
                 <button
                   type="button"
+                  onClick={() => setSelectedEventId(selectedEvent.id)}
                   className="flex w-full items-center justify-center rounded-[16px] bg-[linear-gradient(180deg,#5d9cff_0%,#4f8ff6_100%)] px-4 py-3.5 text-[0.95rem] font-semibold text-white shadow-[0_18px_30px_rgba(79,143,246,0.22)]"
                 >
                   Открыть событие
                 </button>
                 <button
                   type="button"
+                  onClick={() => setSelectedEventId(selectedEvent.id)}
                   className="flex w-full items-center justify-center rounded-[16px] border border-black/[0.06] bg-white px-4 py-3.5 text-[0.95rem] font-semibold text-slate-700"
                 >
                   Редактировать
                 </button>
                 <button
                   type="button"
+                  onClick={() => handleEventAction(selectedEvent, selectedEvent.status === 'live' ? 'finish' : selectedEvent.status === 'draft' ? 'publish' : 'launch-live')}
                   className={cn(
                     'flex w-full items-center justify-center rounded-[16px] px-4 py-3.5 text-[0.95rem] font-semibold',
                     selectedEvent.status === 'live'
@@ -476,10 +681,11 @@ export function AdminEventsScreen() {
                       : 'bg-[#eef5ff] text-[#2f78d3] ring-1 ring-[#dbe7fb]'
                   )}
                 >
-                  {selectedEvent.status === 'live' ? 'Завершить событие' : 'Запустить live'}
+                  {selectedEvent.status === 'live' ? 'Завершить событие' : selectedEvent.status === 'draft' ? 'Опубликовать событие' : 'Запустить live'}
                 </button>
                 <button
                   type="button"
+                  onClick={() => handleToggleSupport(selectedEvent)}
                   className="flex w-full items-center justify-center rounded-[16px] bg-[#f7f8fb] px-4 py-3.5 text-[0.95rem] font-semibold text-slate-600"
                 >
                   {selectedEvent.support === 'enabled' ? 'Отключить поддержку' : 'Включить поддержку'}
@@ -489,6 +695,19 @@ export function AdminEventsScreen() {
           </aside>
         ) : null}
       </section>
+
+      <AdminConfirmDialog
+        open={Boolean(confirmState)}
+        title={confirmState?.title ?? ''}
+        description={confirmState?.description ?? ''}
+        confirmLabel={confirmState?.confirmLabel ?? ''}
+        tone={confirmState?.tone ?? 'primary'}
+        badge={confirmState?.badge}
+        details={confirmState?.details}
+        footnote={confirmState?.footnote}
+        onClose={() => setConfirmState(null)}
+        onConfirm={() => confirmState?.onConfirm()}
+      />
     </div>
   );
 }
