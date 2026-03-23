@@ -65,14 +65,16 @@ export function AdminTopbar() {
             />
           </label>
 
-          <button
-            type="button"
-            className="flex items-center gap-3 rounded-[16px] border border-black/[0.05] bg-white/92 px-4 py-3 text-[0.95rem] font-medium text-slate-700 shadow-[0_10px_24px_rgba(15,23,42,0.05)]"
-          >
-            <CalendarIcon />
-            <span>{meta.periodLabel}</span>
-            <ChevronDownIcon />
-          </button>
+          {meta.periodLabel ? (
+            <button
+              type="button"
+              className="flex items-center gap-3 rounded-[16px] border border-black/[0.05] bg-white/92 px-4 py-3 text-[0.95rem] font-medium text-slate-700 shadow-[0_10px_24px_rgba(15,23,42,0.05)]"
+            >
+              <CalendarIcon />
+              <span>{meta.periodLabel}</span>
+              <ChevronDownIcon />
+            </button>
+          ) : null}
 
           <button
             type="button"

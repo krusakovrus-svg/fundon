@@ -9,7 +9,7 @@ export interface AdminPageMeta {
   title: string;
   description: string;
   searchPlaceholder: string;
-  periodLabel: string;
+  periodLabel?: string;
   primaryActionLabel?: string;
   secondaryActionLabel?: string;
 }
@@ -25,7 +25,7 @@ export const adminNavItems: AdminNavItem[] = [
   { id: 'notifications', label: 'Уведомления', section: 'community', href: '/admin/notifications' },
   { id: 'analytics', label: 'Аналитика', section: 'system' },
   { id: 'moderation', label: 'Модерация', section: 'system', href: '/admin/moderation' },
-  { id: 'settings', label: 'Настройки', section: 'system' }
+  { id: 'settings', label: 'Настройки', section: 'system', href: '/admin/settings' }
 ];
 
 const defaultMeta: AdminPageMeta = {
@@ -114,6 +114,15 @@ export function getAdminPageMeta(pathname: string): AdminPageMeta {
       searchPlaceholder: 'Поиск по кейсу, пользователю, событию и объекту',
       periodLabel: 'Последние 7 дней',
       primaryActionLabel: 'Открыть инцидент'
+    };
+  }
+
+  if (pathname.startsWith('/admin/settings')) {
+    return {
+      title: 'Настройки',
+      description: 'Центральная конфигурация платформы, ролей, платежей, уведомлений и системных политик FUNDON',
+      searchPlaceholder: 'Поиск по настройкам, ролям, платежам и интеграциям',
+      primaryActionLabel: 'Сохранить изменения'
     };
   }
 
