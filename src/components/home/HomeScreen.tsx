@@ -108,10 +108,12 @@ function HomeEventCard({ event, language }: { event: SportEventRecord; language:
   const isLive = isStaticLiveEvent(event);
   const title = event.title;
   const participants = event.participants.slice(0, 2);
-  const dateLabel =
+  const rawDateLabel =
     language === 'ru'
       ? event.displayDateRu ?? formatSportEventDate(event.startsAt, language)
       : event.displayDateEn ?? formatSportEventDate(event.startsAt, language);
+  const dateLabel =
+    language === 'ru' && rawDateLabel.trim().toLowerCase() === 'завтра в' ? 'Завтра' : rawDateLabel;
   const timeLabel =
     language === 'ru'
       ? event.displayTimeRu ?? formatSportEventTime(event.startsAt, language)
