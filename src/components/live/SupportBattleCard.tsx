@@ -27,12 +27,15 @@ export function SupportBattleCard({
   onSupportLeft,
   onSupportRight
 }: SupportBattleCardProps) {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
   const { leftPercent, rightPercent } = calculateSupportSplit(left.total, right.total);
   const leader = left.total >= right.total ? left.shortName : right.shortName;
+  const amountLabel = language === 'ru' ? 'Сумма в один тап' : 'One-tap amount';
+  const supportActionLabel = language === 'ru' ? 'Поддержать' : 'Support';
+  const supportersLabel = language === 'ru' ? 'фанатов' : 'supporters';
 
   return (
-    <SectionCard className="space-y-4 border border-white/35 bg-white/55 px-4 py-4 shadow-[0_18px_42px_rgba(15,23,42,0.10)] backdrop-blur-xl dark:border-white/8 dark:bg-white/6 dark:shadow-none">
+    <SectionCard className="space-y-4 border border-white/45 bg-[linear-gradient(180deg,rgba(255,255,255,0.92)_0%,rgba(250,251,253,0.82)_100%)] px-4 py-4 shadow-[0_22px_46px_rgba(15,23,42,0.11)] backdrop-blur-xl dark:border-white/[0.1] dark:bg-[linear-gradient(180deg,rgba(255,255,255,0.08)_0%,rgba(255,255,255,0.05)_100%)] dark:shadow-[0_20px_42px_rgba(2,6,23,0.28)]">
       <div className="flex items-center justify-between gap-4">
         <div className="min-w-0">
           <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted">{t('supportBattle')}</p>
@@ -40,9 +43,10 @@ export function SupportBattleCard({
             {t('eventLeader')}: <span className="font-medium text-text-primary">{leader}</span>
           </p>
         </div>
-        <span className="inline-flex shrink-0 items-center rounded-full border border-accent-orange/20 bg-accent-orange/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-accent-orange">
-          +{formatCurrency(selectedAmount)}
-        </span>
+        <div className="shrink-0 text-right">
+          <p className="text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-text-muted">{amountLabel}</p>
+          <p className="mt-1 text-[1.1rem] font-semibold tracking-tight text-text-primary">{formatCurrency(selectedAmount)}</p>
+        </div>
       </div>
 
       <div className="grid grid-cols-2 gap-3">
@@ -50,13 +54,16 @@ export function SupportBattleCard({
           type="button"
           whileTap={{ scale: 0.985 }}
           onClick={onSupportLeft}
-          className="w-full rounded-[1.25rem] border border-white/50 bg-white/60 px-4 py-4 text-left transition hover:border-accent-blue/25 hover:bg-white/75 dark:border-white/8 dark:bg-white/6"
+          className="w-full rounded-[1.25rem] border border-black/[0.04] bg-white/[0.8] px-4 py-4 text-left shadow-[inset_0_1px_0_rgba(255,255,255,0.85)] transition hover:border-accent-blue/22 hover:bg-white dark:border-white/[0.08] dark:bg-white/[0.05]"
         >
           <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-text-muted">{left.shortName}</p>
-          <p className="mt-2 text-[1.7rem] font-semibold tracking-tight text-text-primary">{formatCurrency(left.total)}</p>
+          <p className="mt-2 text-[1.82rem] font-semibold tracking-tight text-text-primary">{formatCurrency(left.total)}</p>
           <div className="mt-3 flex items-center justify-between text-sm text-text-secondary/85">
             <span>{leftPercent}%</span>
-            <span>{left.supporters}</span>
+            <span>{left.supporters} {supportersLabel}</span>
+          </div>
+          <div className="mt-4 inline-flex items-center rounded-full bg-accent-blue/10 px-3 py-1.5 text-[0.76rem] font-semibold text-accent-blue">
+            {supportActionLabel} {formatCurrency(selectedAmount)}
           </div>
         </motion.button>
 
@@ -64,19 +71,22 @@ export function SupportBattleCard({
           type="button"
           whileTap={{ scale: 0.985 }}
           onClick={onSupportRight}
-          className="w-full rounded-[1.25rem] border border-white/50 bg-white/60 px-4 py-4 text-left transition hover:border-accent-orange/25 hover:bg-white/75 dark:border-white/8 dark:bg-white/6"
+          className="w-full rounded-[1.25rem] border border-black/[0.04] bg-white/[0.8] px-4 py-4 text-left shadow-[inset_0_1px_0_rgba(255,255,255,0.85)] transition hover:border-accent-orange/22 hover:bg-white dark:border-white/[0.08] dark:bg-white/[0.05]"
         >
           <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-text-muted">{right.shortName}</p>
-          <p className="mt-2 text-[1.7rem] font-semibold tracking-tight text-text-primary">{formatCurrency(right.total)}</p>
+          <p className="mt-2 text-[1.82rem] font-semibold tracking-tight text-text-primary">{formatCurrency(right.total)}</p>
           <div className="mt-3 flex items-center justify-between text-sm text-text-secondary/85">
             <span>{rightPercent}%</span>
-            <span>{right.supporters}</span>
+            <span>{right.supporters} {supportersLabel}</span>
+          </div>
+          <div className="mt-4 inline-flex items-center rounded-full bg-accent-orange/10 px-3 py-1.5 text-[0.76rem] font-semibold text-accent-orange">
+            {supportActionLabel} {formatCurrency(selectedAmount)}
           </div>
         </motion.button>
       </div>
 
       <div className="space-y-2.5">
-        <div className="h-2.5 overflow-hidden rounded-full bg-white/60 dark:bg-white/8">
+        <div className="h-2.5 overflow-hidden rounded-full bg-black/[0.04] dark:bg-white/[0.08]">
           <div className="flex h-full">
             <motion.div animate={{ width: `${leftPercent}%` }} className="bg-accent-blue" />
             <motion.div animate={{ width: `${rightPercent}%` }} className="bg-accent-orange" />

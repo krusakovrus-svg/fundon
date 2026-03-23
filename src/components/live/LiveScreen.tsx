@@ -97,7 +97,9 @@ export function LiveScreen() {
   const { language, t } = useLanguage();
   const mountedRef = useRef(false);
 
-  const [selectedAmount, setSelectedAmount] = useState<SupportAmount>(mockData.supportAmounts[1]);
+  const [selectedAmount, setSelectedAmount] = useState<SupportAmount>(
+    mockData.supportAmounts.find((amount) => amount === mockData.profile.lastSupportAmount) ?? mockData.supportAmounts[1]
+  );
   const [selectedEventId, setSelectedEventId] = useState(liveEvents[0].id);
   const [momentIndexByEvent, setMomentIndexByEvent] = useState<Record<string, number>>(createInitialMomentIndexMap);
   const [activityMap, setActivityMap] = useState<Record<string, LiveActivityItem[]>>(createInitialActivityMap);
@@ -174,6 +176,14 @@ export function LiveScreen() {
   );
   const fanHeatKey = getHeatState(fanPulseValue);
 
+  const handleSelectAmount = (amount: SupportAmount) => {
+    setSelectedAmount(amount);
+    setProfile((current) => ({
+      ...current,
+      lastSupportAmount: amount
+    }));
+  };
+
   const handleSupport = (side: 'left' | 'right') => {
     const amount = selectedAmount;
     const previousLeader = currentSupport.left >= currentSupport.right ? 'left' : 'right';
@@ -247,6 +257,7 @@ export function LiveScreen() {
       ...current,
       points: nextPoints,
       totalSupport: current.totalSupport + amount,
+      lastSupportAmount: amount,
       selectedParticipant: target.teamLabel,
       selectedParticipantRu: target.teamLabelRu
     }));
@@ -274,9 +285,10 @@ export function LiveScreen() {
   return (
     <>
       <MainPageLayout className="space-y-4 pb-[14.5rem]">
-        <section className="px-1">
-          <h1 className="text-[1.55rem] font-semibold tracking-tight text-text-primary">{t('liveTitle')}</h1>
-          <p className="mt-2 max-w-[24rem] text-[0.94rem] leading-relaxed text-text-secondary">{t('liveHint')}</p>
+        <section className="space-y-2 px-1">
+          <p className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-text-muted">{t('liveNow')}</p>
+          <h1 className="text-[1.52rem] font-semibold tracking-tight text-text-primary">{t('liveTitle')}</h1>
+          <p className="max-w-[24rem] text-[0.92rem] leading-relaxed text-text-secondary">{t('liveHint')}</p>
         </section>
 
         <LiveEventSwitcher
@@ -311,6 +323,8 @@ export function LiveScreen() {
           onSupportRight={() => handleSupport('right')}
         />
 
+        <LeaderboardPreview entries={currentLeaderboard} profile={profile} />
+
         <LiveMomentumPanel
           moment={currentMoment}
           message={momentumMessage}
@@ -319,7 +333,6 @@ export function LiveScreen() {
         />
 
         <LiveActivityFeed items={currentActivity} />
-        <LeaderboardPreview entries={currentLeaderboard} profile={profile} />
       </MainPageLayout>
 
       <LiveDonationDock
@@ -327,7 +340,7 @@ export function LiveScreen() {
         rightLabel={language === 'ru' ? rightParticipant.shortNameRu : rightParticipant.shortName}
         amounts={mockData.supportAmounts}
         selectedAmount={selectedAmount}
-        onSelectAmount={setSelectedAmount}
+        onSelectAmount={handleSelectAmount}
         onSupportLeft={() => handleSupport('left')}
         onSupportRight={() => handleSupport('right')}
       />
