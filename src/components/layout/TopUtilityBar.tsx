@@ -90,44 +90,46 @@ export function TopUtilityBar({ isMenuOpen, onToggleMenu }: { isMenuOpen: boolea
 
     return (
       <div className="app-topbar-wrap">
-        <div className="relative flex items-center gap-3">
-          <button
-            type="button"
-            aria-label={menuLabel}
-            aria-expanded={isMenuOpen}
-            onClick={onToggleMenu}
-            className={cn('app-topbar-icon shrink-0', surfaceClass)}
-          >
-            <MenuIcon />
-          </button>
-
-          <div className="min-w-0 flex-1 px-1 text-center">
-            <p className="truncate text-[1rem] font-semibold tracking-tight text-text-primary dark:text-white/[0.94]">{title}</p>
-          </div>
-
-          <div className="flex shrink-0 items-center gap-1.5">
-            <Link
-              href="/notifications"
-              aria-label={t('notificationsLabel')}
-              className={cn(
-                'app-topbar-icon',
-                surfaceClass,
-                isNotificationsPage && 'text-[rgb(var(--accent-orange))]'
-              )}
-            >
-              <BellIcon />
-            </Link>
-
+        <div className="app-topbar-inner">
+          <div className="relative flex items-center gap-3">
             <button
               type="button"
-              aria-label={t('balanceLabel')}
-              className={cn('app-topbar-balance min-w-[6.7rem] px-3', surfaceClass)}
+              aria-label={menuLabel}
+              aria-expanded={isMenuOpen}
+              onClick={onToggleMenu}
+              className={cn('app-topbar-icon shrink-0', surfaceClass)}
             >
-              <span className="inline-flex items-center justify-center gap-1.5 text-[0.98rem] font-semibold tracking-tight text-text-primary dark:text-white/[0.94]">
-                <span>{balanceLabel}</span>
-                <span className="text-accent-green">+</span>
-              </span>
+              <MenuIcon />
             </button>
+
+            <div className="min-w-0 flex-1 px-1 text-center">
+              <p className="truncate text-[1rem] font-semibold tracking-tight text-text-primary dark:text-white/[0.94]">{title}</p>
+            </div>
+
+            <div className="flex shrink-0 items-center gap-1.5">
+              <Link
+                href="/notifications"
+                aria-label={t('notificationsLabel')}
+                className={cn(
+                  'app-topbar-icon',
+                  surfaceClass,
+                  isNotificationsPage && 'text-[rgb(var(--accent-orange))]'
+                )}
+              >
+                <BellIcon />
+              </Link>
+
+              <button
+                type="button"
+                aria-label={t('balanceLabel')}
+                className={cn('app-topbar-balance min-w-[6.7rem] px-3', surfaceClass)}
+              >
+                <span className="inline-flex items-center justify-center gap-1.5 text-[0.98rem] font-semibold tracking-tight text-text-primary dark:text-white/[0.94]">
+                  <span>{balanceLabel}</span>
+                  <span className="text-accent-green">+</span>
+                </span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -136,49 +138,51 @@ export function TopUtilityBar({ isMenuOpen, onToggleMenu }: { isMenuOpen: boolea
 
   return (
     <div className="app-topbar-wrap">
-      <div className="app-topbar-grid">
-        <button
-          type="button"
-          aria-label={menuLabel}
-          aria-expanded={isMenuOpen}
-          onClick={onToggleMenu}
-          className={cn('app-topbar-icon', surfaceClass)}
-        >
-          <MenuIcon />
-        </button>
-
-        {isSportDetailPage ? (
-          <button type="button" aria-label={t('backLabel')} onClick={handleBack} className={cn('app-topbar-icon', surfaceClass)}>
-            <ArrowLeftIcon />
+      <div className="app-topbar-inner">
+        <div className="app-topbar-grid">
+          <button
+            type="button"
+            aria-label={menuLabel}
+            aria-expanded={isMenuOpen}
+            onClick={onToggleMenu}
+            className={cn('app-topbar-icon', surfaceClass)}
+          >
+            <MenuIcon />
           </button>
-        ) : (
-          <Link href="/sports" aria-label={t('searchLabel')} className={cn('app-topbar-icon', surfaceClass)}>
-            <SearchIcon />
+
+          {isSportDetailPage ? (
+            <button type="button" aria-label={t('backLabel')} onClick={handleBack} className={cn('app-topbar-icon', surfaceClass)}>
+              <ArrowLeftIcon />
+            </button>
+          ) : (
+            <Link href="/sports" aria-label={t('searchLabel')} className={cn('app-topbar-icon', surfaceClass)}>
+              <SearchIcon />
+            </Link>
+          )}
+
+          <button type="button" aria-label={t('balanceLabel')} className={cn('app-topbar-balance', surfaceClass)}>
+            <span className="inline-flex items-center justify-center gap-1.5 text-[1rem] font-semibold tracking-tight text-text-primary dark:text-white/[0.94]">
+              <span>{balanceLabel}</span>
+              <span className="text-accent-green">+</span>
+            </span>
+          </button>
+
+          <Link
+            href="/favorites"
+            aria-label={t('favoritesTitle')}
+            className={cn('app-topbar-icon', surfaceClass, isFavoritesPage && 'text-[rgb(var(--accent-orange))]')}
+          >
+            <StarIcon />
           </Link>
-        )}
 
-        <button type="button" aria-label={t('balanceLabel')} className={cn('app-topbar-balance', surfaceClass)}>
-          <span className="inline-flex items-center justify-center gap-1.5 text-[1rem] font-semibold tracking-tight text-text-primary dark:text-white/[0.94]">
-            <span>{balanceLabel}</span>
-            <span className="text-accent-green">+</span>
-          </span>
-        </button>
-
-        <Link
-          href="/favorites"
-          aria-label={t('favoritesTitle')}
-          className={cn('app-topbar-icon', surfaceClass, isFavoritesPage && 'text-[rgb(var(--accent-orange))]')}
-        >
-          <StarIcon />
-        </Link>
-
-        <Link
-          href="/notifications"
-          aria-label={t('notificationsLabel')}
-          className={cn('app-topbar-icon', surfaceClass, isNotificationsPage && 'text-[rgb(var(--accent-orange))]')}
-        >
-          <BellIcon />
-        </Link>
+          <Link
+            href="/notifications"
+            aria-label={t('notificationsLabel')}
+            className={cn('app-topbar-icon', surfaceClass, isNotificationsPage && 'text-[rgb(var(--accent-orange))]')}
+          >
+            <BellIcon />
+          </Link>
+        </div>
       </div>
     </div>
   );
