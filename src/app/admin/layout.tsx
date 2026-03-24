@@ -7,10 +7,7 @@ const adminBrandDescription = 'Administrative dashboard for Fansten.';
 
 export const metadata: Metadata = {
   applicationName: adminBrandName,
-  title: {
-    default: adminBrandName,
-    template: `%s · ${adminBrandName}`
-  },
+  title: adminBrandName,
   description: adminBrandDescription,
   openGraph: {
     title: adminBrandName,

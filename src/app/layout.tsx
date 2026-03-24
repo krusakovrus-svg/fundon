@@ -14,10 +14,7 @@ const appBrandDescription = 'Fansten is a live fan support platform.';
 
 export const metadata: Metadata = {
   applicationName: appBrandName,
-  title: {
-    default: appBrandName,
-    template: `%s · ${appBrandName}`
-  },
+  title: appBrandName,
   description: appBrandDescription,
   appleWebApp: {
     title: appBrandName
