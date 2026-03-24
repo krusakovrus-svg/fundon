@@ -206,4 +206,13 @@ html.light body {
   .shadow-glow {
     box-shadow: 0 0 0 1px rgba(var(--accent-orange), 0.2), 0 12px 30px rgba(255, 124, 65, 0.16);
   }
+
+  .app-horizontal-scroll {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .app-horizontal-scroll::-webkit-scrollbar {
+    display: none;
+  }
 }

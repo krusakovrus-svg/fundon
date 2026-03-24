@@ -197,7 +197,7 @@ export function EventsScreen() {
       </section>
 
       <section className="space-y-3">
-        <div className="app-card rounded-[1.28rem] p-1.5 shadow-[0_12px_28px_rgba(15,23,42,0.05)] dark:shadow-[0_14px_28px_rgba(2,6,23,0.16)]">
+        <div className="app-card rounded-[1.28rem] p-1.5 shadow-[0_12px_28px_rgba(15,23,42,0.05)] dark:border-white/[0.06] dark:bg-[linear-gradient(180deg,rgba(20,27,40,0.90),rgba(14,20,31,0.86))] dark:shadow-[0_14px_28px_rgba(2,6,23,0.18)]">
           <div className="grid grid-cols-4 gap-1">
             {timeFilterOptions.map((option) => {
               const active = option.value === timeFilter;
@@ -210,8 +210,8 @@ export function EventsScreen() {
                   className={cn(
                     'rounded-[0.95rem] px-3 py-2.5 text-[0.83rem] font-semibold tracking-tight transition',
                     active
-                      ? 'bg-[linear-gradient(180deg,rgba(255,255,255,0.94),rgba(248,250,252,0.9))] text-text-primary shadow-[0_10px_22px_rgba(15,23,42,0.06)] ring-1 ring-black/[0.035] dark:bg-white/[0.10] dark:shadow-none dark:ring-white/[0.05]'
-                      : 'text-text-secondary hover:bg-black/[0.02] hover:text-text-primary dark:hover:bg-white/[0.035]'
+                      ? 'bg-[linear-gradient(180deg,rgba(255,255,255,0.94),rgba(248,250,252,0.9))] text-text-primary shadow-[0_10px_22px_rgba(15,23,42,0.06)] ring-1 ring-black/[0.035] dark:bg-[linear-gradient(180deg,rgba(43,52,67,0.96),rgba(31,39,52,0.92))] dark:text-white/[0.94] dark:shadow-[0_10px_18px_rgba(2,6,23,0.16)] dark:ring-white/[0.06]'
+                      : 'text-text-secondary hover:bg-black/[0.02] hover:text-text-primary dark:text-white/[0.52] dark:hover:bg-white/[0.035] dark:hover:text-white/[0.82]'
                   )}
                 >
                   {option.label}
@@ -222,11 +222,12 @@ export function EventsScreen() {
         </div>
 
         <div className="space-y-1.5">
-          <p className="px-1 text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-text-muted">
+          <p className="px-1 text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-text-muted dark:text-white/[0.4]">
             {language === 'ru' ? 'Вид спорта' : 'Sport'}
           </p>
-          <div className="-mx-1 overflow-x-auto px-1">
-            <div className="flex min-w-max gap-2">
+          <div className="dark:rounded-[1.2rem] dark:border dark:border-white/[0.06] dark:bg-[linear-gradient(180deg,rgba(18,24,36,0.88),rgba(13,19,29,0.84))] dark:px-2 dark:py-2 dark:shadow-[0_14px_24px_rgba(2,6,23,0.16)]">
+            <div className="app-horizontal-scroll -mx-1 overflow-x-auto px-1">
+              <div className="flex min-w-max gap-2">
               {sportFilters.map((sport) => {
                 const active = sportFilter === sport.id;
 
@@ -234,18 +235,19 @@ export function EventsScreen() {
                   <button
                     key={sport.id}
                     type="button"
-                  onClick={() => setSportFilter(sport.id)}
-                  className={cn(
+                    onClick={() => setSportFilter(sport.id)}
+                    className={cn(
                       'rounded-full border px-3 py-1.5 text-[0.78rem] font-medium transition',
                       active
-                        ? 'border-black/[0.045] bg-[rgba(247,249,252,0.9)] text-text-primary shadow-[0_8px_18px_rgba(15,23,42,0.04)] dark:border-white/[0.08] dark:bg-white/[0.06] dark:shadow-none'
-                        : 'border-black/[0.035] bg-[rgba(248,250,252,0.54)] text-text-secondary hover:border-black/[0.05] hover:text-text-primary dark:border-white/[0.06] dark:bg-white/[0.03]'
+                        ? 'border-black/[0.045] bg-[rgba(247,249,252,0.9)] text-text-primary shadow-[0_8px_18px_rgba(15,23,42,0.04)] dark:border-[rgba(255,124,65,0.16)] dark:bg-[linear-gradient(180deg,rgba(255,124,65,0.12),rgba(255,124,65,0.07))] dark:text-[rgb(var(--accent-orange))] dark:shadow-[0_10px_18px_rgba(255,124,65,0.10)]'
+                        : 'border-black/[0.035] bg-[rgba(248,250,252,0.54)] text-text-secondary hover:border-black/[0.05] hover:text-text-primary dark:border-white/[0.055] dark:bg-[linear-gradient(180deg,rgba(24,31,45,0.88),rgba(18,24,37,0.84))] dark:text-white/[0.52] dark:hover:border-white/[0.075] dark:hover:text-white/[0.76]'
                     )}
                   >
                     {sport.label}
                   </button>
                 );
               })}
+              </div>
             </div>
           </div>
         </div>
