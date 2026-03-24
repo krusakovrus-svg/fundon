@@ -12,6 +12,7 @@ import { formatCurrency } from '@/lib/format';
 import {
   DEFAULT_SUPPORT_AMOUNT,
   DEFAULT_QUICK_SUPPORT_AMOUNTS,
+  MIN_SUPPORT_AMOUNT,
   QUICK_SUPPORT_AMOUNT_SLOTS,
   SUPPORT_AMOUNT_SUGGESTIONS,
   createSupportPreferences,
@@ -136,7 +137,7 @@ export function SettingsScreen() {
   const applyDefaultSupportAmount = (value: string) => {
     const parsed = Number(value);
 
-    if (!Number.isFinite(parsed) || parsed <= 0) {
+    if (!Number.isFinite(parsed) || parsed < MIN_SUPPORT_AMOUNT) {
       setDefaultSupportDraft(String(defaultSupportAmount));
       return;
     }
@@ -155,7 +156,7 @@ export function SettingsScreen() {
   const commitQuickAmountDraft = (index: number) => {
     const parsed = Number(quickSupportDrafts[index]);
 
-    if (!Number.isFinite(parsed) || parsed <= 0) {
+    if (!Number.isFinite(parsed) || parsed < MIN_SUPPORT_AMOUNT) {
       setQuickSupportDrafts((current) => {
         const next = [...current];
         next[index] = String(quickSupportAmounts[index] ?? DEFAULT_QUICK_SUPPORT_AMOUNTS[index] ?? DEFAULT_SUPPORT_AMOUNT);
@@ -273,7 +274,7 @@ export function SettingsScreen() {
             <div className="mt-2 flex items-center gap-2">
               <input
                 type="number"
-                min="1"
+                min={MIN_SUPPORT_AMOUNT}
                 step="1"
                 inputMode="numeric"
                 value={defaultSupportDraft}
@@ -305,7 +306,7 @@ export function SettingsScreen() {
                 {isRussian ? 'Быстрые суммы в эфире' : 'Live quick amounts'}
               </p>
               <p className="mt-1 text-[0.82rem] text-text-secondary dark:text-white/[0.56]">
-                {isRussian ? 'Эти кнопки появятся в блоке «Поддержка в один тап».' : 'These buttons appear in the one-tap support block.'}
+                {isRussian ? 'Эти кнопки появятся прямо в блоке «Битва поддержки».' : 'These buttons appear directly in the support battle block.'}
               </p>
             </div>
             <span className="rounded-full border border-black/[0.05] bg-white/72 px-3 py-1.5 text-[0.72rem] font-semibold text-text-secondary dark:border-white/[0.06] dark:bg-white/[0.04] dark:text-white/[0.58]">
@@ -324,7 +325,7 @@ export function SettingsScreen() {
                 </span>
                 <input
                   type="number"
-                  min="1"
+                  min={MIN_SUPPORT_AMOUNT}
                   step="1"
                   inputMode="numeric"
                   value={draft}

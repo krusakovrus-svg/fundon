@@ -1,8 +1,9 @@
 const STORAGE_KEY = 'fightpulse-support-preferences';
 
+export const MIN_SUPPORT_AMOUNT = 10;
 export const DEFAULT_SUPPORT_AMOUNT = 10;
-export const DEFAULT_QUICK_SUPPORT_AMOUNTS = [1, 10, 100, 1000];
-export const SUPPORT_AMOUNT_SUGGESTIONS = [1, 10, 20, 50, 100, 500, 1000];
+export const DEFAULT_QUICK_SUPPORT_AMOUNTS = [10, 50, 100, 500];
+export const SUPPORT_AMOUNT_SUGGESTIONS = [10, 20, 50, 100, 250, 500, 1000];
 export const QUICK_SUPPORT_AMOUNT_SLOTS = 4;
 
 export interface SupportPreferences {
@@ -17,7 +18,7 @@ function parseAmount(value: number | string | null | undefined) {
     return null;
   }
 
-  return Math.max(1, Math.min(100000, Math.round(parsed)));
+  return Math.max(MIN_SUPPORT_AMOUNT, Math.min(100000, Math.round(parsed)));
 }
 
 function fillQuickAmounts(values: number[]) {
