@@ -10,6 +10,16 @@ import { getParticipantVisual } from '@/lib/participantVisuals';
 import { cn } from '@/lib/utils';
 import type { SportEventParticipant, SportEventRecord } from '@/types';
 
+function normalizeDateLabel(label: string, language: 'ru' | 'en') {
+  const trimmed = label.trim();
+
+  if (language === 'ru') {
+    return trimmed.replace(/\s+в$/i, '').trim();
+  }
+
+  return trimmed.replace(/\s+at$/i, '').trim();
+}
+
 function StarIcon({ active }: { active: boolean }) {
   return (
     <svg
@@ -66,10 +76,11 @@ export function SportEventCard({ event }: { event: SportEventRecord }) {
 
   const active = isFavorite(event.id);
   const title = language === 'ru' ? event.titleRu : event.title;
-  const dateLabel =
+  const rawDateLabel =
     language === 'ru'
       ? event.displayDateRu ?? formatSportEventDate(event.startsAt, language)
       : event.displayDateEn ?? formatSportEventDate(event.startsAt, language);
+  const dateLabel = normalizeDateLabel(rawDateLabel, language);
   const timeLabel =
     language === 'ru'
       ? event.displayTimeRu ?? formatSportEventTime(event.startsAt, language)
@@ -81,8 +92,8 @@ export function SportEventCard({ event }: { event: SportEventRecord }) {
     <article className="group relative overflow-hidden rounded-[1.35rem] border border-black/[0.04] bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(247,249,252,0.92))] shadow-[0_12px_26px_rgba(15,23,42,0.05)] transition dark:border-white/[0.07] dark:bg-[linear-gradient(180deg,rgba(25,32,46,0.92),rgba(17,23,35,0.88))] dark:shadow-[0_16px_28px_rgba(2,6,23,0.18)]">
       <Link href={href} aria-label={`${title} ${timeLabel}`} className="absolute inset-0 z-0 rounded-[1.35rem]" />
 
-      <div className="relative z-10 flex items-center justify-between gap-3 border-b border-black/[0.03] bg-[rgba(249,250,252,0.68)] px-3.25 py-2.25 dark:border-white/[0.06] dark:bg-white/[0.025]">
-        <span className="min-w-0 flex-1 truncate text-left text-[0.68rem] font-medium tracking-[0.01em] text-slate-500/88 dark:text-white/[0.56]">
+      <div className="relative z-10 flex items-center justify-between gap-3 border-b border-black/[0.03] bg-[rgba(249,250,252,0.68)] px-3.5 py-2.25 dark:border-white/[0.06] dark:bg-white/[0.025]">
+        <span className="min-w-0 flex-1 truncate text-left text-[0.66rem] font-medium leading-none tracking-[0.01em] text-slate-500/82 dark:text-white/[0.52]">
           {title}
         </span>
 
@@ -110,31 +121,31 @@ export function SportEventCard({ event }: { event: SportEventRecord }) {
         </button>
       </div>
 
-      <div className="relative z-10 grid grid-cols-[4.7rem_minmax(0,1fr)] gap-3.5 px-3.5 py-3.5">
-        <div className="rounded-[1rem] border border-black/[0.035] bg-[rgba(247,249,252,0.74)] px-2.5 py-2.75 text-[0.9rem] text-slate-700 shadow-[inset_0_1px_0_rgba(255,255,255,0.78)] dark:border-white/[0.05] dark:bg-[linear-gradient(180deg,rgba(34,42,56,0.90),rgba(23,30,43,0.88))] dark:text-white/[0.76] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">
+      <div className="relative z-10 grid grid-cols-[4.95rem_minmax(0,1fr)] gap-3.25 px-3.5 py-3.5">
+        <div className="flex h-full flex-col justify-center rounded-[1rem] border border-black/[0.035] bg-[rgba(247,249,252,0.74)] px-2.75 py-2.75 text-[0.9rem] text-slate-700 shadow-[inset_0_1px_0_rgba(255,255,255,0.78)] dark:border-white/[0.05] dark:bg-[linear-gradient(180deg,rgba(34,42,56,0.90),rgba(23,30,43,0.88))] dark:text-white/[0.76] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">
           {isLiveState ? (
             <div className="space-y-1.5">
               <span className="inline-flex rounded-full bg-accent-orange/10 px-2 py-1 text-[0.55rem] font-semibold uppercase tracking-[0.12em] text-[rgb(var(--accent-orange))] dark:bg-accent-orange/10 dark:text-[rgb(var(--accent-orange))]">
                 {t('eventsFilterLive')}
               </span>
-              <div className="text-[0.75rem] font-medium leading-tight text-slate-700 dark:text-white/[0.82]">{timeLabel}</div>
+              <div className="text-[0.74rem] font-medium leading-tight text-slate-600 dark:text-white/[0.78]">{timeLabel}</div>
             </div>
           ) : (
-            <>
-              <div className="font-semibold leading-none text-slate-700 dark:text-white/[0.82]">{dateLabel}</div>
-              <div className="mt-1.75 text-[0.92rem] font-medium leading-none text-slate-800 dark:text-white/[0.92]">
+            <div className="space-y-1.25">
+              <div className="text-[0.72rem] font-semibold leading-tight text-slate-500 dark:text-white/[0.62]">{dateLabel}</div>
+              <div className="text-[0.98rem] font-semibold leading-none tracking-[-0.02em] text-slate-900 dark:text-white/[0.94]">
                 {timeLabel}
               </div>
-            </>
+            </div>
           )}
         </div>
 
-        <div className="flex items-center justify-between gap-3">
-          <div className="min-w-0 space-y-3">
+        <div className="flex items-center justify-between gap-2.5">
+          <div className="min-w-0 space-y-2.75">
             {event.participants.map((participant) => (
               <div key={participant.id} className="flex items-center gap-2.75">
                 <ParticipantBadge participant={participant} />
-                <span className="truncate text-[0.97rem] font-medium leading-tight text-slate-900 dark:text-white/[0.94]">
+                <span className="truncate text-[0.95rem] font-medium leading-[1.18] text-slate-900 dark:text-white/[0.94]">
                   {language === 'ru' ? participant.nameRu : participant.name}
                 </span>
               </div>
