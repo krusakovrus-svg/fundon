@@ -284,8 +284,7 @@ export function LiveScreen() {
   };
 
   return (
-    <>
-      <MainPageLayout className="space-y-4 pb-[14.5rem]">
+    <MainPageLayout className="space-y-4">
         <section className="space-y-2 px-1">
           <p className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-text-muted">{t('liveNow')}</p>
           <h1 className="text-[1.52rem] font-semibold tracking-tight text-text-primary">{t('liveTitle')}</h1>
@@ -324,6 +323,16 @@ export function LiveScreen() {
           onSupportRight={() => handleSupport('right')}
         />
 
+        <LiveDonationDock
+          leftLabel={language === 'ru' ? leftParticipant.shortNameRu : leftParticipant.shortName}
+          rightLabel={language === 'ru' ? rightParticipant.shortNameRu : rightParticipant.shortName}
+          amounts={mockData.supportAmounts}
+          selectedAmount={selectedAmount}
+          onSelectAmount={handleSelectAmount}
+          onSupportLeft={() => handleSupport('left')}
+          onSupportRight={() => handleSupport('right')}
+        />
+
         <LeaderboardPreview entries={currentLeaderboard} profile={profile} />
 
         <LiveMomentumPanel
@@ -335,16 +344,5 @@ export function LiveScreen() {
 
         <LiveActivityFeed items={currentActivity} />
       </MainPageLayout>
-
-      <LiveDonationDock
-        leftLabel={language === 'ru' ? leftParticipant.shortNameRu : leftParticipant.shortName}
-        rightLabel={language === 'ru' ? rightParticipant.shortNameRu : rightParticipant.shortName}
-        amounts={mockData.supportAmounts}
-        selectedAmount={selectedAmount}
-        onSelectAmount={handleSelectAmount}
-        onSupportLeft={() => handleSupport('left')}
-        onSupportRight={() => handleSupport('right')}
-      />
-    </>
   );
 }
