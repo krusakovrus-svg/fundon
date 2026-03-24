@@ -176,18 +176,20 @@ export function EventsScreen() {
                 item.value === 0 && 'border-black/[0.025] bg-[rgba(249,250,252,0.64)] dark:border-white/[0.04] dark:bg-white/[0.03]'
               )}
             >
-              <p className="text-[0.57rem] font-semibold uppercase tracking-[0.16em] text-text-muted">{item.label}</p>
-              <div className="mt-2 flex items-end justify-between gap-2">
+              <div className="flex min-h-[5.7rem] flex-col items-center justify-center gap-1.5 text-center">
+                <p className="text-[0.57rem] font-semibold uppercase tracking-[0.16em] text-text-muted">{item.label}</p>
                 <div
                   className={cn(
-                    'text-[1.02rem] font-semibold leading-none tracking-tight',
+                    'text-[1.26rem] font-semibold leading-none tracking-[-0.03em]',
                     item.tone,
                     item.value === 0 && 'text-text-muted'
                   )}
                 >
                   {item.value}
                 </div>
-                <div className="text-[0.62rem] font-medium text-text-muted">{language === 'ru' ? 'в ленте' : 'in feed'}</div>
+                <div className="text-[0.62rem] font-medium leading-none text-text-muted">
+                  {language === 'ru' ? 'в ленте' : 'in feed'}
+                </div>
               </div>
             </div>
           ))}
