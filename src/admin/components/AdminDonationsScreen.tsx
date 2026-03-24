@@ -9,11 +9,13 @@ import {
   adminDonationsKpis,
   adminDonationSideFilters,
   adminDonationStatusFilters,
+  adminDonationTimingFilters,
   adminDonationUserFilters,
   adminManagedDonations,
   type AdminDonationAmountFilter,
   type AdminDonationMethod,
   type AdminDonationStatus,
+  type AdminDonationTiming,
   type AdminDonationUserFilter,
   type AdminManagedDonation
 } from '@/admin/data/donations';
@@ -213,6 +215,16 @@ function getStatusLabel(status: AdminDonationStatus) {
   }
 }
 
+function getTimingTone(timing: AdminDonationTiming) {
+  return timing === 'live'
+    ? 'bg-[#eef5ff] text-[#2f78d3] ring-1 ring-[#dbe7fb]'
+    : 'bg-amber-50 text-amber-700 ring-1 ring-amber-200';
+}
+
+function getTimingLabel(timing: AdminDonationTiming) {
+  return timing === 'live' ? 'Live' : 'Post-event';
+}
+
 function DetailMetric({
   label,
   value,
@@ -248,6 +260,7 @@ function DetailField({
 
 type DonationFilters = {
   status: (typeof adminDonationStatusFilters)[number]['id'];
+  timing: (typeof adminDonationTimingFilters)[number]['id'];
   user: AdminDonationUserFilter;
   event: (typeof adminDonationEventFilters)[number]['id'];
   side: (typeof adminDonationSideFilters)[number]['id'];
@@ -258,6 +271,7 @@ type DonationFilters = {
 
 const defaultFilters: DonationFilters = {
   status: 'all',
+  timing: 'all',
   user: 'all',
   event: 'all',
   side: 'all',
@@ -334,6 +348,9 @@ function DonationDrawer({
           <DetailField label="Пользователь" value={`${donation.user} · ${donation.userMeta}`} />
           <DetailField label="Событие" value={donation.event} />
           <DetailField label="Кого поддержал" value={donation.side} />
+          <DetailField label="Окно поддержки" value={`${getTimingLabel(donation.timing)} · ${donation.timingWindow}`} />
+          <DetailField label="Связь с архивом" value={donation.archiveRelation} />
+          <DetailField label="Сумма в one-tap" value={`${donation.quickAmount} · ${donation.customAmount ? 'есть custom amount' : 'preset amount'}`} />
         </div>
 
         <div className="rounded-[20px] border border-black/[0.045] bg-[linear-gradient(180deg,#ffffff_0%,#fafbfe_100%)] p-4">
@@ -441,6 +458,7 @@ export function AdminDonationsScreen() {
 
     return managedDonations.filter((donation) => {
       const statusMatch = filters.status === 'all' ? true : donation.status === filters.status;
+      const timingMatch = filters.timing === 'all' ? true : donation.timing === filters.timing;
       const userMatch = filters.user === 'all' ? true : donation.userFilter === filters.user;
       const eventMatch = filters.event === 'all' ? true : donation.eventFilter === filters.event;
       const sideMatch = filters.side === 'all' || !selectedSideOption ? true : donation.side === selectedSideOption.label;
@@ -459,7 +477,7 @@ export function AdminDonationsScreen() {
           ? true
           : `${donation.id} ${donation.user} ${donation.userMeta} ${donation.event} ${donation.side}`.toLowerCase().includes(query);
 
-      return statusMatch && userMatch && eventMatch && sideMatch && methodMatch && amountMatch && queryMatch;
+      return statusMatch && timingMatch && userMatch && eventMatch && sideMatch && methodMatch && amountMatch && queryMatch;
     });
   }, [filters, managedDonations]);
 
@@ -503,6 +521,7 @@ export function AdminDonationsScreen() {
         { label: 'Транзакция', value: donation.id },
         { label: 'Сумма', value: formatCurrency(donation.amount) },
         { label: 'Статус', value: getStatusLabel(donation.status) },
+        { label: 'Окно поддержки', value: `${getTimingLabel(donation.timing)} · ${donation.timingWindow}` },
         { label: 'Пользователь', value: donation.user }
       ]
     });
@@ -563,6 +582,12 @@ export function AdminDonationsScreen() {
             value={draftFilters.status}
             onChange={(value) => setDraftFilters((current) => ({ ...current, status: value as DonationFilters['status'] }))}
             options={adminDonationStatusFilters}
+          />
+          <FilterField
+            label="Окно поддержки"
+            value={draftFilters.timing}
+            onChange={(value) => setDraftFilters((current) => ({ ...current, timing: value as DonationFilters['timing'] }))}
+            options={adminDonationTimingFilters}
           />
           <FilterField
             label="Пользователь"
@@ -662,13 +687,24 @@ export function AdminDonationsScreen() {
 
                       <p className="truncate text-[0.9rem] font-medium text-slate-800">{donation.event}</p>
                       <p className="truncate text-[0.86rem] text-slate-600">{donation.side}</p>
-                      <p className="text-[1rem] font-semibold tracking-tight text-slate-900">{formatCurrency(donation.amount)}</p>
+                      <div>
+                        <p className="text-[1rem] font-semibold tracking-tight text-slate-900">{formatCurrency(donation.amount)}</p>
+                        <p className="mt-1 text-[0.78rem] text-slate-400">{donation.customAmount ? `custom · ${donation.quickAmount}` : `preset · ${donation.quickAmount}`}</p>
+                      </div>
 
-                      <span className={cn('inline-flex w-fit rounded-full px-2.5 py-1 text-[0.76rem] font-semibold', getStatusTone(donation.status))}>
-                        {getStatusLabel(donation.status)}
-                      </span>
+                      <div className="space-y-1">
+                        <span className={cn('inline-flex w-fit rounded-full px-2.5 py-1 text-[0.76rem] font-semibold', getStatusTone(donation.status))}>
+                          {getStatusLabel(donation.status)}
+                        </span>
+                        <span className={cn('inline-flex w-fit rounded-full px-2.5 py-1 text-[0.72rem] font-semibold', getTimingTone(donation.timing))}>
+                          {getTimingLabel(donation.timing)}
+                        </span>
+                      </div>
 
-                      <p className="text-[0.84rem] text-slate-500">{donation.at}</p>
+                      <div>
+                        <p className="text-[0.84rem] text-slate-500">{donation.at}</p>
+                        <p className="mt-1 text-[0.78rem] text-slate-400">{donation.timingWindow}</p>
+                      </div>
                       <p className="text-[0.84rem] text-slate-500">{getMethodLabel(donation.method)}</p>
                     </button>
                   );

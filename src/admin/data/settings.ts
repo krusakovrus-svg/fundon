@@ -264,3 +264,54 @@ export const adminAuditEntries: AdminAuditEntry[] = [
     category: 'roles'
   }
 ];
+
+export const adminArchiveDurationOptions = ['12 часов', '24 часа', '48 часов'] as const;
+export const adminSupportMinimumOptions = ['10 ₽', '25 ₽', '50 ₽', '100 ₽'] as const;
+export const adminSupportMaximumOptions = ['5 000 ₽', '10 000 ₽', '20 000 ₽'] as const;
+export const adminQuickAmountPresetOptions = ['10 / 50 / 100 / 500 ₽', '25 / 100 / 250 / 1 000 ₽', '50 / 250 / 500 / 2 000 ₽'] as const;
+
+export interface AdminSportSupportRule {
+  id: string;
+  sport: string;
+  archiveWindow: string;
+  quickAmounts: string;
+  customAmount: boolean;
+}
+
+export interface AdminLocalizationRule {
+  id: string;
+  category: string;
+  ruLabel: string;
+  enLabel: string;
+}
+
+export const adminSportSupportRules: AdminSportSupportRule[] = [
+  {
+    id: 'sport-rule-1',
+    sport: 'Футбол',
+    archiveWindow: '24 часа',
+    quickAmounts: '25 / 100 / 250 / 1 000 ₽',
+    customAmount: true
+  },
+  {
+    id: 'sport-rule-2',
+    sport: 'MMA',
+    archiveWindow: '24 часа',
+    quickAmounts: '50 / 250 / 500 / 2 000 ₽',
+    customAmount: true
+  },
+  {
+    id: 'sport-rule-3',
+    sport: 'Теннис',
+    archiveWindow: '12 часов',
+    quickAmounts: '10 / 50 / 100 / 500 ₽',
+    customAmount: false
+  }
+];
+
+export const adminLocalizationRules: AdminLocalizationRule[] = [
+  { id: 'loc-1', category: 'Вид спорта', ruLabel: 'Единоборства', enLabel: 'Martial Arts' },
+  { id: 'loc-2', category: 'Вид спорта', ruLabel: 'Киберспорт', enLabel: 'Esports' },
+  { id: 'loc-3', category: 'Категория', ruLabel: 'Стадия / раунд', enLabel: 'Stage / Round' },
+  { id: 'loc-4', category: 'Категория', ruLabel: 'Архив событий', enLabel: 'Event Archive' }
+];

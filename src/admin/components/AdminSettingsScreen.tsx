@@ -4,6 +4,7 @@ import { useEffect, useState, type ReactNode } from 'react';
 
 import {
   adminAdminUsers,
+  adminArchiveDurationOptions,
   adminAuditEntries,
   adminFeatureFlags,
   adminNotificationChannels,
@@ -12,8 +13,13 @@ import {
   adminPlatformDomains,
   adminPlatformLanguages,
   adminPlatformTimezones,
+  adminLocalizationRules,
+  adminQuickAmountPresetOptions,
   adminRoles,
   adminSettingsTabs,
+  adminSportSupportRules,
+  adminSupportMaximumOptions,
+  adminSupportMinimumOptions,
   type AdminSettingsTabId
 } from '@/admin/data/settings';
 import { AdminConfirmDialog, type AdminConfirmDialogDetail } from '@/admin/components/AdminConfirmDialog';
@@ -417,6 +423,12 @@ export function AdminSettingsScreen() {
   const [supportEmail, setSupportEmail] = useState('ops@fundon.app');
   const [dataRegion, setDataRegion] = useState('Франкфурт · EU Central');
   const [maintenanceMode, setMaintenanceMode] = useState(false);
+  const [archiveDuration, setArchiveDuration] = useState<(typeof adminArchiveDurationOptions)[number]>('24 часа');
+  const [supportMinimum, setSupportMinimum] = useState<(typeof adminSupportMinimumOptions)[number]>('10 ₽');
+  const [supportMaximum, setSupportMaximum] = useState<(typeof adminSupportMaximumOptions)[number]>('10 000 ₽');
+  const [quickAmountPreset, setQuickAmountPreset] = useState<(typeof adminQuickAmountPresetOptions)[number]>('10 / 50 / 100 / 500 ₽');
+  const [allowPostEventSupport, setAllowPostEventSupport] = useState(true);
+  const [allowCustomAmount, setAllowCustomAmount] = useState(true);
 
   const [paymentToggles, setPaymentToggles] = useState({
     refunds: true,
@@ -562,6 +574,45 @@ export function AdminSettingsScreen() {
                 <MetricPill label="Админ-раздел" value="/admin" />
               </div>
             </SettingsCard>
+
+            <SettingsCard title="Архив событий" subtitle="Базовые правила для мобильного Архива событий и post-event поддержки после завершения эфира.">
+              <Field label="Длительность окна архива">
+                <SelectInput value={archiveDuration} onChange={(value) => setArchiveDuration(value as (typeof adminArchiveDurationOptions)[number])} options={adminArchiveDurationOptions} />
+              </Field>
+              <ToggleRow
+                title="Разрешить поддержку после завершения"
+                description="Даёт пользователю ограниченное окно, чтобы поддержать спортсмена после эфира из Архива событий."
+                checked={allowPostEventSupport}
+                onChange={setAllowPostEventSupport}
+              />
+              <div className="space-y-3">
+                {adminSportSupportRules.map((rule) => (
+                  <div key={rule.id} className="rounded-[16px] border border-black/[0.045] bg-[linear-gradient(180deg,#ffffff_0%,#fafbfe_100%)] px-4 py-3.5">
+                    <div className="flex items-center justify-between gap-3">
+                      <p className="text-[0.94rem] font-semibold text-slate-900">{rule.sport}</p>
+                      <span className="rounded-full bg-[#eef5ff] px-2.5 py-1 text-[0.74rem] font-semibold text-[#2f78d3]">{rule.archiveWindow}</span>
+                    </div>
+                    <p className="mt-1 text-[0.82rem] text-slate-500">Quick amounts: {rule.quickAmounts}</p>
+                    <p className="mt-1 text-[0.8rem] text-slate-400">{rule.customAmount ? 'Custom amount разрешён' : 'Только preset amounts'}</p>
+                  </div>
+                ))}
+              </div>
+            </SettingsCard>
+
+            <SettingsCard title="Локализация спорта" subtitle="Согласованность RU / EN названий видов спорта и продуктовых категорий для мобильного клиента.">
+              <div className="space-y-3">
+                {adminLocalizationRules.map((rule) => (
+                  <div key={rule.id} className="rounded-[16px] border border-black/[0.045] bg-[linear-gradient(180deg,#ffffff_0%,#fafbfe_100%)] px-4 py-3.5">
+                    <div className="flex items-center justify-between gap-3">
+                      <p className="text-[0.9rem] font-semibold text-slate-900">{rule.category}</p>
+                      <span className="rounded-full bg-slate-100 px-2.5 py-1 text-[0.72rem] font-semibold text-slate-600">RU / EN</span>
+                    </div>
+                    <p className="mt-2 text-[0.86rem] text-slate-700">{rule.ruLabel}</p>
+                    <p className="mt-1 text-[0.82rem] text-slate-500">{rule.enLabel}</p>
+                  </div>
+                ))}
+              </div>
+            </SettingsCard>
           </div>
         );
 
@@ -664,6 +715,42 @@ export function AdminSettingsScreen() {
                 checked={paymentToggles.payoutLock}
                 onChange={(next) => setPaymentToggles((current) => ({ ...current, payoutLock: next }))}
               />
+            </SettingsCard>
+
+            <SettingsCard title="Правила суммы поддержки" subtitle="Настройки минимальной и максимальной суммы, custom amount и дефолтных quick amounts для one-tap сценария.">
+              <div className="grid gap-4 sm:grid-cols-2">
+                <Field label="Минимальная сумма">
+                  <SelectInput value={supportMinimum} onChange={(value) => setSupportMinimum(value as (typeof adminSupportMinimumOptions)[number])} options={adminSupportMinimumOptions} />
+                </Field>
+                <Field label="Максимальная сумма">
+                  <SelectInput value={supportMaximum} onChange={(value) => setSupportMaximum(value as (typeof adminSupportMaximumOptions)[number])} options={adminSupportMaximumOptions} />
+                </Field>
+              </div>
+              <Field label="Quick amounts по умолчанию">
+                <SelectInput value={quickAmountPreset} onChange={(value) => setQuickAmountPreset(value as (typeof adminQuickAmountPresetOptions)[number])} options={adminQuickAmountPresetOptions} />
+              </Field>
+              <ToggleRow
+                title="Разрешить custom amount"
+                description="Пользователь сможет ввести свою сумму, а не только выбрать preset в one-tap поддержке."
+                checked={allowCustomAmount}
+                onChange={setAllowCustomAmount}
+              />
+              <div className="grid grid-cols-3 gap-3">
+                <MetricPill label="Минимум" value={supportMinimum} />
+                <MetricPill label="Максимум" value={supportMaximum} />
+                <MetricPill label="Preset" value={quickAmountPreset} />
+              </div>
+            </SettingsCard>
+
+            <SettingsCard title="Post-event правила" subtitle="Контроль late-support сценариев и связи с Архивом событий после завершения эфира.">
+              <ToggleRow
+                title="Поддержка из архива"
+                description="Разрешает late-support транзакции в течение настроенного архивного окна после завершения события."
+                checked={allowPostEventSupport}
+                onChange={setAllowPostEventSupport}
+              />
+              <InfoRow icon={<HistoryIcon />} label="Окно архива по умолчанию" value={archiveDuration} />
+              <InfoRow icon={<WalletIcon />} label="Пресеты one-tap" value={quickAmountPreset} quiet />
             </SettingsCard>
           </div>
         );

@@ -2,6 +2,7 @@ export type AdminDonationStatus = 'success' | 'error' | 'refund' | 'dispute';
 export type AdminDonationMethod = 'card' | 'sbp' | 'apple-pay';
 export type AdminDonationUserFilter = 'all' | 'vip' | 'email' | 'phone';
 export type AdminDonationAmountFilter = 'all' | 'small' | 'medium' | 'large';
+export type AdminDonationTiming = 'live' | 'post-event';
 
 export interface AdminDonationsKpi {
   id: string;
@@ -31,6 +32,11 @@ export interface AdminManagedDonation {
   status: AdminDonationStatus;
   method: AdminDonationMethod;
   at: string;
+  timing: AdminDonationTiming;
+  timingWindow: string;
+  archiveRelation: string;
+  quickAmount: string;
+  customAmount: boolean;
   disputeNote: string;
   internalComment: string;
   avatarTone: string;
@@ -38,10 +44,10 @@ export interface AdminManagedDonation {
 }
 
 export const adminDonationsKpis: AdminDonationsKpi[] = [
-  { id: 'today', label: 'Донаты за сегодня', value: 128450, kind: 'currency', hint: '+14% к вчера', tone: 'blue' },
+  { id: 'today', label: 'Донаты за сегодня', value: 128450, kind: 'currency', hint: '17 900 ₽ post-event', tone: 'blue' },
   { id: 'success', label: 'Успешные', value: 94.8, kind: 'percent', hint: '1 284 транзакции', tone: 'green' },
-  { id: 'failed', label: 'Ошибка', value: 27, kind: 'count', hint: '−6 за сутки', tone: 'orange' },
-  { id: 'returns', label: 'Возврат / спорные', value: 9, kind: 'count', hint: '3 требуют решения', tone: 'rose' }
+  { id: 'failed', label: 'Ошибка', value: 27, kind: 'count', hint: '6 late-support на проверке', tone: 'orange' },
+  { id: 'returns', label: 'Возврат / спорные', value: 9, kind: 'count', hint: '3 post-event требуют решения', tone: 'rose' }
 ];
 
 export const adminDonationStatusFilters = [
@@ -50,6 +56,12 @@ export const adminDonationStatusFilters = [
   { id: 'error', label: 'Ошибка' },
   { id: 'refund', label: 'Возврат' },
   { id: 'dispute', label: 'Спорно' }
+] as const;
+
+export const adminDonationTimingFilters = [
+  { id: 'all', label: 'Любое окно поддержки' },
+  { id: 'live', label: 'Live-поддержка' },
+  { id: 'post-event', label: 'Post-event / архив' }
 ] as const;
 
 export const adminDonationUserFilters = [
@@ -78,8 +90,8 @@ export const adminDonationEventFilters = [
   { id: 'eintracht-bayern', label: 'Айнтрахт Франкфурт vs Бавария' },
   { id: 'ufc-271', label: 'UFC Fight Night 271' },
   { id: 'pistons-lakers', label: 'Детройт Пистонс vs Лос-Анджелес Лейкерс' },
+  { id: 'miami-open', label: 'Miami Open: Сёнмез vs Хаддад Майя' },
   { id: 'vnl', label: 'Франция Pro vs Бельгия Pro' },
-  { id: 'valorant', label: 'Dragon Ranger Gaming vs Any Questions Gaming' },
   { id: 'lokomotiv-spartak', label: 'Локомотив vs Спартак' }
 ] as const;
 
@@ -88,8 +100,8 @@ export const adminDonationSideFilters = [
   { id: 'eintracht', label: 'Айнтрахт Франкфурт' },
   { id: 'adesanya', label: 'Адесанья' },
   { id: 'lakers', label: 'Лос-Анджелес Лейкерс' },
+  { id: 'haddad-maia', label: 'Хаддад Майя' },
   { id: 'france-pro', label: 'Франция Pro' },
-  { id: 'dragon-ranger', label: 'Dragon Ranger Gaming' },
   { id: 'spartak', label: 'Спартак' }
 ] as const;
 
@@ -107,13 +119,18 @@ export const adminManagedDonations: AdminManagedDonation[] = [
     status: 'success',
     method: 'card',
     at: '23 мар 2026, 20:14',
+    timing: 'live',
+    timingWindow: 'Live-поддержка · 2-й тайм',
+    archiveRelation: 'Внутри live-окна, архив не задействован',
+    quickAmount: '5 000 ₽',
+    customAmount: true,
     disputeNote: 'Спор отсутствует.',
     internalComment: 'Крупный повторный донат от VIP-участника.',
     avatarTone: 'bg-[linear-gradient(135deg,#f2c8b4_0%,#d7906d_100%)]',
     statusHistory: [
       { id: 'tx1-h1', label: 'Платёж подтверждён', at: '20:14' },
       { id: 'tx1-h2', label: 'Проверка антифрода пройдена', at: '20:13' },
-      { id: 'tx1-h3', label: 'Создан запрос в шлюз', at: '20:12' }
+      { id: 'tx1-h3', label: 'Live-окно поддержки активно', at: '20:12' }
     ]
   },
   {
@@ -129,6 +146,11 @@ export const adminManagedDonations: AdminManagedDonation[] = [
     status: 'error',
     method: 'apple-pay',
     at: '23 мар 2026, 20:16',
+    timing: 'live',
+    timingWindow: 'Pre-live support',
+    archiveRelation: 'Событие ещё не в архиве',
+    quickAmount: '1 000 ₽',
+    customAmount: false,
     disputeNote: 'Платёж отклонён банком-эмитентом.',
     internalComment: 'Рекомендуется повторная попытка после прохождения 3DS.',
     avatarTone: 'bg-[linear-gradient(135deg,#f7d2c8_0%,#d89a8a_100%)]',
@@ -151,12 +173,17 @@ export const adminManagedDonations: AdminManagedDonation[] = [
     status: 'refund',
     method: 'sbp',
     at: '23 мар 2026, 20:19',
+    timing: 'post-event',
+    timingWindow: 'Post-event · окно закрыто',
+    archiveRelation: 'Списан в последнюю минуту archive-окна',
+    quickAmount: '3 000 ₽',
+    customAmount: true,
     disputeNote: 'Пользователь запросил возврат после двойного списания.',
-    internalComment: 'Возврат согласован, ожидает подтверждения финансовой команды.',
+    internalComment: 'Late-support транзакция, возврат согласован после сверки.',
     avatarTone: 'bg-[linear-gradient(135deg,#f0cfbc_0%,#cb8d6d_100%)]',
     statusHistory: [
       { id: 'tx3-h1', label: 'Возврат инициирован', at: '20:24' },
-      { id: 'tx3-h2', label: 'Платёж подтверждён', at: '20:19' },
+      { id: 'tx3-h2', label: 'Платёж подтверждён в archive-окне', at: '20:19' },
       { id: 'tx3-h3', label: 'Средства списаны', at: '20:18' }
     ]
   },
@@ -173,6 +200,11 @@ export const adminManagedDonations: AdminManagedDonation[] = [
     status: 'success',
     method: 'card',
     at: '23 мар 2026, 20:22',
+    timing: 'live',
+    timingWindow: 'Live-поддержка · 3-й сет',
+    archiveRelation: 'Обычная эфирная поддержка',
+    quickAmount: '1 000 ₽',
+    customAmount: false,
     disputeNote: 'Спор отсутствует.',
     internalComment: 'Стандартный live-донат без отклонений.',
     avatarTone: 'bg-[linear-gradient(135deg,#f6d5cc_0%,#cb9c88_100%)]',
@@ -187,21 +219,26 @@ export const adminManagedDonations: AdminManagedDonation[] = [
     user: 'Gamer89',
     userMeta: 'gamer_89@mail.ru',
     userFilter: 'email',
-    event: 'Dragon Ranger Gaming vs Any Questions Gaming',
-    eventFilter: 'valorant',
-    side: 'Dragon Ranger Gaming',
+    event: 'Miami Open: Сёнмез vs Хаддад Майя',
+    eventFilter: 'miami-open',
+    side: 'Хаддад Майя',
     amount: 650,
     refundAmount: null,
     status: 'dispute',
     method: 'card',
     at: '23 мар 2026, 20:27',
-    disputeNote: 'Пользователь оспаривает списание после ограничения аккаунта.',
-    internalComment: 'Нужно проверить связь со статусом аккаунта и блокировкой комнаты.',
+    timing: 'post-event',
+    timingWindow: 'Post-event · ещё 17 ч',
+    archiveRelation: 'Внутри 24-часового archive-окна',
+    quickAmount: '500 ₽',
+    customAmount: true,
+    disputeNote: 'Пользователь оспаривает списание после ограничений аккаунта.',
+    internalComment: 'Нужно проверить связку со статусом аккаунта и late-support правилом.',
     avatarTone: 'bg-[linear-gradient(135deg,#d9dfe9_0%,#b0bdcf_100%)]',
     statusHistory: [
       { id: 'tx5-h1', label: 'Открыт спор', at: '20:31' },
-      { id: 'tx5-h2', label: 'Платёж подтверждён', at: '20:27' },
-      { id: 'tx5-h3', label: 'Создан запрос в шлюз', at: '20:26' }
+      { id: 'tx5-h2', label: 'Платёж подтверждён в архиве', at: '20:27' },
+      { id: 'tx5-h3', label: 'Archive-окно проверено', at: '20:26' }
     ]
   },
   {
@@ -217,12 +254,17 @@ export const adminManagedDonations: AdminManagedDonation[] = [
     status: 'success',
     method: 'apple-pay',
     at: '23 мар 2026, 20:34',
+    timing: 'post-event',
+    timingWindow: 'Post-event · ещё 22 ч',
+    archiveRelation: 'После финала событие уже в Архиве событий',
+    quickAmount: '5 000 ₽',
+    customAmount: false,
     disputeNote: 'Спор отсутствует.',
-    internalComment: 'Крупная транзакция, проверка пройдена.',
+    internalComment: 'Крупная post-event транзакция, проверка пройдена.',
     avatarTone: 'bg-[linear-gradient(135deg,#f5d6c7_0%,#d39c81_100%)]',
     statusHistory: [
       { id: 'tx6-h1', label: 'Платёж подтверждён', at: '20:34' },
-      { id: 'tx6-h2', label: 'Проверка антифрода пройдена', at: '20:33' },
+      { id: 'tx6-h2', label: 'Archive-окно поддержки валидно', at: '20:33' },
       { id: 'tx6-h3', label: 'Создан запрос в шлюз', at: '20:33' }
     ]
   }

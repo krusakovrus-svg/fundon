@@ -92,6 +92,8 @@ function getStatusTone(status: AdminEventStatus) {
       return 'bg-violet-50 text-violet-700 ring-1 ring-violet-200';
     case 'finished':
       return 'bg-slate-100 text-slate-600 ring-1 ring-slate-200';
+    case 'archived':
+      return 'bg-stone-100 text-stone-600 ring-1 ring-stone-200';
     case 'draft':
       return 'bg-amber-50 text-amber-700 ring-1 ring-amber-200';
   }
@@ -107,19 +109,33 @@ function getStatusLabel(status: AdminEventStatus) {
       return 'Скоро';
     case 'finished':
       return 'Завершено';
+    case 'archived':
+      return 'В архиве';
     case 'draft':
       return 'Черновик';
   }
 }
 
 function getSupportTone(support: AdminSupportState) {
-  return support === 'enabled'
-    ? 'bg-[#eef5ff] text-[#2f78d3] ring-1 ring-[#dbe7fb]'
-    : 'bg-slate-100 text-slate-500 ring-1 ring-slate-200';
+  switch (support) {
+    case 'live':
+      return 'bg-[#eef5ff] text-[#2f78d3] ring-1 ring-[#dbe7fb]';
+    case 'post-event':
+      return 'bg-amber-50 text-amber-700 ring-1 ring-amber-200';
+    case 'disabled':
+      return 'bg-slate-100 text-slate-500 ring-1 ring-slate-200';
+  }
 }
 
 function getSupportLabel(support: AdminSupportState) {
-  return support === 'enabled' ? 'Включена' : 'Отключена';
+  switch (support) {
+    case 'live':
+      return 'Live-поддержка';
+    case 'post-event':
+      return 'Post-event';
+    case 'disabled':
+      return 'Отключена';
+  }
 }
 
 function mapSportToFilter(sport: AdminEventSport): AdminEventSportFilter {
@@ -188,6 +204,14 @@ function getRowActions(event: AdminManagedEvent): Array<{
       { id: 'open', label: 'Открыть', tone: 'primary' },
       { id: 'edit', label: 'Редактировать', tone: 'default' },
       { id: 'archive', label: 'В архив', tone: 'default' }
+    ];
+  }
+
+  if (event.status === 'archived') {
+    return [
+      { id: 'open', label: 'Открыть', tone: 'primary' },
+      { id: 'edit', label: 'Редактировать', tone: 'default' },
+      { id: 'archive', label: 'Скрыть', tone: 'danger' }
     ];
   }
 
@@ -312,6 +336,10 @@ function getActionButtonLabel(event: AdminManagedEvent) {
     return 'В архив';
   }
 
+  if (event.status === 'archived') {
+    return 'Снять из архива';
+  }
+
   return 'Запустить в эфир';
 }
 
@@ -375,16 +403,19 @@ function EventTableRow({
         <p className="mt-1 truncate text-[0.8rem] text-slate-500">
           {event.donationsAmount === null ? 'Без поступлений' : formatCurrency(event.donationsAmount)}
         </p>
+        <p className="mt-1 truncate text-[0.76rem] text-slate-400">
+          {event.support === 'post-event' ? event.archiveSupportRemaining : event.archiveVisibilityLabel}
+        </p>
       </div>
 
       <div>
         <p className="truncate text-[0.92rem] font-semibold text-slate-900">{event.room}</p>
-        <p className="mt-1 truncate text-[0.8rem] text-slate-500">{getAudienceLabel(event)}</p>
+        <p className="mt-1 truncate text-[0.8rem] text-slate-500">{event.archiveVisible ? 'Виден в Архиве событий' : getAudienceLabel(event)}</p>
       </div>
 
       <div>
         <p className="text-[0.92rem] font-semibold text-slate-900">{event.activity}</p>
-        <p className="mt-1 truncate text-[0.8rem] text-slate-500">{formatDonationCount(event.donationCount)}</p>
+        <p className="mt-1 truncate text-[0.8rem] text-slate-500">{event.liveDataStatus}</p>
       </div>
 
       <div className="flex flex-wrap items-center justify-end gap-2">
@@ -418,12 +449,14 @@ function EventDrawer({
   onOpen,
   onEdit,
   onToggleSupport,
+  onToggleArchiveVisibility,
   onAction
 }: {
   event: AdminManagedEvent;
   onOpen: () => void;
   onEdit: () => void;
   onToggleSupport: () => void;
+  onToggleArchiveVisibility: () => void;
   onAction: (actionId: EventActionId) => void;
 }) {
   return (
@@ -461,11 +494,16 @@ function EventDrawer({
       <div className="space-y-5 p-5">
         <div className="grid grid-cols-2 gap-3">
           <DetailMetric label="Поддержка" value={formatCurrency(event.donationsAmount)} note={formatDonationCount(event.donationCount)} />
+          <DetailMetric label="Архив" value={event.archiveVisible ? 'Показывается' : 'Скрыт'} note={event.archiveSupportRemaining} />
           <DetailMetric label="Комната" value={event.room} note={getAudienceLabel(event)} />
+          <DetailMetric label="Mobile live" value={event.liveDataStatus} note={event.supportSides} />
         </div>
 
         <div className="space-y-3">
           <DetailRow label="Участники" value={event.participants.join(' — ')} />
+          <DetailRow label="Стадия и локация" value={`${event.stage} · ${event.arena}`} />
+          <DetailRow label="Архив и post-event" value={`${event.archiveVisibilityLabel} · ${event.postEventSupportEnabled ? 'post-event поддержка разрешена' : 'post-event поддержка отключена'}`} />
+          <DetailRow label="Поля mobile live" value={event.mobileFields.map((field) => `${field.label}: ${field.value}`).join(' · ')} />
           <DetailRow label="Уведомления" value={event.notifications} />
           <DetailRow label="Ответственный" value={event.moderator} />
         </div>
@@ -521,15 +559,29 @@ function EventDrawer({
               onClick={onToggleSupport}
               className={cn(
                 'flex items-center justify-center rounded-[16px] px-4 py-3.5 text-[0.9rem] font-semibold',
-                event.support === 'enabled'
-                  ? 'border border-[#f1ddcd] bg-[#fff7f2] text-[#a9693a]'
-                  : 'bg-[#eef5ff] text-[#2f78d3] ring-1 ring-[#dbe7fb]'
+                event.support === 'disabled'
+                  ? 'bg-[#eef5ff] text-[#2f78d3] ring-1 ring-[#dbe7fb]'
+                  : 'border border-[#f1ddcd] bg-[#fff7f2] text-[#a9693a]'
               )}
             >
-              {event.support === 'enabled' ? 'Отключить поддержку' : 'Включить поддержку'}
+              {event.support === 'disabled' ? 'Включить поддержку' : event.support === 'post-event' ? 'Отключить post-event' : 'Отключить live-поддержку'}
             </button>
 
             <button
+              type="button"
+              onClick={onToggleArchiveVisibility}
+              className={cn(
+                'flex items-center justify-center rounded-[16px] px-4 py-3.5 text-[0.9rem] font-semibold',
+                event.archiveVisible
+                  ? 'border border-[#f1ddcd] bg-[#fff7f2] text-[#a9693a]'
+                  : 'bg-white text-slate-700 ring-1 ring-black/[0.06]'
+              )}
+            >
+              {event.archiveVisible ? 'Скрыть из архива' : 'Показать в архиве'}
+            </button>
+          </div>
+
+          <button
               type="button"
               onClick={() =>
                 onAction(
@@ -537,14 +589,14 @@ function EventDrawer({
                     ? 'finish'
                     : event.status === 'draft'
                       ? 'publish'
-                      : event.status === 'finished'
+                      : event.status === 'finished' || event.status === 'archived'
                         ? 'archive'
                         : 'launch-live'
                 )
               }
               className={cn(
-                'flex items-center justify-center rounded-[16px] px-4 py-3.5 text-[0.9rem] font-semibold',
-                event.status === 'live' || event.status === 'finished'
+                'flex w-full items-center justify-center rounded-[16px] px-4 py-3.5 text-[0.9rem] font-semibold',
+                event.status === 'live' || event.status === 'finished' || event.status === 'archived'
                   ? 'bg-[#fff1ef] text-[#d25346] ring-1 ring-[#ffd7d1]'
                   : 'bg-white text-slate-700 ring-1 ring-black/[0.06]'
               )}
@@ -552,7 +604,6 @@ function EventDrawer({
               {getActionButtonLabel(event)}
             </button>
           </div>
-        </div>
       </div>
     </aside>
   );
@@ -594,10 +645,10 @@ export function AdminEventsScreen() {
           : dateFilter === 'today'
             ? event.status === 'live' || event.status === 'today'
             : dateFilter === 'week'
-              ? event.status !== 'finished'
+              ? event.status !== 'archived'
               : dateFilter === 'planned'
                 ? event.status === 'upcoming' || event.status === 'draft'
-                : event.status === 'finished';
+                : event.status === 'finished' || event.status === 'archived' || event.support === 'post-event';
       const tournamentMatch = tournamentFilter === 'all' ? true : event.tournamentFilter === tournamentFilter;
       const participantMatch = participantFilter === 'all' ? true : event.participantFilter === participantFilter;
       const roomMatch = roomFilter === 'all' ? true : event.roomState === roomFilter;
@@ -638,6 +689,8 @@ export function AdminEventsScreen() {
         { label: 'Событие', value: event.title },
         { label: 'Статус', value: getStatusLabel(event.status) },
         { label: 'Поддержка', value: `${getSupportLabel(event.support)} · ${formatCurrency(event.donationsAmount)}` },
+        { label: 'Архив', value: event.archiveSupportRemaining },
+        { label: 'Mobile live', value: event.liveDataStatus },
         { label: 'Комната', value: event.room }
       ]
     });
@@ -661,14 +714,18 @@ export function AdminEventsScreen() {
           updateEvent(event.id, (current) => ({
             ...current,
             status: 'live',
-            support: 'enabled',
+            support: 'live',
+            archiveVisible: false,
             room: current.roomState === 'missing' ? 'Комната эфира' : current.room,
             roomState: 'active',
             activity: 'Эфир запущен',
             donationsAmount: current.donationsAmount ?? 0,
             audienceCount: current.audienceCount ?? 0,
             audienceNote: 'Комната активна и принимает поддержку',
-            notifications: 'push и оповещения комнаты включены'
+            archiveSupportRemaining: `Окно архива откроется после завершения на ${current.archiveWindowHours} ч`,
+            archiveVisibilityLabel: 'Появится в Архиве событий после завершения',
+            liveDataStatus: '5/5 полей готовы для mobile live',
+            notifications: 'Push и оповещения комнаты включены'
           }));
           setConfirmState(null);
         }
@@ -688,10 +745,13 @@ export function AdminEventsScreen() {
           updateEvent(event.id, (current) => ({
             ...current,
             status: 'finished',
-            support: 'disabled',
+            support: current.postEventSupportEnabled ? 'post-event' : 'disabled',
+            archiveVisible: current.postEventSupportEnabled,
             roomState: 'archive',
-            activity: 'Эфир завершён',
+            activity: current.postEventSupportEnabled ? 'Окно post-event поддержки открыто' : 'Эфир завершён',
             audienceNote: 'Итоговая статистика сохранена',
+            archiveSupportRemaining: current.postEventSupportEnabled ? `Доступно ещё ${current.archiveWindowHours} ч` : 'Post-event окно закрыто',
+            archiveVisibilityLabel: current.postEventSupportEnabled ? 'Показывается в Архиве событий' : 'Не показывается в Архиве событий',
             notifications: 'Итоговое уведомление отправлено'
           }));
           setConfirmState(null);
@@ -712,10 +772,14 @@ export function AdminEventsScreen() {
           updateEvent(event.id, (current) => ({
             ...current,
             status: 'upcoming',
+            support: 'disabled',
             room: current.roomState === 'missing' ? 'Комната события' : current.room,
             roomState: 'scheduled',
             activity: 'Готово к публикации',
             audienceNote: 'Событие добавлено в планирование',
+            archiveVisible: false,
+            archiveSupportRemaining: `После завершения доступно ${current.archiveWindowHours} ч`,
+            archiveVisibilityLabel: 'Архив будет включён после завершения',
             notifications: 'Подготовлены push и оповещения комнаты'
           }));
           setConfirmState(null);
@@ -735,10 +799,15 @@ export function AdminEventsScreen() {
         onConfirm: () => {
           updateEvent(event.id, (current) => ({
             ...current,
+            status: current.archiveVisible ? 'archived' : 'finished',
             support: 'disabled',
+            archiveVisible: false,
+            postEventSupportEnabled: false,
             roomState: 'archive',
-            activity: 'Переведено в архив',
+            activity: 'Скрыто из Архива событий',
             audienceNote: 'Скрыто из оперативного списка',
+            archiveSupportRemaining: 'Окно архива закрыто',
+            archiveVisibilityLabel: 'Не показывается в Архиве событий',
             notifications: 'Архивировано'
           }));
           setConfirmState(null);
@@ -749,23 +818,71 @@ export function AdminEventsScreen() {
 
   const handleToggleSupport = (event: AdminManagedEvent) => {
     const enable = event.support === 'disabled';
+    const nextSupportState: AdminSupportState =
+      event.status === 'finished' || event.status === 'archived' ? 'post-event' : 'live';
 
     openEventConfirmation(event, {
       title: enable ? 'Включить поддержку' : 'Отключить поддержку',
       description: enable
-        ? 'Поддержка станет доступна пользователям, а связанная комната будет готова к приёму донатов.'
+        ? nextSupportState === 'post-event'
+          ? 'Событие снова появится в Архиве событий и будет доступно для post-event поддержки в течение архивного окна.'
+          : 'Поддержка станет доступна пользователям, а связанная комната будет готова к приёму донатов.'
         : 'Поддержка будет выключена для новых донатов, но история события и комната останутся доступными.',
       confirmLabel: enable ? 'Включить' : 'Отключить',
       tone: enable ? 'primary' : 'danger',
       badge: enable ? 'Поддержка' : 'Критичное действие',
-      footnote: 'Изменение состояния поддержки записывается в журнале действий и влияет на донаты в эфире.',
+      footnote: 'Изменение состояния поддержки записывается в журнале действий и влияет на live и post-event донаты.',
       onConfirm: () => {
         updateEvent(event.id, (current) => ({
           ...current,
-          support: enable ? 'enabled' : 'disabled',
+          support: enable ? nextSupportState : 'disabled',
+          postEventSupportEnabled: enable ? current.postEventSupportEnabled || nextSupportState === 'post-event' : current.postEventSupportEnabled,
+          archiveVisible: nextSupportState === 'post-event' ? enable : current.archiveVisible,
           room: enable && current.roomState === 'missing' ? 'Комната события' : current.room,
           roomState: enable && current.roomState === 'missing' ? 'scheduled' : current.roomState,
-          notifications: enable ? 'Поддержка и оповещения комнаты активированы' : 'Поддержка отключена, комната работает в режиме чтения'
+          archiveSupportRemaining:
+            nextSupportState === 'post-event' && enable
+              ? `Доступно ещё ${current.archiveWindowHours} ч`
+              : current.archiveSupportRemaining,
+          archiveVisibilityLabel:
+            nextSupportState === 'post-event' && enable
+              ? 'Показывается в Архиве событий'
+              : enable
+                ? current.archiveVisibilityLabel
+                : 'Не показывается в Архиве событий',
+          notifications:
+            enable
+              ? nextSupportState === 'post-event'
+                ? 'Post-event поддержка и карточка архива активированы'
+                : 'Поддержка и оповещения комнаты активированы'
+              : 'Поддержка отключена, комната работает в режиме чтения'
+        }));
+        setConfirmState(null);
+      }
+    });
+  };
+
+  const handleToggleArchiveVisibility = (event: AdminManagedEvent) => {
+    const nextVisible = !event.archiveVisible;
+
+    openEventConfirmation(event, {
+      title: nextVisible ? 'Показать событие в архиве' : 'Скрыть событие из архива',
+      description: nextVisible
+        ? 'Карточка появится в мобильном Архиве событий и будет доступна для post-event поддержки в пределах архивного окна.'
+        : 'Карточка исчезнет из мобильного Архива событий и новые late-support донаты будут остановлены.',
+      confirmLabel: nextVisible ? 'Показать в архиве' : 'Скрыть из архива',
+      tone: nextVisible ? 'primary' : 'danger',
+      badge: 'Архив событий',
+      footnote: 'Изменение видимости влияет на мобильный Архив событий и late-support сценарий.',
+      onConfirm: () => {
+        updateEvent(event.id, (current) => ({
+          ...current,
+          status: nextVisible ? 'finished' : 'archived',
+          archiveVisible: nextVisible,
+          support: nextVisible && current.postEventSupportEnabled ? 'post-event' : current.support === 'live' ? 'live' : 'disabled',
+          archiveSupportRemaining: nextVisible ? `Доступно ещё ${current.archiveWindowHours} ч` : 'Окно архива закрыто',
+          archiveVisibilityLabel: nextVisible ? 'Показывается в Архиве событий' : 'Не показывается в Архиве событий',
+          activity: nextVisible ? 'Доступно в Архиве событий' : 'Скрыто из Архива событий'
         }));
         setConfirmState(null);
       }
@@ -885,6 +1002,7 @@ export function AdminEventsScreen() {
             onOpen={() => setSelectedEventId(selectedEvent.id)}
             onEdit={() => setSelectedEventId(selectedEvent.id)}
             onToggleSupport={() => handleToggleSupport(selectedEvent)}
+            onToggleArchiveVisibility={() => handleToggleArchiveVisibility(selectedEvent)}
             onAction={(actionId) => handleEventAction(selectedEvent, actionId)}
           />
         ) : null}

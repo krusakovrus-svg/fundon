@@ -105,6 +105,14 @@ export const adminAnalyticsKpis: AdminAnalyticsKpi[] = [
     trend: '+9,2% к предыдущим 30 дням',
     trendTone: 'positive',
     points: [56, 57, 57, 56, 55, 55, 59, 59, 59, 57, 57, 54, 56, 56, 58, 61]
+  },
+  {
+    id: 'post-event-volume',
+    label: 'Post-event поддержка',
+    value: '812 тыс. ₽',
+    trend: '6,5% от объёма за период',
+    trendTone: 'neutral',
+    points: [8, 9, 10, 12, 11, 13, 12, 15, 16, 14, 15, 17, 19, 18, 20, 22]
   }
 ];
 
@@ -162,29 +170,29 @@ export const adminAnalyticsPopularitySports: AdminAnalyticsRankingRow[] = [
 
 export const adminAnalyticsPopularityEntities: AdminAnalyticsRankingRow[] = [
   {
-    id: 'entity-1',
+    id: 'archive-1',
     rank: 1,
-    label: 'Алексей Орлов',
-    meta: 'Лидер по повторным донатам',
-    value: '812 тыс. ₽',
-    delta: '+14%',
+    label: 'Miami Open: Сёнмез vs Хаддад Майя',
+    meta: 'Лидер по post-event поддержке после завершения',
+    value: '186 тыс. ₽',
+    delta: '18 ч окна',
     tone: 'blue'
   },
   {
-    id: 'entity-2',
+    id: 'archive-2',
     rank: 2,
-    label: 'Night Clash 24',
-    meta: 'Лидер по вовлечённости комнаты',
-    value: '74 мин',
-    delta: '+9%',
+    label: 'Локомотив vs Спартак',
+    meta: 'Лучший late-support возврат в архиве',
+    value: '144 тыс. ₽',
+    delta: '22 ч окна',
     tone: 'green'
   },
   {
-    id: 'entity-3',
+    id: 'archive-3',
     rank: 3,
-    label: 'Ирина Волкова',
-    meta: 'Максимум открытий из push',
-    value: '28%',
+    label: 'UFC Fight Night 271',
+    meta: 'Максимум сохранённых quick amounts',
+    value: '64% preset',
     delta: '+5%',
     tone: 'slate'
   }
@@ -295,6 +303,41 @@ export const adminAnalyticsEngagementMetrics: AdminAnalyticsMetricRow[] = [
   }
 ];
 
+export const adminAnalyticsSupportBehaviorMetrics: AdminAnalyticsMetricRow[] = [
+  {
+    id: 'support-1',
+    label: 'Live vs post-event',
+    hint: 'Сравнение эфирной и архивной поддержки',
+    value: '93,5% / 6,5%',
+    delta: '+1,4 п.п. post-event',
+    tone: 'blue'
+  },
+  {
+    id: 'support-2',
+    label: 'Топ quick amount',
+    hint: 'Чаще всего выбирают 100 ₽ в one-tap',
+    value: '34%',
+    delta: '100 ₽',
+    tone: 'green'
+  },
+  {
+    id: 'support-3',
+    label: 'Custom amount',
+    hint: 'Пользовательская сумма поверх preset-кнопок',
+    value: '18%',
+    delta: '+3 п.п.',
+    tone: 'orange'
+  },
+  {
+    id: 'support-4',
+    label: 'Late-support транзакции',
+    hint: 'Успешные донаты внутри archive-окна',
+    value: '126',
+    delta: '9 требуют ручной проверки',
+    tone: 'slate'
+  }
+];
+
 export const adminAnalyticsSegments: AdminAnalyticsSegment[] = [
   {
     id: 'segment-1',
@@ -333,10 +376,10 @@ export const adminAnalyticsSegments: AdminAnalyticsSegment[] = [
   },
   {
     id: 'segment-6',
-    label: 'Лидеры комнат',
+    label: 'Late-support фанаты',
     value: '680',
-    note: 'Держат пик вовлечённости в эфире',
-    delta: '+8%'
+    note: 'Возвращаются после эфира и поддерживают победителей',
+    delta: '+12%'
   }
 ];
 
@@ -345,21 +388,21 @@ export const adminAnalyticsAnomalies: AdminAnalyticsAnomaly[] = [
     id: 'anomaly-1',
     title: 'Ошибки оплаты в Android',
     description: '21:00–22:00: отклонения выросли на 25%.',
-    impact: 'Риск: теряем часть вечерней выручки, нужен быстрый чек checkout.',
+    impact: 'Теряем часть вечерней выручки. Нужно проверить checkout до следующего прайм-эфира.',
     severity: 'high'
   },
   {
     id: 'anomaly-2',
-    title: 'Просадка удержания новичков',
-    description: 'Новый поток реже возвращается в первые 48 часов.',
-    impact: 'Риск: слабее окупаются кампании привлечения в эфир.',
+    title: 'Post-event окно у тенниса выше нормы',
+    description: 'Miami Open даёт всплеск late-support после 12-го часа окна.',
+    impact: 'Есть смысл отделить теннис в отдельное правило post-event поддержки.',
     severity: 'medium'
   },
   {
     id: 'anomaly-3',
-    title: 'Утренние push-кампании слабеют',
-    description: 'Open rate утра на 4 п.п. ниже вечернего слота.',
-    impact: 'Риск: меньше возвратов в эфир до дневного окна.',
+    title: 'Custom amount растёт быстрее presets',
+    description: 'Доля пользовательских сумм поднялась на 3 п.п. за неделю.',
+    impact: 'Нужно проверить, хватает ли текущих quick amounts для вечернего сценария.',
     severity: 'low'
   }
 ];
@@ -367,23 +410,23 @@ export const adminAnalyticsAnomalies: AdminAnalyticsAnomaly[] = [
 export const adminAnalyticsInsights: AdminAnalyticsInsight[] = [
   {
     id: 'insight-1',
-    title: 'Новый трафик',
-    value: '+14%',
-    note: 'Эфиры дают рост, но возврат после первого визита проседает.'
+    title: 'Post-event поддержка',
+    value: '812 тыс. ₽',
+    note: 'Послеэфирное окно уже приносит заметный объём без каннибализации live-потока.'
   },
   {
     id: 'insight-2',
-    title: 'Путь к донату',
-    value: '6,8%',
-    note: 'Лучше всего работает связка событие → комната эфира → донат.'
+    title: 'Quick amounts',
+    value: '100 ₽',
+    note: 'Preset 100 ₽ остаётся самым быстрым сценарием и лидирует по частоте выбора.'
   },
   {
     id: 'insight-3',
-    title: 'Коммуникации',
-    value: '28%',
-    note: 'Вечерние push-цепочки приводят самый качественный возврат.'
+    title: 'Custom amount',
+    value: '18%',
+    note: 'Своя сумма чаще используется на крупных спортивных событиях и в архивном окне.'
   }
 ];
 
 export const adminAnalyticsRecommendation =
-  'Главный фокус: вернуть новичков в первые 48 часов и снять пик ошибок оплаты перед вечерним эфиром.';
+  'Главный фокус: удержать рост post-event поддержки, не перегружая live-сценарий, и пересобрать quick amounts для видов спорта, где custom amount растёт быстрее preset-кнопок.';
