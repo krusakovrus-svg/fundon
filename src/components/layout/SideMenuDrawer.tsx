@@ -9,7 +9,7 @@ import { useLanguage } from '@/components/providers/LanguageProvider';
 import { LanguageSwitcher } from '@/components/ui/LanguageSwitcher';
 import { ThemeSwitcher } from '@/components/ui/ThemeSwitcher';
 import { mockData } from '@/data/mock';
-import { isSportEventLive } from '@/data/sportEvents';
+import { getArchivedSportEvents, isSportEventLive } from '@/data/sportEvents';
 import { getSportById } from '@/data/sports';
 import { formatCurrency } from '@/lib/format';
 import { getStoredProfileAvatar, PROFILE_AVATAR_UPDATED_EVENT } from '@/lib/profileAvatar';
@@ -145,6 +145,7 @@ export function SideMenuDrawer({ isOpen, currentPath, onClose }: SideMenuDrawerP
   const currentSportLabel = currentSport ? (language === 'ru' ? currentSport.labelRu : currentSport.label) : '';
   const favoriteCount = favorites.length;
   const liveFavoriteCount = favorites.filter((event) => isSportEventLive(event)).length;
+  const archiveEventCount = getArchivedSportEvents().length;
   const displayName = storedProfileName?.trim() || t('you');
   const avatarLetter = displayName.slice(0, 1).toUpperCase();
   const walletBalanceLabel = formatCurrency(mockData.profile.walletBalance, language);
@@ -170,13 +171,20 @@ export function SideMenuDrawer({ isOpen, currentPath, onClose }: SideMenuDrawerP
         matches: (path) => path.startsWith('/events')
       },
       {
+        href: '/archive',
+        label: language === 'ru' ? 'Архив событий' : 'Event Archive',
+        subtitle: language === 'ru' ? 'Поддержка после эфира' : 'Post-event support',
+        badge: archiveEventCount,
+        matches: (path) => path.startsWith('/archive')
+      },
+      {
         href: '/sports',
         label: language === 'ru' ? 'Виды спорта' : 'Sports',
         subtitle: currentSportLabel || undefined,
         matches: (path) => path.startsWith('/sports')
       }
     ],
-    [currentSportLabel, language, t]
+    [archiveEventCount, currentSportLabel, language, t]
   );
 
   const personalItems = useMemo<DrawerItem[]>(

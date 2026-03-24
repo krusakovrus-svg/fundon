@@ -4275,6 +4275,8 @@ export const sportEventCatalog: Record<string, SportEventRecord[]> = {
   'martial-arts': martialArtsEvents
 };
 
+export const SPORT_EVENT_ARCHIVE_WINDOW_MS = 24 * 60 * 60 * 1000;
+
 export function getSportEvents(sportId: string) {
   return sportEventCatalog[sportId] ?? [];
 }
@@ -4289,6 +4291,10 @@ export function getSportEventById(eventId: string) {
   return getAllSportEvents().find((event) => event.id === eventId);
 }
 
+export function isSportEventFinished(event: SportEventRecord, now = Date.now()) {
+  return new Date(event.endsAt).getTime() <= now;
+}
+
 export function isSportEventActive(event: SportEventRecord, now = Date.now()) {
   return new Date(event.endsAt).getTime() > now;
 }
@@ -4298,6 +4304,18 @@ export function isSportEventLive(event: SportEventRecord, now = Date.now()) {
   const endsAt = new Date(event.endsAt).getTime();
 
   return startsAt <= now && endsAt > now;
+}
+
+export function isSportEventSupportAvailable(event: SportEventRecord, now = Date.now()) {
+  const endsAt = new Date(event.endsAt).getTime();
+
+  return endsAt <= now && now - endsAt <= SPORT_EVENT_ARCHIVE_WINDOW_MS;
+}
+
+export function getArchivedSportEvents(now = Date.now()) {
+  return getAllSportEvents()
+    .filter((event) => isSportEventSupportAvailable(event, now))
+    .sort((left, right) => new Date(right.endsAt).getTime() - new Date(left.endsAt).getTime());
 }
 
 export function formatSportEventDate(startsAt: string, language: Language) {
@@ -4314,4 +4332,3 @@ export function formatSportEventTime(startsAt: string, language: Language) {
     hourCycle: 'h23'
   }).format(new Date(startsAt));
 }
-
