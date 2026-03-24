@@ -20,6 +20,7 @@ The current build already includes:
 - [Architecture rules](./architecture-rules.md)
 - [Deployment rules](./deployment-rules.md)
 - [Documentation rules](./documentation-rules.md)
+- [Telegram Blogger](./telegram-bot.md)
 
 ## Build history and implementation status
 - [Phase 1 foundation script](./phase-1-foundation-script.md)

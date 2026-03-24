@@ -60,6 +60,28 @@ Rules:
 - never put server secrets in the client
 - do not let missing backend config break the UI shell
 
+Current server envs now also include:
+
+```env
+TELEGRAM_BOT_TOKEN=
+TELEGRAM_WEBHOOK_SECRET=
+TELEGRAM_WEBHOOK_BASE_URL=
+TELEGRAM_ALLOWED_CHAT_IDS=
+TELEGRAM_ALLOWED_USER_IDS=
+X_API_KEY=
+X_API_SECRET=
+X_ACCESS_TOKEN=
+X_ACCESS_TOKEN_SECRET=
+X_USERNAME=
+```
+
+Telegram operational commands:
+
+```powershell
+npm.cmd run telegram:status
+npm.cmd run telegram:webhook
+```
+
 ## 8. Fallback policy
 If backend wiring is incomplete:
 - the app must still render

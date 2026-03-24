@@ -72,3 +72,8 @@ The core product center is now:
 - more realistic live data binding
 - richer notifications
 - polishing of individual sport feeds where needed
+
+## Current integration layer
+- Telegram Blogger webhook now exists at `/api/telegram/webhook`
+- bot help/status/preview flow is server-side and does not depend on client UI
+- X publishing is wired behind env-based credentials and allow-list gating

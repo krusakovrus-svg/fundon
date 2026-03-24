@@ -66,5 +66,22 @@ Outputs:
 - screenshots in `artifacts/admin-screenshots`
 - HTML report in `playwright-report`
 
+## Telegram Blogger
+Server-side Telegram integration is available for the Blogger bot.
+
+Useful commands:
+```powershell
+cd C:\Users\RichComputer\Desktop\FunDon
+npm.cmd run telegram:status
+npm.cmd run telegram:webhook
+```
+
+Bot commands:
+- `/help`
+- `/status`
+- `/whoami`
+- `/preview <text>`
+- `/post <text>`
+
 ## Documentation
 See [documents/README.md](./documents/README.md) for the current product, architecture, deployment, UI, and documentation rules.
