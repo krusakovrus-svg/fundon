@@ -149,7 +149,7 @@ export function SideMenuDrawer({ isOpen, currentPath, onClose }: SideMenuDrawerP
   const avatarLetter = displayName.slice(0, 1).toUpperCase();
   const walletBalanceLabel = formatCurrency(mockData.profile.walletBalance, language);
   const compactSwitcherClass =
-    'w-full justify-between rounded-[12px] border-black/[0.045] bg-[rgba(247,249,252,0.76)] p-[2px] shadow-[inset_0_1px_0_rgba(255,255,255,0.68)] dark:border-white/[0.05] dark:bg-[linear-gradient(180deg,rgba(255,255,255,0.055),rgba(255,255,255,0.03))] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] [&_button]:min-h-[30px] [&_button]:min-w-[38px] [&_button]:rounded-[10px] [&_button]:px-2 [&_button]:py-1 [&_button]:text-[11px] [&_button]:leading-none';
+    'w-full justify-between rounded-[12px] border-black/[0.045] bg-[rgba(247,249,252,0.76)] p-[2px] shadow-[inset_0_1px_0_rgba(255,255,255,0.68)] dark:border-white/[0.04] dark:bg-[linear-gradient(180deg,rgba(255,255,255,0.028),rgba(255,255,255,0.018))] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] [&_button]:min-h-[30px] [&_button]:min-w-[38px] [&_button]:rounded-[10px] [&_button]:px-2 [&_button]:py-1 [&_button]:text-[11px] [&_button]:leading-none';
 
   const mainItems = useMemo<DrawerItem[]>(
     () => [
@@ -281,19 +281,19 @@ export function SideMenuDrawer({ isOpen, currentPath, onClose }: SideMenuDrawerP
             ))}
           </div>
 
-          <div className="mt-3 rounded-[1.15rem] border border-black/[0.04] bg-[linear-gradient(180deg,rgba(255,255,255,0.7),rgba(247,249,252,0.52))] p-2.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] dark:border-white/[0.045] dark:bg-[linear-gradient(180deg,rgba(255,255,255,0.035),rgba(255,255,255,0.018))] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.025)]">
-            <div className="flex items-center justify-between gap-3 rounded-[14px] px-1 py-1.5">
+          <div className="mt-3 rounded-[1.15rem] border border-black/[0.04] bg-[linear-gradient(180deg,rgba(255,255,255,0.7),rgba(247,249,252,0.52))] p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] dark:border-white/[0.035] dark:bg-[linear-gradient(180deg,rgba(255,255,255,0.022),rgba(255,255,255,0.01))] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.018)]">
+            <div className="flex items-center justify-between gap-4 rounded-[14px] px-1 py-1.5">
               <div className="min-w-0">
-                <p className="text-[11px] font-medium leading-none text-text-secondary dark:text-white/[0.52]">{t('language')}</p>
+                <p className="text-[11px] font-medium leading-none text-text-secondary dark:text-white/[0.46]">{t('language')}</p>
               </div>
               <div className="w-[90px] shrink-0">
                 <LanguageSwitcher className={compactSwitcherClass} />
               </div>
             </div>
 
-            <div className="mt-1 flex items-center justify-between gap-3 rounded-[14px] px-1 py-1.5">
+            <div className="mt-1.5 flex items-center justify-between gap-4 rounded-[14px] px-1 py-1.5">
               <div className="min-w-0">
-                <p className="text-[11px] font-medium leading-none text-text-secondary dark:text-white/[0.52]">{t('theme')}</p>
+                <p className="text-[11px] font-medium leading-none text-text-secondary dark:text-white/[0.46]">{t('theme')}</p>
               </div>
               <div className="w-[90px] shrink-0">
                 <ThemeSwitcher className={compactSwitcherClass} />

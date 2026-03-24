@@ -20,7 +20,7 @@ export function SegmentedControl<T extends string>({ value, options, onChange, c
   return (
     <div
       className={cn(
-        'inline-flex rounded-[1.15rem] border border-black/[0.08] bg-[rgba(245,247,251,0.9)] p-1 shadow-[inset_0_1px_0_rgba(255,255,255,0.72)] dark:border-white/[0.06] dark:bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.025))] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]',
+        'inline-flex rounded-[1.15rem] border border-black/[0.08] bg-[rgba(245,247,251,0.9)] p-1 shadow-[inset_0_1px_0_rgba(255,255,255,0.72)] dark:border-white/[0.05] dark:bg-[linear-gradient(180deg,rgba(255,255,255,0.032),rgba(255,255,255,0.018))] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.02)]',
         className
       )}
     >
@@ -34,7 +34,7 @@ export function SegmentedControl<T extends string>({ value, options, onChange, c
             className={cn(
               'rounded-[0.95rem] px-3 py-2 text-sm font-semibold transition',
               active
-                ? 'bg-white text-text-primary shadow-[0_10px_20px_rgba(15,23,42,0.08)] dark:bg-white/[0.11] dark:text-white dark:shadow-none'
+                ? 'bg-white text-text-primary shadow-[0_10px_20px_rgba(15,23,42,0.08)] dark:bg-[linear-gradient(180deg,rgba(102,112,131,0.20),rgba(71,81,100,0.16))] dark:text-white/[0.94] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]'
                 : 'text-text-secondary hover:text-text-primary dark:text-white/[0.62] dark:hover:text-white'
             )}
           >
