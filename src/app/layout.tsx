@@ -1,3 +1,5 @@
+import type { Metadata } from 'next';
+
 import './globals.css';
 
 import { AppFrame } from '@/components/layout/AppFrame';
@@ -7,10 +9,28 @@ import { ThemeProvider } from '@/components/providers/ThemeProvider';
 
 const themeBootScript = `(function(){try{var theme=localStorage.getItem('fightpulse-theme')||'light';var resolved=theme==='system'?(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'):theme;document.documentElement.classList.add(resolved);document.documentElement.dataset.theme=resolved;}catch(e){document.documentElement.classList.add('light');document.documentElement.dataset.theme='light';}})();`;
 const languageBootScript = `(function(){try{var language=localStorage.getItem('fightpulse-language')||'ru';document.documentElement.lang=language;}catch(e){document.documentElement.lang='ru';}})();`;
+const appBrandName = 'Fansten';
+const appBrandDescription = 'Fansten is a live fan support platform.';
 
-export const metadata = {
-  title: 'Fansten',
-  description: 'Live fan support platform'
+export const metadata: Metadata = {
+  applicationName: appBrandName,
+  title: {
+    default: appBrandName,
+    template: `%s · ${appBrandName}`
+  },
+  description: appBrandDescription,
+  appleWebApp: {
+    title: appBrandName
+  },
+  openGraph: {
+    title: appBrandName,
+    description: appBrandDescription,
+    type: 'website'
+  },
+  twitter: {
+    title: appBrandName,
+    description: appBrandDescription
+  }
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
