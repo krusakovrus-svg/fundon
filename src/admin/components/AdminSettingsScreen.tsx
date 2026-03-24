@@ -416,11 +416,11 @@ export function AdminSettingsScreen() {
   } | null>(null);
 
   const [platformName, setPlatformName] = useState('Fansten');
-  const [domain, setDomain] = useState<(typeof adminPlatformDomains)[number]>('fansten.app');
+  const [domain, setDomain] = useState<(typeof adminPlatformDomains)[number]>('fansten.com');
   const [language, setLanguage] = useState<(typeof adminPlatformLanguages)[number]>('Русский');
   const [timezone, setTimezone] = useState<(typeof adminPlatformTimezones)[number]>('Москва (GMT+3)');
   const [currency, setCurrency] = useState<(typeof adminPlatformCurrencies)[number]>('Российский рубль (₽)');
-  const [supportEmail, setSupportEmail] = useState('ops@fansten.app');
+  const [supportEmail, setSupportEmail] = useState('ops@fansten.com');
   const [dataRegion, setDataRegion] = useState('Франкфурт · EU Central');
   const [maintenanceMode, setMaintenanceMode] = useState(false);
   const [archiveDuration, setArchiveDuration] = useState<(typeof adminArchiveDurationOptions)[number]>('24 часа');
@@ -570,12 +570,12 @@ export function AdminSettingsScreen() {
                 onChange={setMaintenanceMode}
               />
               <div className="grid grid-cols-2 gap-3">
-                <MetricPill label="Основной URL" value="https://fansten.app" />
-                <MetricPill label="Админ-раздел" value="/admin" />
+                <MetricPill label="Вход в приложение" value="https://fansten.com/app" />
+                <MetricPill label="Админ-раздел" value="https://fansten.com/admin" />
               </div>
             </SettingsCard>
 
-            <SettingsCard title="Архив событий" subtitle="Базовые правила для мобильного Архива событий и post-event поддержки после завершения эфира.">
+            <SettingsCard title="Архив событий" subtitle="Базовые правила для мобильного Архива событий и поддержки после завершения эфира.">
               <Field label="Длительность окна архива">
                 <SelectInput value={archiveDuration} onChange={(value) => setArchiveDuration(value as (typeof adminArchiveDurationOptions)[number])} options={adminArchiveDurationOptions} />
               </Field>
@@ -592,8 +592,8 @@ export function AdminSettingsScreen() {
                       <p className="text-[0.94rem] font-semibold text-slate-900">{rule.sport}</p>
                       <span className="rounded-full bg-[#eef5ff] px-2.5 py-1 text-[0.74rem] font-semibold text-[#2f78d3]">{rule.archiveWindow}</span>
                     </div>
-                    <p className="mt-1 text-[0.82rem] text-slate-500">Quick amounts: {rule.quickAmounts}</p>
-                    <p className="mt-1 text-[0.8rem] text-slate-400">{rule.customAmount ? 'Custom amount разрешён' : 'Только preset amounts'}</p>
+                    <p className="mt-1 text-[0.82rem] text-slate-500">Быстрые суммы: {rule.quickAmounts}</p>
+                    <p className="mt-1 text-[0.8rem] text-slate-400">{rule.customAmount ? 'Своя сумма разрешена' : 'Только предустановленные суммы'}</p>
                   </div>
                 ))}
               </div>
@@ -611,6 +611,10 @@ export function AdminSettingsScreen() {
                     <p className="mt-1 text-[0.82rem] text-slate-500">{rule.enLabel}</p>
                   </div>
                 ))}
+              </div>
+              <div className="grid grid-cols-2 gap-3">
+                <MetricPill label="Покрытие спорта" value={`${adminLocalizationRules.filter((rule) => rule.category === 'Вид спорта').length} правил`} />
+                <MetricPill label="Категории" value={`${adminLocalizationRules.filter((rule) => rule.category === 'Категория').length} правил`} />
               </div>
             </SettingsCard>
           </div>
@@ -717,7 +721,7 @@ export function AdminSettingsScreen() {
               />
             </SettingsCard>
 
-            <SettingsCard title="Правила суммы поддержки" subtitle="Настройки минимальной и максимальной суммы, custom amount и дефолтных quick amounts для one-tap сценария.">
+            <SettingsCard title="Правила суммы поддержки" subtitle="Настройки минимальной и максимальной суммы, своей суммы и дефолтных быстрых сумм для сценария поддержки.">
               <div className="grid gap-4 sm:grid-cols-2">
                 <Field label="Минимальная сумма">
                   <SelectInput value={supportMinimum} onChange={(value) => setSupportMinimum(value as (typeof adminSupportMinimumOptions)[number])} options={adminSupportMinimumOptions} />
@@ -726,31 +730,31 @@ export function AdminSettingsScreen() {
                   <SelectInput value={supportMaximum} onChange={(value) => setSupportMaximum(value as (typeof adminSupportMaximumOptions)[number])} options={adminSupportMaximumOptions} />
                 </Field>
               </div>
-              <Field label="Quick amounts по умолчанию">
+              <Field label="Быстрые суммы по умолчанию">
                 <SelectInput value={quickAmountPreset} onChange={(value) => setQuickAmountPreset(value as (typeof adminQuickAmountPresetOptions)[number])} options={adminQuickAmountPresetOptions} />
               </Field>
               <ToggleRow
-                title="Разрешить custom amount"
-                description="Пользователь сможет ввести свою сумму, а не только выбрать preset в one-tap поддержке."
+                title="Разрешить свою сумму"
+                description="Пользователь сможет ввести свою сумму, а не только выбрать предустановленную в быстром сценарии поддержки."
                 checked={allowCustomAmount}
                 onChange={setAllowCustomAmount}
               />
               <div className="grid grid-cols-3 gap-3">
                 <MetricPill label="Минимум" value={supportMinimum} />
                 <MetricPill label="Максимум" value={supportMaximum} />
-                <MetricPill label="Preset" value={quickAmountPreset} />
+                <MetricPill label="Быстрые суммы" value={quickAmountPreset} />
               </div>
             </SettingsCard>
 
-            <SettingsCard title="Post-event правила" subtitle="Контроль late-support сценариев и связи с Архивом событий после завершения эфира.">
+            <SettingsCard title="Правила после эфира" subtitle="Контроль послеэфирной поддержки и связи с Архивом событий после завершения эфира.">
               <ToggleRow
                 title="Поддержка из архива"
-                description="Разрешает late-support транзакции в течение настроенного архивного окна после завершения события."
+                description="Разрешает донаты после эфира в течение настроенного архивного окна после завершения события."
                 checked={allowPostEventSupport}
                 onChange={setAllowPostEventSupport}
               />
               <InfoRow icon={<HistoryIcon />} label="Окно архива по умолчанию" value={archiveDuration} />
-              <InfoRow icon={<WalletIcon />} label="Пресеты one-tap" value={quickAmountPreset} quiet />
+              <InfoRow icon={<WalletIcon />} label="Быстрые суммы в поддержке" value={quickAmountPreset} quiet />
             </SettingsCard>
           </div>
         );
@@ -866,8 +870,8 @@ export function AdminSettingsScreen() {
       case 'integrations':
         return (
           <div className="grid gap-6 xl:grid-cols-2">
-            <SettingsCard title="Интеграции" subtitle="Платёжные, messaging- и data-интеграции Fansten.">
-              <InfoRow icon={<WalletIcon />} label="Платёжные вебхуки" value="3 endpoint'а · последняя синхронизация 2 мин. назад" />
+            <SettingsCard title="Интеграции" subtitle="Платёжные, коммуникационные и дата-интеграции Fansten.">
+              <InfoRow icon={<WalletIcon />} label="Платёжные вебхуки" value="3 эндпоинта · последняя синхронизация 2 мин. назад" />
               <InfoRow icon={<BellIcon />} label="Шлюз push-уведомлений" value="Firebase · статус стабильный" />
               <InfoRow icon={<HistoryIcon />} label="Хранилище данных" value="Синхронизация BigQuery · каждые 30 мин." />
             </SettingsCard>

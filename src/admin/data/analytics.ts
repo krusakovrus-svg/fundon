@@ -108,7 +108,7 @@ export const adminAnalyticsKpis: AdminAnalyticsKpi[] = [
   },
   {
     id: 'post-event-volume',
-    label: 'Post-event поддержка',
+    label: 'Поддержка после эфира',
     value: '812 тыс. ₽',
     trend: '6,5% от объёма за период',
     trendTone: 'neutral',
@@ -173,7 +173,7 @@ export const adminAnalyticsPopularityEntities: AdminAnalyticsRankingRow[] = [
     id: 'archive-1',
     rank: 1,
     label: 'Miami Open: Сёнмез vs Хаддад Майя',
-    meta: 'Лидер по post-event поддержке после завершения',
+    meta: 'Лидер по поддержке после эфира',
     value: '186 тыс. ₽',
     delta: '18 ч окна',
     tone: 'blue'
@@ -182,7 +182,7 @@ export const adminAnalyticsPopularityEntities: AdminAnalyticsRankingRow[] = [
     id: 'archive-2',
     rank: 2,
     label: 'Локомотив vs Спартак',
-    meta: 'Лучший late-support возврат в архиве',
+    meta: 'Лучший возврат внутри архивного окна',
     value: '144 тыс. ₽',
     delta: '22 ч окна',
     tone: 'green'
@@ -191,8 +191,8 @@ export const adminAnalyticsPopularityEntities: AdminAnalyticsRankingRow[] = [
     id: 'archive-3',
     rank: 3,
     label: 'UFC Fight Night 271',
-    meta: 'Максимум сохранённых quick amounts',
-    value: '64% preset',
+    meta: 'Лучшая конверсия в быстрые суммы',
+    value: '64% пресеты',
     delta: '+5%',
     tone: 'slate'
   }
@@ -306,32 +306,32 @@ export const adminAnalyticsEngagementMetrics: AdminAnalyticsMetricRow[] = [
 export const adminAnalyticsSupportBehaviorMetrics: AdminAnalyticsMetricRow[] = [
   {
     id: 'support-1',
-    label: 'Live vs post-event',
+    label: 'Эфир / после эфира',
     hint: 'Сравнение эфирной и архивной поддержки',
     value: '93,5% / 6,5%',
-    delta: '+1,4 п.п. post-event',
+    delta: '+1,4 п.п. после эфира',
     tone: 'blue'
   },
   {
     id: 'support-2',
-    label: 'Топ quick amount',
-    hint: 'Чаще всего выбирают 100 ₽ в one-tap',
+    label: 'Топ быстрая сумма',
+    hint: 'Чаще всего выбирают 100 ₽ в быстром сценарии поддержки',
     value: '34%',
     delta: '100 ₽',
     tone: 'green'
   },
   {
     id: 'support-3',
-    label: 'Custom amount',
-    hint: 'Пользовательская сумма поверх preset-кнопок',
+    label: 'Своя сумма',
+    hint: 'Пользовательская сумма поверх быстрых кнопок',
     value: '18%',
     delta: '+3 п.п.',
     tone: 'orange'
   },
   {
     id: 'support-4',
-    label: 'Late-support транзакции',
-    hint: 'Успешные донаты внутри archive-окна',
+    label: 'Послеэфирные транзакции',
+    hint: 'Успешные донаты внутри архивного окна',
     value: '126',
     delta: '9 требуют ручной проверки',
     tone: 'slate'
@@ -376,7 +376,7 @@ export const adminAnalyticsSegments: AdminAnalyticsSegment[] = [
   },
   {
     id: 'segment-6',
-    label: 'Late-support фанаты',
+    label: 'Фанаты после эфира',
     value: '680',
     note: 'Возвращаются после эфира и поддерживают победителей',
     delta: '+12%'
@@ -393,16 +393,16 @@ export const adminAnalyticsAnomalies: AdminAnalyticsAnomaly[] = [
   },
   {
     id: 'anomaly-2',
-    title: 'Post-event окно у тенниса выше нормы',
-    description: 'Miami Open даёт всплеск late-support после 12-го часа окна.',
-    impact: 'Есть смысл отделить теннис в отдельное правило post-event поддержки.',
+    title: 'Окно после эфира у тенниса выше нормы',
+    description: 'Miami Open даёт всплеск поддержки после эфира после 12-го часа окна.',
+    impact: 'Есть смысл отделить теннис в отдельное правило поддержки после эфира.',
     severity: 'medium'
   },
   {
     id: 'anomaly-3',
-    title: 'Custom amount растёт быстрее presets',
+    title: 'Своя сумма растёт быстрее пресетов',
     description: 'Доля пользовательских сумм поднялась на 3 п.п. за неделю.',
-    impact: 'Нужно проверить, хватает ли текущих quick amounts для вечернего сценария.',
+    impact: 'Нужно проверить, хватает ли текущих быстрых сумм для вечернего сценария.',
     severity: 'low'
   }
 ];
@@ -410,23 +410,23 @@ export const adminAnalyticsAnomalies: AdminAnalyticsAnomaly[] = [
 export const adminAnalyticsInsights: AdminAnalyticsInsight[] = [
   {
     id: 'insight-1',
-    title: 'Post-event поддержка',
+    title: 'Поддержка после эфира',
     value: '812 тыс. ₽',
-    note: 'Послеэфирное окно уже приносит заметный объём без каннибализации live-потока.'
+    note: 'Послеэфирное окно уже приносит заметный объём без каннибализации эфирного потока.'
   },
   {
     id: 'insight-2',
-    title: 'Quick amounts',
+    title: 'Быстрые суммы',
     value: '100 ₽',
-    note: 'Preset 100 ₽ остаётся самым быстрым сценарием и лидирует по частоте выбора.'
+    note: 'Пресет 100 ₽ остаётся самым быстрым сценарием и лидирует по частоте выбора.'
   },
   {
     id: 'insight-3',
-    title: 'Custom amount',
+    title: 'Своя сумма',
     value: '18%',
     note: 'Своя сумма чаще используется на крупных спортивных событиях и в архивном окне.'
   }
 ];
 
 export const adminAnalyticsRecommendation =
-  'Главный фокус: удержать рост post-event поддержки, не перегружая live-сценарий, и пересобрать quick amounts для видов спорта, где custom amount растёт быстрее preset-кнопок.';
+  'Главный фокус: удержать рост поддержки после эфира, не перегружая эфирный сценарий, и пересобрать быстрые суммы для видов спорта, где своя сумма растёт быстрее пресет-кнопок.';

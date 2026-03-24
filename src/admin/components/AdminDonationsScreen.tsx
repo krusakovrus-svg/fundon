@@ -222,7 +222,7 @@ function getTimingTone(timing: AdminDonationTiming) {
 }
 
 function getTimingLabel(timing: AdminDonationTiming) {
-  return timing === 'live' ? 'Live' : 'Post-event';
+  return timing === 'live' ? 'Эфир' : 'После эфира';
 }
 
 function DetailMetric({
@@ -347,10 +347,11 @@ function DonationDrawer({
         <div className="space-y-3">
           <DetailField label="Пользователь" value={`${donation.user} · ${donation.userMeta}`} />
           <DetailField label="Событие" value={donation.event} />
+          <DetailField label="Состояние события" value={donation.eventState} />
           <DetailField label="Кого поддержал" value={donation.side} />
-          <DetailField label="Окно поддержки" value={`${getTimingLabel(donation.timing)} · ${donation.timingWindow}`} />
+          <DetailField label="Окно поддержки" value={donation.timingWindow} />
           <DetailField label="Связь с архивом" value={donation.archiveRelation} />
-          <DetailField label="Сумма в one-tap" value={`${donation.quickAmount} · ${donation.customAmount ? 'есть custom amount' : 'preset amount'}`} />
+          <DetailField label="Быстрая сумма" value={`${donation.quickAmount} · ${donation.customAmount ? 'есть своя сумма' : 'использован пресет'}`} />
         </div>
 
         <div className="rounded-[20px] border border-black/[0.045] bg-[linear-gradient(180deg,#ffffff_0%,#fafbfe_100%)] p-4">
@@ -521,7 +522,8 @@ export function AdminDonationsScreen() {
         { label: 'Транзакция', value: donation.id },
         { label: 'Сумма', value: formatCurrency(donation.amount) },
         { label: 'Статус', value: getStatusLabel(donation.status) },
-        { label: 'Окно поддержки', value: `${getTimingLabel(donation.timing)} · ${donation.timingWindow}` },
+        { label: 'Окно поддержки', value: donation.timingWindow },
+        { label: 'Состояние события', value: donation.eventState },
         { label: 'Пользователь', value: donation.user }
       ]
     });
@@ -685,11 +687,16 @@ export function AdminDonationsScreen() {
                         </div>
                       </div>
 
-                      <p className="truncate text-[0.9rem] font-medium text-slate-800">{donation.event}</p>
+                      <div className="min-w-0">
+                        <p className="truncate text-[0.9rem] font-medium text-slate-800">{donation.event}</p>
+                        <p className="mt-1 truncate text-[0.8rem] text-slate-500">{donation.eventState}</p>
+                      </div>
                       <p className="truncate text-[0.86rem] text-slate-600">{donation.side}</p>
                       <div>
                         <p className="text-[1rem] font-semibold tracking-tight text-slate-900">{formatCurrency(donation.amount)}</p>
-                        <p className="mt-1 text-[0.78rem] text-slate-400">{donation.customAmount ? `custom · ${donation.quickAmount}` : `preset · ${donation.quickAmount}`}</p>
+                        <p className="mt-1 text-[0.78rem] text-slate-400">
+                          {donation.customAmount ? `своя сумма · ${donation.quickAmount}` : `пресет · ${donation.quickAmount}`}
+                        </p>
                       </div>
 
                       <div className="space-y-1">

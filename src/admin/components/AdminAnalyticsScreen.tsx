@@ -692,7 +692,7 @@ export function AdminAnalyticsScreen() {
             <MetricListCard title="Уведомления" subtitle="Коммуникации и возврат в эфир." metrics={adminAnalyticsNotificationMetrics} />
             <MetricListCard title="Конверсия в донат" subtitle="Путь от события к поддержке." metrics={adminAnalyticsFunnelMetrics} />
             <MetricListCard title="Участие в продукте" subtitle="Комнаты, избранное и повторные сессии." metrics={adminAnalyticsEngagementMetrics} />
-            <MetricListCard title="Поведение поддержки" subtitle="Live vs post-event, quick amounts и custom amount." metrics={adminAnalyticsSupportBehaviorMetrics} />
+            <MetricListCard title="Поведение поддержки" subtitle="Эфир, архив, быстрые суммы и своя сумма." metrics={adminAnalyticsSupportBehaviorMetrics} />
           </div>
 
           <div className="grid items-start gap-6 xl:grid-cols-[minmax(0,1.1fr)_0.9fr]">
@@ -703,7 +703,7 @@ export function AdminAnalyticsScreen() {
 
         <div className="space-y-6">
           <RankingCard title="Популярные виды спорта" subtitle="Где выше всего поддержка и вовлечённость." rows={adminAnalyticsPopularitySports} />
-          <RankingCard title="Post-event лидеры" subtitle="Какие события лучше всего собирают поддержку после эфира." rows={adminAnalyticsPopularityEntities} />
+          <RankingCard title="Лидеры после эфира" subtitle="Какие события лучше всего собирают поддержку после эфира." rows={adminAnalyticsPopularityEntities} />
           <InsightsCard />
         </div>
       </section>

@@ -130,9 +130,9 @@ function getSupportTone(support: AdminSupportState) {
 function getSupportLabel(support: AdminSupportState) {
   switch (support) {
     case 'live':
-      return 'Live-поддержка';
+      return 'Эфирная';
     case 'post-event':
-      return 'Post-event';
+      return 'После эфира';
     case 'disabled':
       return 'Отключена';
   }
@@ -323,6 +323,43 @@ function DetailRow({ label, value }: { label: string; value: string }) {
   );
 }
 
+function getMobileFieldStatusTone(status: AdminManagedEvent['mobileFields'][number]['status']) {
+  return status === 'ready'
+    ? 'bg-emerald-50 text-emerald-700 ring-1 ring-emerald-200'
+    : 'bg-amber-50 text-amber-700 ring-1 ring-amber-200';
+}
+
+function MobileReadinessCard({ event }: { event: AdminManagedEvent }) {
+  return (
+    <div className="rounded-[20px] border border-black/[0.045] bg-[linear-gradient(180deg,#ffffff_0%,#fafbfe_100%)] p-4">
+      <div className="flex items-start justify-between gap-3">
+        <div>
+          <p className="text-[0.74rem] font-semibold uppercase tracking-[0.16em] text-slate-400">Готовность mobile-экрана</p>
+          <p className="mt-1 text-[0.82rem] text-slate-500">Поля, от которых зависит экран эфира и переключение событий в приложении.</p>
+        </div>
+        <span className="rounded-full bg-[#eef5ff] px-2.5 py-1 text-[0.72rem] font-semibold text-[#2f78d3]">{event.liveDataStatus}</span>
+      </div>
+
+      <div className="mt-4 space-y-2.5">
+        {event.mobileFields.map((field) => (
+          <div
+            key={field.id}
+            className="flex items-start justify-between gap-4 rounded-[14px] border border-black/[0.04] bg-white/85 px-3.5 py-3"
+          >
+            <div className="min-w-0">
+              <p className="text-[0.84rem] font-semibold text-slate-800">{field.label}</p>
+              <p className="mt-1 text-[0.8rem] leading-5 text-slate-500">{field.value}</p>
+            </div>
+            <span className={cn('shrink-0 rounded-full px-2.5 py-1 text-[0.72rem] font-semibold', getMobileFieldStatusTone(field.status))}>
+              {field.status === 'ready' ? 'Готово' : 'Нужно добрать'}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function getActionButtonLabel(event: AdminManagedEvent) {
   if (event.status === 'live') {
     return 'Завершить событие';
@@ -494,19 +531,26 @@ function EventDrawer({
       <div className="space-y-5 p-5">
         <div className="grid grid-cols-2 gap-3">
           <DetailMetric label="Поддержка" value={formatCurrency(event.donationsAmount)} note={formatDonationCount(event.donationCount)} />
-          <DetailMetric label="Архив" value={event.archiveVisible ? 'Показывается' : 'Скрыт'} note={event.archiveSupportRemaining} />
+          <DetailMetric label="Архив" value={event.archiveVisible ? 'Виден в приложении' : 'Скрыт'} note={event.archiveSupportRemaining} />
           <DetailMetric label="Комната" value={event.room} note={getAudienceLabel(event)} />
-          <DetailMetric label="Mobile live" value={event.liveDataStatus} note={event.supportSides} />
+          <DetailMetric label="Готовность mobile" value={event.liveDataStatus} note={event.timerState} />
         </div>
 
         <div className="space-y-3">
+          <DetailRow label="Вид спорта / категория" value={event.sportCategory} />
           <DetailRow label="Участники" value={event.participants.join(' — ')} />
-          <DetailRow label="Стадия и локация" value={`${event.stage} · ${event.arena}`} />
-          <DetailRow label="Архив и post-event" value={`${event.archiveVisibilityLabel} · ${event.postEventSupportEnabled ? 'post-event поддержка разрешена' : 'post-event поддержка отключена'}`} />
-          <DetailRow label="Поля mobile live" value={event.mobileFields.map((field) => `${field.label}: ${field.value}`).join(' · ')} />
+          <DetailRow label="Стадия и таймер" value={`${event.stage} · ${event.timerState}`} />
+          <DetailRow label="Локация" value={event.arena} />
+          <DetailRow
+            label="Архив и поддержка"
+            value={`${event.archiveVisibilityLabel} · ${event.postEventSupportEnabled ? 'поддержка после эфира разрешена' : 'поддержка после эфира отключена'}`}
+          />
+          <DetailRow label="Стороны поддержки" value={`${event.supportSides} · ${event.supportSnapshot}`} />
           <DetailRow label="Уведомления" value={event.notifications} />
           <DetailRow label="Ответственный" value={event.moderator} />
         </div>
+
+        <MobileReadinessCard event={event} />
 
         <div className="rounded-[20px] border border-black/[0.045] bg-[linear-gradient(180deg,#ffffff_0%,#fafbfe_100%)] p-4">
           <div>
@@ -564,7 +608,11 @@ function EventDrawer({
                   : 'border border-[#f1ddcd] bg-[#fff7f2] text-[#a9693a]'
               )}
             >
-              {event.support === 'disabled' ? 'Включить поддержку' : event.support === 'post-event' ? 'Отключить post-event' : 'Отключить live-поддержку'}
+              {event.support === 'disabled'
+                ? 'Включить поддержку'
+                : event.support === 'post-event'
+                  ? 'Отключить после эфира'
+                  : 'Отключить эфирную'}
             </button>
 
             <button
@@ -690,7 +738,7 @@ export function AdminEventsScreen() {
         { label: 'Статус', value: getStatusLabel(event.status) },
         { label: 'Поддержка', value: `${getSupportLabel(event.support)} · ${formatCurrency(event.donationsAmount)}` },
         { label: 'Архив', value: event.archiveSupportRemaining },
-        { label: 'Mobile live', value: event.liveDataStatus },
+        { label: 'Готовность mobile', value: event.liveDataStatus },
         { label: 'Комната', value: event.room }
       ]
     });
@@ -724,7 +772,7 @@ export function AdminEventsScreen() {
             audienceNote: 'Комната активна и принимает поддержку',
             archiveSupportRemaining: `Окно архива откроется после завершения на ${current.archiveWindowHours} ч`,
             archiveVisibilityLabel: 'Появится в Архиве событий после завершения',
-            liveDataStatus: '5/5 полей готовы для mobile live',
+            liveDataStatus: '7/7 полей готовы для mobile-экрана',
             notifications: 'Push и оповещения комнаты включены'
           }));
           setConfirmState(null);
@@ -748,9 +796,9 @@ export function AdminEventsScreen() {
             support: current.postEventSupportEnabled ? 'post-event' : 'disabled',
             archiveVisible: current.postEventSupportEnabled,
             roomState: 'archive',
-            activity: current.postEventSupportEnabled ? 'Окно post-event поддержки открыто' : 'Эфир завершён',
+            activity: current.postEventSupportEnabled ? 'Окно поддержки после эфира открыто' : 'Эфир завершён',
             audienceNote: 'Итоговая статистика сохранена',
-            archiveSupportRemaining: current.postEventSupportEnabled ? `Доступно ещё ${current.archiveWindowHours} ч` : 'Post-event окно закрыто',
+            archiveSupportRemaining: current.postEventSupportEnabled ? `Доступно ещё ${current.archiveWindowHours} ч` : 'Окно после эфира закрыто',
             archiveVisibilityLabel: current.postEventSupportEnabled ? 'Показывается в Архиве событий' : 'Не показывается в Архиве событий',
             notifications: 'Итоговое уведомление отправлено'
           }));
@@ -825,13 +873,13 @@ export function AdminEventsScreen() {
       title: enable ? 'Включить поддержку' : 'Отключить поддержку',
       description: enable
         ? nextSupportState === 'post-event'
-          ? 'Событие снова появится в Архиве событий и будет доступно для post-event поддержки в течение архивного окна.'
+          ? 'Событие снова появится в Архиве событий и будет доступно для поддержки после эфира в течение архивного окна.'
           : 'Поддержка станет доступна пользователям, а связанная комната будет готова к приёму донатов.'
         : 'Поддержка будет выключена для новых донатов, но история события и комната останутся доступными.',
       confirmLabel: enable ? 'Включить' : 'Отключить',
       tone: enable ? 'primary' : 'danger',
       badge: enable ? 'Поддержка' : 'Критичное действие',
-      footnote: 'Изменение состояния поддержки записывается в журнале действий и влияет на live и post-event донаты.',
+      footnote: 'Изменение состояния поддержки записывается в журнале действий и влияет на эфирные и послеэфирные донаты.',
       onConfirm: () => {
         updateEvent(event.id, (current) => ({
           ...current,
@@ -853,7 +901,7 @@ export function AdminEventsScreen() {
           notifications:
             enable
               ? nextSupportState === 'post-event'
-                ? 'Post-event поддержка и карточка архива активированы'
+                ? 'Поддержка после эфира и карточка архива активированы'
                 : 'Поддержка и оповещения комнаты активированы'
               : 'Поддержка отключена, комната работает в режиме чтения'
         }));
@@ -868,12 +916,12 @@ export function AdminEventsScreen() {
     openEventConfirmation(event, {
       title: nextVisible ? 'Показать событие в архиве' : 'Скрыть событие из архива',
       description: nextVisible
-        ? 'Карточка появится в мобильном Архиве событий и будет доступна для post-event поддержки в пределах архивного окна.'
-        : 'Карточка исчезнет из мобильного Архива событий и новые late-support донаты будут остановлены.',
+        ? 'Карточка появится в мобильном Архиве событий и будет доступна для поддержки после эфира в пределах архивного окна.'
+        : 'Карточка исчезнет из мобильного Архива событий, а новые послеэфирные донаты будут остановлены.',
       confirmLabel: nextVisible ? 'Показать в архиве' : 'Скрыть из архива',
       tone: nextVisible ? 'primary' : 'danger',
       badge: 'Архив событий',
-      footnote: 'Изменение видимости влияет на мобильный Архив событий и late-support сценарий.',
+      footnote: 'Изменение видимости влияет на мобильный Архив событий и сценарий поддержки после эфира.',
       onConfirm: () => {
         updateEvent(event.id, (current) => ({
           ...current,

@@ -77,7 +77,7 @@ export const adminSettingsTabs: AdminSettingsTab[] = [
 ];
 
 export const adminPlatformDomains = ['fansten.app', 'fansten.com', 'admin.fansten.app'] as const;
-export const adminPlatformLanguages = ['Русский', 'English'] as const;
+export const adminPlatformLanguages = ['Русский', 'Английский'] as const;
 export const adminPlatformTimezones = ['Москва (GMT+3)', 'Берлин (UTC+1)', 'Нью-Йорк (UTC-5)'] as const;
 export const adminPlatformCurrencies = ['Российский рубль (₽)', 'Доллар США ($)', 'Евро (€)'] as const;
 
@@ -306,12 +306,31 @@ export const adminSportSupportRules: AdminSportSupportRule[] = [
     archiveWindow: '12 часов',
     quickAmounts: '10 / 50 / 100 / 500 ₽',
     customAmount: false
+  },
+  {
+    id: 'sport-rule-4',
+    sport: 'Волейбол',
+    archiveWindow: '24 часа',
+    quickAmounts: '25 / 100 / 250 / 1 000 ₽',
+    customAmount: true
+  },
+  {
+    id: 'sport-rule-5',
+    sport: 'Киберспорт',
+    archiveWindow: '24 часа',
+    quickAmounts: '50 / 250 / 500 / 2 000 ₽',
+    customAmount: false
   }
 ];
 
 export const adminLocalizationRules: AdminLocalizationRule[] = [
-  { id: 'loc-1', category: 'Вид спорта', ruLabel: 'Единоборства', enLabel: 'Martial Arts' },
-  { id: 'loc-2', category: 'Вид спорта', ruLabel: 'Киберспорт', enLabel: 'Esports' },
-  { id: 'loc-3', category: 'Категория', ruLabel: 'Стадия / раунд', enLabel: 'Stage / Round' },
-  { id: 'loc-4', category: 'Категория', ruLabel: 'Архив событий', enLabel: 'Event Archive' }
+  { id: 'loc-1', category: 'Вид спорта', ruLabel: 'Футбол', enLabel: 'Football' },
+  { id: 'loc-2', category: 'Вид спорта', ruLabel: 'Хоккей', enLabel: 'Hockey' },
+  { id: 'loc-3', category: 'Вид спорта', ruLabel: 'Баскетбол', enLabel: 'Basketball' },
+  { id: 'loc-4', category: 'Вид спорта', ruLabel: 'Единоборства', enLabel: 'Martial Arts' },
+  { id: 'loc-5', category: 'Вид спорта', ruLabel: 'Бокс', enLabel: 'Boxing' },
+  { id: 'loc-6', category: 'Вид спорта', ruLabel: 'Формула 1', enLabel: 'Formula 1' },
+  { id: 'loc-7', category: 'Вид спорта', ruLabel: 'Киберспорт', enLabel: 'Esports' },
+  { id: 'loc-8', category: 'Категория', ruLabel: 'Стадия / раунд', enLabel: 'Stage / Round' },
+  { id: 'loc-9', category: 'Категория', ruLabel: 'Архив событий', enLabel: 'Event Archive' }
 ];

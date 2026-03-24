@@ -37,6 +37,7 @@ export interface AdminManagedEvent {
   id: string;
   title: string;
   sport: AdminEventSport;
+  sportCategory: string;
   tournament: string;
   tournamentFilter: AdminEventTournamentFilter;
   participantFilter: AdminEventParticipantFilter;
@@ -60,9 +61,11 @@ export interface AdminManagedEvent {
   archiveSupportRemaining: string;
   archiveVisibilityLabel: string;
   stage: string;
+  timerState: string;
   arena: string;
   liveDataStatus: string;
   supportSides: string;
+  supportSnapshot: string;
   mobileFields: AdminEventMobileField[];
 }
 
@@ -128,8 +131,8 @@ export const adminRoomFilters = [
 
 export const adminSupportFilters = [
   { id: 'all', label: 'Любая поддержка' },
-  { id: 'live', label: 'Live-поддержка' },
-  { id: 'post-event', label: 'Post-event' },
+  { id: 'live', label: 'Эфирная поддержка' },
+  { id: 'post-event', label: 'После эфира' },
   { id: 'disabled', label: 'Отключена' }
 ] as const satisfies ReadonlyArray<{ id: 'all' | AdminSupportState; label: string }>;
 
@@ -138,6 +141,7 @@ export const adminManagedEvents: AdminManagedEvent[] = [
     id: 'event-frankfurt-bayern',
     title: 'Айнтрахт Франкфурт vs Бавария',
     sport: 'Футбол',
+    sportCategory: 'Футбол · Бундеслига',
     tournament: 'Бундеслига · Тур 18',
     tournamentFilter: 'league',
     participantFilter: 'teams',
@@ -165,13 +169,17 @@ export const adminManagedEvents: AdminManagedEvent[] = [
     archiveSupportRemaining: 'Будет доступно 24 часа после финального свистка',
     archiveVisibilityLabel: 'Появится в Архиве событий после завершения',
     stage: '2-й тайм · 74 мин',
+    timerState: 'Официальный матчевый таймер синхронизирован с эфирным фидом',
     arena: 'Deutsche Bank Park · Франкфурт',
-    liveDataStatus: '5/5 полей готовы для mobile live',
+    liveDataStatus: '7/7 полей готовы для mobile-экрана',
     supportSides: 'Команда 1 / Команда 2',
+    supportSnapshot: 'Айнтрахт 54% · 2 410 фанатов · лидер по сумме 261 400 ₽',
     mobileFields: [
       { id: 'participants', label: 'Участники', value: 'Две стороны синхронизированы', status: 'ready' },
-      { id: 'live-status', label: 'Live-статус', value: 'В эфире', status: 'ready' },
+      { id: 'sport-category', label: 'Вид спорта / категория', value: 'Футбол · Бундеслига', status: 'ready' },
+      { id: 'live-status', label: 'Статус эфира', value: 'В эфире', status: 'ready' },
       { id: 'stage', label: 'Стадия / раунд', value: '2-й тайм · 74 мин', status: 'ready' },
+      { id: 'timer-state', label: 'Таймер / источник', value: 'Официальный матчевый таймер синхронизирован', status: 'ready' },
       { id: 'arena', label: 'Арена / локация', value: 'Deutsche Bank Park · Франкфурт', status: 'ready' },
       { id: 'support-sides', label: 'Стороны поддержки', value: 'Айнтрахт / Бавария', status: 'ready' }
     ]
@@ -180,6 +188,7 @@ export const adminManagedEvents: AdminManagedEvent[] = [
     id: 'event-khl-final',
     title: 'Локомотив vs Спартак',
     sport: 'Хоккей',
+    sportCategory: 'Хоккей · Плей-офф',
     tournament: 'КХЛ · Кубок Гагарина',
     tournamentFilter: 'playoff',
     participantFilter: 'teams',
@@ -207,13 +216,17 @@ export const adminManagedEvents: AdminManagedEvent[] = [
     archiveSupportRemaining: 'После финала останется 24 часа на поддержку',
     archiveVisibilityLabel: 'Автоматически попадёт в Архив событий',
     stage: 'Ожидает старт',
+    timerState: 'Таймер запустится после стартового вбрасывания',
     arena: 'Арена-2000 · Ярославль',
-    liveDataStatus: '4/5 полей готовы, таймер подтянется после старта',
+    liveDataStatus: '5/7 полей готовы, таймер и battle-данные ждут старт',
     supportSides: 'Команда 1 / Команда 2',
+    supportSnapshot: 'Предматчевый прогрев открыт · Локомотив 52% интереса',
     mobileFields: [
       { id: 'participants', label: 'Участники', value: 'Локомотив / Спартак', status: 'ready' },
-      { id: 'live-status', label: 'Live-статус', value: 'Сегодня в 19:30', status: 'ready' },
+      { id: 'sport-category', label: 'Вид спорта / категория', value: 'Хоккей · Плей-офф', status: 'ready' },
+      { id: 'live-status', label: 'Статус эфира', value: 'Сегодня в 19:30', status: 'ready' },
       { id: 'stage', label: 'Стадия / раунд', value: 'Пре-матч, таймер ждёт старт', status: 'warning' },
+      { id: 'timer-state', label: 'Таймер / источник', value: 'Ждёт стартовый свисток и эфирный фид', status: 'warning' },
       { id: 'arena', label: 'Арена / локация', value: 'Арена-2000 · Ярославль', status: 'ready' },
       { id: 'support-sides', label: 'Стороны поддержки', value: 'Локомотив / Спартак', status: 'ready' }
     ]
@@ -222,6 +235,7 @@ export const adminManagedEvents: AdminManagedEvent[] = [
     id: 'event-ufc-271',
     title: 'UFC Fight Night 271: Адесанья vs Пфайфер',
     sport: 'MMA',
+    sportCategory: 'MMA · Главный кард',
     tournament: 'UFC Fight Night 271',
     tournamentFilter: 'fight',
     participantFilter: 'athletes',
@@ -245,16 +259,20 @@ export const adminManagedEvents: AdminManagedEvent[] = [
     archiveVisible: false,
     postEventSupportEnabled: true,
     archiveWindowHours: 24,
-    archiveSupportRemaining: 'Post-event окно откроется после финиша',
+    archiveSupportRemaining: 'Окно после эфира откроется после финиша',
     archiveVisibilityLabel: 'Покажем в Архиве событий при завершении',
-    stage: 'Main card',
+    stage: 'Главный кард',
+    timerState: 'Таймер раунда стартует от сигнала рефери',
     arena: 'UFC Apex · Лас-Вегас',
-    liveDataStatus: '5/5 полей готовы',
+    liveDataStatus: '7/7 полей готовы',
     supportSides: 'Красный угол / Синий угол',
+    supportSnapshot: 'Стороны поддержки размечены, старт battle-модуля готов',
     mobileFields: [
       { id: 'participants', label: 'Участники', value: 'Адесанья / Пфайфер', status: 'ready' },
-      { id: 'live-status', label: 'Live-статус', value: 'Скоро', status: 'ready' },
-      { id: 'stage', label: 'Стадия / раунд', value: 'Main card', status: 'ready' },
+      { id: 'sport-category', label: 'Вид спорта / категория', value: 'MMA · Главный кард', status: 'ready' },
+      { id: 'live-status', label: 'Статус эфира', value: 'Скоро', status: 'ready' },
+      { id: 'stage', label: 'Стадия / раунд', value: 'Главный кард', status: 'ready' },
+      { id: 'timer-state', label: 'Таймер / источник', value: 'Таймер стартует по сигналу рефери', status: 'ready' },
       { id: 'arena', label: 'Арена / локация', value: 'UFC Apex · Лас-Вегас', status: 'ready' },
       { id: 'support-sides', label: 'Стороны поддержки', value: 'Красный угол / Синий угол', status: 'ready' }
     ]
@@ -263,6 +281,7 @@ export const adminManagedEvents: AdminManagedEvent[] = [
     id: 'event-euroleague-draft',
     title: 'Шоукейс драфта Евролиги',
     sport: 'Баскетбол',
+    sportCategory: 'Баскетбол · Спецсобытие',
     tournament: 'Евролига · Спецсобытие',
     tournamentFilter: 'special',
     participantFilter: 'teams',
@@ -285,14 +304,18 @@ export const adminManagedEvents: AdminManagedEvent[] = [
     archiveWindowHours: 24,
     archiveSupportRemaining: 'Появится после публикации и завершения',
     archiveVisibilityLabel: 'Пока скрыто от Архива событий',
-    stage: 'Draft setup',
+    stage: 'Черновая настройка',
+    timerState: 'Источник таймера ещё не выбран',
     arena: 'Локация не задана',
-    liveDataStatus: '2/5 полей заполнены',
+    liveDataStatus: '2/7 полей заполнены',
     supportSides: 'Не настроены',
+    supportSnapshot: 'Стороны поддержки и battle-данные ещё не заведены',
     mobileFields: [
       { id: 'participants', label: 'Участники', value: 'Маккаби / Партизан', status: 'ready' },
-      { id: 'live-status', label: 'Live-статус', value: 'Черновик', status: 'warning' },
+      { id: 'sport-category', label: 'Вид спорта / категория', value: 'Баскетбол · Спецсобытие', status: 'ready' },
+      { id: 'live-status', label: 'Статус эфира', value: 'Черновик', status: 'warning' },
       { id: 'stage', label: 'Стадия / раунд', value: 'Не задано', status: 'warning' },
+      { id: 'timer-state', label: 'Таймер / источник', value: 'Источник таймера не задан', status: 'warning' },
       { id: 'arena', label: 'Арена / локация', value: 'Не задано', status: 'warning' },
       { id: 'support-sides', label: 'Стороны поддержки', value: 'Не назначены', status: 'warning' }
     ]
@@ -301,6 +324,7 @@ export const adminManagedEvents: AdminManagedEvent[] = [
     id: 'event-miami-open',
     title: 'Miami Open: Сёнмез vs Хаддад Майя',
     sport: 'Теннис',
+    sportCategory: 'Теннис · WTA 1000',
     tournament: 'WTA 1000 · Майами',
     tournamentFilter: 'league',
     participantFilter: 'athletes',
@@ -310,7 +334,7 @@ export const adminManagedEvents: AdminManagedEvent[] = [
     support: 'post-event',
     room: 'Center Court',
     roomState: 'archive',
-    activity: 'Post-event поддержка активна',
+    activity: 'Поддержка после эфира активна',
     donationCount: 1240,
     donationsAmount: 94600,
     audienceCount: 412,
@@ -327,13 +351,17 @@ export const adminManagedEvents: AdminManagedEvent[] = [
     archiveSupportRemaining: 'Открыто ещё 18 часов',
     archiveVisibilityLabel: 'Показывается в Архиве событий',
     stage: 'Матч завершён · 2:1',
+    timerState: 'Матч завершён, таймер остановлен и сохранён в архиве',
     arena: 'Hard Rock Stadium · Майами',
-    liveDataStatus: '5/5 полей сохранены',
+    liveDataStatus: '7/7 полей сохранены для mobile-экрана',
     supportSides: 'Игрок 1 / Игрок 2',
+    supportSnapshot: 'Хаддад Майя 57% · 620 фанатов · поздняя поддержка идёт ровно',
     mobileFields: [
       { id: 'participants', label: 'Участники', value: 'Сёнмез / Хаддад Майя', status: 'ready' },
-      { id: 'live-status', label: 'Live-статус', value: 'Завершено', status: 'ready' },
+      { id: 'sport-category', label: 'Вид спорта / категория', value: 'Теннис · WTA 1000', status: 'ready' },
+      { id: 'live-status', label: 'Статус эфира', value: 'Завершено', status: 'ready' },
       { id: 'stage', label: 'Стадия / раунд', value: 'Финальный сет · 2:1', status: 'ready' },
+      { id: 'timer-state', label: 'Таймер / источник', value: 'Матч завершён, таймер остановлен', status: 'ready' },
       { id: 'arena', label: 'Арена / локация', value: 'Hard Rock Stadium · Майами', status: 'ready' },
       { id: 'support-sides', label: 'Стороны поддержки', value: 'Сёнмез / Хаддад Майя', status: 'ready' }
     ]
@@ -342,6 +370,7 @@ export const adminManagedEvents: AdminManagedEvent[] = [
     id: 'event-lakers-pistons',
     title: 'Детройт Пистонс vs Лос-Анджелес Лейкерс',
     sport: 'Баскетбол',
+    sportCategory: 'Баскетбол · NBA',
     tournament: 'NBA · Регулярный сезон',
     tournamentFilter: 'league',
     participantFilter: 'teams',
@@ -368,13 +397,17 @@ export const adminManagedEvents: AdminManagedEvent[] = [
     archiveSupportRemaining: 'Окно поддержки закрыто 1 час назад',
     archiveVisibilityLabel: 'Скрыто из Архива событий',
     stage: 'Матч завершён · 98:109',
+    timerState: 'Таймер закрыт вместе с архивным окном',
     arena: 'Little Caesars Arena · Детройт',
-    liveDataStatus: '5/5 полей сохранены',
+    liveDataStatus: '7/7 полей сохранены для mobile-экрана',
     supportSides: 'Команда 1 / Команда 2',
+    supportSnapshot: 'Архивное окно закрыто · новые донаты остановлены',
     mobileFields: [
       { id: 'participants', label: 'Участники', value: 'Пистонс / Лейкерс', status: 'ready' },
-      { id: 'live-status', label: 'Live-статус', value: 'Архивировано', status: 'ready' },
+      { id: 'sport-category', label: 'Вид спорта / категория', value: 'Баскетбол · NBA', status: 'ready' },
+      { id: 'live-status', label: 'Статус эфира', value: 'Архивировано', status: 'ready' },
       { id: 'stage', label: 'Стадия / раунд', value: 'Финальный счёт 98:109', status: 'ready' },
+      { id: 'timer-state', label: 'Таймер / источник', value: 'Архивное окно закрыто, таймер недоступен', status: 'ready' },
       { id: 'arena', label: 'Арена / локация', value: 'Little Caesars Arena · Детройт', status: 'ready' },
       { id: 'support-sides', label: 'Стороны поддержки', value: 'Пистонс / Лейкерс', status: 'ready' }
     ]
@@ -383,6 +416,7 @@ export const adminManagedEvents: AdminManagedEvent[] = [
     id: 'event-valorant-cup',
     title: 'Dragon Ranger Gaming vs Any Questions Gaming',
     sport: 'Киберспорт',
+    sportCategory: 'Киберспорт · Valorant',
     tournament: 'Valorant · China Evolution Series',
     tournamentFilter: 'esports',
     participantFilter: 'teams',
@@ -405,14 +439,18 @@ export const adminManagedEvents: AdminManagedEvent[] = [
     archiveWindowHours: 24,
     archiveSupportRemaining: 'Пост-эфирное окно не запланировано',
     archiveVisibilityLabel: 'Не попадёт в Архив событий',
-    stage: 'Pre-show',
+    stage: 'Пре-шоу',
+    timerState: 'Bo5 не размечен, источник таймера не выбран',
     arena: 'Shanghai Studio',
-    liveDataStatus: '3/5 полей готовы',
+    liveDataStatus: '3/7 полей готовы',
     supportSides: 'Команда 1 / Команда 2',
+    supportSnapshot: 'Нужно назначить цветовые стороны и battle-метрики',
     mobileFields: [
       { id: 'participants', label: 'Участники', value: 'Dragon Ranger / Any Questions', status: 'ready' },
-      { id: 'live-status', label: 'Live-статус', value: 'Скоро', status: 'ready' },
+      { id: 'sport-category', label: 'Вид спорта / категория', value: 'Киберспорт · Valorant', status: 'ready' },
+      { id: 'live-status', label: 'Статус эфира', value: 'Скоро', status: 'ready' },
       { id: 'stage', label: 'Стадия / раунд', value: 'Нужно добавить формат bo5', status: 'warning' },
+      { id: 'timer-state', label: 'Таймер / источник', value: 'Источник таймера не выбран', status: 'warning' },
       { id: 'arena', label: 'Арена / локация', value: 'Shanghai Studio', status: 'ready' },
       { id: 'support-sides', label: 'Стороны поддержки', value: 'Команды не промаркированы цветами', status: 'warning' }
     ]
@@ -421,6 +459,7 @@ export const adminManagedEvents: AdminManagedEvent[] = [
     id: 'event-vnl',
     title: 'Франция Pro vs Бельгия Pro',
     sport: 'Волейбол',
+    sportCategory: 'Волейбол · Лига наций',
     tournament: 'Лига наций · Волейбол',
     tournamentFilter: 'league',
     participantFilter: 'teams',
@@ -447,13 +486,17 @@ export const adminManagedEvents: AdminManagedEvent[] = [
     archiveSupportRemaining: 'Откроется после финального розыгрыша',
     archiveVisibilityLabel: 'Покажется в Архиве событий',
     stage: '3-й сет · 18:17',
+    timerState: 'Счёт и таймер подтягиваются из эфирного фида лиги',
     arena: 'Arena Pulse · Брюссель',
-    liveDataStatus: '5/5 полей готовы для mobile live',
+    liveDataStatus: '7/7 полей готовы для mobile-экрана',
     supportSides: 'Франция / Бельгия',
+    supportSnapshot: 'Франция 51% · 1 640 фанатов · лидер по сумме 136 200 ₽',
     mobileFields: [
       { id: 'participants', label: 'Участники', value: 'Франция / Бельгия', status: 'ready' },
-      { id: 'live-status', label: 'Live-статус', value: 'В эфире', status: 'ready' },
+      { id: 'sport-category', label: 'Вид спорта / категория', value: 'Волейбол · Лига наций', status: 'ready' },
+      { id: 'live-status', label: 'Статус эфира', value: 'В эфире', status: 'ready' },
       { id: 'stage', label: 'Стадия / раунд', value: '3-й сет · 18:17', status: 'ready' },
+      { id: 'timer-state', label: 'Таймер / источник', value: 'Счёт и таймер идут от эфирного фида', status: 'ready' },
       { id: 'arena', label: 'Арена / локация', value: 'Arena Pulse · Брюссель', status: 'ready' },
       { id: 'support-sides', label: 'Стороны поддержки', value: 'Франция / Бельгия', status: 'ready' }
     ]
