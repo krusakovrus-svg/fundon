@@ -1,4 +1,4 @@
-﻿import { martialArtsEvents } from '@/data/martialArts';
+import { martialArtsEvents } from '@/data/martialArts';
 import type { Language, SportEventRecord } from '@/types';
 
 const supportedSportIds = new Set(['football', 'hockey', 'basketball', 'martial-arts', 'boxing', 'formula1']);
@@ -1302,7 +1302,7 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
     {
       id: 'table-tennis-tt-cup-1',
       sportId: 'table-tennis',
-      title: 'Table tennis · International · TT-Cup',
+      title: 'Table Tennis · International · TT-Cup',
       titleRu: 'Настольный теннис · Международные · TT-Cup',
       startsAt: '2026-03-18T00:10:00+03:00',
       endsAt: '2026-03-18T01:10:00+03:00',
@@ -1316,7 +1316,7 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
     {
       id: 'table-tennis-tt-cup-2',
       sportId: 'table-tennis',
-      title: 'Table tennis · International · TT-Cup',
+      title: 'Table Tennis · International · TT-Cup',
       titleRu: 'Настольный теннис · Международные · TT-Cup',
       startsAt: '2026-03-18T00:20:00+03:00',
       endsAt: '2026-03-18T01:20:00+03:00',
@@ -1330,7 +1330,7 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
     {
       id: 'table-tennis-tt-cup-3',
       sportId: 'table-tennis',
-      title: 'Table tennis · International · TT-Cup',
+      title: 'Table Tennis · International · TT-Cup',
       titleRu: 'Настольный теннис · Международные · TT-Cup',
       startsAt: '2026-03-18T00:25:00+03:00',
       endsAt: '2026-03-18T01:25:00+03:00',
@@ -1344,7 +1344,7 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
     {
       id: 'table-tennis-tt-cup-4',
       sportId: 'table-tennis',
-      title: 'Table tennis · International · TT-Cup',
+      title: 'Table Tennis · International · TT-Cup',
       titleRu: 'Настольный теннис · Международные · TT-Cup',
       startsAt: '2026-03-18T00:50:00+03:00',
       endsAt: '2026-03-18T01:50:00+03:00',
@@ -1358,7 +1358,7 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
     {
       id: 'table-tennis-tt-cup-5',
       sportId: 'table-tennis',
-      title: 'Table tennis · International · TT-Cup',
+      title: 'Table Tennis · International · TT-Cup',
       titleRu: 'Настольный теннис · Международные · TT-Cup',
       startsAt: '2026-03-18T00:55:00+03:00',
       endsAt: '2026-03-18T01:55:00+03:00',
@@ -1372,7 +1372,7 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
     {
       id: 'table-tennis-tt-cup-6',
       sportId: 'table-tennis',
-      title: 'Table tennis · International · TT-Cup',
+      title: 'Table Tennis · International · TT-Cup',
       titleRu: 'Настольный теннис · Международные · TT-Cup',
       startsAt: '2026-03-18T01:25:00+03:00',
       endsAt: '2026-03-18T02:25:00+03:00',
@@ -1558,7 +1558,7 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
     {
       id: 'cybersport-dota2-epl-1',
       sportId: 'cybersport',
-      title: 'Cybersport · Dota-2 · European Pro League. Season 35 2026',
+      title: 'Esports · Dota-2 · European Pro League. Season 35 2026',
       titleRu: 'Киберспорт · Dota-2 · European Pro League. Season 35 2026',
       startsAt: '2026-03-18T16:00:00+03:00',
       endsAt: '2026-03-18T19:00:00+03:00',
@@ -1572,7 +1572,7 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
     {
       id: 'cybersport-cs-aorus-1',
       sportId: 'cybersport',
-      title: 'Cybersport · Counter-strike · Aorus League. Brazil Online Stage 2',
+      title: 'Esports · Counter-strike · Aorus League. Brazil Online Stage 2',
       titleRu: 'Киберспорт · Counter-strike · Aorus League. Brazil Online Stage 2',
       startsAt: '2026-03-18T00:00:00+03:00',
       endsAt: '2026-03-18T03:00:00+03:00',
@@ -1586,7 +1586,7 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
     {
       id: 'cybersport-cs-aorus-2',
       sportId: 'cybersport',
-      title: 'Cybersport · Counter-strike · Aorus League. Brazil Online Stage 2',
+      title: 'Esports · Counter-strike · Aorus League. Brazil Online Stage 2',
       titleRu: 'Киберспорт · Counter-strike · Aorus League. Brazil Online Stage 2',
       startsAt: '2026-03-18T01:00:00+03:00',
       endsAt: '2026-03-18T04:00:00+03:00',
@@ -1600,7 +1600,7 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
     {
       id: 'cybersport-cs-cct-sa-1',
       sportId: 'cybersport',
-      title: 'Cybersport · Counter-strike · CCT South America. Series 10',
+      title: 'Esports · Counter-strike · CCT South America. Series 10',
       titleRu: 'Киберспорт · Counter-strike · CCT South America. Series 10',
       startsAt: '2026-03-18T01:00:00+03:00',
       endsAt: '2026-03-18T04:00:00+03:00',
@@ -1614,7 +1614,7 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
     {
       id: 'cybersport-valorant-ces-1',
       sportId: 'cybersport',
-      title: 'Cybersport · Valorant · China Evolution Series. Act 1 2026',
+      title: 'Esports · Valorant · China Evolution Series. Act 1 2026',
       titleRu: 'Киберспорт · Valorant · China Evolution Series. Act 1 2026',
       startsAt: '2026-03-18T12:00:00+03:00',
       endsAt: '2026-03-18T15:00:00+03:00',
@@ -1628,7 +1628,7 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
     {
       id: 'cybersport-cs-nodwin-1',
       sportId: 'cybersport',
-      title: 'Cybersport · Counter-strike · NODWIN Clutch Series. Season 6 2026',
+      title: 'Esports · Counter-strike · NODWIN Clutch Series. Season 6 2026',
       titleRu: 'Киберспорт · Counter-strike · NODWIN Clutch Series. Season 6 2026',
       startsAt: '2026-03-18T12:00:00+03:00',
       endsAt: '2026-03-18T15:00:00+03:00',
@@ -3364,7 +3364,7 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
     {
       id: 'afl-1',
       sportId: 'australian-football',
-      title: 'Australian football · Australia · AFL',
+      title: 'Australian Football · Australia · AFL',
       titleRu: 'Австралийский футбол · Австралия · AFL',
       startsAt: '2026-03-19T11:30:00+03:00',
       endsAt: '2026-03-19T14:00:00+03:00',
@@ -3376,7 +3376,7 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
     {
       id: 'afl-2',
       sportId: 'australian-football',
-      title: 'Australian football · Australia · AFL',
+      title: 'Australian Football · Australia · AFL',
       titleRu: 'Австралийский футбол · Австралия · AFL',
       startsAt: '2026-03-20T11:40:00+03:00',
       endsAt: '2026-03-20T14:10:00+03:00',
@@ -3388,7 +3388,7 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
     {
       id: 'afl-3',
       sportId: 'australian-football',
-      title: 'Australian football · Australia · AFL',
+      title: 'Australian Football · Australia · AFL',
       titleRu: 'Австралийский футбол · Австралия · AFL',
       startsAt: '2026-03-21T05:15:00+03:00',
       endsAt: '2026-03-21T07:45:00+03:00',
@@ -3400,7 +3400,7 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
     {
       id: 'afl-4',
       sportId: 'australian-football',
-      title: 'Australian football · Australia · AFL',
+      title: 'Australian Football · Australia · AFL',
       titleRu: 'Австралийский футбол · Австралия · AFL',
       startsAt: '2026-03-21T08:15:00+03:00',
       endsAt: '2026-03-21T10:45:00+03:00',
@@ -3412,7 +3412,7 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
     {
       id: 'afl-5',
       sportId: 'australian-football',
-      title: 'Australian football · Australia · AFL',
+      title: 'Australian Football · Australia · AFL',
       titleRu: 'Австралийский футбол · Австралия · AFL',
       startsAt: '2026-03-21T11:35:00+03:00',
       endsAt: '2026-03-21T14:05:00+03:00',
@@ -3424,7 +3424,7 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
     {
       id: 'afl-6',
       sportId: 'australian-football',
-      title: 'Australian football · Australia · AFL',
+      title: 'Australian Football · Australia · AFL',
       titleRu: 'Австралийский футбол · Австралия · AFL',
       startsAt: '2026-03-22T07:15:00+03:00',
       endsAt: '2026-03-22T09:45:00+03:00',
@@ -3436,7 +3436,7 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
     {
       id: 'afl-7',
       sportId: 'australian-football',
-      title: 'Australian football · Australia · AFL',
+      title: 'Australian Football · Australia · AFL',
       titleRu: 'Австралийский футбол · Австралия · AFL',
       startsAt: '2026-03-22T10:10:00+03:00',
       endsAt: '2026-03-22T12:40:00+03:00',
@@ -3450,7 +3450,7 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
     {
       id: 'water-polo-len-euro-cup-1',
       sportId: 'water-polo',
-      title: 'Water polo · International Clubs · LEN Euro Cup',
+      title: 'Water Polo · International Clubs · LEN Euro Cup',
       titleRu: 'Водное поло · Международные. Клубы · LEN Euro Cup',
       startsAt: '2026-03-18T13:00:00+03:00',
       endsAt: '2026-03-18T15:00:00+03:00',
@@ -3464,7 +3464,7 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
     {
       id: 'water-polo-len-euro-cup-2',
       sportId: 'water-polo',
-      title: 'Water polo · International Clubs · LEN Euro Cup',
+      title: 'Water Polo · International Clubs · LEN Euro Cup',
       titleRu: 'Водное поло · Международные. Клубы · LEN Euro Cup',
       startsAt: '2026-03-18T13:00:00+03:00',
       endsAt: '2026-03-18T15:00:00+03:00',
@@ -3478,7 +3478,7 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
     {
       id: 'water-polo-len-euro-cup-3',
       sportId: 'water-polo',
-      title: 'Water polo · International Clubs · LEN Euro Cup',
+      title: 'Water Polo · International Clubs · LEN Euro Cup',
       titleRu: 'Водное поло · Международные. Клубы · LEN Euro Cup',
       startsAt: '2026-03-18T13:00:00+03:00',
       endsAt: '2026-03-18T15:00:00+03:00',
@@ -3492,7 +3492,7 @@ const genericSportEvents: Record<string, SportEventRecord[]> = {
     {
       id: 'water-polo-len-euro-cup-4',
       sportId: 'water-polo',
-      title: 'Water polo · International Clubs · LEN Euro Cup',
+      title: 'Water Polo · International Clubs · LEN Euro Cup',
       titleRu: 'Водное поло · Международные. Клубы · LEN Euro Cup',
       startsAt: '2026-03-19T20:00:00+03:00',
       endsAt: '2026-03-19T22:00:00+03:00',
@@ -4314,8 +4314,4 @@ export function formatSportEventTime(startsAt: string, language: Language) {
     hourCycle: 'h23'
   }).format(new Date(startsAt));
 }
-
-
-
-
 

@@ -54,6 +54,7 @@ function SportCard({
   featured?: boolean;
   language: 'ru' | 'en';
 }) {
+  const localizedLabel = language === 'ru' ? sport.labelRu : sport.label;
   const meta =
     sport.eventCount > 0
       ? language === 'ru'
@@ -83,7 +84,7 @@ function SportCard({
         </span>
 
         <div className="min-w-0">
-          <p className="truncate text-[0.98rem] font-medium tracking-tight text-text-primary dark:text-white/[0.94]">{sport.labelRu}</p>
+          <p className="truncate text-[0.98rem] font-medium tracking-tight text-text-primary dark:text-white/[0.94]">{localizedLabel}</p>
           {meta ? <p className="mt-0.75 text-[0.76rem] font-medium text-text-secondary dark:text-white/[0.54]">{meta}</p> : null}
         </div>
       </div>

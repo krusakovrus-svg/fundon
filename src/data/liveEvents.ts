@@ -10,7 +10,7 @@ export interface LiveHubEvent extends EventRecord {
 const rawLiveEvents: LiveHubEvent[] = [
   {
     ...mockData.featuredEvent,
-    categoryLabel: 'Martial arts',
+    categoryLabel: 'Martial Arts',
     categoryLabelRu: 'Единоборства',
     moments: mockData.moments,
     liveActivity: mockData.liveActivity,
@@ -131,7 +131,7 @@ const rawLiveEvents: LiveHubEvent[] = [
     headline: 'NAVI Junior vs Astini+5',
     headlineRu: 'NAVI Junior vs Astini+5',
     category: 'esports',
-    categoryLabel: 'Cybersport',
+    categoryLabel: 'Esports',
     categoryLabelRu: 'Киберспорт',
     venue: 'Online lobby',
     venueRu: 'Онлайн-лобби',

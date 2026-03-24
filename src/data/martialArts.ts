@@ -22,7 +22,7 @@ function createMartialArtsEvent({
 export const martialArtsEvents: SportEventRecord[] = [
   createMartialArtsEvent({
     id: 'martial-arts-aca-1',
-    title: 'Martial arts · MMA · ACA',
+    title: 'Martial Arts · MMA · ACA',
     titleRu: 'Единоборства · MMA · ACA',
     startsAt: '2026-03-27T20:00:00+03:00',
     endsAt: '2026-03-27T20:45:00+03:00',
@@ -33,7 +33,7 @@ export const martialArtsEvents: SportEventRecord[] = [
   }),
   createMartialArtsEvent({
     id: 'martial-arts-ufc-271-1',
-    title: 'Martial arts · MMA · UFC Fight Night 271: Adesanya vs Pfeifer',
+    title: 'Martial Arts · MMA · UFC Fight Night 271: Adesanya vs Pfeifer',
     titleRu: 'Единоборства · MMA · UFC Fight Night 271: Адесанья vs Пайфер',
     startsAt: '2026-03-29T00:00:00+03:00',
     endsAt: '2026-03-29T00:45:00+03:00',
@@ -44,7 +44,7 @@ export const martialArtsEvents: SportEventRecord[] = [
   }),
   createMartialArtsEvent({
     id: 'martial-arts-ufc-271-2',
-    title: 'Martial arts · MMA · UFC Fight Night 271: Adesanya vs Pfeifer',
+    title: 'Martial Arts · MMA · UFC Fight Night 271: Adesanya vs Pfeifer',
     titleRu: 'Единоборства · MMA · UFC Fight Night 271: Адесанья vs Пайфер',
     startsAt: '2026-03-29T00:15:00+03:00',
     endsAt: '2026-03-29T01:00:00+03:00',
@@ -55,7 +55,7 @@ export const martialArtsEvents: SportEventRecord[] = [
   }),
   createMartialArtsEvent({
     id: 'martial-arts-ufc-271-3',
-    title: 'Martial arts · MMA · UFC Fight Night 271: Adesanya vs Pfeifer',
+    title: 'Martial Arts · MMA · UFC Fight Night 271: Adesanya vs Pfeifer',
     titleRu: 'Единоборства · MMA · UFC Fight Night 271: Адесанья vs Пайфер',
     startsAt: '2026-03-29T00:15:00+03:00',
     endsAt: '2026-03-29T01:00:00+03:00',
@@ -66,7 +66,7 @@ export const martialArtsEvents: SportEventRecord[] = [
   }),
   createMartialArtsEvent({
     id: 'martial-arts-ufc-271-4',
-    title: 'Martial arts · MMA · UFC Fight Night 271: Adesanya vs Pfeifer',
+    title: 'Martial Arts · MMA · UFC Fight Night 271: Adesanya vs Pfeifer',
     titleRu: 'Единоборства · MMA · UFC Fight Night 271: Адесанья vs Пайфер',
     startsAt: '2026-03-29T00:30:00+03:00',
     endsAt: '2026-03-29T01:15:00+03:00',
@@ -77,7 +77,7 @@ export const martialArtsEvents: SportEventRecord[] = [
   }),
   createMartialArtsEvent({
     id: 'martial-arts-ufc-271-5',
-    title: 'Martial arts · MMA · UFC Fight Night 271: Adesanya vs Pfeifer',
+    title: 'Martial Arts · MMA · UFC Fight Night 271: Adesanya vs Pfeifer',
     titleRu: 'Единоборства · MMA · UFC Fight Night 271: Адесанья vs Пайфер',
     startsAt: '2026-03-29T01:00:00+03:00',
     endsAt: '2026-03-29T01:45:00+03:00',
@@ -88,7 +88,7 @@ export const martialArtsEvents: SportEventRecord[] = [
   }),
   createMartialArtsEvent({
     id: 'martial-arts-ufc-271-6',
-    title: 'Martial arts · MMA · UFC Fight Night 271: Adesanya vs Pfeifer',
+    title: 'Martial Arts · MMA · UFC Fight Night 271: Adesanya vs Pfeifer',
     titleRu: 'Единоборства · MMA · UFC Fight Night 271: Адесанья vs Пайфер',
     startsAt: '2026-03-29T01:15:00+03:00',
     endsAt: '2026-03-29T02:00:00+03:00',
@@ -99,7 +99,7 @@ export const martialArtsEvents: SportEventRecord[] = [
   }),
   createMartialArtsEvent({
     id: 'martial-arts-ufc-271-7',
-    title: 'Martial arts · MMA · UFC Fight Night 271: Adesanya vs Pfeifer',
+    title: 'Martial Arts · MMA · UFC Fight Night 271: Adesanya vs Pfeifer',
     titleRu: 'Единоборства · MMA · UFC Fight Night 271: Адесанья vs Пайфер',
     startsAt: '2026-03-29T01:30:00+03:00',
     endsAt: '2026-03-29T02:15:00+03:00',
@@ -110,7 +110,7 @@ export const martialArtsEvents: SportEventRecord[] = [
   }),
   createMartialArtsEvent({
     id: 'martial-arts-ufc-271-8',
-    title: 'Martial arts · MMA · UFC Fight Night 271: Adesanya vs Pfeifer',
+    title: 'Martial Arts · MMA · UFC Fight Night 271: Adesanya vs Pfeifer',
     titleRu: 'Единоборства · MMA · UFC Fight Night 271: Адесанья vs Пайфер',
     startsAt: '2026-03-29T03:00:00+03:00',
     endsAt: '2026-03-29T03:45:00+03:00',
@@ -121,7 +121,7 @@ export const martialArtsEvents: SportEventRecord[] = [
   }),
   createMartialArtsEvent({
     id: 'martial-arts-ufc-271-9',
-    title: 'Martial arts · MMA · UFC Fight Night 271: Adesanya vs Pfeifer',
+    title: 'Martial Arts · MMA · UFC Fight Night 271: Adesanya vs Pfeifer',
     titleRu: 'Единоборства · MMA · UFC Fight Night 271: Адесанья vs Пайфер',
     startsAt: '2026-03-29T03:15:00+03:00',
     endsAt: '2026-03-29T04:00:00+03:00',
@@ -132,7 +132,7 @@ export const martialArtsEvents: SportEventRecord[] = [
   }),
   createMartialArtsEvent({
     id: 'martial-arts-ufc-271-10',
-    title: 'Martial arts · MMA · UFC Fight Night 271: Adesanya vs Pfeifer',
+    title: 'Martial Arts · MMA · UFC Fight Night 271: Adesanya vs Pfeifer',
     titleRu: 'Единоборства · MMA · UFC Fight Night 271: Адесанья vs Пайфер',
     startsAt: '2026-03-29T03:35:00+03:00',
     endsAt: '2026-03-29T04:20:00+03:00',
@@ -143,7 +143,7 @@ export const martialArtsEvents: SportEventRecord[] = [
   }),
   createMartialArtsEvent({
     id: 'martial-arts-ufc-271-11',
-    title: 'Martial arts · MMA · UFC Fight Night 271: Adesanya vs Pfeifer',
+    title: 'Martial Arts · MMA · UFC Fight Night 271: Adesanya vs Pfeifer',
     titleRu: 'Единоборства · MMA · UFC Fight Night 271: Адесанья vs Пайфер',
     startsAt: '2026-03-29T04:00:00+03:00',
     endsAt: '2026-03-29T04:45:00+03:00',
@@ -154,7 +154,7 @@ export const martialArtsEvents: SportEventRecord[] = [
   }),
   createMartialArtsEvent({
     id: 'martial-arts-ufc-271-12',
-    title: 'Martial arts · MMA · UFC Fight Night 271: Adesanya vs Pfeifer',
+    title: 'Martial Arts · MMA · UFC Fight Night 271: Adesanya vs Pfeifer',
     titleRu: 'Единоборства · MMA · UFC Fight Night 271: Адесанья vs Пайфер',
     startsAt: '2026-03-29T04:30:00+03:00',
     endsAt: '2026-03-29T05:15:00+03:00',
@@ -165,7 +165,7 @@ export const martialArtsEvents: SportEventRecord[] = [
   }),
   createMartialArtsEvent({
     id: 'martial-arts-freedom-250-1',
-    title: 'Martial arts · MMA · UFC Freedom 250: Topuria vs Gaethje',
+    title: 'Martial Arts · MMA · UFC Freedom 250: Topuria vs Gaethje',
     titleRu: 'Единоборства · MMA · UFC Freedom 250: Топурия vs Гейджи',
     startsAt: '2026-06-15T04:45:00+03:00',
     endsAt: '2026-06-15T05:30:00+03:00',
@@ -176,7 +176,7 @@ export const martialArtsEvents: SportEventRecord[] = [
   }),
   createMartialArtsEvent({
     id: 'martial-arts-freedom-250-2',
-    title: 'Martial arts · MMA · UFC Freedom 250: Topuria vs Gaethje',
+    title: 'Martial Arts · MMA · UFC Freedom 250: Topuria vs Gaethje',
     titleRu: 'Единоборства · MMA · UFC Freedom 250: Топурия vs Гейджи',
     startsAt: '2026-06-15T05:15:00+03:00',
     endsAt: '2026-06-15T06:00:00+03:00',
@@ -187,7 +187,7 @@ export const martialArtsEvents: SportEventRecord[] = [
   }),
   createMartialArtsEvent({
     id: 'martial-arts-freedom-250-3',
-    title: 'Martial arts · MMA · UFC Freedom 250: Topuria vs Gaethje',
+    title: 'Martial Arts · MMA · UFC Freedom 250: Topuria vs Gaethje',
     titleRu: 'Единоборства · MMA · UFC Freedom 250: Топурия vs Гейджи',
     startsAt: '2026-06-15T05:45:00+03:00',
     endsAt: '2026-06-15T06:30:00+03:00',
@@ -198,7 +198,7 @@ export const martialArtsEvents: SportEventRecord[] = [
   }),
   createMartialArtsEvent({
     id: 'martial-arts-freedom-250-4',
-    title: 'Martial arts · MMA · UFC Freedom 250: Topuria vs Gaethje',
+    title: 'Martial Arts · MMA · UFC Freedom 250: Topuria vs Gaethje',
     titleRu: 'Единоборства · MMA · UFC Freedom 250: Топурия vs Гейджи',
     startsAt: '2026-06-15T06:15:00+03:00',
     endsAt: '2026-06-15T07:00:00+03:00',
@@ -209,7 +209,7 @@ export const martialArtsEvents: SportEventRecord[] = [
   }),
   createMartialArtsEvent({
     id: 'martial-arts-freedom-250-5',
-    title: 'Martial arts · MMA · UFC Freedom 250: Topuria vs Gaethje',
+    title: 'Martial Arts · MMA · UFC Freedom 250: Topuria vs Gaethje',
     titleRu: 'Единоборства · MMA · UFC Freedom 250: Топурия vs Гейджи',
     startsAt: '2026-06-15T06:45:00+03:00',
     endsAt: '2026-06-15T07:30:00+03:00',
@@ -220,7 +220,7 @@ export const martialArtsEvents: SportEventRecord[] = [
   }),
   createMartialArtsEvent({
     id: 'martial-arts-freedom-250-6',
-    title: 'Martial arts · MMA · UFC Freedom 250: Topuria vs Gaethje',
+    title: 'Martial Arts · MMA · UFC Freedom 250: Topuria vs Gaethje',
     titleRu: 'Единоборства · MMA · UFC Freedom 250: Топурия vs Гейджи',
     startsAt: '2026-06-15T07:20:00+03:00',
     endsAt: '2026-06-15T08:05:00+03:00',
