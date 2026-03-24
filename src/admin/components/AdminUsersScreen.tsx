@@ -546,7 +546,7 @@ export function AdminUsersScreen() {
 
                       <div>
                         <p className="text-[1rem] font-semibold tracking-tight text-slate-900">{formatRating(user.rating)}</p>
-                        <p className="mt-1 text-[0.78rem] text-slate-500">FUNDON score</p>
+                        <p className="mt-1 text-[0.78rem] text-slate-500">Fansten score</p>
                       </div>
 
                       <span className={cn('inline-flex w-fit rounded-full px-2.5 py-1 text-[0.78rem] font-semibold', getStatusTone(user.status))}>

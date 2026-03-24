@@ -377,7 +377,7 @@ export function AdminAthletesScreen() {
           <div className="flex items-center justify-between gap-4 border-b border-black/[0.045] px-6 py-5">
             <div>
               <h2 className="text-[1.18rem] font-semibold tracking-tight text-slate-900">Список спортсменов и команд</h2>
-              <p className="mt-1 text-sm text-slate-500">Операционный обзор карточек, прямых эфиров и доступности поддержки в системе FUNDON.</p>
+              <p className="mt-1 text-sm text-slate-500">Операционный обзор карточек, прямых эфиров и доступности поддержки в системе Fansten.</p>
             </div>
             <div className="rounded-full bg-[#f5f8fd] px-3 py-1.5 text-[0.78rem] font-semibold text-slate-500">Быстрый выбор карточки</div>
           </div>

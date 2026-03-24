@@ -162,7 +162,7 @@ export function AdminSidebar() {
           </svg>
         </div>
         <div>
-          <p className="text-[1.55rem] font-semibold tracking-tight text-slate-900">FUNDON</p>
+          <p className="text-[1.55rem] font-semibold tracking-tight text-slate-900">Fansten</p>
           <p className="text-sm text-slate-500">Admin Console</p>
         </div>
       </div>

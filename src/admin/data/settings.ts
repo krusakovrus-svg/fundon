@@ -76,7 +76,7 @@ export const adminSettingsTabs: AdminSettingsTab[] = [
   { id: 'audit', label: 'Журнал аудита' }
 ];
 
-export const adminPlatformDomains = ['fundon.app', 'fundon.com', 'admin.fundon.app'] as const;
+export const adminPlatformDomains = ['fansten.app', 'fansten.com', 'admin.fansten.app'] as const;
 export const adminPlatformLanguages = ['Русский', 'English'] as const;
 export const adminPlatformTimezones = ['Москва (GMT+3)', 'Берлин (UTC+1)', 'Нью-Йорк (UTC-5)'] as const;
 export const adminPlatformCurrencies = ['Российский рубль (₽)', 'Доллар США ($)', 'Евро (€)'] as const;
@@ -85,7 +85,7 @@ export const adminRoles: AdminRoleItem[] = [
   {
     id: 'super-admin',
     name: 'Super Admin',
-    summary: 'Полный контроль над FUNDON, конфигурацией платформы и критичными действиями.',
+    summary: 'Полный контроль над Fansten, конфигурацией платформы и критичными действиями.',
     members: '3 участника',
     ownership: 'Весь административный контур платформы',
     permissions: ['События и эфирные операции', 'Платежи и возвраты', 'Настройки и интеграции', 'Роли и права'],

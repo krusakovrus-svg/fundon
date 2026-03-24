@@ -124,7 +124,7 @@ export const adminManagedAthletes: AdminManagedAthlete[] = [
     eventsCount: 3,
     supportLabel: 'Командная поддержка',
     supportCount: 12400,
-    shortBio: 'Одна из ключевых команд футбольного блока FUNDON с самым высоким уровнем вовлечённости в live-поддержке.',
+    shortBio: 'Одна из ключевых команд футбольного блока Fansten с самым высоким уровнем вовлечённости в live-поддержке.',
     liveEvent: 'Спартак vs Зенит',
     supportStats: {
       totalSupport: 12400,

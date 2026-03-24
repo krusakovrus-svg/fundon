@@ -93,7 +93,7 @@ export const adminManagedNotifications: AdminManagedNotification[] = [
     delivered: '94.8%',
     openRate: '38.2%',
     summary: 'Push о старте live-события с переходом в экран поддержки.',
-    message: 'Матч дня уже в эфире. Откройте FUNDON и поддержите свою сторону в один тап.',
+    message: 'Матч дня уже в эфире. Откройте Fansten и поддержите свою сторону в один тап.',
     template: 'Live start / Favorites',
     errorDetails: 'Ошибок доставки не зафиксировано.',
     logs: [
@@ -132,7 +132,7 @@ export const adminManagedNotifications: AdminManagedNotification[] = [
     delivered: '—',
     openRate: '—',
     summary: 'Подборка лучших событий недели и персональных рекомендаций для VIP сегмента.',
-    message: 'Собрали для вас события недели, новые комнаты и наиболее активные live-поддержки в FUNDON.',
+    message: 'Собрали для вас события недели, новые комнаты и наиболее активные live-поддержки в Fansten.',
     template: 'VIP weekly digest',
     errorDetails: 'Черновик ещё не проверен редактором.',
     logs: [
@@ -170,7 +170,7 @@ export const adminManagedNotifications: AdminManagedNotification[] = [
     delivered: '71.4%',
     openRate: '22.6%',
     summary: 'Push перед ночным NBA-слотом, часть токенов не была доставлена.',
-    message: 'Ночной слот NBA уже близко. Возвращайтесь в FUNDON, чтобы поддержать Lakers и следить за комнатой матча.',
+    message: 'Ночной слот NBA уже близко. Возвращайтесь в Fansten, чтобы поддержать Lakers и следить за комнатой матча.',
     template: 'NBA night push',
     errorDetails: 'Ошибка доставки в Android-пуле: 1 248 токенов устарели и требуют очистки.',
     logs: [

@@ -42,7 +42,7 @@ export function getAdminPageMeta(pathname: string): AdminPageMeta {
   if (pathname.startsWith('/admin/donations')) {
     return {
       title: 'Донаты и транзакции',
-      description: 'Управление платежами, возвратами и спорными транзакциями FUNDON',
+      description: 'Управление платежами, возвратами и спорными транзакциями Fansten',
       searchPlaceholder: 'Поиск по ID, пользователю, событию и транзакции',
       periodLabel: 'Последние 30 дней',
       secondaryActionLabel: 'Экспорт'
@@ -72,7 +72,7 @@ export function getAdminPageMeta(pathname: string): AdminPageMeta {
   if (pathname.startsWith('/admin/events')) {
     return {
       title: 'События',
-      description: 'Управление ближайшими, эфирными и черновыми событиями FUNDON',
+      description: 'Управление ближайшими, эфирными и черновыми событиями Fansten',
       searchPlaceholder: 'Поиск по событиям, турнирам и участникам',
       periodLabel: 'Последние 7 дней',
       primaryActionLabel: 'Создать событие'
@@ -82,7 +82,7 @@ export function getAdminPageMeta(pathname: string): AdminPageMeta {
   if (pathname.startsWith('/admin/rooms')) {
     return {
       title: 'Комнаты',
-      description: 'Управление комнатами, активностью участников и модерацией FUNDON',
+      description: 'Управление комнатами, активностью участников и модерацией Fansten',
       searchPlaceholder: 'Поиск по комнате, событию, модератору и заметкам',
       periodLabel: 'За месяц',
       primaryActionLabel: 'Создать комнату'
@@ -92,7 +92,7 @@ export function getAdminPageMeta(pathname: string): AdminPageMeta {
   if (pathname.startsWith('/admin/notifications')) {
     return {
       title: 'Уведомления',
-      description: 'Управление push, email и событийными уведомлениями для разных сегментов FUNDON',
+      description: 'Управление push, email и событийными уведомлениями для разных сегментов Fansten',
       searchPlaceholder: 'Поиск по уведомлению, событию, шаблону и сегменту',
       periodLabel: 'Последние 30 дней',
       primaryActionLabel: 'Создать уведомление'
@@ -102,7 +102,7 @@ export function getAdminPageMeta(pathname: string): AdminPageMeta {
   if (pathname.startsWith('/admin/ratings')) {
     return {
       title: 'Рейтинги',
-      description: 'Управление логикой начисления, пересчётом и состоянием рейтингов FUNDON',
+      description: 'Управление логикой начисления, пересчётом и состоянием рейтингов Fansten',
       searchPlaceholder: 'Поиск по пользователю, событию и правилу',
       periodLabel: 'Текущий период',
       primaryActionLabel: 'Пересчитать рейтинг',
@@ -125,7 +125,7 @@ export function getAdminPageMeta(pathname: string): AdminPageMeta {
   if (pathname.startsWith('/admin/moderation')) {
     return {
       title: 'Модерация',
-      description: 'Операционный контроль жалоб, рисков, подозрительных транзакций и кейсов FUNDON',
+      description: 'Операционный контроль жалоб, рисков, подозрительных транзакций и кейсов Fansten',
       searchPlaceholder: 'Поиск по кейсу, пользователю, событию и объекту',
       periodLabel: 'Последние 7 дней',
       primaryActionLabel: 'Открыть инцидент'
@@ -135,7 +135,7 @@ export function getAdminPageMeta(pathname: string): AdminPageMeta {
   if (pathname.startsWith('/admin/settings')) {
     return {
       title: 'Настройки',
-      description: 'Центральная конфигурация платформы, ролей, платежей, уведомлений и системных политик FUNDON',
+      description: 'Центральная конфигурация платформы, ролей, платежей, уведомлений и системных политик Fansten',
       searchPlaceholder: 'Поиск по настройкам, ролям, платежам и интеграциям',
       primaryActionLabel: 'Сохранить изменения'
     };

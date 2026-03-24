@@ -100,7 +100,7 @@ export const adminManagedUsers: AdminManagedUser[] = [
     rating: 3.9,
     status: 'new',
     role: 'user',
-    activeRooms: ['Новички FUNDON'],
+    activeRooms: ['Новички Fansten'],
     notifications: 'Push',
     lastSeen: '15 минут назад',
     lastSeenMinutes: 15,

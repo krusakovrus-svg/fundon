@@ -2,7 +2,7 @@ import type { Language } from '@/types';
 
 export const translations = {
   en: {
-    appName: 'FightPulse',
+    appName: 'Fansten',
     navLive: 'Live',
     navEvents: 'Events',
     navRooms: 'Rooms',
@@ -117,7 +117,7 @@ export const translations = {
     favoritesRemoveLabel: 'Remove from favorites'
   },
   ru: {
-    appName: 'FightPulse',
+    appName: 'Fansten',
     navLive: 'Эфир',
     navEvents: 'События',
     navRooms: 'Комнаты',

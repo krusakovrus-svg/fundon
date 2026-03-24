@@ -14,7 +14,7 @@ const adminRoutes = [
   '/admin/analytics'
 ];
 
-const requiredMarkers = ['FUNDON', 'Admin Console'];
+const requiredMarkers = ['Fansten', 'Admin Console'];
 const forbiddenMarkers = ['FightPulse v2', 'This page could not be found'];
 const maxAttempts = 6;
 const retryDelayMs = 5000;

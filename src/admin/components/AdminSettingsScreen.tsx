@@ -415,12 +415,12 @@ export function AdminSettingsScreen() {
     onConfirm: () => void;
   } | null>(null);
 
-  const [platformName, setPlatformName] = useState('FUNDON');
-  const [domain, setDomain] = useState<(typeof adminPlatformDomains)[number]>('fundon.app');
+  const [platformName, setPlatformName] = useState('Fansten');
+  const [domain, setDomain] = useState<(typeof adminPlatformDomains)[number]>('fansten.app');
   const [language, setLanguage] = useState<(typeof adminPlatformLanguages)[number]>('Русский');
   const [timezone, setTimezone] = useState<(typeof adminPlatformTimezones)[number]>('Москва (GMT+3)');
   const [currency, setCurrency] = useState<(typeof adminPlatformCurrencies)[number]>('Российский рубль (₽)');
-  const [supportEmail, setSupportEmail] = useState('ops@fundon.app');
+  const [supportEmail, setSupportEmail] = useState('ops@fansten.app');
   const [dataRegion, setDataRegion] = useState('Франкфурт · EU Central');
   const [maintenanceMode, setMaintenanceMode] = useState(false);
   const [archiveDuration, setArchiveDuration] = useState<(typeof adminArchiveDurationOptions)[number]>('24 часа');
@@ -467,7 +467,7 @@ export function AdminSettingsScreen() {
       activeTab === 'roles'
         ? {
             title: 'Сохранить изменения ролей и прав',
-            description: 'Новые правила доступа и состав ролей будут применены ко всему административному контуру FUNDON.',
+            description: 'Новые правила доступа и состав ролей будут применены ко всему административному контуру Fansten.',
             confirmLabel: 'Сохранить роли',
             category: 'roles' as const,
             badge: 'Роли и права'
@@ -502,7 +502,7 @@ export function AdminSettingsScreen() {
       confirmLabel: meta.confirmLabel,
       tone: 'primary',
       badge: meta.badge,
-      footnote: 'Критичные настройки и роли попадают в обязательный журнал аудита FUNDON.',
+      footnote: 'Критичные настройки и роли попадают в обязательный журнал аудита Fansten.',
       details: [
         { label: 'Раздел', value: adminSettingsTabs.find((tab) => tab.id === activeTab)?.label ?? 'Настройки' },
         { label: 'Домен', value: domain },
@@ -538,7 +538,7 @@ export function AdminSettingsScreen() {
       case 'general':
         return (
           <div className="grid gap-6 xl:grid-cols-2">
-            <SettingsCard title="Общие настройки" subtitle="Базовая конфигурация бренда, локали и рабочего контура FUNDON.">
+            <SettingsCard title="Общие настройки" subtitle="Базовая конфигурация бренда, локали и рабочего контура Fansten.">
               <Field label="Название платформы">
                 <TextInput value={platformName} onChange={setPlatformName} />
               </Field>
@@ -556,7 +556,7 @@ export function AdminSettingsScreen() {
               </Field>
             </SettingsCard>
 
-            <SettingsCard title="Рабочий контур" subtitle="Параметры окружения, поддержки и системных URL для основного контура FUNDON.">
+            <SettingsCard title="Рабочий контур" subtitle="Параметры окружения, поддержки и системных URL для основного контура Fansten.">
               <Field label="Почта поддержки">
                 <TextInput value={supportEmail} onChange={setSupportEmail} />
               </Field>
@@ -570,7 +570,7 @@ export function AdminSettingsScreen() {
                 onChange={setMaintenanceMode}
               />
               <div className="grid grid-cols-2 gap-3">
-                <MetricPill label="Основной URL" value="https://fundon.vercel.app" />
+                <MetricPill label="Основной URL" value="https://fansten.app" />
                 <MetricPill label="Админ-раздел" value="/admin" />
               </div>
             </SettingsCard>
@@ -619,7 +619,7 @@ export function AdminSettingsScreen() {
       case 'roles':
         return (
           <div className="grid gap-6 xl:grid-cols-2">
-            <SettingsCard title="Роли и права" subtitle="MVP-роли FUNDON с понятными зонами ответственности и базовыми правами доступа.">
+            <SettingsCard title="Роли и права" subtitle="MVP-роли Fansten с понятными зонами ответственности и базовыми правами доступа.">
               <div className="space-y-3">
                 {adminRoles.map((role) => (
                   <RoleCard
@@ -646,7 +646,7 @@ export function AdminSettingsScreen() {
               </div>
             </SettingsCard>
 
-            <SettingsCard title="Команда доступа" subtitle="Кто сейчас работает в контуре FUNDON и за какие зоны отвечает.">
+            <SettingsCard title="Команда доступа" subtitle="Кто сейчас работает в контуре Fansten и за какие зоны отвечает.">
               <div className="space-y-3">
                 {adminAdminUsers.map((adminUser) => (
                   <AdminAccessRow
@@ -866,7 +866,7 @@ export function AdminSettingsScreen() {
       case 'integrations':
         return (
           <div className="grid gap-6 xl:grid-cols-2">
-            <SettingsCard title="Интеграции" subtitle="Платёжные, messaging- и data-интеграции FUNDON.">
+            <SettingsCard title="Интеграции" subtitle="Платёжные, messaging- и data-интеграции Fansten.">
               <InfoRow icon={<WalletIcon />} label="Платёжные вебхуки" value="3 endpoint'а · последняя синхронизация 2 мин. назад" />
               <InfoRow icon={<BellIcon />} label="Шлюз push-уведомлений" value="Firebase · статус стабильный" />
               <InfoRow icon={<HistoryIcon />} label="Хранилище данных" value="Синхронизация BigQuery · каждые 30 мин." />

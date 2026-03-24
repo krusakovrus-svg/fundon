@@ -9,7 +9,7 @@ const themeBootScript = `(function(){try{var theme=localStorage.getItem('fightpu
 const languageBootScript = `(function(){try{var language=localStorage.getItem('fightpulse-language')||'ru';document.documentElement.lang=language;}catch(e){document.documentElement.lang='ru';}})();`;
 
 export const metadata = {
-  title: 'FUNDON',
+  title: 'Fansten',
   description: 'Live fan support platform'
 };
 

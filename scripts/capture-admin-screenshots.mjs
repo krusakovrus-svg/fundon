@@ -26,7 +26,7 @@ for (const route of routes) {
 
   const bodyText = await page.locator('body').innerText();
 
-  if (!bodyText.includes('FUNDON') || !bodyText.includes('Admin Console')) {
+  if (!bodyText.includes('Fansten') || !bodyText.includes('Admin Console')) {
     await browser.close();
     throw new Error(`Admin shell markers are missing on ${url}`);
   }

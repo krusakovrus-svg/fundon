@@ -959,7 +959,7 @@ export function AdminEventsScreen() {
           <div className="flex items-center justify-between gap-4 border-b border-black/[0.045] px-6 py-5">
             <div>
               <h2 className="text-[1.18rem] font-semibold tracking-tight text-slate-900">Список событий</h2>
-              <p className="mt-1 text-sm text-slate-500">Операционный обзор ближайших, эфирных, завершённых и черновых событий FUNDON.</p>
+              <p className="mt-1 text-sm text-slate-500">Операционный обзор ближайших, эфирных, завершённых и черновых событий Fansten.</p>
             </div>
             <div className="inline-flex items-center gap-2 rounded-full bg-[#f5f8fd] px-3 py-1.5 text-[0.78rem] font-semibold text-slate-500">
               <SearchIcon />
