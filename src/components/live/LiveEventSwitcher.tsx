@@ -8,6 +8,7 @@ interface LiveEventSwitcherItem {
   sportLabel: string;
   headline: string;
   stageLabel?: string;
+  statusLabel: string;
 }
 
 interface LiveEventSwitcherProps {
@@ -50,7 +51,7 @@ export function LiveEventSwitcher({ items, activeId, onSelect, label }: LiveEven
                   <p className="truncate text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-text-muted">
                     {item.sportLabel}
                   </p>
-                  <span className="app-pill shrink-0">{t('liveStatus')}</span>
+                  <span className="app-pill shrink-0">{item.statusLabel || t('liveStatus')}</span>
                 </div>
                 <p className="mt-2 truncate text-[1rem] font-semibold tracking-tight text-text-primary">{item.headline}</p>
                 {item.stageLabel ? (

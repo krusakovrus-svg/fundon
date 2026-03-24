@@ -13,15 +13,47 @@ import { LiveEventHero } from './LiveEventHero';
 import { LiveEventSwitcher } from './LiveEventSwitcher';
 import { SupportBattleCard } from './SupportBattleCard';
 
+function getFallbackParticipantLabel(headline: string | undefined, index: number, fallback: string) {
+  const parts = headline
+    ?.split(/\s+vs\s+/i)
+    .map((part) => part.trim())
+    .filter(Boolean);
+
+  return parts?.[index] || fallback;
+}
+
+function resolveParticipant(event: (typeof liveEvents)[number], index: number) {
+  const rawParticipant = event.participants[index];
+
+  if (rawParticipant) {
+    return rawParticipant;
+  }
+
+  const fallbackEn = index === 0 ? 'Left' : 'Right';
+  const fallbackRu = index === 0 ? 'Лево' : 'Право';
+
+  return {
+    id: `${event.id}_fallback_${index}`,
+    name: getFallbackParticipantLabel(event.headline, index, fallbackEn),
+    nameRu: getFallbackParticipantLabel(event.headlineRu, index, fallbackRu),
+    shortName: getFallbackParticipantLabel(event.headline, index, fallbackEn),
+    shortNameRu: getFallbackParticipantLabel(event.headlineRu, index, fallbackRu),
+    teamLabel: getFallbackParticipantLabel(event.headline, index, fallbackEn),
+    teamLabelRu: getFallbackParticipantLabel(event.headlineRu, index, fallbackRu),
+    supportTotal: 0,
+    supporters: 0
+  };
+}
+
 function createInitialSupportMap() {
   return Object.fromEntries(
     liveEvents.map((event) => [
       event.id,
       {
-        left: event.participants[0].supportTotal,
-        right: event.participants[1].supportTotal,
-        leftSupporters: event.participants[0].supporters,
-        rightSupporters: event.participants[1].supporters
+        left: event.participants[0]?.supportTotal ?? 0,
+        right: event.participants[1]?.supportTotal ?? 0,
+        leftSupporters: event.participants[0]?.supporters ?? 0,
+        rightSupporters: event.participants[1]?.supporters ?? 0
       }
     ])
   );
@@ -64,8 +96,8 @@ export function LiveScreen() {
 
   const currentLeaderboard = leaderboardMap[selectedEvent.id] ?? selectedEvent.leaderboard;
   const currentSupport = supportMap[selectedEvent.id] ?? createInitialSupportMap()[selectedEvent.id];
-  const leftParticipant = selectedEvent.participants[0];
-  const rightParticipant = selectedEvent.participants[1];
+  const leftParticipant = resolveParticipant(selectedEvent, 0);
+  const rightParticipant = resolveParticipant(selectedEvent, 1);
 
   const handleSelectAmount = (amount: SupportAmount) => {
     setSelectedAmount(amount);
@@ -132,9 +164,26 @@ export function LiveScreen() {
       <LiveEventSwitcher
         items={liveEvents.map((event) => ({
           id: event.id,
-          sportLabel: language === 'ru' ? event.categoryLabelRu : event.categoryLabel,
-          headline: language === 'ru' ? event.headlineRu : event.headline,
-          stageLabel: language === 'ru' ? event.stageLabelRu : event.stageLabel
+          sportLabel: (language === 'ru' ? event.categoryLabelRu : event.categoryLabel) || event.category,
+          headline:
+            (language === 'ru' ? event.headlineRu : event.headline) ||
+            [
+              resolveParticipant(event, 0)[language === 'ru' ? 'shortNameRu' : 'shortName'],
+              resolveParticipant(event, 1)[language === 'ru' ? 'shortNameRu' : 'shortName']
+            ].join(' vs '),
+          stageLabel: (language === 'ru' ? event.stageLabelRu : event.stageLabel) || event.timerLabel || '—',
+          statusLabel:
+            event.status === 'upcoming'
+              ? language === 'ru'
+                ? 'Скоро'
+                : 'Upcoming'
+              : event.status === 'ended'
+                ? language === 'ru'
+                  ? 'Завершено'
+                  : 'Finished'
+                : language === 'ru'
+                  ? 'В эфире'
+                  : 'LIVE'
         }))}
         activeId={selectedEvent.id}
         onSelect={setSelectedEventId}
