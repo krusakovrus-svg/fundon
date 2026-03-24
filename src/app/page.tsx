@@ -1,5 +1,5 @@
-﻿import { redirect } from 'next/navigation';
+import { PublicSiteScreen } from '@/components/site/PublicSiteScreen';
 
 export default function RootPage() {
-  redirect('/home');
+  return <PublicSiteScreen locale="en" />;
 }

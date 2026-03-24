@@ -6,10 +6,11 @@ import { usePathname } from 'next/navigation';
 import { MobileNav } from '@/components/layout/MobileNav';
 import { SideMenuDrawer } from '@/components/layout/SideMenuDrawer';
 import { TopUtilityBar } from '@/components/layout/TopUtilityBar';
+import { appRoutes, normalizeAppPath } from '@/lib/routing';
 
 export function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const currentPath = pathname ?? '/live';
+  const currentPath = normalizeAppPath(pathname ?? appRoutes.live);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {

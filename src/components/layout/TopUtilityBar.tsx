@@ -6,6 +6,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { useLanguage } from '@/components/providers/LanguageProvider';
 import { mockData } from '@/data/mock';
 import { formatCurrency } from '@/lib/format';
+import { appRoutes, normalizeAppPath } from '@/lib/routing';
 import { cn } from '@/lib/utils';
 
 function SearchIcon() {
@@ -63,12 +64,13 @@ export function TopUtilityBar({ isMenuOpen, onToggleMenu }: { isMenuOpen: boolea
   const pathname = usePathname();
   const router = useRouter();
   const { language, t } = useLanguage();
+  const normalizedPath = normalizeAppPath(pathname);
   const balanceLabel = formatCurrency(mockData.profile.walletBalance, language);
-  const isHomePage = pathname === '/home';
-  const isSportsIndexPage = pathname === '/sports';
-  const isSportDetailPage = pathname?.startsWith('/sports/');
-  const isFavoritesPage = pathname?.startsWith('/favorites');
-  const isNotificationsPage = pathname?.startsWith('/notifications');
+  const isHomePage = normalizedPath === appRoutes.home;
+  const isSportsIndexPage = normalizedPath === appRoutes.sports;
+  const isSportDetailPage = normalizedPath.startsWith(`${appRoutes.sports}/`);
+  const isFavoritesPage = normalizedPath.startsWith(appRoutes.favorites);
+  const isNotificationsPage = normalizedPath.startsWith(appRoutes.notifications);
 
   const menuLabel = language === 'ru' ? '\u041e\u0442\u043a\u0440\u044b\u0442\u044c \u043c\u0435\u043d\u044e' : 'Open menu';
   const homeTitle = language === 'ru' ? '\u0413\u043b\u0430\u0432\u043d\u0430\u044f' : 'Home';
@@ -82,7 +84,7 @@ export function TopUtilityBar({ isMenuOpen, onToggleMenu }: { isMenuOpen: boolea
       return;
     }
 
-    router.push('/live');
+    router.push(appRoutes.live);
   };
 
   if (isHomePage || isSportsIndexPage) {
@@ -108,7 +110,7 @@ export function TopUtilityBar({ isMenuOpen, onToggleMenu }: { isMenuOpen: boolea
 
             <div className="flex shrink-0 items-center gap-1.5">
               <Link
-                href="/notifications"
+                href={appRoutes.notifications}
                 aria-label={t('notificationsLabel')}
                 className={cn(
                   'app-topbar-icon',
@@ -155,7 +157,7 @@ export function TopUtilityBar({ isMenuOpen, onToggleMenu }: { isMenuOpen: boolea
               <ArrowLeftIcon />
             </button>
           ) : (
-            <Link href="/sports" aria-label={t('searchLabel')} className={cn('app-topbar-icon', surfaceClass)}>
+            <Link href={appRoutes.sports} aria-label={t('searchLabel')} className={cn('app-topbar-icon', surfaceClass)}>
               <SearchIcon />
             </Link>
           )}
@@ -168,7 +170,7 @@ export function TopUtilityBar({ isMenuOpen, onToggleMenu }: { isMenuOpen: boolea
           </button>
 
           <Link
-            href="/favorites"
+            href={appRoutes.favorites}
             aria-label={t('favoritesTitle')}
             className={cn('app-topbar-icon', surfaceClass, isFavoritesPage && 'text-[rgb(var(--accent-orange))]')}
           >
@@ -176,7 +178,7 @@ export function TopUtilityBar({ isMenuOpen, onToggleMenu }: { isMenuOpen: boolea
           </Link>
 
           <Link
-            href="/notifications"
+            href={appRoutes.notifications}
             aria-label={t('notificationsLabel')}
             className={cn('app-topbar-icon', surfaceClass, isNotificationsPage && 'text-[rgb(var(--accent-orange))]')}
           >

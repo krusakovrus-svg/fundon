@@ -14,6 +14,7 @@ import { getSportById } from '@/data/sports';
 import { formatCurrency } from '@/lib/format';
 import { getStoredProfileAvatar, PROFILE_AVATAR_UPDATED_EVENT } from '@/lib/profileAvatar';
 import { getStoredProfileName, PROFILE_NAME_UPDATED_EVENT } from '@/lib/profileName';
+import { appRoutes, normalizeAppPath, stripAppBase } from '@/lib/routing';
 import { getStoredSportPath } from '@/lib/sportsHome';
 import { cn } from '@/lib/utils';
 
@@ -32,12 +33,13 @@ interface DrawerItem {
 }
 
 function getSportIdFromPath(path: string) {
-  if (!path.startsWith('/sports/')) return 'martial-arts';
-  return path.replace('/sports/', '') || 'martial-arts';
+  const relativePath = stripAppBase(path);
+  if (!relativePath.startsWith('/sports/')) return 'martial-arts';
+  return relativePath.replace('/sports/', '') || 'martial-arts';
 }
 
 function DrawerLink({ item, currentPath, onClose }: { item: DrawerItem; currentPath: string; onClose: () => void }) {
-  const isActive = item.matches(currentPath);
+  const isActive = item.matches(normalizeAppPath(currentPath));
   const showBadge = item.badge !== undefined && item.badge !== 0 && item.badge !== '0';
 
   return (
@@ -81,7 +83,7 @@ function DrawerLink({ item, currentPath, onClose }: { item: DrawerItem; currentP
 export function SideMenuDrawer({ isOpen, currentPath, onClose }: SideMenuDrawerProps) {
   const { favorites } = useFavorites();
   const { language, t } = useLanguage();
-  const [storedHomePath, setStoredHomePath] = useState('/sports/martial-arts');
+  const [storedHomePath, setStoredHomePath] = useState<string>(appRoutes.martialArts);
   const [avatarImage, setAvatarImage] = useState<string | null>(null);
   const [storedProfileName, setStoredProfileName] = useState<string | null>(null);
 
@@ -155,33 +157,33 @@ export function SideMenuDrawer({ isOpen, currentPath, onClose }: SideMenuDrawerP
   const mainItems = useMemo<DrawerItem[]>(
     () => [
       {
-        href: '/home',
+        href: appRoutes.home,
         label: language === 'ru' ? 'Главная' : 'Home',
         subtitle: currentSportLabel,
-        matches: (path) => path === '/home' || path === '/'
+        matches: (path) => path === appRoutes.home
       },
       {
-        href: '/live',
+        href: appRoutes.live,
         label: t('navLive'),
-        matches: (path) => path.startsWith('/live')
+        matches: (path) => path.startsWith(appRoutes.live)
       },
       {
-        href: '/events',
+        href: appRoutes.events,
         label: t('navEvents'),
-        matches: (path) => path.startsWith('/events')
+        matches: (path) => path.startsWith(appRoutes.events)
       },
       {
-        href: '/archive',
+        href: appRoutes.archive,
         label: language === 'ru' ? 'Архив событий' : 'Event Archive',
         subtitle: language === 'ru' ? 'Поддержка после эфира' : 'Post-event support',
         badge: archiveEventCount,
-        matches: (path) => path.startsWith('/archive')
+        matches: (path) => path.startsWith(appRoutes.archive)
       },
       {
-        href: '/sports',
+        href: appRoutes.sports,
         label: language === 'ru' ? 'Виды спорта' : 'Sports',
         subtitle: currentSportLabel || undefined,
-        matches: (path) => path.startsWith('/sports')
+        matches: (path) => path.startsWith(appRoutes.sports)
       }
     ],
     [archiveEventCount, currentSportLabel, language, t]
@@ -190,21 +192,21 @@ export function SideMenuDrawer({ isOpen, currentPath, onClose }: SideMenuDrawerP
   const personalItems = useMemo<DrawerItem[]>(
     () => [
       {
-        href: '/profile',
+        href: appRoutes.profile,
         label: t('navProfile'),
-        matches: (path) => path.startsWith('/profile')
+        matches: (path) => path.startsWith(appRoutes.profile)
       },
       {
-        href: '/favorites',
+        href: appRoutes.favorites,
         label: t('favoritesTitle'),
         badge: favoriteCount,
-        matches: (path) => path.startsWith('/favorites')
+        matches: (path) => path.startsWith(appRoutes.favorites)
       },
       {
-        href: '/notifications',
+        href: appRoutes.notifications,
         label: t('notificationsTitle'),
         badge: liveFavoriteCount,
-        matches: (path) => path.startsWith('/notifications')
+        matches: (path) => path.startsWith(appRoutes.notifications)
       }
     ],
     [favoriteCount, liveFavoriteCount, t]
@@ -213,19 +215,19 @@ export function SideMenuDrawer({ isOpen, currentPath, onClose }: SideMenuDrawerP
   const socialItems = useMemo<DrawerItem[]>(
     () => [
       {
-        href: '/leaderboard',
+        href: appRoutes.leaderboard,
         label: t('navLeaderboard'),
-        matches: (path) => path.startsWith('/leaderboard')
+        matches: (path) => path.startsWith(appRoutes.leaderboard)
       },
       {
-        href: '/rooms',
+        href: appRoutes.rooms,
         label: t('navRooms'),
-        matches: (path) => path.startsWith('/rooms')
+        matches: (path) => path.startsWith(appRoutes.rooms)
       },
       {
-        href: '/settings',
+        href: appRoutes.settings,
         label: t('settings'),
-        matches: (path) => path.startsWith('/settings')
+        matches: (path) => path.startsWith(appRoutes.settings)
       }
     ],
     [t]

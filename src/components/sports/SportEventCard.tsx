@@ -5,8 +5,10 @@ import Link from 'next/link';
 
 import { useFavorites } from '@/components/providers/FavoritesProvider';
 import { useLanguage } from '@/components/providers/LanguageProvider';
+import { getSportHref } from '@/data/sports';
 import { formatSportEventDate, formatSportEventTime } from '@/data/sportEvents';
 import { getParticipantVisual } from '@/lib/participantVisuals';
+import { appRoutes, normalizeAppPath } from '@/lib/routing';
 import { cn } from '@/lib/utils';
 import type { SportEventParticipant, SportEventRecord } from '@/types';
 
@@ -86,7 +88,7 @@ export function SportEventCard({ event }: { event: SportEventRecord }) {
       ? event.displayTimeRu ?? formatSportEventTime(event.startsAt, language)
       : event.displayTimeEn ?? formatSportEventTime(event.startsAt, language);
   const isLiveState = dateLabel.trim().toLowerCase() === 'live';
-  const href = isLiveState ? '/live' : event.detailPath ?? `/sports/${event.sportId}`;
+  const href = isLiveState ? appRoutes.live : normalizeAppPath(event.detailPath ?? getSportHref(event.sportId));
 
   return (
     <article className="group relative overflow-hidden rounded-[1.35rem] border border-black/[0.04] bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(247,249,252,0.92))] shadow-[0_12px_26px_rgba(15,23,42,0.05)] transition dark:border-white/[0.07] dark:bg-[linear-gradient(180deg,rgba(25,32,46,0.92),rgba(17,23,35,0.88))] dark:shadow-[0_16px_28px_rgba(2,6,23,0.18)]">

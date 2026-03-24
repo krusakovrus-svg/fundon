@@ -9,6 +9,7 @@ import { SportEventCard } from '@/components/sports/SportEventCard';
 import { PageHeader } from '@/components/ui/PageHeader';
 import { SectionCard } from '@/components/ui/SectionCard';
 import { isSportEventLive } from '@/data/sportEvents';
+import { appRoutes } from '@/lib/routing';
 
 export function FavoritesScreen() {
   const { favorites } = useFavorites();
@@ -66,13 +67,13 @@ export function FavoritesScreen() {
 
             <div className="grid grid-cols-2 gap-2.5">
               <Link
-                href="/sports"
+                href={appRoutes.sports}
                 className="inline-flex min-h-[3rem] items-center justify-center rounded-[1.05rem] border border-transparent bg-[linear-gradient(180deg,rgba(255,136,83,1),rgba(255,108,54,1))] px-4 py-3 text-[0.9rem] font-semibold text-white shadow-[0_14px_24px_rgba(255,116,55,0.16)] transition hover:brightness-105"
               >
                 {isRussian ? 'К видам спорта' : 'Open sports'}
               </Link>
               <Link
-                href="/events"
+                href={appRoutes.events}
                 className="inline-flex min-h-[3rem] items-center justify-center rounded-[1.05rem] border border-black/[0.05] bg-[rgba(247,249,252,0.82)] px-4 py-3 text-[0.9rem] font-semibold text-text-primary transition hover:bg-white dark:border-white/[0.06] dark:bg-[linear-gradient(180deg,rgba(34,42,56,0.94),rgba(22,30,43,0.92))] dark:text-white/[0.92] dark:hover:bg-[linear-gradient(180deg,rgba(39,48,63,0.94),rgba(25,34,47,0.92))]"
               >
                 {isRussian ? 'К событиям' : 'Open events'}

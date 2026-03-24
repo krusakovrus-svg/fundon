@@ -1,3 +1,5 @@
+import { appRoutes } from '@/lib/routing';
+
 export type SportIconKind =
   | 'football'
   | 'hockey'
@@ -69,5 +71,5 @@ export function getSportById(id: string) {
 
 export function getSportHref(id: string) {
   const normalizedId = normalizeSportId(id);
-  return normalizedId === 'martial-arts' ? '/sports/martial-arts' : `/sports/${normalizedId}`;
+  return normalizedId === 'martial-arts' ? appRoutes.martialArts : appRoutes.sport(normalizedId);
 }

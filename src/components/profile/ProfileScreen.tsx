@@ -14,6 +14,7 @@ import { isSportEventLive } from '@/data/sportEvents';
 import { formatCurrency } from '@/lib/format';
 import { getStoredProfileAvatar, setStoredProfileAvatar } from '@/lib/profileAvatar';
 import { getStoredProfileName, setStoredProfileName } from '@/lib/profileName';
+import { appRoutes } from '@/lib/routing';
 import { cn } from '@/lib/utils';
 
 function BellIcon() {
@@ -235,7 +236,7 @@ export function ProfileScreen() {
         description={t('profileHint')}
         actions={
           <Link
-            href="/notifications"
+            href={appRoutes.notifications}
             aria-label={labels.goToNotifications}
             className="inline-flex h-10 w-10 items-center justify-center rounded-[1rem] border border-black/[0.045] bg-[rgba(247,249,252,0.72)] text-text-primary shadow-[0_8px_18px_rgba(15,23,42,0.04)] transition hover:bg-white dark:border-white/[0.07] dark:bg-white/[0.045] dark:text-white/[0.9] dark:hover:bg-white/[0.07] dark:shadow-none"
           >
@@ -424,7 +425,7 @@ export function ProfileScreen() {
             <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-text-muted">{t('leaderboardTitle')}</p>
           </div>
           <Link
-            href="/leaderboard"
+            href={appRoutes.leaderboard}
             className="inline-flex items-center rounded-full border border-black/[0.045] bg-[rgba(247,249,252,0.82)] px-3 py-1.5 text-[0.68rem] font-semibold tracking-[0.01em] text-text-secondary transition hover:bg-white hover:text-text-primary dark:border-white/[0.06] dark:bg-white/[0.04] dark:text-white/[0.66] dark:hover:bg-white/[0.06] dark:hover:text-white"
           >
             {leaderboardCtaLabel}
@@ -447,7 +448,7 @@ export function ProfileScreen() {
 
       <SectionCard className={cn(sectionCardClass, 'bg-white/[0.82] px-4 py-2.5')}>
         <Link
-          href="/favorites"
+          href={appRoutes.favorites}
           className="flex items-center justify-between gap-3 rounded-[1rem] py-3.5 transition hover:bg-black/[0.018] dark:hover:bg-white/[0.028]"
         >
           <div className="flex items-center gap-3">
@@ -472,7 +473,7 @@ export function ProfileScreen() {
         <div className="mx-0.5 border-t border-black/[0.045] dark:border-white/[0.055]" />
 
         <Link
-          href="/notifications"
+          href={appRoutes.notifications}
           className="flex items-center justify-between gap-3 rounded-[1rem] py-3.5 transition hover:bg-black/[0.018] dark:hover:bg-white/[0.028]"
         >
           <div className="flex items-center gap-3">

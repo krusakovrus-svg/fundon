@@ -3,13 +3,18 @@
 import { usePathname } from 'next/navigation';
 
 import { AppShell } from '@/components/layout/AppShell';
+import { isAdminPath, isAppShellPath } from '@/lib/routing';
 
 export function AppFrame({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
 
-  if (pathname?.startsWith('/admin')) {
+  if (isAdminPath(pathname)) {
     return <>{children}</>;
   }
 
-  return <AppShell>{children}</AppShell>;
+  if (isAppShellPath(pathname)) {
+    return <AppShell>{children}</AppShell>;
+  }
+
+  return <>{children}</>;
 }

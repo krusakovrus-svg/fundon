@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useMemo } from "react";
 
 import { useLanguage } from "@/components/providers/LanguageProvider";
+import { appRoutes, normalizeAppPath } from "@/lib/routing";
 import { cn } from "@/lib/utils";
 
 function HomeIcon() {
@@ -67,36 +68,37 @@ type StaticNavItem = {
 export function MobileNav() {
   const pathname = usePathname();
   const { language, t } = useLanguage();
+  const normalizedPath = normalizeAppPath(pathname);
 
   const navItems = useMemo(
     () =>
       [
         {
-          href: "/home",
+          href: appRoutes.home,
           key: "home" as const,
           icon: HomeIcon,
           label: language === "ru" ? "\u0414\u043e\u043c" : "Home",
         },
         {
-          href: "/sports",
+          href: appRoutes.sports,
           key: "search" as const,
           icon: SearchIcon,
           label: t("searchLabel"),
         },
         {
-          href: "/events",
+          href: appRoutes.events,
           key: "events" as const,
           icon: EventsIcon,
           label: t("navEvents"),
         },
         {
-          href: "/live",
+          href: appRoutes.live,
           key: "live" as const,
           icon: LiveIcon,
           label: t("navLive"),
         },
         {
-          href: "/profile",
+          href: appRoutes.profile,
           key: "profile" as const,
           icon: ProfileIcon,
           label: t("navProfile"),
@@ -115,10 +117,10 @@ export function MobileNav() {
           {navItems.map(({ href, icon: Icon, key, label }) => {
             const isActive =
               key === "home"
-                ? pathname === "/home" || pathname === "/"
+                ? normalizedPath === appRoutes.home
                 : key === "search"
-                  ? pathname === "/sports" || pathname?.startsWith("/sports/")
-                  : pathname === href || pathname.startsWith(`${href}/`);
+                  ? normalizedPath === appRoutes.sports || normalizedPath.startsWith(`${appRoutes.sports}/`)
+                  : normalizedPath === href || normalizedPath.startsWith(`${href}/`);
 
             return (
               <Link

@@ -8,6 +8,7 @@ import { PageHeader } from '@/components/ui/PageHeader';
 import { SectionCard } from '@/components/ui/SectionCard';
 import { liveEvents } from '@/data/liveEvents';
 import { mockData } from '@/data/mock';
+import { appRoutes } from '@/lib/routing';
 
 function SparkIcon() {
   return (
@@ -198,7 +199,7 @@ export function RoomsScreen() {
         </div>
 
         <Link
-          href="/live"
+          href={appRoutes.live}
           className="inline-flex min-h-[3rem] w-full items-center justify-center rounded-[1.08rem] border border-black/[0.05] bg-white px-4 py-3 text-[0.92rem] font-semibold text-text-primary shadow-[0_12px_22px_rgba(15,23,42,0.07)] transition hover:bg-white/96 dark:border-white/[0.06] dark:bg-[linear-gradient(180deg,rgba(34,42,56,0.94),rgba(22,30,43,0.92))] dark:text-white dark:shadow-[0_10px_18px_rgba(2,6,23,0.12)] dark:hover:bg-[linear-gradient(180deg,rgba(39,48,63,0.94),rgba(25,34,47,0.92))]"
         >
           {openLiveLabel}

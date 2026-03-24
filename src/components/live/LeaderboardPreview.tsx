@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useLanguage } from '@/components/providers/LanguageProvider';
 import { SectionCard } from '@/components/ui/SectionCard';
 import { formatCount } from '@/lib/format';
+import { appRoutes } from '@/lib/routing';
 import type { LeaderboardEntry, UserProfile } from '@/types';
 
 interface LeaderboardPreviewProps {
@@ -25,7 +26,7 @@ export function LeaderboardPreview({ entries, profile }: LeaderboardPreviewProps
           <p className="mt-1.5 text-[0.84rem] text-text-secondary/80">{t('leaderboardPreviewHint')}</p>
         </div>
         <Link
-          href="/leaderboard"
+          href={appRoutes.leaderboard}
           className="rounded-full border border-black/[0.05] bg-white/66 px-3 py-1.5 text-[0.76rem] font-semibold text-text-primary shadow-[0_8px_18px_rgba(15,23,42,0.04)] dark:border-white/[0.08] dark:bg-white/[0.06] dark:shadow-none"
         >
           {t('openLeaderboard')}

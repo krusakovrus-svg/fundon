@@ -7,6 +7,7 @@ import { MainPageLayout } from '@/components/layout/MainPageLayout';
 import { useLanguage } from '@/components/providers/LanguageProvider';
 import type { SportOption } from '@/data/sports';
 import { getSportHref } from '@/data/sports';
+import { appRoutes } from '@/lib/routing';
 import { setStoredSportPath } from '@/lib/sportsHome';
 
 export function SportLandingScreen({ sport }: { sport: SportOption }) {
@@ -46,7 +47,7 @@ export function SportLandingScreen({ sport }: { sport: SportOption }) {
         </div>
 
         <Link
-          href="/sports"
+          href={appRoutes.sports}
           className="app-card rounded-[1.35rem] px-4 py-4 text-[0.98rem] font-semibold text-text-primary transition hover:border-accent-orange/20"
         >
           {language === 'ru' ? 'Выбрать другой спорт' : 'Choose another sport'}

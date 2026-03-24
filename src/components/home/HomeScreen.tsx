@@ -8,8 +8,9 @@ import { MainPageLayout } from '@/components/layout/MainPageLayout';
 import { useLanguage } from '@/components/providers/LanguageProvider';
 import { liveEvents } from '@/data/liveEvents';
 import { formatSportEventDate, formatSportEventTime, getAllSportEvents } from '@/data/sportEvents';
-import { getSportById } from '@/data/sports';
+import { getSportById, getSportHref } from '@/data/sports';
 import { getParticipantVisual } from '@/lib/participantVisuals';
+import { appRoutes, stripAppBase } from '@/lib/routing';
 import { getStoredSportPath } from '@/lib/sportsHome';
 import { cn } from '@/lib/utils';
 import type { SportEventParticipant, SportEventRecord } from '@/types';
@@ -98,8 +99,9 @@ function isStaticTodayEvent(event: SportEventRecord) {
 }
 
 function getSportIdFromPath(path: string | null | undefined) {
-  if (!path?.startsWith('/sports/')) return null;
-  return path.replace('/sports/', '') || null;
+  const relativePath = stripAppBase(path);
+  if (!relativePath.startsWith('/sports/')) return null;
+  return relativePath.replace('/sports/', '') || null;
 }
 
 function SectionHeader({ title, count }: { title: string; count: number }) {
@@ -163,7 +165,7 @@ function HomeEventCard({ event, language }: { event: SportEventRecord; language:
     language === 'ru'
       ? event.displayTimeRu ?? formatSportEventTime(event.startsAt, language)
       : event.displayTimeEn ?? formatSportEventTime(event.startsAt, language);
-  const href = isLive ? '/live' : `/sports/${event.sportId}`;
+  const href = isLive ? appRoutes.live : getSportHref(event.sportId);
 
   return (
     <Link
@@ -342,7 +344,7 @@ export function HomeScreen() {
             <p className="mt-1.5 text-[0.82rem] leading-5 text-text-secondary dark:text-white/[0.62]">{labels.featuredCtaHint}</p>
 
             <Link
-              href="/live"
+                href={appRoutes.live}
               className="mt-3.5 inline-flex min-h-[3rem] w-full items-center justify-between rounded-[1.02rem] border border-white/70 bg-[linear-gradient(135deg,rgba(255,255,255,0.92),rgba(255,244,238,0.90))] px-4 py-3 text-[0.94rem] font-semibold text-text-primary shadow-[0_10px_22px_rgba(15,23,42,0.08)] transition hover:brightness-[1.01] dark:border-white/[0.06] dark:bg-[linear-gradient(135deg,rgba(255,124,65,0.14),rgba(41,50,65,0.96))] dark:text-white dark:shadow-[0_10px_20px_rgba(2,6,23,0.16)] dark:hover:bg-[linear-gradient(135deg,rgba(255,124,65,0.16),rgba(46,56,72,0.98))]"
             >
               <span>{labels.support}</span>
@@ -407,7 +409,7 @@ export function HomeScreen() {
         </section>
 
         <Link
-          href="/events"
+                href={appRoutes.events}
           className="group flex items-center justify-between rounded-[1.28rem] border border-black/[0.04] bg-[linear-gradient(180deg,rgba(255,255,255,0.84),rgba(247,249,252,0.78))] px-4 py-3.5 text-[0.95rem] text-text-primary shadow-[0_10px_22px_rgba(15,23,42,0.04)] transition hover:bg-white dark:border-white/[0.06] dark:bg-[linear-gradient(180deg,rgba(21,28,41,0.88),rgba(14,20,31,0.84))] dark:hover:bg-[linear-gradient(180deg,rgba(24,31,44,0.90),rgba(16,22,34,0.86))] dark:shadow-[0_14px_24px_rgba(2,6,23,0.16)]"
         >
           <div className="min-w-0">
