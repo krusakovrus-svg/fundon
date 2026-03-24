@@ -8,6 +8,7 @@ import { liveEvents } from '@/data/liveEvents';
 import { mockData } from '@/data/mock';
 import { getHeatState } from '@/lib/arena';
 import { formatCurrency } from '@/lib/format';
+import { readSupportPreferences } from '@/lib/supportPreferences';
 import type { LeaderboardEntry, LiveActivityItem, LiveMoment, SupportAmount, UserProfile } from '@/types';
 import { LeaderboardPreview } from './LeaderboardPreview';
 import { LiveActivityFeed } from './LiveActivityFeed';
@@ -97,10 +98,10 @@ function createInitialMomentumMap(language: 'ru' | 'en') {
 export function LiveScreen() {
   const { language, t } = useLanguage();
   const mountedRef = useRef(false);
+  const initialSupportPreferences = readSupportPreferences();
 
-  const [selectedAmount, setSelectedAmount] = useState<SupportAmount>(
-    mockData.supportAmounts.find((amount) => amount === mockData.profile.lastSupportAmount) ?? mockData.supportAmounts[1]
-  );
+  const [selectedAmount, setSelectedAmount] = useState<SupportAmount>(initialSupportPreferences.defaultAmount);
+  const [quickSupportAmounts, setQuickSupportAmounts] = useState<SupportAmount[]>(initialSupportPreferences.quickAmounts);
   const [selectedEventId, setSelectedEventId] = useState(liveEvents[0].id);
   const [momentIndexByEvent, setMomentIndexByEvent] = useState<Record<string, number>>(createInitialMomentIndexMap);
   const [activityMap, setActivityMap] = useState<Record<string, LiveActivityItem[]>>(createInitialActivityMap);
@@ -110,6 +111,16 @@ export function LiveScreen() {
   );
   const [momentumByEvent, setMomentumByEvent] = useState<Record<string, string>>(() => createInitialMomentumMap(language));
   const [profile, setProfile] = useState<UserProfile>({ ...mockData.profile });
+
+  useEffect(() => {
+    const preferences = readSupportPreferences();
+    setSelectedAmount(preferences.defaultAmount);
+    setQuickSupportAmounts(preferences.quickAmounts);
+    setProfile((current) => ({
+      ...current,
+      lastSupportAmount: preferences.defaultAmount
+    }));
+  }, []);
 
   useEffect(() => {
     setMomentumByEvent((current) => {
@@ -326,7 +337,7 @@ export function LiveScreen() {
         <LiveDonationDock
           leftLabel={language === 'ru' ? leftParticipant.shortNameRu : leftParticipant.shortName}
           rightLabel={language === 'ru' ? rightParticipant.shortNameRu : rightParticipant.shortName}
-          amounts={mockData.supportAmounts}
+          amounts={quickSupportAmounts}
           selectedAmount={selectedAmount}
           onSelectAmount={handleSelectAmount}
           onSupportLeft={() => handleSupport('left')}

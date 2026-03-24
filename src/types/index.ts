@@ -3,7 +3,7 @@ export type ThemeMode = 'dark' | 'light' | 'system';
 
 export type EventStatus = 'live' | 'upcoming' | 'ended';
 export type EventCategory = 'sports' | 'music' | 'esports' | 'show' | 'creator';
-export type SupportAmount = 1 | 10 | 100 | 1000;
+export type SupportAmount = number;
 export type MomentIntensity = 'low' | 'medium' | 'high';
 export type LiveMomentType =
   | 'knockdown'
