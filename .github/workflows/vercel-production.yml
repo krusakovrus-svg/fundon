@@ -5,6 +5,31 @@ on:
     branches:
       - main
   workflow_dispatch:
+    inputs:
+      catalog_sync_scope:
+        description: Catalog sync scope requested by parser bot
+        required: true
+        default: all
+        type: choice
+        options:
+          - all
+          - football
+          - hockey
+          - basketball
+          - martial-arts
+          - ufc
+      triggered_by:
+        description: Trigger source
+        required: false
+        default: manual
+        type: string
+
+run-name: >-
+  ${{
+    github.event_name == 'workflow_dispatch'
+      && format('Catalog sync - {0} - {1}', github.event.inputs.catalog_sync_scope || 'all', github.event.inputs.triggered_by || github.actor)
+      || format('Deploy main - {0}', github.sha)
+  }}
 
 concurrency:
   group: vercel-production
@@ -31,6 +56,15 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Sync sports catalog
+        run: |
+          echo "Catalog sync scope: ${CATALOG_SYNC_SCOPE}"
+          echo "Triggered by: ${CATALOG_SYNC_TRIGGERED_BY}"
+          npm run catalog:sync
+        env:
+          CATALOG_SYNC_SCOPE: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.catalog_sync_scope || 'all' }}
+          CATALOG_SYNC_TRIGGERED_BY: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.triggered_by || github.actor }}
 
       - name: Pull Vercel environment
         run: npx vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
