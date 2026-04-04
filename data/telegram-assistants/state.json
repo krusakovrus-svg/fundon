@@ -10,8 +10,16 @@
       "updatedAt": null
     },
     "coder": {
-      "notes": [],
-      "updatedAt": "2026-04-04T10:37:27.027Z"
+      "notes": [
+        {
+          "id": "coder-1775299499771",
+          "text": "Как дела?",
+          "createdAt": "2026-04-04T10:44:59.771Z",
+          "authorId": "382783247",
+          "authorUsername": "@K0_ru"
+        }
+      ],
+      "updatedAt": "2026-04-04T10:44:59.771Z"
     }
   }
 }
