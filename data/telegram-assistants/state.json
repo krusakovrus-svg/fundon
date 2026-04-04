@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "assistants": {
+    "icons-director": {
+      "notes": [],
+      "updatedAt": null
+    },
+    "icon-analyst": {
+      "notes": [],
+      "updatedAt": null
+    },
+    "coder": {
+      "notes": [
+        {
+          "id": "coder-1775299044715",
+          "text": "test memory note from codex restore check",
+          "createdAt": "2026-04-04T10:37:24.715Z",
+          "authorId": "382783247",
+          "authorUsername": "@ceo_fansten"
+        }
+      ],
+      "updatedAt": "2026-04-04T10:37:24.715Z"
+    }
+  }
+}
